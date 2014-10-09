@@ -28,18 +28,33 @@ define([
       // deleteContents on range.
       rng = rng.deleteContents();
 
+      // Wrap range if it needs to be wrapped by paragraph
       rng = rng.wrapBodyInlineWithPara();
 
-      // find split root node: block level node
+      // finding paragraph
       var splitRoot = dom.ancestor(rng.sc, dom.isPara);
-      var nextPara = dom.splitTree(splitRoot, rng.getStartPoint());
 
-      var emptyAnchors = dom.listDescendant(splitRoot, dom.isEmptyAnchor);
-      emptyAnchors = emptyAnchors.concat(dom.listDescendant(nextPara, dom.isEmptyAnchor));
+      var nextPara;
+      // on paragraph: split paragraph
+      if (splitRoot) {
+        nextPara = dom.splitTree(splitRoot, rng.getStartPoint());
 
-      $.each(emptyAnchors, function (idx, anchor) {
-        dom.remove(anchor);
-      });
+        var emptyAnchors = dom.listDescendant(splitRoot, dom.isEmptyAnchor);
+        emptyAnchors = emptyAnchors.concat(dom.listDescendant(nextPara, dom.isEmptyAnchor));
+
+        $.each(emptyAnchors, function (idx, anchor) {
+          dom.remove(anchor);
+        });
+      // no paragraph: insert empty paragraph
+      } else {
+        var next = rng.sc.childNodes[rng.so];
+        nextPara = $(dom.emptyPara)[0];
+        if (next) {
+          rng.sc.insertBefore(nextPara, next);
+        } else {
+          rng.sc.appendChild(nextPara);
+        }
+      }
 
       range.create(nextPara, 0).normalize().select();
     };

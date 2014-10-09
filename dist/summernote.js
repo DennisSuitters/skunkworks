@@ -6,7 +6,7 @@
  * Copyright 2013-2014 Alan Hong. and other contributors
  * summernote may be freely distributed under the MIT license./
  *
- * Date: 2014-10-09T03:43Z
+ * Date: 2014-10-09T04:47Z
  */
 (function (factory) {
   /* global define */
@@ -292,7 +292,7 @@
      * returns true if the value is present in the list.
      */
     var contains = function (array, item) {
-      return array.indexOf(item) !== -1;
+      return $.inArray(item, array) !== -1;
     };
 
     /**
@@ -320,9 +320,15 @@
       return result;
     };
 
-    var range = function (max) {
+    var range = function (start, end) {
       var array = [];
-      for (var idx = 0; idx < max; idx ++) {
+
+      if (typeof end === 'undefined') {
+        end = start;
+        start = 0;
+      }
+
+      for (var idx = start; idx < end; idx ++) {
         array.push(idx);
       }
 
@@ -373,7 +379,7 @@
       var results = [];
 
       for (var idx = 0, len = array.length; idx < len; idx ++) {
-        if (results.indexOf(array[idx]) === -1) {
+        if (!contains(results, array[idx])) {
           results.push(array[idx]);
         }
       }
@@ -1486,6 +1492,10 @@
           floatLeft: 'Float Left',
           floatRight: 'Float Right',
           floatNone: 'Float None',
+          shapeRounded: 'Shape: Rounded',
+          shapeCircle: 'Shape: Circle',
+          shapeThumbnail: 'Shape: Thumbnail',
+          shapeNone: 'Shape: None',
           dragImageHere: 'Drag an image here',
           selectFromFiles: 'Select from files',
           url: 'Image URL',
@@ -1624,7 +1634,7 @@
    */
   var key = {
     isEdit: function (keyCode) {
-      return [8, 9, 13, 32].indexOf(keyCode) !== -1;
+      return list.contains([8, 9, 13, 32], keyCode);
     },
     nameFromCode: {
       '8': 'BACKSPACE',
@@ -2181,9 +2191,9 @@
        * @return {WrappedRange}
        */
       this.wrapBodyInlineWithPara = function () {
-        // startContainer on bodyContainer
-        if (dom.isEditable(sc) && !sc.childNodes[so]) {
-          return new WrappedRange(sc.appendChild($(dom.emptyPara)[0]), 0);
+        if (dom.isBodyContainer(sc) && dom.isEmpty(sc)) {
+          sc.innerHTML = dom.emptyPara;
+          return new WrappedRange(sc.firstChild, 0);
         } else if (!dom.isInline(sc) || dom.isParaInline(sc)) {
           return this;
         }
@@ -2390,18 +2400,33 @@
       // deleteContents on range.
       rng = rng.deleteContents();
 
+      // Wrap range if it needs to be wrapped by paragraph
       rng = rng.wrapBodyInlineWithPara();
 
-      // find split root node: block level node
+      // finding paragraph
       var splitRoot = dom.ancestor(rng.sc, dom.isPara);
-      var nextPara = dom.splitTree(splitRoot, rng.getStartPoint());
 
-      var emptyAnchors = dom.listDescendant(splitRoot, dom.isEmptyAnchor);
-      emptyAnchors = emptyAnchors.concat(dom.listDescendant(nextPara, dom.isEmptyAnchor));
+      var nextPara;
+      // on paragraph: split paragraph
+      if (splitRoot) {
+        nextPara = dom.splitTree(splitRoot, rng.getStartPoint());
 
-      $.each(emptyAnchors, function (idx, anchor) {
-        dom.remove(anchor);
-      });
+        var emptyAnchors = dom.listDescendant(splitRoot, dom.isEmptyAnchor);
+        emptyAnchors = emptyAnchors.concat(dom.listDescendant(nextPara, dom.isEmptyAnchor));
+
+        $.each(emptyAnchors, function (idx, anchor) {
+          dom.remove(anchor);
+        });
+      // no paragraph: insert empty paragraph
+      } else {
+        var next = rng.sc.childNodes[rng.so];
+        nextPara = $(dom.emptyPara)[0];
+        if (next) {
+          rng.sc.insertBefore(nextPara, next);
+        } else {
+          rng.sc.appendChild(nextPara);
+        }
+      }
 
       range.create(nextPara, 0).normalize().select();
     };
@@ -2435,11 +2460,11 @@
 
         $.each(cells, function (cellIdx, cell) {
           if (!data[rowIdx][colIdx]) {
-            var colOffsets = list.range(parseInt(cell.getAttribute('colSpan'), 10) || 1);
-            var rowOffsets = list.range(parseInt(cell.getAttribute('rowSpan'), 10) || 1);
+            var colSpan = parseInt(cell.getAttribute('colSpan'), 10) || 1;
+            var rowSpan = parseInt(cell.getAttribute('rowSpan'), 10) || 1;
 
-            $.each(colOffsets, function (colOffsetIdx, colOffset) {
-              $.each(rowOffsets, function (rowOffsetIdx, rowOffset) {
+            $.each(list.range(rowSpan), function (rowOffsetIdx, rowOffset) {
+              $.each(list.range(colSpan), function (colOffsetIdx, colOffset) {
                 data[rowIdx + rowOffset][colIdx + colOffset] = cell;
               });
             });
@@ -2463,7 +2488,11 @@
         var startPos = this.pos(startCell);
         var endPos = this.pos(endCell);
 
-        console.log(startPos, endPos);
+        $.each(list.range(startPos.row, endPos.row + 1), function (idx, rowIdx) {
+          $.each(list.range(startPos.col, endPos.col + 1), function (idx, colIdx) {
+            cells.push(data[rowIdx][colIdx]);
+          });
+        });
 
         return cells;
       };
@@ -3146,6 +3175,14 @@
       afterCommand($editable);
     };
 
+    this.imageShape = function ($editable, value, $target) {
+      $target.removeClass('img-rounded img-circle img-thumbnail');
+
+      if (value) {
+        $target.addClass(value);
+      }
+    };
+
     /**
      * resize overlay element
      * @param {jQuery} $editable
@@ -3154,7 +3191,7 @@
      */
     this.resize = function ($editable, value, $target) {
       $target.css({
-        width: $editable.width() * value + 'px',
+        width: value * 100 + '%',
         height: ''
       });
 
@@ -3204,7 +3241,7 @@
    * @class
    */
   var History = function ($editable) {
-    var stack = [], stackOffset = 0;
+    var stack = [], stackOffset = -1;
     var editable = $editable[0];
 
     var makeSnapshot = function () {
@@ -3241,6 +3278,8 @@
     };
 
     this.recordUndo = function () {
+      stackOffset++;
+
       // Wash out stack after stackOffset
       if (stack.length > stackOffset) {
         stack = stack.slice(0, stackOffset);
@@ -3248,7 +3287,6 @@
 
       // Create new snapshot and push it to the end
       stack.push(makeSnapshot());
-      stackOffset++;
     };
 
     // Create first undo stack
@@ -3515,6 +3553,18 @@
    * Handle
    */
   var Handle = function () {
+    this.getNodeRect = function ($node, isAirMode) {
+      var pos = isAirMode ? $node.offset() : $node.position();
+
+      // include margin
+      return {
+        left: pos.left,
+        top: pos.top,
+        width: $node.outerWidth(true),
+        height: $node.outerHeight(true)
+      };
+    };
+
     /**
      * update handle
      * @param {jQuery} $handle
@@ -3523,33 +3573,29 @@
      */
     this.update = function ($handle, styleInfo, isAirMode) {
       var $selection = $handle.find('.note-control-selection');
-      if (styleInfo.image) {
-        var $image = $(styleInfo.image);
-        var pos = isAirMode ? $image.offset() : $image.position();
 
-        // include margin
-        var imageSize = {
-          w: $image.outerWidth(true),
-          h: $image.outerHeight(true)
-        };
+      if (styleInfo.image) {
+        var rect = this.getNodeRect($(styleInfo.image), isAirMode);
 
         $selection.css({
           display: 'block',
-          left: pos.left,
-          top: pos.top,
-          width: imageSize.w,
-          height: imageSize.h
+          left: rect.left,
+          top: rect.top,
+          width: rect.width,
+          height: rect.height
         }).data('target', styleInfo.image); // save current image element.
-        var sizingText = imageSize.w + 'x' + imageSize.h;
+        var sizingText = rect.width + 'x' + rect.height;
         $selection.find('.note-control-selection-info').text(sizingText);
       } else {
         $selection.hide();
       }
 
+      $('.note-selected').removeClass('note-selected');
       if (styleInfo.cells && styleInfo.cells.length) {
-        console.log(styleInfo.cells);
+        $.each(styleInfo.cells, function (idx, cell) {
+          $(cell).addClass('note-selected');
+        });
       }
-
     };
 
     this.hide = function ($handle) {
@@ -4018,7 +4064,8 @@
               handle.update(layoutInfo.handle(), styleInfo, isAirMode);
             }
           }
-        }).one('mouseup', function () {
+        }).one('mouseup', function (event) {
+          event.preventDefault();
           $document.off('mousemove');
         });
       }
@@ -4059,13 +4106,17 @@
         return;
       }
 
-      var layoutInfo = makeLayoutInfo(event.currentTarget || event.target);
+      var layoutInfo = makeLayoutInfo(event.currentTarget || event.target),
+          $editable = layoutInfo.editable();
+
       var item = list.head(clipboardData.items);
       var isClipboardImage = item.kind === 'file' && item.type.indexOf('image/') !== -1;
 
       if (isClipboardImage) {
-        insertImages(layoutInfo.editable(), [item.getAsFile()]);
+        insertImages($editable, [item.getAsFile()]);
       }
+
+      editor.afterCommand($editable);
     };
 
     /**
@@ -4132,7 +4183,7 @@
 
         // before command: detect control selection element($target)
         var $target;
-        if ($.inArray(eventName, ['resize', 'floatMe', 'removeMedia']) !== -1) {
+        if ($.inArray(eventName, ['resize', 'floatMe', 'removeMedia', 'imageShape']) !== -1) {
           var $selection = layoutInfo.handle().find('.note-control-selection');
           $target = $($selection.data('target'));
         }
@@ -4550,9 +4601,7 @@
                    '</div>' : ''
                    ) +
                    '<form class="note-modal-form">' +
-                     '<div class="modal-body">' +
-                       '<div class="row-fluid">' + body + '</div>' +
-                     '</div>' +
+                     '<div class="modal-body">' + body + '</div>' +
                      (footer ?
                      '<div class="modal-footer">' + footer + '</div>' : ''
                      ) +
@@ -4564,21 +4613,21 @@
 
     var tplButtonInfo = {
       picture: function (lang) {
-        return tplIconButton('fa fa-picture-o icon-picture', {
+        return tplIconButton('fa fa-picture-o', {
           event: 'showImageDialog',
           title: lang.image.image,
           hide: true
         });
       },
       link: function (lang) {
-        return tplIconButton('fa fa-link icon-link', {
+        return tplIconButton('fa fa-link', {
           event: 'showLinkDialog',
           title: lang.link.link,
           hide: true
         });
       },
       video: function (lang) {
-        return tplIconButton('fa fa-youtube-play icon-play', {
+        return tplIconButton('fa fa-youtube-play', {
           event: 'showVideoDialog',
           title: lang.video.video,
           hide: true
@@ -4593,7 +4642,7 @@
                          '</div>' +
                          '<div class="note-dimension-display"> 1 x 1 </div>' +
                        '</ul>';
-        return tplIconButton('fa fa-table icon-table', {
+        return tplIconButton('fa fa-table', {
           title: lang.table.table,
           dropdown: dropdown
         });
@@ -4609,7 +4658,7 @@
                  '</a></li>';
         }, '');
 
-        return tplIconButton('fa fa-magic icon-magic', {
+        return tplIconButton('fa fa-magic', {
           title: lang.style.style,
           dropdown: '<ul class="dropdown-menu">' + items + '</ul>'
         });
@@ -4618,7 +4667,7 @@
         var items = options.fontNames.reduce(function (memo, v) {
           if (!agent.isFontInstalled(v)) { return memo; }
           return memo + '<li><a data-event="fontName" href="#" data-value="' + v + '">' +
-                          '<i class="fa fa-check icon-ok"></i> ' + v +
+                          '<i class="fa fa-check"></i> ' + v +
                         '</a></li>';
         }, '');
         var label = '<span class="note-current-fontname">' +
@@ -4632,7 +4681,7 @@
       fontsize: function (lang, options) {
         var items = options.fontSizes.reduce(function (memo, v) {
           return memo + '<li><a data-event="fontSize" href="#" data-value="' + v + '">' +
-                          '<i class="fa fa-check icon-ok"></i> ' + v +
+                          '<i class="fa fa-check"></i> ' + v +
                         '</a></li>';
         }, '');
 
@@ -4644,7 +4693,7 @@
       },
 
       color: function (lang) {
-        var colorButtonLabel = '<i class="fa fa-font icon-font" style="color:black;background-color:yellow;"></i>';
+        var colorButtonLabel = '<i class="fa fa-font" style="color:black;background-color:yellow;"></i>';
         var colorButton = tplButton(colorButtonLabel, {
           className: 'note-recent-color',
           title: lang.color.recent,
@@ -4680,82 +4729,82 @@
         return colorButton + moreButton;
       },
       bold: function (lang) {
-        return tplIconButton('fa fa-bold icon-bold', {
+        return tplIconButton('fa fa-bold', {
           event: 'bold',
           title: lang.font.bold
         });
       },
       italic: function (lang) {
-        return tplIconButton('fa fa-italic icon-italic', {
+        return tplIconButton('fa fa-italic', {
           event: 'italic',
           title: lang.font.italic
         });
       },
       underline: function (lang) {
-        return tplIconButton('fa fa-underline icon-underline', {
+        return tplIconButton('fa fa-underline', {
           event: 'underline',
           title: lang.font.underline
         });
       },
       strikethrough: function (lang) {
-        return tplIconButton('fa fa-strikethrough icon-strikethrough', {
+        return tplIconButton('fa fa-strikethrough', {
           event: 'strikethrough',
           title: lang.font.strikethrough
         });
       },
       superscript: function (lang) {
-        return tplIconButton('fa fa-superscript icon-superscript', {
+        return tplIconButton('fa fa-superscript', {
           event: 'superscript',
           title: lang.font.superscript
         });
       },
       subscript: function (lang) {
-        return tplIconButton('fa fa-subscript icon-subscript', {
+        return tplIconButton('fa fa-subscript', {
           event: 'subscript',
           title: lang.font.subscript
         });
       },
       clear: function (lang) {
-        return tplIconButton('fa fa-eraser icon-eraser', {
+        return tplIconButton('fa fa-eraser', {
           event: 'removeFormat',
           title: lang.font.clear
         });
       },
       ul: function (lang) {
-        return tplIconButton('fa fa-list-ul icon-list-ul', {
+        return tplIconButton('fa fa-list-ul', {
           event: 'insertUnorderedList',
           title: lang.lists.unordered
         });
       },
       ol: function (lang) {
-        return tplIconButton('fa fa-list-ol icon-list-ol', {
+        return tplIconButton('fa fa-list-ol', {
           event: 'insertOrderedList',
           title: lang.lists.ordered
         });
       },
       paragraph: function (lang) {
-        var leftButton = tplIconButton('fa fa-align-left icon-align-left', {
+        var leftButton = tplIconButton('fa fa-align-left', {
           title: lang.paragraph.left,
           event: 'justifyLeft'
         });
-        var centerButton = tplIconButton('fa fa-align-center icon-align-center', {
+        var centerButton = tplIconButton('fa fa-align-center', {
           title: lang.paragraph.center,
           event: 'justifyCenter'
         });
-        var rightButton = tplIconButton('fa fa-align-right icon-align-right', {
+        var rightButton = tplIconButton('fa fa-align-right', {
           title: lang.paragraph.right,
           event: 'justifyRight'
         });
-        var justifyButton = tplIconButton('fa fa-align-justify icon-align-justify', {
+        var justifyButton = tplIconButton('fa fa-align-justify', {
           title: lang.paragraph.justify,
           event: 'justifyFull'
         });
 
-        var outdentButton = tplIconButton('fa fa-outdent icon-indent-left', {
+        var outdentButton = tplIconButton('fa fa-outdent', {
           title: lang.paragraph.outdent,
           event: 'outdent'
         });
-        var indentButton = tplIconButton('fa fa-indent icon-indent-right', {
+        var indentButton = tplIconButton('fa fa-indent', {
           title: lang.paragraph.indent,
           event: 'indent'
         });
@@ -4769,7 +4818,7 @@
                          '</div>' +
                        '</div>';
 
-        return tplIconButton('fa fa-align-left icon-align-left', {
+        return tplIconButton('fa fa-align-left', {
           title: lang.paragraph.paragraph,
           dropdown: dropdown
         });
@@ -4777,49 +4826,49 @@
       height: function (lang, options) {
         var items = options.lineHeights.reduce(function (memo, v) {
           return memo + '<li><a data-event="lineHeight" href="#" data-value="' + parseFloat(v) + '">' +
-                          '<i class="fa fa-check icon-ok"></i> ' + v +
+                          '<i class="fa fa-check"></i> ' + v +
                         '</a></li>';
         }, '');
 
-        return tplIconButton('fa fa-text-height icon-text-height', {
+        return tplIconButton('fa fa-text-height', {
           title: lang.font.height,
           dropdown: '<ul class="dropdown-menu">' + items + '</ul>'
         });
 
       },
       help: function (lang) {
-        return tplIconButton('fa fa-question icon-question', {
+        return tplIconButton('fa fa-question', {
           event: 'showHelpDialog',
           title: lang.options.help,
           hide: true
         });
       },
       fullscreen: function (lang) {
-        return tplIconButton('fa fa-arrows-alt icon-fullscreen', {
+        return tplIconButton('fa fa-arrows-alt', {
           event: 'fullscreen',
           title: lang.options.fullscreen
         });
       },
       codeview: function (lang) {
-        return tplIconButton('fa fa-code icon-code', {
+        return tplIconButton('fa fa-code', {
           event: 'codeview',
           title: lang.options.codeview
         });
       },
       undo: function (lang) {
-        return tplIconButton('fa fa-undo icon-undo', {
+        return tplIconButton('fa fa-undo', {
           event: 'undo',
           title: lang.history.undo
         });
       },
       redo: function (lang) {
-        return tplIconButton('fa fa-repeat icon-repeat', {
+        return tplIconButton('fa fa-repeat', {
           event: 'redo',
           title: lang.history.redo
         });
       },
       hr: function (lang) {
-        return tplIconButton('fa fa-minus icon-hr', {
+        return tplIconButton('fa fa-minus', {
           event: 'insertHorizontalRule',
           title: lang.hr.insert
         });
@@ -4828,12 +4877,12 @@
 
     var tplPopovers = function (lang, options) {
       var tplLinkPopover = function () {
-        var linkButton = tplIconButton('fa fa-edit icon-edit', {
+        var linkButton = tplIconButton('fa fa-edit', {
           title: lang.link.edit,
           event: 'showLinkDialog',
           hide: true
         });
-        var unlinkButton = tplIconButton('fa fa-unlink icon-unlink', {
+        var unlinkButton = tplIconButton('fa fa-unlink', {
           title: lang.link.unlink,
           event: 'unlink'
         });
@@ -4861,23 +4910,44 @@
           value: '0.25'
         });
 
-        var leftButton = tplIconButton('fa fa-align-left icon-align-left', {
+        var leftButton = tplIconButton('fa fa-align-left', {
           title: lang.image.floatLeft,
           event: 'floatMe',
           value: 'left'
         });
-        var rightButton = tplIconButton('fa fa-align-right icon-align-right', {
+        var rightButton = tplIconButton('fa fa-align-right', {
           title: lang.image.floatRight,
           event: 'floatMe',
           value: 'right'
         });
-        var justifyButton = tplIconButton('fa fa-align-justify icon-align-justify', {
+        var justifyButton = tplIconButton('fa fa-align-justify', {
           title: lang.image.floatNone,
           event: 'floatMe',
           value: 'none'
         });
 
-        var removeButton = tplIconButton('fa fa-trash-o icon-trash', {
+        var roundedButton = tplIconButton('fa fa-square', {
+          title: lang.image.shapeRounded,
+          event: 'imageShape',
+          value: 'img-rounded'
+        });
+        var circleButton = tplIconButton('fa fa-circle-o', {
+          title: lang.image.shapeCircle,
+          event: 'imageShape',
+          value: 'img-circle'
+        });
+        var thumbnailButton = tplIconButton('fa fa-picture-o', {
+          title: lang.image.shapeThumbnail,
+          event: 'imageShape',
+          value: 'img-thumbnail'
+        });
+        var noneButton = tplIconButton('fa fa-times', {
+          title: lang.image.shapeNone,
+          event: 'imageShape',
+          value: ''
+        });
+
+        var removeButton = tplIconButton('fa fa-trash-o', {
           title: lang.image.remove,
           event: 'removeMedia',
           value: 'none'
@@ -4885,6 +4955,7 @@
 
         var content = '<div class="btn-group">' + fullButton + halfButton + quarterButton + '</div>' +
                       '<div class="btn-group">' + leftButton + rightButton + justifyButton + '</div>' +
+                      '<div class="btn-group">' + roundedButton + circleButton + thumbnailButton + noneButton + '</div>' +
                       '<div class="btn-group">' + removeButton + '</div>';
         return tplPopover('note-image-popover', content);
       };
@@ -5010,23 +5081,24 @@
 
     var tplDialogs = function (lang, options) {
       var tplImageDialog = function () {
-        var body =
-                   '<div class="note-group-select-from-files">' +
-                   '<h5>' + lang.image.selectFromFiles + '</h5>' +
-                   '<input class="note-image-input" type="file" name="files" accept="image/*" />' +
+        var body = '<div class="form-group row-fluid note-group-select-from-files">' +
+                     '<label>' + lang.image.selectFromFiles + '</label>' +
+                     '<input class="note-image-input" type="file" name="files" accept="image/*" />' +
                    '</div>' +
-                   '<h5>' + lang.image.url + '</h5>' +
-                   '<input class="note-image-url form-control span12" type="text" />';
+                   '<div class="form-group row-fluid">' +
+                     '<label>' + lang.image.url + '</label>' +
+                     '<input class="note-image-url form-control span12" type="text" />' +
+                   '</div>';
         var footer = '<button href="#" class="btn btn-primary note-image-btn disabled" disabled>' + lang.image.insert + '</button>';
         return tplDialog('note-image-dialog', lang.image.insert, body, footer);
       };
 
       var tplLinkDialog = function () {
-        var body = '<div class="form-group">' +
+        var body = '<div class="form-group row-fluid">' +
                      '<label>' + lang.link.textToDisplay + '</label>' +
                      '<input class="note-link-text form-control span12" type="text" />' +
                    '</div>' +
-                   '<div class="form-group">' +
+                   '<div class="form-group row-fluid">' +
                      '<label>' + lang.link.url + '</label>' +
                      '<input class="note-link-url form-control span12" type="text" />' +
                    '</div>' +
@@ -5042,8 +5114,8 @@
       };
 
       var tplVideoDialog = function () {
-        var body = '<div class="form-group">' +
-                     '<label>' + lang.video.url + '</label>&nbsp;<small class="text-muted">' + lang.video.providers + '</small>' +
+        var body = '<div class="form-group row-fluid">' +
+                     '<label>' + lang.video.url + ' <small class="text-muted">' + lang.video.providers + '</small></label>' +
                      '<input class="note-video-url form-control span12" type="text" />' +
                    '</div>';
         var footer = '<button href="#" class="btn btn-primary note-video-btn disabled" disabled>' + lang.video.insert + '</button>';
@@ -5150,7 +5222,7 @@
      */
     this.createLayoutByAirMode = function ($holder, options) {
       var keyMap = options.keyMap[agent.isMac ? 'mac' : 'pc'];
-      var langInfo = $.summernote.lang[options.lang];
+      var langInfo = $.extend($.summernote.lang['en-US'], $.summernote.lang[options.lang]);
 
       var id = func.uniqueId();
 
@@ -5220,7 +5292,7 @@
       //031. create codable
       $('<textarea class="note-codable"></textarea>').prependTo($editor);
 
-      var langInfo = $.summernote.lang[options.lang];
+      var langInfo = $.extend($.summernote.lang['en-US'], $.summernote.lang[options.lang]);
 
       //04. create Toolbar
       var toolbarHTML = '';
