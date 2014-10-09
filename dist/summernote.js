@@ -6,7 +6,7 @@
  * Copyright 2013-2014 Alan Hong. and other contributors
  * summernote may be freely distributed under the MIT license./
  *
- * Date: 2014-09-21T05:17Z
+ * Date: 2014-10-09T03:43Z
  */
 (function (factory) {
   /* global define */
@@ -319,6 +319,15 @@
       }
       return result;
     };
+
+    var range = function (max) {
+      var array = [];
+      for (var idx = 0; idx < max; idx ++) {
+        array.push(idx);
+      }
+
+      return array;
+    };
   
     /**
      * cluster elements by predicate function.
@@ -371,10 +380,32 @@
 
       return results;
     };
-  
+
+    /**
+     * returns next item.
+     * @param {Array} array
+     */
+    var next = function (array, item) {
+      var idx = array.indexOf(item);
+      if (idx === -1) { return null; }
+
+      return array[idx + 1];
+    };
+
+    /**
+     * returns prev item.
+     * @param {Array} array
+     */
+    var prev = function (array, item) {
+      var idx = array.indexOf(item);
+      if (idx === -1) { return null; }
+
+      return array[idx - 1];
+    };
+
     return { head: head, last: last, initial: initial, tail: tail,
-             find: find, contains: contains,
-             all: all, sum: sum, from: from,
+             prev: prev, next: next, find: find, contains: contains,
+             all: all, sum: sum, from: from, range: range,
              clusterBy: clusterBy, compact: compact, unique: unique };
   })();
 
@@ -2288,8 +2319,8 @@
             endPoint = textRangeToPoint(textRangeEnd, false);
 
             // same visible point case: range was collapsed.
-            if (dom.isText(startPoint.node) && dom.isLeftSidePoint(startPoint) &&
-                dom.isTextNode(endPoint.node) && dom.isRightSidePoint(endPoint) &&
+            if (dom.isText(startPoint.node) && dom.isLeftEdgePoint(startPoint) &&
+                dom.isTextNode(endPoint.node) && dom.isRightEdgePoint(endPoint) &&
                 endPoint.node.nextSibling === startPoint.node) {
               startPoint = endPoint;
             }
@@ -2377,11 +2408,67 @@
 
   };
 
+
   /**
    * Table
    * @class
    */
   var Table = function () {
+    var GridData = function (tableNode) {
+      var rows = list.from(tableNode.getElementsByTagName('TR')).filter(function (row) {
+        return dom.ancestor(row, dom.isTable) === tableNode;
+      });
+
+      /**
+       * two-dimension array
+       * @type {Array[]}
+       */
+      var data = [];
+
+      $.each(rows, function (rowIdx, row) {
+        var cells = list.from(row.childNodes).filter(dom.isCell);
+        var colIdx = 0;
+
+        if (!data[rowIdx]) {
+          data[rowIdx] = [];
+        }
+
+        $.each(cells, function (cellIdx, cell) {
+          if (!data[rowIdx][colIdx]) {
+            var colOffsets = list.range(parseInt(cell.getAttribute('colSpan'), 10) || 1);
+            var rowOffsets = list.range(parseInt(cell.getAttribute('rowSpan'), 10) || 1);
+
+            $.each(colOffsets, function (colOffsetIdx, colOffset) {
+              $.each(rowOffsets, function (rowOffsetIdx, rowOffset) {
+                data[rowIdx + rowOffset][colIdx + colOffset] = cell;
+              });
+            });
+            colIdx += 1;
+          }
+        });
+      });
+
+      this.pos = function (cell) {
+        var rowIdx = rows.indexOf(cell.parentNode);
+        var colIdx = data[rowIdx].indexOf(cell);
+
+        return {
+          row: rowIdx,
+          col: colIdx
+        };
+      };
+
+      this.cellsBetween = function (startCell, endCell) {
+        var cells = [];
+        var startPos = this.pos(startCell);
+        var endPos = this.pos(endCell);
+
+        console.log(startPos, endPos);
+
+        return cells;
+      };
+    };
+
     /**
      * handle tab key
      *
@@ -2390,8 +2477,8 @@
      */
     this.tab = function (rng, isShift) {
       var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
-      var table = dom.ancestor(cell, dom.isTable);
-      var cells = dom.listDescendant(table, dom.isCell);
+      var tableNode = dom.ancestor(cell, dom.isTable);
+      var cells = dom.listDescendant(tableNode, dom.isCell);
 
       var nextCell = list[isShift ? 'prev' : 'next'](cells, cell);
       if (nextCell) {
@@ -2419,6 +2506,11 @@
       }
       trHTML = trs.join('');
       return $('<table class="table table-bordered">' + trHTML + '</table>')[0];
+    };
+
+    this.cellsBetween = function (startCell, endCell) {
+      var gridData = new GridData(dom.ancestor(startCell, dom.isTable));
+      return gridData.cellsBetween(startCell, endCell);
     };
   };
 
@@ -2649,6 +2741,10 @@
         rng.select();
         $editable.focus();
       }
+    };
+
+    this.cellsBetween = function (startCell, endCell) {
+      return table.cellsBetween(startCell, endCell);
     };
 
     /**
@@ -3449,6 +3545,11 @@
       } else {
         $selection.hide();
       }
+
+      if (styleInfo.cells && styleInfo.cells.length) {
+        console.log(styleInfo.cells);
+      }
+
     };
 
     this.hide = function ($handle) {
@@ -3895,9 +3996,31 @@
     };
 
     var hMousedown = function (event) {
-      //preventDefault Selection for FF, IE8+
+      var layoutInfo = makeLayoutInfo(event.target);
+      var isAirMode = layoutInfo.editor().data('options').airMode;
+      var startCell = dom.ancestor(event.target, dom.isCell);
+
+      // [workaround] preventDefault Selection for FF, IE8+
       if (dom.isImg(event.target)) {
         event.preventDefault();
+      } else if (startCell) {
+        var endCell, isCellSelection = false;
+        $document.on('mousemove', function (event) {
+          endCell = dom.ancestor(event.target, dom.isCell);
+          if (endCell) {
+            if ((isCellSelection = isCellSelection || startCell !== endCell)) {
+              event.preventDefault();
+
+              var styleInfo = {
+                cells: editor.cellsBetween(startCell, endCell)
+              };
+
+              handle.update(layoutInfo.handle(), styleInfo, isAirMode);
+            }
+          }
+        }).one('mouseup', function () {
+          $document.off('mousemove');
+        });
       }
     };
 

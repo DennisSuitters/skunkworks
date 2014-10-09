@@ -48,6 +48,10 @@ define([
       }
     };
 
+    this.cellsBetween = function (startCell, endCell) {
+      return table.cellsBetween(startCell, endCell);
+    };
+
     /**
      * current style
      * @param {Node} target

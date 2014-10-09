@@ -253,9 +253,32 @@ define([
     };
 
     var hMousedown = function (event) {
-      //preventDefault Selection for FF, IE8+
+      var layoutInfo = makeLayoutInfo(event.target);
+      var isAirMode = layoutInfo.editor().data('options').airMode;
+      var startCell = dom.ancestor(event.target, dom.isCell);
+
+      // [workaround] preventDefault Selection for FF, IE8+
       if (dom.isImg(event.target)) {
         event.preventDefault();
+      } else if (startCell) {
+        var endCell, isCellSelection = false;
+        $document.on('mousemove', function (event) {
+          endCell = dom.ancestor(event.target, dom.isCell);
+          if (endCell) {
+            if ((isCellSelection = isCellSelection || startCell !== endCell)) {
+              event.preventDefault();
+
+              var styleInfo = {
+                cells: editor.cellsBetween(startCell, endCell)
+              };
+
+              handle.update(layoutInfo.handle(), styleInfo, isAirMode);
+            }
+          }
+        }).one('mouseup', function (event) {
+          event.preventDefault();
+          $document.off('mousemove');
+        });
       }
     };
 

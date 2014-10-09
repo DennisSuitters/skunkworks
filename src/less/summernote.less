@@ -4,6 +4,7 @@
  ------------------------------------------*/
 @border-color: #a9a9a9;
 @background-color: #f5f5f5;
+@selection-color: lighten(skyblue, 20);
 
 /* Frame Mode Layout
  ------------------------------------------*/
@@ -93,6 +94,10 @@
     padding: 10px;
     overflow: auto;
     outline: none;
+
+    td.note-selected {
+      background-color: @selection-color !important;
+    }
   }
   .note-editable[contenteditable="false"] {
     background-color: #e5e5e5;

@@ -94,6 +94,21 @@ define(['summernote/core/func'], function (func) {
       }
       return result;
     };
+
+    var range = function (start, end) {
+      var array = [];
+
+      if (typeof end === 'undefined') {
+        end = start;
+        start = 0;
+      }
+
+      for (var idx = start; idx < end; idx ++) {
+        array.push(idx);
+      }
+
+      return array;
+    };
   
     /**
      * cluster elements by predicate function.
@@ -146,10 +161,32 @@ define(['summernote/core/func'], function (func) {
 
       return results;
     };
-  
+
+    /**
+     * returns next item.
+     * @param {Array} array
+     */
+    var next = function (array, item) {
+      var idx = array.indexOf(item);
+      if (idx === -1) { return null; }
+
+      return array[idx + 1];
+    };
+
+    /**
+     * returns prev item.
+     * @param {Array} array
+     */
+    var prev = function (array, item) {
+      var idx = array.indexOf(item);
+      if (idx === -1) { return null; }
+
+      return array[idx - 1];
+    };
+
     return { head: head, last: last, initial: initial, tail: tail,
-             find: find, contains: contains,
-             all: all, sum: sum, from: from,
+             prev: prev, next: next, find: find, contains: contains,
+             all: all, sum: sum, from: from, range: range,
              clusterBy: clusterBy, compact: compact, unique: unique };
   })();
 

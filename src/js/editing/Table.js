@@ -1,11 +1,73 @@
 define([
-  'summernote/core/dom', 'summernote/core/range', 'summernote/core/list'
+  'summernote/core/dom',
+  'summernote/core/range',
+  'summernote/core/list'
 ], function (dom, range, list) {
+
   /**
    * Table
    * @class
    */
   var Table = function () {
+    var GridData = function (tableNode) {
+      var rows = list.from(tableNode.getElementsByTagName('TR')).filter(function (row) {
+        return dom.ancestor(row, dom.isTable) === tableNode;
+      });
+
+      /**
+       * two-dimension array
+       * @type {Array[]}
+       */
+      var data = [];
+
+      $.each(rows, function (rowIdx, row) {
+        var cells = list.from(row.childNodes).filter(dom.isCell);
+        var colIdx = 0;
+
+        if (!data[rowIdx]) {
+          data[rowIdx] = [];
+        }
+
+        $.each(cells, function (cellIdx, cell) {
+          if (!data[rowIdx][colIdx]) {
+            var colSpan = parseInt(cell.getAttribute('colSpan'), 10) || 1;
+            var rowSpan = parseInt(cell.getAttribute('rowSpan'), 10) || 1;
+
+            $.each(list.range(rowSpan), function (rowOffsetIdx, rowOffset) {
+              $.each(list.range(colSpan), function (colOffsetIdx, colOffset) {
+                data[rowIdx + rowOffset][colIdx + colOffset] = cell;
+              });
+            });
+            colIdx += 1;
+          }
+        });
+      });
+
+      this.pos = function (cell) {
+        var rowIdx = rows.indexOf(cell.parentNode);
+        var colIdx = data[rowIdx].indexOf(cell);
+
+        return {
+          row: rowIdx,
+          col: colIdx
+        };
+      };
+
+      this.cellsBetween = function (startCell, endCell) {
+        var cells = [];
+        var startPos = this.pos(startCell);
+        var endPos = this.pos(endCell);
+
+        $.each(list.range(startPos.row, endPos.row + 1), function (idx, rowIdx) {
+          $.each(list.range(startPos.col, endPos.col + 1), function (idx, colIdx) {
+            cells.push(data[rowIdx][colIdx]);
+          });
+        });
+
+        return cells;
+      };
+    };
+
     /**
      * handle tab key
      *
@@ -14,8 +76,8 @@ define([
      */
     this.tab = function (rng, isShift) {
       var cell = dom.ancestor(rng.commonAncestor(), dom.isCell);
-      var table = dom.ancestor(cell, dom.isTable);
-      var cells = dom.listDescendant(table, dom.isCell);
+      var tableNode = dom.ancestor(cell, dom.isTable);
+      var cells = dom.listDescendant(tableNode, dom.isCell);
 
       var nextCell = list[isShift ? 'prev' : 'next'](cells, cell);
       if (nextCell) {
@@ -44,7 +106,13 @@ define([
       trHTML = trs.join('');
       return $('<table class="table table-bordered">' + trHTML + '</table>')[0];
     };
+
+    this.cellsBetween = function (startCell, endCell) {
+      var gridData = new GridData(dom.ancestor(startCell, dom.isTable));
+      return gridData.cellsBetween(startCell, endCell);
+    };
   };
+
   return Table;
 });
 

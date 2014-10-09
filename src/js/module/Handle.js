@@ -3,6 +3,18 @@ define('summernote/module/Handle', function () {
    * Handle
    */
   var Handle = function () {
+    this.getNodeRect = function ($node, isAirMode) {
+      var pos = isAirMode ? $node.offset() : $node.position();
+
+      // include margin
+      return {
+        left: pos.left,
+        top: pos.top,
+        width: $node.outerWidth(true),
+        height: $node.outerHeight(true)
+      };
+    };
+
     /**
      * update handle
      * @param {jQuery} $handle
@@ -11,27 +23,28 @@ define('summernote/module/Handle', function () {
      */
     this.update = function ($handle, styleInfo, isAirMode) {
       var $selection = $handle.find('.note-control-selection');
-      if (styleInfo.image) {
-        var $image = $(styleInfo.image);
-        var pos = isAirMode ? $image.offset() : $image.position();
 
-        // include margin
-        var imageSize = {
-          w: $image.outerWidth(true),
-          h: $image.outerHeight(true)
-        };
+      if (styleInfo.image) {
+        var rect = this.getNodeRect($(styleInfo.image), isAirMode);
 
         $selection.css({
           display: 'block',
-          left: pos.left,
-          top: pos.top,
-          width: imageSize.w,
-          height: imageSize.h
+          left: rect.left,
+          top: rect.top,
+          width: rect.width,
+          height: rect.height
         }).data('target', styleInfo.image); // save current image element.
-        var sizingText = imageSize.w + 'x' + imageSize.h;
+        var sizingText = rect.width + 'x' + rect.height;
         $selection.find('.note-control-selection-info').text(sizingText);
       } else {
         $selection.hide();
+      }
+
+      $('.note-selected').removeClass('note-selected');
+      if (styleInfo.cells && styleInfo.cells.length) {
+        $.each(styleInfo.cells, function (idx, cell) {
+          $(cell).addClass('note-selected');
+        });
       }
     };
 
