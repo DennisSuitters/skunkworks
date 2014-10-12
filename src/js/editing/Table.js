@@ -53,13 +53,38 @@ define([
         };
       };
 
-      this.cellsBetween = function (startCell, endCell) {
-        var cells = [];
+      /**
+       * @param {Node} startCell
+       * @param {Node} endCell
+       * @return {TableRange}
+       */
+      this.createTableRange = function (startCell, endCell) {
         var startPos = this.pos(startCell);
         var endPos = this.pos(endCell);
 
-        $.each(list.range(startPos.row, endPos.row + 1), function (idx, rowIdx) {
-          $.each(list.range(startPos.col, endPos.col + 1), function (idx, colIdx) {
+        return {
+          start: {
+            row: Math.min(startPos.row, endPos.row),
+            col: Math.min(startPos.col, endPos.col)
+          },
+          end: {
+            row: Math.max(startPos.row, endPos.row),
+            col: Math.max(startPos.col, endPos.col)
+          }
+        };
+      };
+
+      /**
+       * @param {Node} startCell
+       * @param {Node} endCell
+       * @return {Node[]}
+       */
+      this.cellsBetween = function (startCell, endCell) {
+        var cells = [];
+        var tableRange = this.createTableRange(startCell, endCell);
+
+        $.each(list.range(tableRange.start.row, tableRange.end.row + 1), function (idx, rowIdx) {
+          $.each(list.range(tableRange.start.col, tableRange.end.col + 1), function (idx, colIdx) {
             cells.push(data[rowIdx][colIdx]);
           });
         });

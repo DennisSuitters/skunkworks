@@ -255,37 +255,48 @@ define([
     var hMousedown = function (event) {
       var layoutInfo = makeLayoutInfo(event.target);
       var isAirMode = layoutInfo.editor().data('options').airMode;
+
       var startCell = dom.ancestor(event.target, dom.isCell);
+      var selectedCells = [];
 
       // [workaround] preventDefault Selection for FF, IE8+
       if (dom.isImg(event.target)) {
         event.preventDefault();
       } else if (startCell) {
-        var endCell, isCellSelection = false;
+        var endCell;
         $document.on('mousemove', function (event) {
           endCell = dom.ancestor(event.target, dom.isCell);
           if (endCell) {
-            if ((isCellSelection = isCellSelection || startCell !== endCell)) {
+            if (startCell !== endCell) {
               event.preventDefault();
 
-              var styleInfo = {
-                cells: editor.cellsBetween(startCell, endCell)
-              };
-
-              handle.update(layoutInfo.handle(), styleInfo, isAirMode);
+              selectedCells = editor.cellsBetween(startCell, endCell);
+              handle.update(layoutInfo.handle(), {
+                cells: selectedCells
+              }, isAirMode);
             }
           }
         }).one('mouseup', function (event) {
           event.preventDefault();
           $document.off('mousemove');
+
+          if (selectedCells.length) {
+            popover.update(layoutInfo.popover(), {
+              cells: selectedCells
+            }, isAirMode);
+          } else {
+            hToolbarAndPopoverUpdate(event);
+          }
         });
+      } else {
+        hToolbarAndPopoverUpdate(event);
       }
     };
 
     var hToolbarAndPopoverUpdate = function (event) {
       // delay for range after mouseup
       setTimeout(function () {
-        var layoutInfo = makeLayoutInfo(event.currentTarget || event.target);
+        var layoutInfo = makeLayoutInfo(event.target);
         var styleInfo = editor.currentStyle(event.target);
         if (!styleInfo) { return; }
 
@@ -300,7 +311,7 @@ define([
     };
 
     var hScroll = function (event) {
-      var layoutInfo = makeLayoutInfo(event.currentTarget || event.target);
+      var layoutInfo = makeLayoutInfo(event.target);
       //hide popover and handle when scrolled
       popover.hide(layoutInfo.popover());
       handle.hide(layoutInfo.handle());
@@ -317,7 +328,7 @@ define([
         return;
       }
 
-      var layoutInfo = makeLayoutInfo(event.currentTarget || event.target),
+      var layoutInfo = makeLayoutInfo(event.target),
           $editable = layoutInfo.editable();
 
       var item = list.head(clipboardData.items);
@@ -437,7 +448,7 @@ define([
       var $editable = makeLayoutInfo(event.target).editable();
       var nEditableTop = $editable.offset().top - $document.scrollTop();
 
-      var layoutInfo = makeLayoutInfo(event.currentTarget || event.target);
+      var layoutInfo = makeLayoutInfo(event.target);
       var options = layoutInfo.editor().data('options');
 
       $document.on('mousemove', function (event) {
@@ -556,7 +567,7 @@ define([
 
         var dataTransfer = event.originalEvent.dataTransfer;
         if (dataTransfer && dataTransfer.files) {
-          var layoutInfo = makeLayoutInfo(event.currentTarget || event.target);
+          var layoutInfo = makeLayoutInfo(event.target);
           layoutInfo.editable().focus();
           insertImages(layoutInfo.editable(), dataTransfer.files);
         }
@@ -614,7 +625,7 @@ define([
       // handlers for editable
       this.bindKeyMap(layoutInfo, options.keyMap[agent.isMac ? 'mac' : 'pc']);
       layoutInfo.editable.on('mousedown', hMousedown);
-      layoutInfo.editable.on('keyup mouseup', hToolbarAndPopoverUpdate);
+      layoutInfo.editable.on('keyup', hToolbarAndPopoverUpdate);
       layoutInfo.editable.on('scroll', hScroll);
       layoutInfo.editable.on('paste', hPasteClipboardImage);
 

@@ -452,6 +452,28 @@ define([
         return tplPopover('note-image-popover', content);
       };
 
+      var tplTablePopover = function () {
+        var leftButton = tplIconButton('fa fa-align-left', {
+          title: lang.image.floatLeft,
+          event: 'floatMe',
+          value: 'left'
+        });
+        var rightButton = tplIconButton('fa fa-align-right', {
+          title: lang.image.floatRight,
+          event: 'floatMe',
+          value: 'right'
+        });
+        var justifyButton = tplIconButton('fa fa-align-justify', {
+          title: lang.image.floatNone,
+          event: 'floatMe',
+          value: 'none'
+        });
+
+        var content = '<div class="btn-group">' + leftButton + rightButton + justifyButton + '</div>';
+
+        return tplPopover('note-table-popover', content);
+      };
+
       var tplAirPopover = function () {
         var content = '';
         for (var idx = 0, len = options.airPopover.length; idx < len; idx ++) {
@@ -469,6 +491,7 @@ define([
       return '<div class="note-popover">' +
                tplLinkPopover() +
                tplImagePopover() +
+               tplTablePopover() +
                (options.airMode ?  tplAirPopover() : '') +
              '</div>';
     };

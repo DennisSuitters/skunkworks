@@ -24,9 +24,9 @@ define('summernote/module/Handle', function () {
     this.update = function ($handle, styleInfo, isAirMode) {
       var $selection = $handle.find('.note-control-selection');
 
+      // image selection
       if (styleInfo.image) {
         var rect = this.getNodeRect($(styleInfo.image), isAirMode);
-
         $selection.css({
           display: 'block',
           left: rect.left,
@@ -40,6 +40,7 @@ define('summernote/module/Handle', function () {
         $selection.hide();
       }
 
+      // table cell selection
       $('.note-selected').removeClass('note-selected');
       if (styleInfo.cells && styleInfo.cells.length) {
         $.each(styleInfo.cells, function (idx, cell) {

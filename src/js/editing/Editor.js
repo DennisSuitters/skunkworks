@@ -264,6 +264,7 @@ define([
 
       if ($video) {
         $video.attr('frameborder', 0);
+        $video.addClass('embed-responsive');
         range.create().insertNode($video[0]);
         afterCommand($editable);
       }
