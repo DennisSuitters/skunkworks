@@ -8,7 +8,7 @@ import chai from 'chai';
 import chaidom from 'test/chaidom';
 import Context from 'src/js/base/Context';
 import Codeview from 'src/js/base/module/Codeview';
-import 'src/js/bs4/settings';
+import 'src/js/lite/settings';
 
 chai.use(chaidom);
 

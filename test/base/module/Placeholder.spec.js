@@ -6,7 +6,7 @@
 import chai from 'chai';
 import $ from 'jquery';
 import Context from 'src/js/base/Context';
-import 'src/js/bs4/settings';
+import 'src/js/lite/settings';
 
 describe('Placeholder', () => {
   var assert = chai.assert;

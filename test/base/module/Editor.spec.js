@@ -11,7 +11,7 @@ import $ from 'jquery';
 import env from 'src/js/base/core/env';
 import range from 'src/js/base/core/range';
 import Context from 'src/js/base/Context';
-import 'src/js/bs4/settings';
+import 'src/js/lite/settings';
 
 describe('Editor', () => {
   var expect = chai.expect;

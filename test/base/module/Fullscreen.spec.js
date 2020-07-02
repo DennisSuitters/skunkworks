@@ -8,7 +8,7 @@ import chai from 'chai';
 import $ from 'jquery';
 import Context from 'src/js/base/Context';
 import Fullscreen from 'src/js/base/module/Fullscreen';
-import 'src/js/bs4/settings';
+import 'src/js/lite/settings';
 
 describe('Fullscreen', () => {
   var expect = chai.expect;

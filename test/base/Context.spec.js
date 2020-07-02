@@ -10,7 +10,7 @@ import 'bootstrap';
 import chaidom from 'test/chaidom';
 import env from 'src/js/base/core/env';
 import Context from 'src/js/base/Context';
-import 'src/js/bs4/settings';
+import 'src/js/lite/settings';
 
 var expect = chai.expect;
 chai.use(spies);

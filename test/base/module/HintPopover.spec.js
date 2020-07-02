@@ -10,7 +10,7 @@ import Context from 'src/js/base/Context';
 import range from 'src/js/base/core/range';
 import env from 'src/js/base/core/env';
 import key from 'src/js/base/core/key';
-import 'src/js/bs4/settings';
+import 'src/js/lite/settings';
 
 chai.use(chaidom);
 

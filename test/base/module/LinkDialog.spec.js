@@ -8,7 +8,7 @@ import $ from 'jquery';
 import range from 'src/js/base/core/range';
 import Context from 'src/js/base/Context';
 import LinkDialog from 'src/js/base/module/LinkDialog';
-import 'src/js/bs4/settings';
+import 'src/js/lite/settings';
 
 describe('LinkDialog', () => {
   var expect = chai.expect;
