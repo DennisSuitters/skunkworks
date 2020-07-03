@@ -1,0 +1,46 @@
+.note-form-group {
+  padding-bottom: 20px;
+}
+
+.note-form-group:last-child {
+  padding-bottom: 0;
+}
+
+.note-form-label {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  color: #42515f;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.note-input {
+  -ms-box-sizing: border-box;
+      box-sizing: border-box;
+  display: block;
+  outline: 0;
+  border: 1px solid #ededef;
+  background: #fff;
+  padding: 6px 4px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.note-input::-webkit-input-placeholder {
+  color: var(--note-form-input-placeholder-color);
+}
+
+ /* Firefox 18- */
+.note-input:-moz-placeholder {
+  color: var(--note-form-input-placeholder-color);
+}
+
+/* Firefox 19+ */
+.note-input::-moz-placeholder {
+  color: var(--note-form-input-placeholder-color);
+}
+
+.note-input:-ms-input-placeholder {
+  color: var(--note-form-input-placeholder-color);
+}

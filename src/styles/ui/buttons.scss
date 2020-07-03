@@ -1,0 +1,122 @@
+.note-btn {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-bottom: 0;
+  outline: 0;
+  border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color);
+  border-color: var(--note-btn-border-color);
+  border-radius: var(--note-border-radius);
+  background-color: var(--note-btn-background-color);
+  background-image: none;
+  padding: var(--note-padding-base-y) var(--note-padding-base-x);
+  touch-action: manipulation;
+  color: var(--note-btn-color);
+  color: var(--note-btn-color);
+  font-size: var(--note-font-size);
+  font-weight: 400;
+  line-height: var(--note-line-height);
+  text-align: center;
+  white-space: nowrap;
+
+  &:hover,
+  &:focus,
+  &.focus {
+    outline: 0;
+    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color-hover);
+    border-radius: var(--btn-border-radius);
+    background-color: var(--btn-background-color-hover);
+    color: var(--note-btn-color-hover);
+    text-decoration: none;
+  }
+
+  &:active,
+  &.active {
+    outline: 0;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
+    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color-active);
+    border-radius: var(--note-btn-border-radius);
+    background-color: var(--note-btn-background-color-active);
+    background-image: none;
+    color: var(--note-btn-color-active);
+    text-decoration: none;
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    opacity: .65;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  & > span.note-icon-caret:first-child {
+    margin-left: -1px;
+  }
+
+  & > span.note-icon-caret:nth-child(2) {
+    margin-right: -5px;
+    padding-left: 3px;
+  }
+
+}
+
+.note-btn-primary {
+  background: var(--note-btn-background-primary-color);
+  color: var(--note-btn-primary-color);
+
+  &:hover,
+  &:focus,
+  &.focus {
+    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color);
+    border-radius: var(--note-btn-border-radius);
+    background: var(--note-btn-background-primary-color-hover);
+    color: var(--note-btn-primary-color-hover);
+    text-decoration: none;
+  }
+
+}
+
+.note-btn-block {
+  display: block;
+  width: 100%;
+}
+
+.note-btn-block + .note-btn-block {
+  margin-top: 5px;
+}
+
+// Specificity overrides
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+
+  &.note-btn-block {
+    width: 100%;
+  }
+
+}
+
+button.close {
+  -webkit-appearance: none;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
+
+.close {
+  float: right;
+  opacity: .2;
+  color: #000;
+  font-size: 21px;
+  line-height: 1;
+}
+
+.close:hover {
+  opacity: 1;
+}

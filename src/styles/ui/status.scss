@@ -1,0 +1,129 @@
+// Notifications
+.note-status-output {
+  display: block;
+  margin-bottom: 0;
+  border: 0;
+  border-top: var(--note-status-border-width) var(--note-status-border-style) var(--note-status-border-color);
+  width: 100%;
+  height: var(--note-status-height);
+  color: var(--note-status-color);
+  font-size: var(--note-status-font-size);
+  line-height: 1.42857143;
+}
+
+.note-status-output:empty {
+  height: 0;
+}
+
+.note-status-output .pull-right {
+  float: right !important;
+}
+
+.note-status-output .text-muted {
+  color: var(--note-color-muted);
+}
+
+.note-status-output .text-primary {
+  color: var(--note-color-primary);
+}
+
+.note-status-output .text-success {
+  color: var(--note-color-success);
+}
+
+.note-status-output .text-info {
+  color: var(--note-color-info);
+}
+
+.note-status-output .text-warning {
+  color: var(--note-color-warning);
+}
+
+.note-status-output .text-danger {
+  color: var(--note-color-danger);
+}
+
+.note-status-output .alert {
+  margin: -7px 0 0 0;
+  border-radius: 0;
+  background-color: var(--note-background-color-default);
+  padding: 7px 10px 2px 10px;
+  color: var(--note-color-default);
+}
+
+.note-status-output .alert .note-icon {
+  margin-right: 5px;
+}
+
+.note-status-output .alert-success {
+  background-color: var(--note-background-color-success) !important;
+  color: var(--note-color-success) !important;
+}
+
+.note-status-output .alert-info {
+  background-color: var(--note-background-color-info) !important;
+  color: var(--note-color-info) !important;
+}
+
+.note-status-output .alert-warning {
+  background-color: var(--note-background-color-warning) !important;
+  color: var(--note-color-warning) !important;
+}
+
+.note-status-output .alert-danger {
+  background-color: var(--note-background-color-danger) !important;
+  color: var(--note-color-danger) !important;
+}
+
+// statusbar
+.note-statusbar {
+  position: relative;
+  border-top: var(--note-status-border-width) var(--note-status-border-styke) var(--note-status-border-color);
+  border-bottom-right-radius: var(--note-status-border-radius);
+  border-bottom-left-radius: var(--note-status-border-radius);
+  background-color: var(--note-status-background-color);
+
+  .note-powered {
+    position: absolute;
+    right: 5px;
+    bottom: -2px;
+  }
+
+  .note-powered a {
+    color: #777;
+    font-size: 12px;
+    text-decoration: none;
+  }
+
+  .note-powered a:hover {
+    text-decoration: underline;
+  }
+
+  .note-resizebar {
+    cursor: ns-resize;
+    padding-top: 1px;
+    width: 100%;
+    height: 9px;
+
+    .note-icon-bar {
+      margin: 1px auto;
+      border-top: var(--note-toolbar-border-width) var(--note-toolbar-border-style) var(--note-status-border-color);
+      width: 20px;
+    }
+
+  }
+
+  &.locked {
+
+    .note-resizebar {
+      cursor: default;
+
+      .note-icon-bar {
+        display: none;
+      }
+
+    }
+
+  }
+
+}

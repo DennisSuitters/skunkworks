@@ -1,6 +1,6 @@
 .note-btn-group {
-  position: relative;
   display: inline-block;
+  position: relative;
   margin-right: 8px;
 
   > .note-btn-group {
@@ -20,8 +20,8 @@
 
   > .note-btn:not(:first-child),
   > .note-btn-group:not(:first-child) > .note-btn {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 
   > .note-btn:not(:last-child):not(.dropdown-toggle),
@@ -31,8 +31,11 @@
   }
 
   &.open {
+
     > .note-dropdown {
       display: block;
     }
+
   }
+
 }

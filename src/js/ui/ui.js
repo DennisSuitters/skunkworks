@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import renderer from '../base/renderer';
-import TooltipUI from './ui/TooltipUI';
-import DropdownUI from './ui/DropdownUI';
-import ModalUI from './ui/ModalUI';
+import TooltipUI from './TooltipUI';
+import DropdownUI from './DropdownUI';
+import ModalUI from './ModalUI';
 
 const editor = renderer.create('<div class="note-editor note-frame"/>');
 const toolbar = renderer.create('<div class="note-toolbar" role="toolbar"/>');
@@ -10,12 +10,13 @@ const editingArea = renderer.create('<div class="note-editing-area"/>');
 const codable = renderer.create('<textarea class="note-codable" aria-multiline="true"/>');
 const editable = renderer.create('<div class="note-editable" contentEditable="true" role="textbox" aria-multiline="true"/>');
 const statusbar = renderer.create([
-  '<output class="note-status-output" role="status" aria-live="polite"></output>',
   '<div class="note-statusbar" role="status">',
+    '<output class="note-status-output" aria-live="polite"></output>',
     '<div class="note-resizebar" aria-label="resize">',
       '<div class="note-icon-bar"></div>',
       '<div class="note-icon-bar"></div>',
       '<div class="note-icon-bar"></div>',
+      '<div class="note-powered"><a href="https://summernote.org/">Powered by Summernote</a></div>',
     '</div>',
   '</div>',
 ].join(''));

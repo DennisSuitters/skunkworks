@@ -1,0 +1,286 @@
+.note-editor {
+  --note-font: sans-serif;
+  --note-font-size: 14px;
+  --note-font-size-large: calc(var(--note-font-size) * 1.25);
+  --note-font-size-small: calc(var(--note-font-size) * .85);
+  --note-line-height: 1.4;
+  --note-line-height-computed: calc(var(--note-line-height) * var(--note-font-size));
+  --note-box-shadow-x: 0;
+  --note-box-shadow-y: 1px;
+  --note-box-shadow-blur: 2px;
+  --note-box-shadow-color: rgba(0, 0, 0, .1);
+  --note-border-radius: 2px;
+  --note-frame-border-radius: 3px;
+  --note-opacity: .5;
+
+  --note-editable-color: #000;
+  --note-editable-background-color: #fff;
+  --note-editable-border-width: 1px;
+  --note-editable-border-style: solid;
+  --note-editable-border-color: #dae0e5;
+  --note-editable-table-border-width: 1px;
+  --note-editable-table-border-style: solid;
+  --note-editable-table-border-color: #ececec;
+
+  --note-codeable-font: Menlo, Manaco, monospace, sans-serif;
+  --note-codeable-font-size: 14px;
+  --note-codeable-color: #ccc;
+  --note-codeable-background-color: #222;
+
+  --note-dropzone-color: #fff;
+  --note-dropzone-background-color: lightskyblue;
+  --note-dropzone-background-color-active: skyblue;
+
+  --note-padding-base-x: 10px;
+  --note-padding-base-y: 5px;
+  --note-border-radius: 3px;
+
+  --note-toolbar-color: #333;
+  --note-toolbar-background-color: #f5f5f5;
+  --note-toolbar-border-width: 1px;
+  --note-toolbar-border-style: solid;
+  --note-toolbar-border-color: #e2e2e2;
+  --note-toolbar-border-radius: 3px;
+  --note-toolbar-padding-x: 5px;
+  --note-toolbar-padding-y: 10px;
+
+  --note-status-height: 20px;
+  --note-status-font-size: 14px;
+  --note-status-color: #333;
+  --note-status-background-color: #f5f5f5;
+  --note-status-border-width: 1px;
+  --note-status-border-style: solid;
+  --note-status-border-color: #e2e2e2;
+  --note-status-border-radius: 3px;
+  --note-status-padding-x: 5px;
+  --note-status-padding-y: 10px;
+
+  --note-btn-font-weight: 400;
+  --note-btn-background-color: #fff;
+  --note-btn-background-primary-color: #fa6362;
+  --note-btn-background-primary-color-hover: #fa6362;
+  --note-btn-color: #333;
+  --note-btn-color-hover: #333;
+  --note-btn-color-active: #333;
+  --note-btn-primary-color: #fff;
+  --note-btn-primary-color-hover: #fff;
+  --note-btn-border-width: 1px;
+  --note-btn-border-style: solid;
+  --note-btn-border-color: #dae0e5;
+  --note-btn-border-color-hover: #dae0e5;
+  --note-btn-border-color-active: #dae0e5;
+  --note-btn-border-radius: 3px;
+  --note-btn-background-color: #fff;
+  --note-btn-background-color-hover: #ebebeb;
+  --note-btn-background-color-active: #ebebeb;
+
+  --note-form-input-color: #888;
+  --note-form-input-placeholder-color: #999;
+  --note-form-input-background-color: #fff;
+  --note-form-input-background-color-disabled: #ccc;
+  --note-form-input-border-color: #ccc;
+  --note-form-input-border-focus: #66afe9;
+
+  --note-dropdown-background-color: #fff;
+  --note-dropdown-border-color: #e2e2e2;
+
+  --note-tooltip-max-width: 200px;
+  --note-tooltip-color: #fff;
+  --note-tooltip-background-color: #000;
+  --note-tooltip-opacity: .9;
+  --note-tooltip-arrow-width: 5px;
+
+  --note-popover-max-width: 276px;
+  --note-popover-color: #000;
+  --note-popover-background-color: #fff;
+  --note-popover-border-color: rgba(0, 0, 0, .2);
+  --note-popover-border-color-fallback: #ccc;
+  --note-popover-title-background-color: #e9e9e9;
+  --note-popover-arrow-width: 10px;
+  --note-popover-arrow-color: #fff;
+  --note-popover-arrow-outer-width: calc(var(--note-popover-arrow-width + 1));
+  --note-popover-aroow-outer-color: rgba(0 ,0 ,0, .2);
+  --note-popover-aroow-outer-color-fallback: #ccc;
+
+  --note-modal-backdrop-background-color: rgba(0, 0, 0, .5);
+  --note-modal-backdrop-opacity: .5;
+  --note-modal-backdrop-opacity-calc: calc(var(--note-modal-backdrop-opacity) * 100);
+  --note-modal-border-radius: 5px;
+  --note-modal-background-color: #fff;
+  --note-modal-color: #000;
+  --note-modal-padding: 15px;
+  --note-modal-border-color: rgba(0, 0, 0, .2);
+  --note-modal-border-color-fallback: #999;
+  --note-modal-border-color: rgba(0, 0 ,0, .2);
+  --note-modal-border-color-fallback: #999;
+  --note-modal-header-border-color: #e5e5e5;
+  --note-modal-header-padding: 15px;
+  --note-modal-header-line-height: var(--note-line-height);
+  --note-modal-footer-border-color: #e5e5e5;
+
+  --note-zindex-dropdown: 1000;
+  --note-zindex-popover: 1060;
+  --note-zindex-tooltip: 1070;
+  --note-zindex-modal: 1050;
+  --note-zindex-modal-backdrop: 1040;
+
+  --note-color-default: #000;
+  --note-background-color: #f5f5f5;
+  --note-color-muted: #777;
+  --note-color-primary: #286090;
+  --note-background-color-primary: ;
+  --note-color-success: #3c763d;
+  --note-background-color-success: #dff0d8;
+  --note-color-info: #31708f;
+  --note-background-color-info: #d9edf7;
+  --note-color-warning: #8a6d3b;
+  --note-background-color-warning: #fcf8e3;
+  --note-color-danger: #a94442;
+  --note-background-color-danger: #f2dede;
+
+}
+
+/*
+@media (prefers-color-scheme: light) {
+  .note-editor {
+    --note-box-shadow-color: rgba(0, 0, 0, .1);
+
+    --note-editable-color: #000;
+    --note-editable-background-color: #fff;
+    --note-editable-border-color: #dae0e5;
+
+    --note-codeable-color: #ccc;
+    --note-codeable-background-color: #222;
+
+    --note-dropzone-background-color: lightskyblue;
+    --note-dropzone-background-color-active: skyblue;
+
+    --note-toolbar-color: #000;
+    --note-toolbar-background-color: #fff;
+    --note-toolbar-border-color: #dae0e5;
+
+    --note-btn-background-color: #fff;
+    --note-btn-background-primary-color: #fa6362;
+    --note-btn-background-primary-color-hover: #fa6362;
+    --note-btn-color: #333;
+    --note-btn-color-hover: #333;
+    --note-btn-color-active: #333;
+    --note-btn-primary-color: #fff;
+    --note-btn-primary-color-hover: #fff;
+    --note-btn-border-color: #dae0e5;
+    --note-btn-border-color-hover: #dae0e5;
+    --note-btn-border-color-active: #dae0e5;
+    --note-btn-background-color: #fff;
+    --note-btn-background-color-hover: #ebebeb;
+    --note-btn-background-color-active: #ebebeb;
+
+    --note-form-input-color: #888;
+    --note-form-input-placeholder-color: #999;
+    --note-form-input-background-color: #fff;
+    --note-form-input-background-color-disabled: #ccc;
+    --note-form-input-border-color: #ccc;
+    --note-form-input-border-focus: #66afe9;
+
+    --note-dropdown-background-color: #fff;
+    --note-dropdown-border-color: #e2e2e2;
+
+    --note-tooltip-color: #fff;
+    --note-tooltip-background-color: #000;
+
+    --note-popover-color: #000;
+    --note-popover-background-color: #fff;
+    --note-popover-border-color: rgba(0, 0, 0, .2);
+    --note-popover-border-color-fallback: #ccc;
+    --note-popover-title-background-color: #e9e9e9;
+    --note-popover-arrow-color: #fff;
+    --note-popover-aroow-outer-color: rgba(0 ,0 ,0, .2);
+    --note-popover-aroow-outer-color-fallback: #ccc;
+
+    --note-modal-backdrop-background-color: rgba(0, 0, 0, .5);
+    --note-modal-backdrop-opacity-calc: calc(var(--note-modal-backdrop-opacity) * 100);
+    --note-modal-background-color: #fff;
+    --note-modal-color: #000;
+    --note-modal-border-color: rgba(0, 0, 0, .2);
+    --note-modal-border-color-fallback: #999;
+    --note-modal-border-color: rgba(0, 0 ,0, .2);
+    --note-modal-border-color-fallback: #999;
+    --note-modal-header-border-color: #e5e5e5;
+    --note-modal-footer-border-color: #e5e5e5;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .note-editor {
+    --note-box-shadow-color: rgba(0, 0, 0, .1);
+
+    --note-editable-color: #000;
+    --note-editable-background-color: #fff;
+    --note-editable-border-color: #dae0e5;
+
+    --note-codeable-color: #ccc;
+    --note-codeable-background-color: #222;
+
+    --note-dropzone-background-color: lightskyblue;
+    --note-dropzone-background-color-active: skyblue;
+
+    --note-toolbar-color: #000;
+    --note-toolbar-background-color: #fff;
+    --note-toolbar-border-color: #dae0e5;
+
+    --note-btn-background-color: #fff;
+    --note-btn-background-primary-color: #fa6362;
+    --note-btn-background-primary-color-hover: #fa6362;
+    --note-btn-color: #333;
+    --note-btn-color-hover: #333;
+    --note-btn-color-active: #333;
+    --note-btn-primary-color: #fff;
+    --note-btn-primary-color-hover: #fff;
+    --note-btn-border-color: #dae0e5;
+    --note-btn-border-color-hover: #dae0e5;
+    --note-btn-border-color-active: #dae0e5;
+    --note-btn-background-color: #fff;
+    --note-btn-background-color-hover: #ebebeb;
+    --note-btn-background-color-active: #ebebeb;
+
+    --note-form-input-color: #888;
+    --note-form-input-placeholder-color: #999;
+    --note-form-input-background-color: #fff;
+    --note-form-input-background-color-disabled: #ccc;
+    --note-form-input-border-color: #ccc;
+    --note-form-input-border-focus: #66afe9;
+
+    --note-dropdown-background-color: #fff;
+    --note-dropdown-border-color: #e2e2e2;
+
+    --note-tooltip-max-width: 200px;
+    --note-tooltip-color: #fff;
+    --note-tooltip-background-color: #000;
+
+    --note-popover-max-width: 276px;
+    --note-popover-color: #000;
+    --note-popover-background-color: #fff;
+    --note-popover-border-color: rgba(0, 0, 0, .2);
+    --note-popover-border-color-fallback: #ccc;
+    --note-popover-title-background-color: #e9e9e9;
+    --note-popover-arrow-color: #fff;
+    --note-popover-aroow-outer-color: rgba(0 ,0 ,0, .2);
+    --note-popover-aroow-outer-color-fallback: #ccc;
+
+    --note-modal-backdrop-background-color: rgba(0, 0, 0, .5);
+    --note-modal-background-color: #fff;
+    --note-modal-color: #000;
+    --note-modal-border-color: rgba(0, 0, 0, .2);
+    --note-modal-border-color-fallback: #999;
+    --note-modal-border-color: rgba(0, 0 ,0, .2);
+    --note-modal-border-color-fallback: #999;
+    --note-modal-header-border-color: #e5e5e5;
+    --note-modal-footer-border-color: #e5e5e5;
+
+    --note-zindex-dropdown: 1000;
+    --note-zindex-popover: 1060;
+    --note-zindex-tooltip: 1070;
+    --note-zindex-modal: 1050;
+    --note-zindex-modal-backdrop: 1040;
+  }
+}
+*/

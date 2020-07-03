@@ -27,11 +27,7 @@ const minBanner = `Summernote v${pkg.version} | (c) 2013- Alan Hong and other co
 
 const productList = [
   'summernote',
-  'summernote-bs4',
-  'summernote-lite',
   'summernote.min',
-  'summernote-bs4.min',
-  'summernote-lite.min',
 ];
 
 let entries = {};
@@ -169,7 +165,7 @@ module.exports = {
       },
     ]),
     new webpack.SourceMapDevToolPlugin({
-      test: /(summernote|summernote\-bs4|summernote\-lite)(\.min)?\.js$/g,
+      test: /(summernote)(\.min)?\.js$/g,
       filename: '[name].js.map',
     }),
     new ZipPlugin({

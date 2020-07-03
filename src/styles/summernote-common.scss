@@ -1,38 +1,29 @@
-/* Theme Variables
- ------------------------------------------ */
-$border-color: #00000032;
-$background-color: #8080801d;
-
-$img-margin-left: 10px;
-$img-margin-right: 10px;
-
 /* Layout
  ------------------------------------------ */
 .note-editor {
   position: relative;
 
   // dropzone
-  $dropzone-color: lightskyblue;
-  $dropzone-active-color: darken($dropzone-color, 30);
   .note-dropzone {
-    position: absolute;
     display: none;
     z-index: 100;
-    color: $dropzone-color;
-    background-color: #fff;
-    opacity: 0.95;
+    position: absolute;
+    background-color: var(--note-dropzone-background-color);
+    color: var(--note-dropzone-color);
+    opacity: .95;
 
     .note-dropzone-message {
       display: table-cell;
-      vertical-align: middle;
-      text-align: center;
       font-size: 28px;
       font-weight: 700;
+      text-align: center;
+      vertical-align: middle;
     }
 
     &.hover {
-      color: $dropzone-active-color;
+      color: var(--note-dropzone-background-color-active);
     }
+
   }
 
   &.dragover .note-dropzone {
@@ -54,32 +45,64 @@ $img-margin-right: 10px;
       }
 
       img.note-float-left {
-        margin-right: $img-margin-right;
+        margin-right: 10px;
       }
 
       img.note-float-right {
-        margin-left: $img-margin-left;
+        margin-left: 10px;
       }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        td,
+        th {
+          padding: 5px 3px;
+          border: var(--note-editable-table-border-width) var(--note-editable-table-border-style) var(--note-editable-table-border-color);
+        }
+
+      }
+
+      figure {
+        margin: 0;
+      }
+
     }
+
   }
+
 }
 
 /* Frame mode layout
  ------------------------------------------ */
+.note-frame {
+  -ms-box-sizing: border-box;
+      box-sizing: border-box;
+  border-radius: var(--note-frame-border-radius);
+  color: #000;
+  font-family: var(--note-font);
+}
+
 .note-editor.note-frame,
 .note-editor.note-airframe {
-  border: 1px solid $border-color;
+  border: var(--note-editable-border-width) var(--note-editable-border-style) var(--note-editable-border-color);
 
   // codeview mode
   &.codeview {
+
     .note-editing-area {
+
       .note-editable {
         display: none;
       }
+
       .note-codable {
         display: block;
       }
+
     }
+
   }
 
   .note-editing-area {
@@ -87,168 +110,69 @@ $img-margin-right: 10px;
 
     // editable
     .note-editable {
+      word-wrap: break-word;
       padding: 10px;
       overflow: auto;
-      word-wrap: break-word;
 
       &[contenteditable="false"] {
-        background-color: $background-color;
+        background-color: var(--note-editable-background-color);
       }
+
     }
 
     // codeable
     .note-codable {
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
       display: none;
       width: 100%;
+      margin-bottom: 0;
       padding: 10px;
       border: none;
-      box-shadow: none;
-      font-family: Menlo, Monaco, monospace, sans-serif;
-      font-size: 14px;
-      color: #ccc;
-      background-color: #222;
-      resize: none;
+      border-radius: 0;
       outline: none;
-
-      // override BS2 default style
-      @include box-sizing(border-box);
-      @include rounded(0);
-      margin-bottom: 0;
+      background-color: var(--note-codeable-background-color);
+      box-shadow: none;;
+      color: var(--note-codeable-color);
+      font-family: var(--note-codeable-font);
+      font-size: var(--note-codeable-font-size);
+      resize: none;
     }
+
   }
 
   // fullscreen mode
   &.fullscreen {
+    z-index: 1050; // bs3 modal-backdrop: 1030, bs2: 1040
     position: fixed;
     top: 0;
     left: 0;
     width: 100% !important;
-    z-index: 1050; // bs3 modal-backdrop: 1030, bs2: 1040
+
     .note-resizebar {
       display: none;
     }
+
   }
 
-  // Notifications
-  .note-status-output {
-    display: block;
-    width: 100%;
-    font-size: 14px;
-    line-height: 1.42857143;
-    height: 20px;
-    margin-bottom: 0;
-    color: #000;
-    border: 0;
-    border-top: 1px solid #e2e2e2;
-  }
-
-  .note-status-output:empty {
-    height: 0;
-    border-top: 0 solid transparent;
-  }
-
-  .note-status-output .pull-right {
-    float: right !important;
-  }
-
-  .note-status-output .text-muted {
-    color: #777;
-  }
-
-  .note-status-output .text-primary {
-    color: #286090;
-  }
-
-  .note-status-output .text-success {
-    color: #3c763d;
-  }
-
-  .note-status-output .text-info {
-    color: #31708f;
-  }
-
-  .note-status-output .text-warning {
-    color: #8a6d3b;
-  }
-
-  .note-status-output .text-danger {
-    color: #a94442;
-  }
-
-  .note-status-output .alert {
-    margin: -7px 0 0 0;
-    padding: 7px 10px 2px 10px;
-    border-radius: 0;
-    color: #000;
-    background-color: #f5f5f5;
-  }
-
-  .note-status-output .alert .note-icon {
-    margin-right: 5px;
-  }
-
-  .note-status-output .alert-success {
-    color: #3c763d !important;
-    background-color: #dff0d8 !important;
-  }
-
-  .note-status-output .alert-info {
-    color: #31708f !important;
-    background-color: #d9edf7 !important;
-  }
-
-  .note-status-output .alert-warning {
-    color: #8a6d3b !important;
-    background-color: #fcf8e3 !important;
-  }
-
-  .note-status-output .alert-danger {
-    color: #a94442 !important;
-    background-color: #f2dede !important;
-  }
-
-  // statusbar
-  .note-statusbar {
-    background-color: $background-color;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top: 1px solid $border-color;
-    .note-resizebar {
-      padding-top: 1px;
-      height: 9px;
-      width: 100%;
-      cursor: ns-resize;
-      .note-icon-bar {
-        width: 20px;
-        margin: 1px auto;
-        border-top: 1px solid $border-color;
-      }
-    }
-
-    &.locked {
-      .note-resizebar {
-        cursor: default;
-        .note-icon-bar {
-          display: none;
-        }
-      }
-    }
-  }
   .note-placeholder {
     padding: 10px;
   }
+
 }
 
 .note-editor.note-airframe {
   border: 0;
 
   .note-editing-area {
+
     .note-editable {
       padding: 0;
     }
-  }
-}
 
+  }
+
+}
 
 /* Popover
  ------------------------------------------ */
@@ -257,18 +181,22 @@ $img-margin-right: 10px;
   max-width: none;
 
   .popover-content {
+
     a {
       display: inline-block;
       max-width: 200px;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap; // for FF
-      vertical-align: middle; // for FF
+      vertical-align: middle;
+      white-space: nowrap;
     }
+
   }
+
   .arrow {
     left: 20px !important;
   }
+
 }
 
 /* Popover and Toolbar (Button container)
@@ -277,99 +205,127 @@ $img-margin-right: 10px;
   position: relative;
 }
 
-.note-popover .popover-content, .note-editor .note-toolbar {
+.note-popover .popover-content,
+.note-editor .note-toolbar {
   margin: 0;
   padding: 0 0 5px 5px;
 
   & > .note-btn-group {
     margin-top: 5px;
-    margin-left: 0;
     margin-right: 5px;
+    margin-left: 0;
   }
 
   .note-btn-group {
+
     .note-table {
       min-width: 0;
       padding: 5px;
+
       .note-dimension-picker {
         font-size: 18px;
+
         .note-dimension-picker-mousecatcher {
-          position: absolute !important;
           z-index: 3;
+          position: absolute !important;
           width: 10em;
           height: 10em;
           cursor: pointer;
         }
+
         .note-dimension-picker-unhighlighted {
-          position: relative !important;
           z-index: 1;
+          position: relative !important;
           width: 5em;
           height: 5em;
           background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIj4+Pjp6ekKlAqjAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKhmnaJzPAAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC") repeat;
         }
+
         .note-dimension-picker-highlighted {
-          position: absolute !important;
           z-index: 2;
+          position: absolute !important;
           width: 1em;
           height: 1em;
           background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIjd6vvD2f9LKLW+AAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKwNDEVT0AAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC") repeat;
         }
+
       }
+
     }
+
   }
 
   .note-style {
+
     .dropdown-style {
-      blockquote, pre {
+
+      blockquote,
+      pre {
         margin: 0;
         padding: 5px 10px;
       }
-      h1, h2, h3, h4, h5, h6, p {
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
         margin: 0;
         padding: 0;
       }
+
     }
+
   }
 
   .note-color-all {
+
     .note-dropdown-menu {
       min-width: 337px;
     }
+
   }
 
   .note-color {
+
     .dropdown-toggle {
       width: 20px;
       padding-left: 5px;
     }
+
     .note-dropdown-menu {
+
       .note-palette {
         display: inline-block;
-        margin: 0;
         width: 160px;
+        margin: 0;
+
         &:first-child {
           margin: 0 5px;
         }
 
         .note-palette-title {
-          font-size: 12px;
           margin: 2px 7px;
-          text-align: center;
           border-bottom: 1px solid #eee;
+          font-size: 12px;
+          text-align: center;
         }
 
         .note-color-reset,
         .note-color-select {
-          font-size: 11px;
+          width: 100%;
           margin: 3px;
           padding: 0 3px;
+          border-radius: 5px;
+          font-size: 11px;
           cursor: pointer;
-          width: 100%;
-          @include rounded(5px);
 
           &:hover {
             background: #eee;
           }
+
         }
 
         .note-color-row {
@@ -381,22 +337,31 @@ $img-margin-right: 10px;
         }
 
         .note-holder-custom {
+
           .note-color-btn {
             border: 1px solid #eee;
           }
+
         }
+
       }
+
     }
+
   }
 
   .note-para {
+
     .note-dropdown-menu {
       min-width: 228px;
       padding: 5px;
+
       & > div + div {
         margin-left: 5px;
       }
+
     }
+
   }
 
   // dropdown-menu for toolbar and popover
@@ -408,25 +373,32 @@ $img-margin-right: 10px;
     &.right {
       right: 0;
       left: auto;
+
       &::before {
         right: 9px;
         left: auto !important;
       }
+
       &::after {
         right: 10px;
         left: auto !important;
       }
+
     }
     // dropdown-menu for selectbox
     &.note-check {
+
       a i {
-        color: deepskyblue;
         visibility: hidden;
+        color: deepskyblue;
       }
+
       a.checked i {
         visibility: visible;
       }
+
     }
+
   }
 
   .note-fontsize-10 {
@@ -436,63 +408,78 @@ $img-margin-right: 10px;
   // color palette for toolbar and popover
   .note-color-palette {
     line-height: 1;
+
     div {
+
       .note-color-btn {
         width: 20px;
         height: 20px;
-        padding: 0;
         margin: 0;
+        padding: 0;
         border: 0;
         border-radius: 0;
       }
+
       .note-color-btn:hover {
         transform: scale(1.2);
-        transition: all 0.2s;
+        transition: all .2s;
       }
+
     }
+
   }
+
 }
 
 /* Dialog
  ------------------------------------------ */
 .note-modal {
+
   .modal-dialog {
-    outline: 0;
     border-radius: 5px;
-    @include box-shadow(0 3px 9px rgba(0,0,0,.5));
+    outline: 0;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
   }
-  .form-group { // overwrite BS's form-horizontal minus margins
+
+  .form-group {
+    margin-right: 0; // overwrite BS's form-horizontal minus margins
     margin-left: 0;
-    margin-right: 0;
   }
+
   .note-modal-form {
-    margin: 0; // overwrite BS2's form margin bottom
+    margin: 0;
   }
+
   .note-image-dialog {
+
     .note-dropzone {
       min-height: 100px;
+      margin-bottom: 10px;
+      border: 4px dashed lightgray;
+      color: lightgray;
       font-size: 30px;
       line-height: 4; // vertical-align
-      color: lightgray;
       text-align: center;
-      border: 4px dashed lightgray;
-      margin-bottom: 10px;
     }
+
   }
 
   // [workaround] firefox fileinput
   @-moz-document url-prefix() {
+
     .note-image-input {
       height: auto;
     }
+
   }
+
 }
 
 /* Placeholder
  ------------------------------------------ */
 .note-placeholder {
-  position: absolute;
   display: none;
+  position: absolute;
   color: gray;
 }
 
@@ -501,9 +488,10 @@ $img-margin-right: 10px;
 .note-handle {
   // control selection
   .note-control-selection {
-    position: absolute;
     display: none;
+    position: absolute;
     border: 1px solid #000;
+
     & > div {
       position: absolute;
     }
@@ -512,7 +500,7 @@ $img-margin-right: 10px;
       width: 100%;
       height: 100%;
       background-color: #000;
-      @include opacity(0.3);
+      opacity: .3;
     }
 
     .note-control-handle {
@@ -558,23 +546,25 @@ $img-margin-right: 10px;
     }
 
     .note-control-se.note-control-holder {
-      cursor: default;
       border-top: none;
       border-left: none;
+      cursor: default;
     }
 
     .note-control-selection-info {
       right: 0;
       bottom: 0;
-      padding: 5px;
       margin: 5px;
-      color: #fff;
+      padding: 5px;
+      border-radius: 5px;
       background-color: #000;
+      color: #fff;
       font-size: 12px;
-      @include rounded(5px);
-      @include opacity(0.7);
+      opacity: .7;
     }
+
   }
+
 }
 
 .note-hint-popover {
@@ -582,28 +572,34 @@ $img-margin-right: 10px;
   padding: 2px;
 
   .popover-content {
-    padding: 3px;
     max-height: 150px;
+    padding: 3px;
     overflow: auto;
 
     .note-hint-group {
+
       .note-hint-item {
         display: block !important;
         padding: 3px;
 
-        &.active, &:hover {
+        &.active,
+        &:hover {
           display: block;
           clear: both;
+          outline: 0;
+          background-color: #428bca;
+          color: #fff;
           font-weight: 400;
           line-height: 1.4;
-          color: white;
-          white-space: nowrap;
           text-decoration: none;
-          background-color: #428bca;
-          outline: 0;
+          white-space: nowrap;
           cursor: pointer;
         }
+
       }
+
     }
+
   }
+
 }

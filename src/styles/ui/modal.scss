@@ -1,109 +1,140 @@
 .note-modal {
-  position: fixed;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  z-index: $zindex-modal;
-  @include opacity(1);
   display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 1;
+  z-index: var(--note-zindex-modal);
 
   &.open {
     display:block;
   }
+
+  // [workaround] firefox fileinput
+  @-moz-document url-prefix() {
+
+   .note-image-input {
+     height: auto;
+   }
+
+  }
+
 }
 
 .note-modal-content {
   position: relative;
-  width: auto;
   margin: 30px 20px;
-  border: 1px solid $modal-content-border-color;
-  background: $modal-content-bg;
-  background-clip: border-box;
   outline: 0;
-  border-radius: 5px;
-  @include box-shadow(0 3px 9px rgba(0,0,0,.5));
+  box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+  border: 1px solid var(--note-modal-border-color);
+  border-radius: var(--note-modal-border-radius);
+  background: var(--note-modal-background-color);
+  background-clip: border-box;
+  width: auto;
 }
 
 .note-modal-header {
-  padding: 10px 20px;
   border: 1px solid #ededef;
+  padding: 10px 20px;
 }
 
 .note-modal-body {
   position: relative;
   padding: 20px 30px;
 
-  // shortcut text style
+  label {
+    display: inline-block;
+    margin-bottom: 2px;
+    padding: 2px 5px;
+  }
+
   kbd {
+    -ms-box-sizing: border-box;
+        box-sizing: border-box;
     border-radius: 2px;
     background-color: #000;
-    color: #fff;
     padding: 3px 5px;
+    color: #fff;
     font-weight: 700;
-    @include box-sizing();
   }
+
+  .help-list-item {
+
+    label {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+  }
+
+  .help-list-item:hover {
+    background-color: #e0e0e0;
+  }
+
 }
 
 .note-modal-footer {
-  height: 40px;
   padding: 10px;
+  height: 40px;
   text-align: center;
-
 }
 
 .note-modal-footer a {
   color: #337ab7;
-  text-decoration: none
+  text-decoration: none;
 }
 
 .note-modal-footer a:hover,
 .note-modal-footer a:focus {
   color: #23527c;
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 .note-modal-footer .note-btn {
-  float: right
+  float: right;
 }
 
 .note-modal-title {
-  font-size: 20px;
-  color: #42515f;
   margin: 0;
+  color: #42515f;
+  font-size: 20px;
   line-height: 1.4;
 }
 
 .note-modal-backdrop {
+  display: none;
   position: fixed;
-  left: 0;
+  top: 0;
   right: 0;
   bottom: 0;
-  top: 0;
-  z-index: $zindex-modal-background;
-  background: $modal-backdrop-bg;
-  @include opacity(0.5);
-  display: none;
+  left: 0;
+  z-index: var(--note-zindex-modal-backdrop);
+  background-color: rgba(0,0,0,.5) !important;
 
   &.open {
     display: block;
   }
-}
 
+}
 
 // Scale up the modal
 @media (min-width: 768px) {
-  // Automatically set modal's width for larger viewports
+
   .note-modal-content {
-    width: 600px;
     margin: 30px auto;
+    width: 600px;
   }
+
 }
 
 @media (min-width: 992px) {
+
   .note-modal-content-large {
     width: 900px;
   }
+
 }
 
 .note-modal {
@@ -116,22 +147,20 @@
   }
 
   .note-nav {
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    padding-left: 0;
+    flex-wrap: wrap;
     margin-bottom: 0;
+    padding-left: 0;
     list-style: none;
   }
 
   .note-nav-link {
+    -webkit-text-decoration-skip: objects;
     display: block;
-    padding: 0.5rem 1rem;
+    background-color: transparent;
+    padding: .5rem 1rem;
     color: #007bff;
     text-decoration: none;
-    background-color: transparent;
-    -webkit-text-decoration-skip: objects;
   }
 
   .note-nav-link:focus,
@@ -154,8 +183,8 @@
 
   .note-nav-tabs .note-nav-link {
     border: 1px solid transparent;
-    border-top-left-radius: 0.25rem;
-    border-top-right-radius: 0.25rem;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
   }
 
   .note-nav-tabs .note-nav-link:focus,
@@ -164,15 +193,15 @@
   }
 
   .note-nav-tabs .note-nav-link.disabled {
-    color: #868e96;
-    background-color: transparent;
     border-color: transparent;
+    background-color: transparent;
+    color: #868e96;
   }
 
   .note-nav-tabs .note-nav-item.show .note-nav-link {
-    color: #495057;
-    background-color: #fff;
     border-color: #ddd #ddd #fff;
+    background-color: #fff;
+    color: #495057;
   }
 
   .note-tab-content {
@@ -183,8 +212,10 @@
   .note-tab-content > .note-tab-pane {
     display: none;
   }
+
   .note-tab-content > :last-child,
   .note-tab-content > .note-tab-pane:target {
     display: block;
   }
+
 }
