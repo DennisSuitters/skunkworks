@@ -45,7 +45,7 @@ export default class Dropzone {
       const isCodeview = this.context.invoke('codeview.isActivated');
       const hasEditorSize = this.$editor.width() > 0 && this.$editor.height() > 0;
       if (!isCodeview && !collection.length && hasEditorSize) {
-        this.$editor.addClass('dragover');
+        this.$editor.addClass('note-dragover');
         this.$dropzone.width(this.$editor.width());
         this.$dropzone.height(this.$editor.height());
         $dropzoneMessage.text(this.lang.image.dragImageHere);
@@ -59,13 +59,13 @@ export default class Dropzone {
       // If nodeName is BODY, then just make it over (fix for IE)
       if (!collection.length || e.target.nodeName === 'BODY') {
         collection = $();
-        this.$editor.removeClass('dragover');
+        this.$editor.removeClass('note-dragover');
       }
     };
 
     this.documentEventHandlers.onDrop = () => {
       collection = $();
-      this.$editor.removeClass('dragover');
+      this.$editor.removeClass('note-dragover');
     };
 
     // show dropzone on dragenter when dragging a object to document
@@ -76,10 +76,10 @@ export default class Dropzone {
 
     // change dropzone's message on hover.
     this.$dropzone.on('dragenter', () => {
-      this.$dropzone.addClass('hover');
+      this.$dropzone.addClass('note-note-hover');
       $dropzoneMessage.text(this.lang.image.dropImage);
     }).on('dragleave', () => {
-      this.$dropzone.removeClass('hover');
+      this.$dropzone.removeClass('note-hover');
       $dropzoneMessage.text(this.lang.image.dragImageHere);
     });
 

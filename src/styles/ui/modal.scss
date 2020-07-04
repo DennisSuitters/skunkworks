@@ -8,7 +8,7 @@
   opacity: 1;
   z-index: var(--note-zindex-modal);
 
-  &.open {
+  &.note-open {
     display:block;
   }
 
@@ -60,7 +60,7 @@
     font-weight: 700;
   }
 
-  .help-list-item {
+  .note-help-list-item {
 
     label {
       display: inline-block;
@@ -69,7 +69,7 @@
 
   }
 
-  .help-list-item:hover {
+  .note-help-list-item:hover {
     background-color: #e0e0e0;
   }
 
@@ -113,7 +113,7 @@
   z-index: var(--note-zindex-modal-backdrop);
   background-color: rgba(0,0,0,.5) !important;
 
-  &.open {
+  &.note-open {
     display: block;
   }
 
@@ -169,7 +169,7 @@
     text-decoration: none;
   }
 
-  .note-nav-link.disabled {
+  .note-nav-link.note-disabled {
     color: #868e96;
   }
 
@@ -192,7 +192,7 @@
     border-color: #e9ecef #e9ecef #ddd;
   }
 
-  .note-nav-tabs .note-nav-link.disabled {
+  .note-nav-tabs .note-nav-link.note-disabled {
     border-color: transparent;
     background-color: transparent;
     color: #868e96;

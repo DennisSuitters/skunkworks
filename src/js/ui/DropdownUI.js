@@ -17,14 +17,14 @@ class DropdownUI {
   }
 
   clear() {
-    var $parent = $('.note-btn-group.open');
-    $parent.find('.note-btn.active').removeClass('active');
-    $parent.removeClass('open');
+    var $parent = $('.note-btn-group.note-open');
+    $parent.find('.note-btn.note-active').removeClass('note-active');
+    $parent.removeClass('note-open');
   }
 
   show() {
-    this.$button.addClass('active');
-    this.$button.parent().addClass('open');
+    this.$button.addClass('note-active');
+    this.$button.parent().addClass('note-open');
 
     var $dropdown = this.$button.next();
     var offset = $dropdown.offset();
@@ -40,12 +40,12 @@ class DropdownUI {
   }
 
   hide() {
-    this.$button.removeClass('active');
-    this.$button.parent().removeClass('open');
+    this.$button.removeClass('note-active');
+    this.$button.parent().removeClass('note-open');
   }
 
   toggle() {
-    var isOpened = this.$button.parent().hasClass('open');
+    var isOpened = this.$button.parent().hasClass('note-open');
 
     this.clear();
 
@@ -59,14 +59,14 @@ class DropdownUI {
 
 $(document).on('click', function(e) {
   if (!$(e.target).closest('.note-btn-group').length) {
-    $('.note-btn-group.open').removeClass('open');
-    $('.note-btn-group .note-btn.active').removeClass('active');
+    $('.note-btn-group.note-open').removeClass('note-open');
+    $('.note-btn-group .note-btn.note-active').removeClass('note-active');
   }
 });
 
 $(document).on('click.note-dropdown-menu', function(e) {
-  $(e.target).closest('.note-dropdown-menu').parent().removeClass('open');
-  $(e.target).closest('.note-dropdown-menu').parent().find('.note-btn.active').removeClass('active');
+  $(e.target).closest('.note-dropdown-menu').parent().removeClass('note-open');
+  $(e.target).closest('.note-dropdown-menu').parent().find('.note-btn.note-active').removeClass('note-active');
 });
 
 export default DropdownUI;

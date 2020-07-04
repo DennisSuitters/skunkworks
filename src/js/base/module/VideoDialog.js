@@ -16,12 +16,12 @@ export default class VideoDialog {
   initialize() {
     const $container = this.options.dialogsInBody ? this.$body : this.options.container;
     const body = [
-      '<div class="form-group note-form-group row-fluid">',
+      '<div class="note-form-group">',
         `<label for="note-dialog-video-url-${this.options.id}" class="note-form-label">${this.lang.video.url} <small class="text-muted">${this.lang.video.providers}</small></label>`,
-        `<input id="note-dialog-video-url-${this.options.id}" class="note-video-url form-control note-form-control note-input" type="text"/>`,
+        `<input id="note-dialog-video-url-${this.options.id}" class="note-video-url note-form-control note-input" type="text">`,
       '</div>',
     ].join('');
-    const buttonClass = 'btn btn-primary note-btn note-btn-primary note-video-btn';
+    const buttonClass = 'note-btn note-btn-primary note-video-btn';
     const footer = `<input type="button" href="#" class="${buttonClass}" value="${this.lang.video.insert}" disabled>`;
 
     this.$dialog = this.ui.dialog({

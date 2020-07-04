@@ -68,7 +68,7 @@ export default class Buttons {
 
   colorPalette(className, tooltip, backColor, foreColor) {
     return this.ui.buttonGroup({
-      className: 'note-color ' + className,
+      className: 'note-note-color ' + className,
       children: [
         this.button({
           className: 'note-current-color-button',
@@ -118,13 +118,13 @@ export default class Buttons {
             '<div class="note-palette">',
               '<div class="note-palette-title">' + this.lang.color.background + '</div>',
               '<div>',
-                '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="backColor" data-value="transparent">',
+                '<button type="button" class="note-color-reset" data-event="backColor" data-value="transparent">',
                   this.lang.color.transparent,
                 '</button>',
               '</div>',
               '<div class="note-holder" data-event="backColor"><!-- back colors --></div>',
               '<div>',
-                '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="backColorPicker">',
+                '<button type="button" class="note-color-select" data-event="openPalette" data-value="backColorPicker">',
                   this.lang.color.cpSelect,
                 '</button>',
                 '<input type="color" id="backColorPicker" class="note-btn note-color-select-btn" value="' + this.options.colorButton.backColor + '" data-event="backColorPalette">',
@@ -136,13 +136,13 @@ export default class Buttons {
             '<div class="note-palette">',
               '<div class="note-palette-title">' + this.lang.color.foreground + '</div>',
               '<div>',
-                '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="removeFormat" data-value="foreColor">',
+                '<button type="button" class="note-color-reset" data-event="removeFormat" data-value="foreColor">',
                   this.lang.color.resetToDefault,
                 '</button>',
               '</div>',
               '<div class="note-holder" data-event="foreColor"><!-- fore colors --></div>',
               '<div>',
-                '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="foreColorPicker">',
+                '<button type="button" class="note-color-select" data-event="openPalette" data-value="foreColorPicker">',
                   this.lang.color.cpSelect,
                 '</button>',
                 '<input type="color" id="foreColorPicker" class="note-btn note-color-select-btn" value="' + this.options.colorButton.foreColor + '" data-event="foreColorPalette">',
@@ -231,7 +231,7 @@ export default class Buttons {
     this.context.memo('button.style', () => {
       return this.ui.buttonGroup([
         this.button({
-          className: 'dropdown-toggle',
+          className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents(
             this.ui.icon(this.options.icons.magic), this.options
           ),
@@ -241,7 +241,7 @@ export default class Buttons {
           },
         }),
         this.ui.dropdown({
-          className: 'dropdown-style',
+          className: 'note-dropdown-style',
           items: this.options.styleTags,
           title: this.lang.style.style,
           template: (item) => {
@@ -357,7 +357,7 @@ export default class Buttons {
 
       return this.ui.buttonGroup([
         this.button({
-          className: 'dropdown-toggle',
+          className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents(
             '<span class="note-current-fontname"></span>', this.options
           ),
@@ -367,7 +367,7 @@ export default class Buttons {
           },
         }),
         this.ui.dropdownCheck({
-          className: 'dropdown-fontname',
+          className: 'note-dropdown-fontname',
           checkClassName: this.options.icons.menuCheck,
           items: this.options.fontNames.filter(this.isFontInstalled.bind(this)),
           title: this.lang.font.name,
@@ -382,7 +382,7 @@ export default class Buttons {
     this.context.memo('button.fontsize', () => {
       return this.ui.buttonGroup([
         this.button({
-          className: 'dropdown-toggle',
+          className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents('<span class="note-current-fontsize"></span>', this.options),
           tooltip: this.lang.font.size,
           data: {
@@ -390,7 +390,7 @@ export default class Buttons {
           },
         }),
         this.ui.dropdownCheck({
-          className: 'dropdown-fontsize',
+          className: 'note-dropdown-fontsize',
           checkClassName: this.options.icons.menuCheck,
           items: this.options.fontSizes,
           title: this.lang.font.size,
@@ -402,7 +402,7 @@ export default class Buttons {
     this.context.memo('button.fontsizeunit', () => {
       return this.ui.buttonGroup([
         this.button({
-          className: 'dropdown-toggle',
+          className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents('<span class="note-current-fontsizeunit"></span>', this.options),
           tooltip: this.lang.font.sizeunit,
           data: {
@@ -410,7 +410,7 @@ export default class Buttons {
           },
         }),
         this.ui.dropdownCheck({
-          className: 'dropdown-fontsizeunit',
+          className: 'note-dropdown-fontsizeunit',
           checkClassName: this.options.icons.menuCheck,
           items: this.options.fontSizeUnits,
           title: this.lang.font.sizeunit,
@@ -493,7 +493,7 @@ export default class Buttons {
     this.context.memo('button.paragraph', () => {
       return this.ui.buttonGroup([
         this.button({
-          className: 'dropdown-toggle',
+          className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents(this.ui.icon(this.options.icons.alignLeft), this.options),
           tooltip: this.lang.paragraph.paragraph,
           data: {
@@ -516,7 +516,7 @@ export default class Buttons {
     this.context.memo('button.height', () => {
       return this.ui.buttonGroup([
         this.button({
-          className: 'dropdown-toggle',
+          className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents(this.ui.icon(this.options.icons.textHeight), this.options),
           tooltip: this.lang.font.height,
           data: {
@@ -526,7 +526,7 @@ export default class Buttons {
         this.ui.dropdownCheck({
           items: this.options.lineHeights,
           checkClassName: this.options.icons.menuCheck,
-          className: 'dropdown-line-height',
+          className: 'note-dropdown-line-height',
           title: this.lang.font.height,
           click: this.context.createInvokeHandler('editor.lineHeight'),
         }),
@@ -536,7 +536,7 @@ export default class Buttons {
     this.context.memo('button.table', () => {
       return this.ui.buttonGroup([
         this.button({
-          className: 'dropdown-toggle',
+          className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents(this.ui.icon(this.options.icons.table), this.options),
           tooltip: this.lang.table.table,
           data: {
@@ -601,7 +601,7 @@ export default class Buttons {
 
     this.context.memo('button.fullscreen', () => {
       return this.button({
-        className: 'btn-fullscreen note-codeview-keep',
+        className: 'note-btn-fullscreen note-codeview-keep',
         contents: this.ui.icon(this.options.icons.arrowsAlt),
         tooltip: this.lang.options.fullscreen,
         click: this.context.createInvokeHandler('fullscreen.toggle'),
@@ -610,7 +610,7 @@ export default class Buttons {
 
     this.context.memo('button.codeview', () => {
       return this.button({
-        className: 'btn-codeview note-codeview-keep',
+        className: 'note-btn-codeview note-codeview-keep',
         contents: this.ui.icon(this.options.icons.code),
         tooltip: this.lang.options.codeview,
         click: this.context.createInvokeHandler('codeview.toggle'),
@@ -742,7 +742,7 @@ export default class Buttons {
   addTablePopoverButtons() {
     this.context.memo('button.addRowUp', () => {
       return this.button({
-        className: 'btn-md',
+        className: 'note-btn-md',
         contents: this.ui.icon(this.options.icons.rowAbove),
         tooltip: this.lang.table.addRowAbove,
         click: this.context.createInvokeHandler('editor.addRow', 'top'),
@@ -750,7 +750,7 @@ export default class Buttons {
     });
     this.context.memo('button.addRowDown', () => {
       return this.button({
-        className: 'btn-md',
+        className: 'note-btn-md',
         contents: this.ui.icon(this.options.icons.rowBelow),
         tooltip: this.lang.table.addRowBelow,
         click: this.context.createInvokeHandler('editor.addRow', 'bottom'),
@@ -758,7 +758,7 @@ export default class Buttons {
     });
     this.context.memo('button.addColLeft', () => {
       return this.button({
-        className: 'btn-md',
+        className: 'note-btn-md',
         contents: this.ui.icon(this.options.icons.colBefore),
         tooltip: this.lang.table.addColLeft,
         click: this.context.createInvokeHandler('editor.addCol', 'left'),
@@ -766,7 +766,7 @@ export default class Buttons {
     });
     this.context.memo('button.addColRight', () => {
       return this.button({
-        className: 'btn-md',
+        className: 'note-btn-md',
         contents: this.ui.icon(this.options.icons.colAfter),
         tooltip: this.lang.table.addColRight,
         click: this.context.createInvokeHandler('editor.addCol', 'right'),
@@ -774,7 +774,7 @@ export default class Buttons {
     });
     this.context.memo('button.deleteRow', () => {
       return this.button({
-        className: 'btn-md',
+        className: 'note-btn-md',
         contents: this.ui.icon(this.options.icons.rowRemove),
         tooltip: this.lang.table.delRow,
         click: this.context.createInvokeHandler('editor.deleteRow'),
@@ -782,7 +782,7 @@ export default class Buttons {
     });
     this.context.memo('button.deleteCol', () => {
       return this.button({
-        className: 'btn-md',
+        className: 'note-btn-md',
         contents: this.ui.icon(this.options.icons.colRemove),
         tooltip: this.lang.table.delCol,
         click: this.context.createInvokeHandler('editor.deleteCol'),
@@ -790,7 +790,7 @@ export default class Buttons {
     });
     this.context.memo('button.deleteTable', () => {
       return this.button({
-        className: 'btn-md',
+        className: 'note-btn-md',
         contents: this.ui.icon(this.options.icons.trash),
         tooltip: this.lang.table.delTable,
         click: this.context.createInvokeHandler('editor.deleteTable'),
@@ -854,7 +854,7 @@ export default class Buttons {
       });
       const fontName = lists.find(fontNames, this.isFontInstalled.bind(this));
 
-      $cont.find('.dropdown-fontname a').each((idx, item) => {
+      $cont.find('.note-dropdown-fontname a').each((idx, item) => {
         const $item = $(item);
         // always compare string to avoid creating another func.
         const isChecked = ($item.data('value') + '') === (fontName + '');
@@ -865,7 +865,7 @@ export default class Buttons {
 
     if (styleInfo['font-size']) {
       const fontSize = styleInfo['font-size'];
-      $cont.find('.dropdown-fontsize a').each((idx, item) => {
+      $cont.find('.note-dropdown-fontsize a').each((idx, item) => {
         const $item = $(item);
         // always compare with string to avoid creating another func.
         const isChecked = ($item.data('value') + '') === (fontSize + '');
@@ -874,7 +874,7 @@ export default class Buttons {
       $cont.find('.note-current-fontsize').text(fontSize);
 
       const fontSizeUnit = styleInfo['font-size-unit'];
-      $cont.find('.dropdown-fontsizeunit a').each((idx, item) => {
+      $cont.find('.note-dropdown-fontsizeunit a').each((idx, item) => {
         const $item = $(item);
         const isChecked = ($item.data('value') + '') === (fontSizeUnit + '');
         $item.toggleClass('checked', isChecked);
@@ -884,7 +884,7 @@ export default class Buttons {
 
     if (styleInfo['line-height']) {
       const lineHeight = styleInfo['line-height'];
-      $cont.find('.dropdown-line-height li a').each((idx, item) => {
+      $cont.find('.note-dropdown-line-height li a').each((idx, item) => {
         // always compare with string to avoid creating another func.
         const isChecked = ($(item).data('value') + '') === (lineHeight + '');
         this.className = isChecked ? 'checked' : '';

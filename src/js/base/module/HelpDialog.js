@@ -15,7 +15,7 @@ export default class HelpDialog {
   initialize() {
     const $container = this.options.dialogsInBody ? this.$body : this.options.container;
     const body = [
-      '<p class="text-center">',
+      '<p class="note-text-center">',
         '<a href="http://summernote.org/" target="_blank">Summernote @@VERSION@@</a> · ',
         '<a href="https://github.com/summernote/summernote" target="_blank">Project</a> · ',
         '<a href="https://github.com/summernote/summernote/issues" target="_blank">Issues</a>',
@@ -28,7 +28,7 @@ export default class HelpDialog {
       body: this.createShortcutList(),
       footer: body,
       callback: ($node) => {
-        $node.find('.modal-body,.note-modal-body').css({
+        $node.find('.note-modal-body').css({
           'max-height': 300,
           'overflow': 'scroll',
         });
@@ -45,7 +45,7 @@ export default class HelpDialog {
     const keyMap = this.options.keyMap[env.isMac ? 'mac' : 'pc'];
     return Object.keys(keyMap).map((key) => {
       const command = keyMap[key];
-      const $row = $('<div><div class="help-list-item"></div></div>');
+      const $row = $('<div><div class="note-help-list-item"></div></div>');
       $row.append($('<label><kbd>' + key + '</kdb></label>').css({
         'width': 180,
         'margin-right': 10,

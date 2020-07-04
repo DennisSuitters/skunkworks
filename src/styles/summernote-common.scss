@@ -20,13 +20,13 @@
       vertical-align: middle;
     }
 
-    &.hover {
+    &.note-hover {
       color: var(--note-dropzone-background-color-active);
     }
 
   }
 
-  &.dragover .note-dropzone {
+  &.note-dragover .note-dropzone {
     display: table;
   }
 
@@ -64,14 +64,22 @@
 
       }
 
-      figure {
-        margin: 0;
-      }
-
     }
 
   }
 
+}
+
+.note-text-left {
+  text-align: left;
+}
+
+.note-text-center {
+  text-align: center;
+}
+
+.note-text-right {
+  text-align: right;
 }
 
 /* Frame mode layout
@@ -89,7 +97,7 @@
   border: var(--note-editable-border-width) var(--note-editable-border-style) var(--note-editable-border-color);
 
   // codeview mode
-  &.codeview {
+  &.note-codeview {
 
     .note-editing-area {
 
@@ -142,7 +150,7 @@
   }
 
   // fullscreen mode
-  &.fullscreen {
+  &.note-fullscreen {
     z-index: 1050; // bs3 modal-backdrop: 1030, bs2: 1040
     position: fixed;
     top: 0;
@@ -176,11 +184,11 @@
 
 /* Popover
  ------------------------------------------ */
-.note-popover.popover {
+.note-popover.note-popover {
   display: none;
   max-width: none;
 
-  .popover-content {
+  .note-popover-content {
 
     a {
       display: inline-block;
@@ -193,7 +201,7 @@
 
   }
 
-  .arrow {
+  .note-arrow {
     left: 20px !important;
   }
 
@@ -257,7 +265,7 @@
 
   .note-style {
 
-    .dropdown-style {
+    .note-dropdown-style {
 
       blockquote,
       pre {
@@ -290,7 +298,7 @@
 
   .note-color {
 
-    .dropdown-toggle {
+    .note-dropdown-toggle {
       width: 20px;
       padding-left: 5px;
     }
@@ -370,7 +378,7 @@
 
     // dropdown-menu right position
     // http://forrst.com/posts/Bootstrap_right_positioned_dropdown-2KB
-    &.right {
+    &.note-right {
       right: 0;
       left: auto;
 
@@ -393,7 +401,7 @@
         color: deepskyblue;
       }
 
-      a.checked i {
+      a.note-checked i {
         visibility: visible;
       }
 
@@ -435,13 +443,13 @@
  ------------------------------------------ */
 .note-modal {
 
-  .modal-dialog {
+  .note-modal-dialog {
     border-radius: 5px;
     outline: 0;
     box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
   }
 
-  .form-group {
+  .note-note-note-form-group {
     margin-right: 0; // overwrite BS's form-horizontal minus margins
     margin-left: 0;
   }
@@ -571,7 +579,7 @@
   min-width: 100px;
   padding: 2px;
 
-  .popover-content {
+  .note-note-popover-content {
     max-height: 150px;
     padding: 3px;
     overflow: auto;
@@ -582,7 +590,7 @@
         display: block !important;
         padding: 3px;
 
-        &.active,
+        &.note-active,
         &:hover {
           display: block;
           clear: both;

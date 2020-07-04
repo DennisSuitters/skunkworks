@@ -49,7 +49,7 @@ export default class CodeView {
    * @return {Boolean}
    */
   isActivated() {
-    return this.$editor.hasClass('codeview');
+    return this.$editor.hasClass('note-codeview');
   }
 
   /**
@@ -61,7 +61,7 @@ export default class CodeView {
     } else {
       this.activate();
     }
-    this.context.triggerEvent('codeview.toggled');
+    this.context.triggerEvent('note-codeview.note-toggled');
   }
 
   /**
@@ -105,7 +105,7 @@ export default class CodeView {
     this.context.invoke('toolbar.updateCodeview', true);
     this.context.invoke('airPopover.updateCodeview', true);
 
-    this.$editor.addClass('codeview');
+    this.$editor.addClass('note-codeview');
     this.$codable.focus();
 
     // activate CodeMirror as codable
@@ -158,7 +158,7 @@ export default class CodeView {
 
     this.$editable.html(value);
     this.$editable.height(this.options.height ? this.$codable.height() : 'auto');
-    this.$editor.removeClass('codeview');
+    this.$editor.removeClass('note-codeview');
 
     if (isChange) {
       this.context.triggerEvent('change', this.$editable.html(), this.$editable);

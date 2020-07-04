@@ -56,7 +56,7 @@ export default class Toolbar {
   }
 
   followScroll() {
-    if (this.$editor.hasClass('fullscreen')) {
+    if (this.$editor.hasClass('note-fullscreen')) {
       return false;
     }
 
@@ -118,13 +118,13 @@ export default class Toolbar {
   }
 
   updateFullscreen(isFullscreen) {
-    this.ui.toggleBtnActive(this.$toolbar.find('.btn-fullscreen'), isFullscreen);
+    this.ui.toggleBtnActive(this.$toolbar.find('.note-btn-fullscreen'), isFullscreen);
 
     this.changeContainer(isFullscreen);
   }
 
   updateCodeview(isCodeview) {
-    this.ui.toggleBtnActive(this.$toolbar.find('.btn-codeview'), isCodeview);
+    this.ui.toggleBtnActive(this.$toolbar.find('.note-btn-codeview'), isCodeview);
     if (isCodeview) {
       this.deactivate();
     } else {

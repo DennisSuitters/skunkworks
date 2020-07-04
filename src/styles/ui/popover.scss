@@ -3,13 +3,14 @@
   display: none;
   position: absolute;
   z-index: var(--note-zindex-popover);
-  border: 1px solid var(--note-popover-border-color-fallback);;
-  border: 1px solid var(--note-popover-border-color);
+  border: var(--note-popover-border-width) var(--note-popover-border-style) var(--note-popover-border-color-fallback);;
+  border: var(--note-popover-border-width) var(--note-popover-border-style) var(--note-popover-border-color);
   background: var(--note-popover-background-color);
   font-family: var(--note-font);
   font-size: 13px;
+  border-radius: var(--note-popover-radius);
 
-  &.in {
+  &.note-in {
     display: block;
   }
 
@@ -37,24 +38,6 @@
 
 .note-popover {
 
-  &.bottom .note-popover-arrow {
-    top: -11px;
-    left: 20px;
-    margin-left: -var(--note-popover-arrow-width);
-    border-top-width: 0;
-    border-bottom-color: var(--note-popover-arrow-outer-color-fallback);
-    border-bottom-color: var(--note-popover-arrow-outer-color);
-
-    &::after {
-      top: 1px;
-      margin-left: -10px;
-      border-top-width: 0;
-      border-bottom-color: #fff;
-      content: " ";
-    }
-
-  }
-
   &.top .note-popover-arrow {
     bottom: -11px;
     left: 20px;
@@ -67,7 +50,8 @@
       bottom: 1px;
       margin-left: -10px;
       border-bottom-width: 0;
-      border-top-color: #fff;
+      border-top-color: var(--note-popover-arrow-outer-color-fallback);
+      border-top-color: var(--note-popover-arrow-outer-color);
       content: " ";
     }
 
@@ -85,7 +69,27 @@
       left: 1px;
       margin-top: -10px;
       border-left-width: 0;
-      border-right-color: #fff;
+      border-right-color: var(--note-popover-arrow-outer-color-fallback);
+      border-right-color: var(--note-popover-arrow-outer-color);
+      content: " ";
+    }
+
+  }
+
+  &.bottom .note-popover-arrow {
+    top: -11px;
+    left: 20px;
+    margin-left: -var(--note-popover-arrow-width);
+    border-top-width: 0;
+    border-bottom-color: var(--note-popover-arrow-outer-color-fallback);
+    border-bottom-color: var(--note-popover-arrow-outer-color);
+
+    &::after {
+      top: 1px;
+      margin-left: -10px;
+      border-top-width: 0;
+      border-bottom-color: var(--note-popover-arrow-outer-color-fallback);
+      border-bottom-color: var(--note-popover-arrow-outer-color);
       content: " ";
     }
 
@@ -103,7 +107,8 @@
       right: 1px;
       margin-top: -10px;
       border-right-width: 0;
-      border-left-color: #fff;
+      border-left-color: var(--note-popover-arrow-outer-color-fallback);
+      border-left-color: var(--note-popover-arrow-outer-color);
       content: " ";
     }
 

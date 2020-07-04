@@ -79,18 +79,18 @@ class TooltipUI {
       });
     }
 
-    $tooltip.addClass('in');
+    $tooltip.addClass('note-in');
   }
 
   hide() {
-    this.$tooltip.removeClass('in');
+    this.$tooltip.removeClass('note-in');
     setTimeout(() => {
       this.$tooltip.remove();
     }, 200);
   }
 
   toggle() {
-    if (this.$tooltip.hasClass('in')) {
+    if (this.$tooltip.hasClass('note-in')) {
       this.hide();
     } else {
       this.show();

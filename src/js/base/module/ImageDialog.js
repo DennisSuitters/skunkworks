@@ -23,18 +23,18 @@ export default class ImageDialog {
 
     const $container = this.options.dialogsInBody ? this.$body : this.options.container;
     const body = [
-      '<div class="form-group note-form-group note-group-select-from-files">',
+      '<div class="note-form-group note-group-select-from-files">',
         '<label for="note-dialog-image-file-' + this.options.id + '" class="note-form-label">' + this.lang.image.selectFromFiles + '</label>',
-        '<input id="note-dialog-image-file-' + this.options.id + '" class="note-image-input form-control-file note-form-control note-input" ',
-        ' type="file" name="files" accept="image/*" multiple="multiple"/>',
+        '<input id="note-dialog-image-file-' + this.options.id + '" class="note-image-input note-form-control note-input" ',
+        ' type="file" name="files" accept="image/*" multiple="multiple">',
         imageLimitation,
       '</div>',
-      '<div class="form-group note-group-image-url">',
+      '<div class="note-group-image-url">',
         '<label for="note-dialog-image-url-' + this.options.id + '" class="note-form-label">' + this.lang.image.url + '</label>',
-        '<input id="note-dialog-image-url-' + this.options.id + '" class="note-image-url form-control note-form-control note-input" type="text"/>',
+        '<input id="note-dialog-image-url-' + this.options.id + '" class="note-image-url note-form-control note-input" type="text">',
       '</div>',
     ].join('');
-    const buttonClass = 'btn btn-primary note-btn note-btn-primary note-image-btn';
+    const buttonClass = 'note-btn note-btn-primary note-image-btn';
     const footer = `<input type="button" href="#" class="${buttonClass}" value="${this.lang.image.insert}" disabled>`;
 
     this.$dialog = this.ui.dialog({

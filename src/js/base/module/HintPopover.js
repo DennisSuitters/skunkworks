@@ -47,10 +47,10 @@ export default class HintPopover {
     }).render().appendTo(this.options.container);
 
     this.$popover.hide();
-    this.$content = this.$popover.find('.popover-content,.note-popover-content');
+    this.$content = this.$popover.find('.note-popover-content');
     this.$content.on('click', '.note-hint-item', (e) => {
-      this.$content.find('.active').removeClass('active');
-      $(e.currentTarget).addClass('active');
+      this.$content.find('.active').removeClass('note-active');
+      $(e.currentTarget).addClass('note-active');
       this.replace();
     });
 
@@ -62,14 +62,14 @@ export default class HintPopover {
   }
 
   selectItem($item) {
-    this.$content.find('.active').removeClass('active');
-    $item.addClass('active');
+    this.$content.find('.note-active').removeClass('note-active');
+    $item.addClass('note-active');
 
     this.$content[0].scrollTop = $item[0].offsetTop - (this.$content.innerHeight() / 2);
   }
 
   moveDown() {
-    const $current = this.$content.find('.note-hint-item.active');
+    const $current = this.$content.find('.note-hint-item.note-active');
     const $next = $current.next();
 
     if ($next.length) {
@@ -86,7 +86,7 @@ export default class HintPopover {
   }
 
   moveUp() {
-    const $current = this.$content.find('.note-hint-item.active');
+    const $current = this.$content.find('.note-hint-item.note-active');
     const $prev = $current.prev();
 
     if ($prev.length) {
@@ -103,7 +103,7 @@ export default class HintPopover {
   }
 
   replace() {
-    const $item = this.$content.find('.note-hint-item.active');
+    const $item = this.$content.find('.note-hint-item.note-active');
 
     if ($item.length) {
       var node = this.nodeFromItem($item);
@@ -146,7 +146,7 @@ export default class HintPopover {
   createItemTemplates(hintIdx, items) {
     const hint = this.hints[hintIdx];
     return items.map((item /*, idx */) => {
-      const $item = $('<div class="note-hint-item"/>');
+      const $item = $('<div class="note-hint-item"></div>');
       $item.append(hint.template ? hint.template(item) : item + '');
       $item.data({
         'index': hintIdx,
@@ -240,7 +240,7 @@ export default class HintPopover {
             }
           });
           // select first .note-hint-item
-          this.$content.find('.note-hint-item:first').addClass('active');
+          this.$content.find('.note-hint-item:first').addClass('note-active');
 
           // set position for popover after group is created
           if (this.direction === 'top') {

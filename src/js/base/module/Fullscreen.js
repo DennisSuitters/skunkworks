@@ -31,7 +31,7 @@ export default class Fullscreen {
    * toggle fullscreen
    */
   toggle() {
-    this.$editor.toggleClass('fullscreen');
+    this.$editor.toggleClass('note-fullscreen');
     if (this.isFullscreen()) {
       this.$editable.data('orgHeight', this.$editable.css('height'));
       this.$editable.data('orgMaxHeight', this.$editable.css('maxHeight'));
@@ -49,6 +49,6 @@ export default class Fullscreen {
   }
 
   isFullscreen() {
-    return this.$editor.hasClass('fullscreen');
+    return this.$editor.hasClass('note-fullscreen');
   }
 }
