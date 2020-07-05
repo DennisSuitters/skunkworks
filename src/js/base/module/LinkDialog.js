@@ -23,19 +23,21 @@ export default class LinkDialog {
         `<label for="note-dialog-link-txt-${this.options.id}" class="note-form-label">${this.lang.link.textToDisplay}</label>`,
         `<input id="note-dialog-link-txt-${this.options.id}" class="note-link-text note-form-control note-input" type="text">`,
       '</div>',
-      '<div class="form-group note-form-group">',
+      '<div class="note-form-group">',
         `<label for="note-dialog-link-url-${this.options.id}" class="note-form-label">${this.lang.link.url}</label>`,
         `<input id="note-dialog-link-url-${this.options.id}" class="note-link-url note-form-control note-input" type="text" value="http://">`,
       '</div>',
       !this.options.disableLinkTarget
         ? $('<div/>').append(this.ui.checkbox({
-          className: 'sn-checkbox-open-in-new-window',
+          id: 'note-checkbox-open-in-new-window-' + this.options.id,
+          className: 'note-checkbox-open-in-new-window',
           text: this.lang.link.openInNewWindow,
           checked: true,
         }).render()).html()
         : '',
       $('<div/>').append(this.ui.checkbox({
-        className: 'sn-checkbox-use-protocol',
+        id: 'note-checkbox-use-protocol-' + this.options.id,
+        className: 'note-checkbox-use-protocol',
         text: this.lang.link.useProtocol,
         checked: true,
       }).render()).html(),
@@ -85,10 +87,8 @@ export default class LinkDialog {
       const $linkText = this.$dialog.find('.note-link-text');
       const $linkUrl = this.$dialog.find('.note-link-url');
       const $linkBtn = this.$dialog.find('.note-link-btn');
-      const $openInNewWindow = this.$dialog
-        .find('.sn-checkbox-open-in-new-window input[type=checkbox]');
-      const $useProtocol = this.$dialog
-        .find('.sn-checkbox-use-protocol input[type=checkbox]');
+      const $openInNewWindow = this.$dialog.find('.note-checkbox-open-in-new-window input[type=checkbox]');
+      const $useProtocol = this.$dialog.find('.note-checkbox-use-protocol input[type=checkbox]');
 
       this.ui.onDialogShown(this.$dialog, () => {
         this.context.triggerEvent('dialog.shown');
@@ -122,13 +122,11 @@ export default class LinkDialog {
         this.bindEnterKey($linkUrl, $linkBtn);
         this.bindEnterKey($linkText, $linkBtn);
 
-        const isNewWindowChecked = linkInfo.isNewWindow !== undefined
-          ? linkInfo.isNewWindow : this.context.options.linkTargetBlank;
+        const isNewWindowChecked = linkInfo.isNewWindow !== undefined ? linkInfo.isNewWindow : this.context.options.linkTargetBlank;
 
         $openInNewWindow.prop('checked', isNewWindowChecked);
 
-        const useProtocolChecked = linkInfo.url
-          ? false : this.context.options.useProtocol;
+        const useProtocolChecked = linkInfo.url ? false : this.context.options.useProtocol;
 
         $useProtocol.prop('checked', useProtocolChecked);
 

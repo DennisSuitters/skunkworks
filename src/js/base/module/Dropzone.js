@@ -23,8 +23,8 @@ export default class Dropzone {
   initialize() {
     if (this.options.disableDragAndDrop) {
       // prevent default drop event
-      this.documentEventHandlers.onDrop = (e) => {
-        e.preventDefault();
+      this.documentEventHandlers.onDrop = (event) => {
+        event.preventDefault();
       };
       // do not consider outside of dropzone
       this.$eventListener = this.$dropzone;
@@ -41,7 +41,7 @@ export default class Dropzone {
     let collection = $();
     const $dropzoneMessage = this.$dropzone.find('.note-dropzone-message');
 
-    this.documentEventHandlers.onDragenter = (e) => {
+    this.documentEventHandlers.onDragenter = (event) => {
       const isCodeview = this.context.invoke('codeview.isActivated');
       const hasEditorSize = this.$editor.width() > 0 && this.$editor.height() > 0;
       if (!isCodeview && !collection.length && hasEditorSize) {
@@ -50,14 +50,14 @@ export default class Dropzone {
         this.$dropzone.height(this.$editor.height());
         $dropzoneMessage.text(this.lang.image.dragImageHere);
       }
-      collection = collection.add(e.target);
+      collection = collection.add(event.target);
     };
 
-    this.documentEventHandlers.onDragleave = (e) => {
-      collection = collection.not(e.target);
+    this.documentEventHandlers.onDragleave = (event) => {
+      collection = collection.not(event.target);
 
       // If nodeName is BODY, then just make it over (fix for IE)
-      if (!collection.length || e.target.nodeName === 'BODY') {
+      if (!collection.length || event.target.nodeName === 'BODY') {
         collection = $();
         this.$editor.removeClass('note-dragover');
       }

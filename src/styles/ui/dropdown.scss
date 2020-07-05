@@ -2,15 +2,6 @@
   position: relative;
 }
 
-.note-color {
-
-  .note-dropdown-toggle {
-    padding-left: 5px;
-    width: 30px;
-  }
-
-}
-
 .note-dropdown-menu {
   display: none;
   position: absolute;
@@ -25,6 +16,7 @@
   padding: 5px;
   min-width: 100px;
   text-align:left;
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
 
   > *:last-child {
     margin-right: 0;

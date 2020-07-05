@@ -10,9 +10,9 @@ export default class Handle {
     this.lang = this.options.langInfo;
 
     this.events = {
-      'summernote.mousedown': (we, e) => {
-        if (this.update(e.target, e)) {
-          e.preventDefault();
+      'summernote.mousedown': (we, event) => {
+        if (this.update(event.target, event)) {
+          event.preventDefault();
         }
       },
       'summernote.keyup summernote.scroll summernote.change summernote.dialog.shown': () => {
@@ -63,8 +63,8 @@ export default class Handle {
 
         this.$document
           .on('mousemove', onMouseMove)
-          .one('mouseup', (e) => {
-            e.preventDefault();
+          .one('mouseup', (event) => {
+            event.preventDefault();
             this.$document.off('mousemove', onMouseMove);
             this.context.invoke('editor.afterCommand');
           });
@@ -76,8 +76,8 @@ export default class Handle {
     });
 
     // Listen for scrolling on the handle overlay.
-    this.$handle.on('wheel', (e) => {
-      e.preventDefault();
+    this.$handle.on('wheel', (event) => {
+      event.preventDefault();
       this.update();
     });
   }

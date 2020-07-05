@@ -742,7 +742,7 @@ export default class Buttons {
   addTablePopoverButtons() {
     this.context.memo('button.addRowUp', () => {
       return this.button({
-        className: 'note-btn-md',
+        className: 'note-btn',
         contents: this.ui.icon(this.options.icons.rowAbove),
         tooltip: this.lang.table.addRowAbove,
         click: this.context.createInvokeHandler('editor.addRow', 'top'),
@@ -750,7 +750,7 @@ export default class Buttons {
     });
     this.context.memo('button.addRowDown', () => {
       return this.button({
-        className: 'note-btn-md',
+        className: 'note-btn',
         contents: this.ui.icon(this.options.icons.rowBelow),
         tooltip: this.lang.table.addRowBelow,
         click: this.context.createInvokeHandler('editor.addRow', 'bottom'),
@@ -758,7 +758,7 @@ export default class Buttons {
     });
     this.context.memo('button.addColLeft', () => {
       return this.button({
-        className: 'note-btn-md',
+        className: 'note-btn',
         contents: this.ui.icon(this.options.icons.colBefore),
         tooltip: this.lang.table.addColLeft,
         click: this.context.createInvokeHandler('editor.addCol', 'left'),
@@ -766,7 +766,7 @@ export default class Buttons {
     });
     this.context.memo('button.addColRight', () => {
       return this.button({
-        className: 'note-btn-md',
+        className: 'note-btn',
         contents: this.ui.icon(this.options.icons.colAfter),
         tooltip: this.lang.table.addColRight,
         click: this.context.createInvokeHandler('editor.addCol', 'right'),
@@ -774,7 +774,7 @@ export default class Buttons {
     });
     this.context.memo('button.deleteRow', () => {
       return this.button({
-        className: 'note-btn-md',
+        className: 'note-btn',
         contents: this.ui.icon(this.options.icons.rowRemove),
         tooltip: this.lang.table.delRow,
         click: this.context.createInvokeHandler('editor.deleteRow'),
@@ -782,7 +782,7 @@ export default class Buttons {
     });
     this.context.memo('button.deleteCol', () => {
       return this.button({
-        className: 'note-btn-md',
+        className: 'note-btn',
         contents: this.ui.icon(this.options.icons.colRemove),
         tooltip: this.lang.table.delCol,
         click: this.context.createInvokeHandler('editor.deleteCol'),
@@ -790,7 +790,7 @@ export default class Buttons {
     });
     this.context.memo('button.deleteTable', () => {
       return this.button({
-        className: 'note-btn-md',
+        className: 'note-btn',
         contents: this.ui.icon(this.options.icons.trash),
         tooltip: this.lang.table.delTable,
         click: this.context.createInvokeHandler('editor.deleteTable'),

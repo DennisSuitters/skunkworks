@@ -57,25 +57,25 @@ class TooltipUI {
     const tooltipWidth = $tooltip.outerWidth();
     const tooltipHeight = $tooltip.outerHeight();
 
-    if (placement === 'bottom') {
-      $tooltip.css({
-        top: offset.top + nodeHeight,
-        left: offset.left + (nodeWidth / 2 - tooltipWidth / 2),
-      });
-    } else if (placement === 'top') {
+    if (placement === 'top') {
       $tooltip.css({
         top: offset.top - tooltipHeight,
+        left: offset.left + (nodeWidth / 2 - tooltipWidth / 2),
+      });
+    } else if (placement === 'right') {
+      $tooltip.css({
+        top: offset.top + (nodeHeight / 2 - tooltipHeight / 2),
+        left: offset.left + nodeWidth,
+      });
+    } else if (placement === 'bottom') {
+      $tooltip.css({
+        top: offset.top + nodeHeight,
         left: offset.left + (nodeWidth / 2 - tooltipWidth / 2),
       });
     } else if (placement === 'left') {
       $tooltip.css({
         top: offset.top + (nodeHeight / 2 - tooltipHeight / 2),
         left: offset.left - tooltipWidth,
-      });
-    } else if (placement === 'right') {
-      $tooltip.css({
-        top: offset.top + (nodeHeight / 2 - tooltipHeight / 2),
-        left: offset.left + nodeWidth,
       });
     }
 

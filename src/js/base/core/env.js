@@ -35,21 +35,14 @@ const isMSIE = /MSIE|Trident/i.test(userAgent);
 let browserVersion;
 if (isMSIE) {
   let matches = /MSIE (\d+[.]\d+)/.exec(userAgent);
-  if (matches) {
-    browserVersion = parseFloat(matches[1]);
-  }
+  if (matches) browserVersion = parseFloat(matches[1]);
   matches = /Trident\/.*rv:([0-9]{1,}[.0-9]{0,})/.exec(userAgent);
-  if (matches) {
-    browserVersion = parseFloat(matches[1]);
-  }
+  if (matches) browserVersion = parseFloat(matches[1]);
 }
 
 const isEdge = /Edge\/\d+/.test(userAgent);
 
-const isSupportTouch =
-  (('ontouchstart' in window) ||
-   (navigator.MaxTouchPoints > 0) ||
-   (navigator.msMaxTouchPoints > 0));
+const isSupportTouch = (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0));
 
 // [workaround] IE doesn't have input events for contentEditable
 // - see: https://goo.gl/4bfIvA

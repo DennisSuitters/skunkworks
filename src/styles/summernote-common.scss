@@ -398,10 +398,11 @@
 
       a i {
         visibility: hidden;
-        color: deepskyblue;
+        color: var(--note-dropdown-checked);
       }
 
-      a.note-checked i {
+      a.note-checked i,
+      a.checked i {
         visibility: visible;
       }
 
@@ -590,7 +591,8 @@
         display: block !important;
         padding: 3px;
 
-        &.note-active,
+        &.note-active
+        &.active,
         &:hover {
           display: block;
           clear: both;
