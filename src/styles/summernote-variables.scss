@@ -28,8 +28,8 @@
   --note-codeable-background-color: #222;
 
   --note-dropzone-color: #fff;
-  --note-dropzone-background-color: lightskyblue;
-  --note-dropzone-background-color-active: skyblue;
+  --note-dropzone-background-color: #0d6efd;
+  --note-dropzone-background-color-active: #025ce2;
 
   --note-padding-base-x: 10px;
   --note-padding-base-y: 5px;
@@ -57,22 +57,25 @@
 
   --note-btn-font-weight: 400;
   --note-btn-background-color: #fff;
-  --note-btn-background-primary-color: #fa6362;
-  --note-btn-background-primary-color-hover: #fa6362;
-  --note-btn-color: #333;
-  --note-btn-color-hover: #333;
+  --note-btn-color: #000;
+  --note-btn-color-hover: #000;
   --note-btn-color-active: #333;
-  --note-btn-primary-color: #fff;
-  --note-btn-primary-color-hover: #fff;
   --note-btn-border-width: 1px;
   --note-btn-border-style: solid;
   --note-btn-border-color: #dae0e5;
   --note-btn-border-color-hover: #dae0e5;
   --note-btn-border-color-active: #dae0e5;
   --note-btn-border-radius: 3px;
-  --note-btn-background-color: #fff;
-  --note-btn-background-color-hover: #ebebeb;
-  --note-btn-background-color-active: #ebebeb;
+  --note-btn-primary-color: #fff;
+  --note-btn-primary-color-hover: #fff;
+  --note-btn-primary-background-color: #0d6efd;
+  --note-btn-primary-background-color-hover: #025ce2;
+  --note-btn-primary-border-color: #0d6efd;
+  --note-btn-primary-border-color-hover: #025ce2;
+  --note-btn-primary-border-color-focus: rgba(49, 132, 253, .5);
+  --note-btn-primary-border-color-disabled: #fff;
+  --note-btn-primary-background-color-disabled: #0d6efd;
+  --note-btn-primary-border-color-disabled: #0d6efd;
 
   --note-form-input-color: #888;
   --note-form-input-placeholder-color: #999;
@@ -128,19 +131,40 @@
   --note-zindex-modal: 1050;
   --note-zindex-modal-backdrop: 1040;
 
-  --note-color-default: #000;
+  --note-color: #000;
   --note-background-color: #f5f5f5;
-  --note-color-muted: #777;
-  --note-color-primary: #286090;
-  --note-background-color-primary: ;
-  --note-color-success: #3c763d;
-  --note-background-color-success: #dff0d8;
-  --note-color-info: #31708f;
-  --note-background-color-info: #d9edf7;
-  --note-color-warning: #8a6d3b;
-  --note-background-color-warning: #fcf8e3;
-  --note-color-danger: #a94442;
-  --note-background-color-danger: #f2dede;
+  --note-border-color: #ddd;
+  --note-muted-color: #777;
+
+  --note-primary-color: #073984;
+  --note-primary-background-color: #cfe2ff;
+  --note-primary-color-link: #042454;
+  --note-primary-border-color: #bbd6fe;
+
+  --note-secondary-color: #383d41;
+  --note-secondary-background-color: #e2e3e5;
+  --note-secondary-link-color: #202326;
+  --note-secondary-border-color: #d6d8db;
+
+  --note-success-color: #155724;
+  --note-success-background-color: #d4edda;
+  --note-success-link-color: #0b2e13;
+  --note-success-border-color: #c3e6cb;
+
+  --note-info-color: #0c5460;
+  --note-info-background-color: #d1ecf1;
+  --note-info-link-color: #062c33;
+  --note-info-border-color: #bee5eb;
+
+  --note-warning-color: #856404;
+  --note-warning-background-color: #fff3cd;
+  --note-warning-link-color: #533f03;
+  --note-warning-border-color: #ffeeba;
+
+  --note-danger-color: #721c24;
+  --note-danger-background-color: #f8d7da;
+  --note-danger-link-color: #491217;
+  --note-danger-border-color: #f5c6cb;
 
 }
 

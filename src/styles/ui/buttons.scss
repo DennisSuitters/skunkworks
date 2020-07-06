@@ -72,16 +72,16 @@
 }
 
 .note-btn-primary {
-  background: var(--note-btn-background-primary-color);
+  background: var(--note-btn-primary-background-color);
   color: var(--note-btn-primary-color);
 
   &:hover,
   &:focus,
   &.note-focus,
   &.focus {
-    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color);
+    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-primary-border-color-hover);
     border-radius: var(--note-btn-border-radius);
-    background: var(--note-btn-background-primary-color-hover);
+    background: var(--note-btn-primary-background-color-hover);
     color: var(--note-btn-primary-color-hover);
     text-decoration: none;
   }

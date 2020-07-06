@@ -20,35 +20,35 @@
 }
 
 .note-status-output .note-text-muted {
-  color: var(--note-color-muted);
+  color: var(--note-muted-color);
 }
 
 .note-status-output .note-text-primary {
-  color: var(--note-color-primary);
+  color: var(--note-primary-color);
 }
 
 .note-status-output .note-text-success {
-  color: var(--note-color-success);
+  color: var(--note-success-color);
 }
 
 .note-status-output .note-text-info {
-  color: var(--note-color-info);
+  color: var(--note-info-color);
 }
 
 .note-status-output .note-text-warning {
-  color: var(--note-color-warning);
+  color: var(--note-warning-color);
 }
 
 .note-status-output .note-text-danger {
-  color: var(--note-color-danger);
+  color: var(--note-danger-color);
 }
 
 .note-alert {
   margin: -7px 0 0 0;
   border-radius: 0;
-  background-color: var(--note-background-color-default);
+  background-color: var(--note-background-color);
   padding: 7px 10px 2px 10px;
-  color: var(--note-color-default);
+  color: var(--note-color);
 }
 
 .note-alert .note-icon {
@@ -56,23 +56,23 @@
 }
 
 .note-alert-success {
-  background-color: var(--note-background-color-success) !important;
-  color: var(--note-color-success) !important;
+  background-color: var(--note-success-background-color) !important;
+  color: var(--note-success-color) !important;
 }
 
 .note-alert-info {
-  background-color: var(--note-background-color-info) !important;
-  color: var(--note-color-info) !important;
+  background-color: var(--note-info-background-color) !important;
+  color: var(--note-info-color) !important;
 }
 
 .note-alert-warning {
-  background-color: var(--note-background-color-warning) !important;
-  color: var(--note-color-warning) !important;
+  background-color: var(--note-warning-background-color) !important;
+  color: var(--note-warning-color) !important;
 }
 
 .note-alert-danger {
-  background-color: var(--note-background-color-danger) !important;
-  color: var(--note-color-danger) !important;
+  background-color: var(--note-danger-background-color) !important;
+  color: var(--note-danger-color) !important;
 }
 
 // statusbar
