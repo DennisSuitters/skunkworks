@@ -3,7 +3,6 @@
   display: none;
   position: absolute;
   z-index: var(--note-zindex-popover);
-  border: var(--note-popover-border-width) var(--note-popover-border-style) var(--note-popover-border-color-fallback);;
   border: var(--note-popover-border-width) var(--note-popover-border-style) var(--note-popover-border-color);
   background: var(--note-popover-background-color);
   font-family: var(--note-font);
@@ -62,7 +61,6 @@
     left: -11px;
     margin-top: -var(--note-popover-arrow-width);
     border-left-width: 0;
-    border-right-color: var(--note-popover-border-color-fallback);
     border-right-color: var(--note-popover-border-color);
 
     &::after {
@@ -80,7 +78,6 @@
     left: 20px;
     margin-left: -var(--note-popover-arrow-width);
     border-top-width: 0;
-    border-bottom-color: var(--note-popover-border-color-fallback);
     border-bottom-color: var(--note-popover-border-color);
 
     &::after {
@@ -98,7 +95,6 @@
     right: -11px;
     margin-top: -var(--note-popover-arrow-width);
     border-right-width: 0;
-    border-left-color: var(--note-popover-border-color-fallback);
     border-left-color: var(--note-popover-border-color);
 
     &::after {
@@ -139,4 +135,15 @@
   min-height: 30px;
   color: var(--note-popover-color);
   text-align: center;
+
+  a {
+    color: var(--note-popover-color-link);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--note-popover-color-link-hover);
+    text-decoration: underline;
+  }
+
 }

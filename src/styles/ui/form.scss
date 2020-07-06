@@ -10,7 +10,6 @@
   display: block;
   margin-bottom: 10px;
   width: 100%;
-  color: #42515f;
   font-size: 16px;
   font-weight: 700;
 }
@@ -20,11 +19,17 @@
       box-sizing: border-box;
   display: block;
   outline: 0;
-  border: 1px solid #ededef;
-  background: #fff;
+  border: var(--note-form-input-border-width) var(--note-form-input-border-style) var(--note-form-input-border-color);
+  background-color: var(--note-form-input-background-color);
   padding: 6px 4px;
   width: 100%;
   font-size: 14px;
+  border-radius: var(--note-border-radius);
+
+  &:focus {
+    border: var(--note-form-input-border-width) var(--note-form-input-border-style) var(--note-form-input-border-focus);
+  }
+
 }
 
 .note-input::-webkit-input-placeholder {

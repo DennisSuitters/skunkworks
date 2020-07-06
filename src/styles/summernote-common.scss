@@ -316,7 +316,7 @@
 
         .note-palette-title {
           margin: 2px 7px;
-          border-bottom: 1px solid #eee;
+          border-bottom: 1px solid var(--note-border-color);
           font-size: 12px;
           text-align: center;
         }
@@ -326,12 +326,17 @@
           width: 100%;
           margin: 3px;
           padding: 0 3px;
-          border-radius: 5px;
+          border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-primary-border-color);
+          border-radius: var(--note-btn-border-radius);
+          background-color: var(--note-btn-primary-background-color);
+          color: var(--note-btn-primary-color);
           font-size: 11px;
           cursor: pointer;
 
           &:hover {
-            background: #eee;
+            border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-primary-border-color-hover);
+            background-color: var(--note-btn-primary-background-color-hover);
+            color: var(--note-btn-primary-color-hover);
           }
 
         }

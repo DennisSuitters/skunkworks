@@ -90,7 +90,7 @@
   }
 
   .note-powered a {
-    color: #777;
+    color: var(--note-muted-color);
     font-size: 12px;
     text-decoration: none;
   }
@@ -107,7 +107,7 @@
 
     .note-icon-bar {
       margin: 1px auto;
-      border-top: var(--note-toolbar-border-width) var(--note-toolbar-border-style) var(--note-status-border-color);
+      border-top: var(--note-toolbar-border-width) var(--note-toolbar-border-style) var(--note-status-resize-icon-color);
       width: 20px;
     }
 

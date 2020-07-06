@@ -119,9 +119,10 @@ button.note-close {
 .note-close {
   float: right;
   opacity: .2;
-  color: #000;
+  color: var(--note-close-color);
   font-size: 21px;
   line-height: 1;
+  opacity: .5;
 }
 
 .note-close:hover {

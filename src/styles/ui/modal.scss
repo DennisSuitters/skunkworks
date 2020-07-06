@@ -27,6 +27,7 @@
   position: relative;
   margin: 30px 20px;
   outline: 0;
+  color: var(--note-modal-color);
   box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
   border: 1px solid var(--note-modal-border-color);
   border-radius: var(--note-modal-border-radius);
@@ -36,7 +37,7 @@
 }
 
 .note-modal-header {
-  border: 1px solid #ededef;
+  border: var(--note-modal-header-border-color);
   padding: 10px 20px;
 }
 
@@ -82,13 +83,13 @@
 }
 
 .note-modal-footer a {
-  color: #337ab7;
+  color: var(--note-modal-color-link);
   text-decoration: none;
 }
 
 .note-modal-footer a:hover,
 .note-modal-footer a:focus {
-  color: #23527c;
+  color: var(--note-modal-color-link-hover);
   text-decoration: underline;
 }
 
@@ -98,7 +99,7 @@
 
 .note-modal-title {
   margin: 0;
-  color: #42515f;
+  color: var(--note-modal-color);
   font-size: 20px;
   line-height: 1.4;
 }
@@ -159,13 +160,13 @@
     display: block;
     background-color: transparent;
     padding: .5rem 1rem;
-    color: #007bff;
+    color: var(--note-modal-color-link);
     text-decoration: none;
   }
 
   .note-nav-link:focus,
   .note-nav-link:hover {
-    color: #0056b3;
+    color: var(--note-modal-color-link-hover);
     text-decoration: none;
   }
 
