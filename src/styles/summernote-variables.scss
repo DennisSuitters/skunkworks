@@ -79,6 +79,16 @@
   --note-btn-primary-background-color-disabled: #0d6efd;
   --note-btn-primary-border-color-disabled: #0d6efd;
 
+  --note-txt-line-height: 19.875px;
+  --note-txt-border-width: 1px;
+  --note-txt-border-style: solid;
+  --note-txt-border-color: #dae0e5;
+  --note-txt-border-radius: 3px;
+  --note-txt-background-color: #fff;
+  --note-txt-color-active: #333;
+  --note-txt-primary-color: #fff;
+  --note-txt-primary-background-color: #0d6efd;
+
   --note-form-input-color: #888;
   --note-form-input-placeholder-color: #999;
   --note-form-input-background-color: #fff;
@@ -220,6 +230,12 @@
     --note-btn-primary-border-color-disabled: #fff;
     --note-btn-primary-background-color-disabled: #0d6efd;
     --note-btn-primary-border-color-disabled: #0d6efd;
+
+    --note-txt-border-color: #444;
+    --note-txt-background-color: #444;
+    --note-txt-color-active: #fff;
+    --note-txt-primary-color: #fff;
+    --note-txt-primary-background-color: #0d6efd;
 
     --note-form-input-color: #888;
     --note-form-input-placeholder-color: #999;

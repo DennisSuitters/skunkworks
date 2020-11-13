@@ -18,7 +18,7 @@
   "main": "dist/summernote.js",
   "scripts": {
     "dev": "eslint config && webpack-dev-server --config=./config/webpack.config.dev.js --open --progress",
-    "prebuild": "node ./config/build-fonts.js",
+    "prebuild": "node --trace-warnings ./config/build-fonts.js",
     "build": "webpack --mode=production --config=./config/webpack.config.production.js --progress",
     "lint": "eslint src/js plugin lang test config",
     "test": "karma start karma.conf.js --single-run",
@@ -98,6 +98,5 @@
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.10.3",
     "zip-webpack-plugin": "^3.0.0"
-  },
-  "dependencies": {}
+  }
 }

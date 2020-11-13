@@ -41,6 +41,14 @@ export default class Buttons {
     return this.ui.button(o);
   }
 
+  text(o) {
+    if (!this.options.tooltip && o.tooltip) {
+      delete o.tooltip;
+    }
+    o.container = this.options.container;
+    return this.ui.text(o);
+  }
+
   initialize() {
     this.addToolbarButtons();
     this.addImagePopoverButtons();
@@ -608,6 +616,32 @@ export default class Buttons {
       }).render();
     });
 
+    this.context.memo('button.zoomIn', () => {
+      return this.button({
+        className: 'note-btn-zoom-in',
+        contents: this.ui.icon(this.options.icons.zoomIn),
+        tooltip: this.lang.zoom.in,
+        click: this.context.createInvokeHandler('zoom.in'),
+      }).render();
+    });
+
+    this.context.memo('text.zoomValue', () => {
+      return this.text({
+        className: 'note-txt-zoom-value',
+        contents: '100%',
+        tooltip: this.lang.zoom.value,
+      }).render();
+    });
+
+    this.context.memo('button.zoomOut', () => {
+      return this.button({
+        className: 'note-btn-zoom-out',
+        contents: this.ui.icon(this.options.icons.zoomOut),
+        tooltip: this.lang.zoom.out,
+        click: this.context.createInvokeHandler('zoom.out'),
+      }).render();
+    });
+
     this.context.memo('button.codeview', () => {
       return this.button({
         className: 'note-btn-codeview note-codeview-keep',
@@ -812,6 +846,10 @@ export default class Buttons {
         const btn = this.context.memo('button.' + buttons[idx]);
         if (btn) {
           $group.append(typeof btn === 'function' ? btn(this.context) : btn);
+        }
+        const txt = this.context.memo('text.' + buttons[idx]);
+        if (txt) {
+          $group.append(typeof txt === 'function' ? txt(this.context) : txt);
         }
       }
       $group.appendTo($container);

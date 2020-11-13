@@ -26,6 +26,7 @@ import VideoDialog from './module/VideoDialog';
 import HelpDialog from './module/HelpDialog';
 import AirPopover from './module/AirPopover';
 import HintPopover from './module/HintPopover';
+import Zoom from './module/Zoom';
 
 $.summernote = $.extend($.summernote, {
   version: '@@VERSION@@',
@@ -63,6 +64,7 @@ $.summernote = $.extend($.summernote, {
       'videoDialog': VideoDialog,
       'helpDialog': HelpDialog,
       'airPopover': AirPopover,
+      'zoom': Zoom,
     },
 
     buttons: {},
@@ -83,7 +85,7 @@ $.summernote = $.extend($.summernote, {
       ['para', ['ul', 'ol', 'paragraph']],
       ['table', ['table']],
       ['insert', ['link', 'picture', 'video']],
-      ['view', ['fullscreen', 'codeview', 'help']],
+      ['view', ['fullscreen', 'zoomIn', 'zoomValue', 'zoomOut', 'codeview', 'help']],
     ],
 
     // popover
@@ -359,6 +361,8 @@ $.summernote = $.extend($.summernote, {
       'undo': 'note-icon-undo',
       'unorderedlist': 'note-icon-unorderedlist',
       'video': 'note-icon-video',
+      'zoomIn': 'note-icon-add',
+      'zoomOut': 'note-icon-remove',
     },
   },
 });

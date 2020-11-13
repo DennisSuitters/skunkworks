@@ -117,15 +117,20 @@
     overflow: hidden;
 
     // editable
-    .note-editable {
-      word-wrap: break-word;
-      padding: 10px;
+    .note-viewport-area {
       overflow: auto;
+      
+      .note-editable {
+        word-wrap: break-word;
+        padding: 10px;
+        transform-origin: left top;
+        transform: scale(1);
 
-      &[contenteditable="false"] {
-        background-color: var(--note-editable-background-color);
+        &[contenteditable="false"] {
+          background-color: var(--note-editable-background-color);
+        }
+
       }
-
     }
 
     // codeable

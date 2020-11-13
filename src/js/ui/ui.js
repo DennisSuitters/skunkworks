@@ -6,6 +6,7 @@ import ModalUI from './ModalUI';
 
 const editor = renderer.create('<div class="note-editor note-frame"></div>');
 const toolbar = renderer.create('<div class="note-toolbar" role="toolbar"></div>');
+const viewportArea = renderer.create('<div class="note-viewport-area"></div>');
 const editingArea = renderer.create('<div class="note-editing-area"></div>');
 const codable = renderer.create('<textarea class="note-codable" aria-multiline="true"></div>');
 const editable = renderer.create('<div class="note-editable" contentEditable="true" role="textbox" aria-multiline="true"></div>');
@@ -53,6 +54,23 @@ const button = renderer.create('<button type="button" class="note-btn" tabindex=
 
   if (options && options.codeviewKeepButton) {
     $node.addClass('note-codeview-keep');
+  }
+});
+
+const text = renderer.create('<div class="note-txt">', function($node, options) {
+  if (options && options.tooltip) {
+    $node.attr({
+      'aria-label': options.tooltip,
+    });
+    $node.data('_lite_tooltip', new TooltipUI($node, {
+      title: options.tooltip,
+      container: options.container,
+    })).on('click', (e) => {
+      $(e.currentTarget).data('_lite_tooltip').hide();
+    });
+  }
+  if (options.contents) {
+    $node.html(options.contents);
   }
 });
 
@@ -236,6 +254,7 @@ const ui = function(options) {
     editor: editor,
     toolbar: toolbar,
     editingArea: editingArea,
+    viewportArea: viewportArea,
     codable: codable,
     editable: editable,
     statusbar: statusbar,
@@ -243,6 +262,7 @@ const ui = function(options) {
     airEditable: airEditable,
     buttonGroup: buttonGroup,
     button: button,
+    text: text,
     dropdown: dropdown,
     dropdownCheck: dropdownCheck,
     dropdownButton: dropdownButton,
@@ -321,7 +341,9 @@ const ui = function(options) {
         ? editor([
           editingArea([
             codable(),
-            editable(),
+            viewportArea([
+              editable(),
+            ]),
           ]),
           toolbar(),
           statusbar(),
@@ -330,7 +352,9 @@ const ui = function(options) {
           toolbar(),
           editingArea([
             codable(),
-            editable(),
+            viewportArea([
+              editable(),
+            ]),
           ]),
           statusbar(),
         ])
@@ -342,6 +366,7 @@ const ui = function(options) {
         note: $note,
         editor: $editor,
         toolbar: $editor.find('.note-toolbar'),
+        viewportArea: $editor.find('note-viewport-area'),
         editingArea: $editor.find('.note-editing-area'),
         editable: $editor.find('.note-editable'),
         codable: $editor.find('.note-codable'),

@@ -84,6 +84,11 @@ $.extend($.summernote.lang, {
       h5: 'Header 5',
       h6: 'Header 6',
     },
+    zoom: {
+      in: 'Zoom in',
+      value: 'Zoom value',
+      out: 'Zoom out',
+    },
     lists: {
       unordered: 'Unordered list',
       ordered: 'Ordered list',

@@ -55,7 +55,7 @@ export default class HintPopover {
     });
 
     this.$popover.on('mousedown', (event) => {
-      e.preventDefault();
+      event.preventDefault();
     });
   }
 
