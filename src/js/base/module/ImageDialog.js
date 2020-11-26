@@ -18,7 +18,7 @@ export default class ImageDialog {
       const unit = Math.floor(Math.log(this.options.maximumImageFileSize) / Math.log(1024));
       const readableSize = (this.options.maximumImageFileSize / Math.pow(1024, unit)).toFixed(2) * 1 +
                          ' ' + ' KMGTP'[unit] + 'B';
-      imageLimitation = `<small>${this.lang.image.maximumFileSize + ' : ' + readableSize}</small>`;
+      imageLimitation = `<small>` + this.lang.image.maximumFileSize + `' : '` + readableSize + `</small>`;
     }
 
     const $container = this.options.dialogsInBody ? this.$body : this.options.container;
@@ -26,7 +26,7 @@ export default class ImageDialog {
       '<div class="note-form-group note-group-select-from-files">',
         '<label for="note-dialog-image-file-' + this.options.id + '" class="note-form-label">' + this.lang.image.selectFromFiles + '</label>',
         '<input id="note-dialog-image-file-' + this.options.id + '" class="note-image-input note-form-control note-input" ',
-        ' type="file" name="files" accept="image/*" multiple="multiple">',
+        ' type="file" name="files" accept="' + this.options.acceptImageFileTypes + '" multiple="multiple">',
         imageLimitation,
       '</div>',
       '<div class="note-group-image-url">',
