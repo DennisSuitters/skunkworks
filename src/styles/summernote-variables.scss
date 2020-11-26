@@ -1,4 +1,4 @@
-.note-editor {
+:root {
   --note-font: sans-serif;
   --note-font-size: 14px;
   --note-font-size-large: calc(var(--note-font-size) * 1.25);
@@ -189,7 +189,7 @@
 
 
 @media (prefers-color-scheme: dark) {
-  .note-editor {
+  :root {
     --note-box-shadow-color: rgba(0, 0, 0, .1);
 
     --note-editable-color: #000;
