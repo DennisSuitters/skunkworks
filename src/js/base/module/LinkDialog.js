@@ -20,12 +20,12 @@ export default class LinkDialog {
     const $container = this.options.dialogsInBody ? this.$body : this.options.container;
     const body = [
       '<div class="note-form-group">',
-        `<label for="note-dialog-link-txt-${this.options.id}" class="note-form-label">${this.lang.link.textToDisplay}</label>`,
-        `<input id="note-dialog-link-txt-${this.options.id}" class="note-link-text note-form-control note-input" type="text">`,
+        `<label for="note-dialog-link-txt-` + this.options.id + `" class="note-form-label">` + this.lang.link.textToDisplay + `</label>`,
+        `<input id="note-dialog-link-txt-` + this.options.id + `" class="note-link-text note-form-control note-input" type="text">`,
       '</div>',
       '<div class="note-form-group">',
-        `<label for="note-dialog-link-url-${this.options.id}" class="note-form-label">${this.lang.link.url}</label>`,
-        `<input id="note-dialog-link-url-${this.options.id}" class="note-link-url note-form-control note-input" type="text" value="http://">`,
+        `<label for="note-dialog-link-url-` + this.options.id + `" class="note-form-label">` + this.lang.link.url + `</label>`,
+        `<input id="note-dialog-link-url-` + this.options.id + `" class="note-link-url note-form-control note-input" type="text" value="http://">`,
       '</div>',
       !this.options.disableLinkTarget
         ? $('<div/>').append(this.ui.checkbox({
@@ -43,8 +43,7 @@ export default class LinkDialog {
       }).render()).html(),
     ].join('');
 
-    const buttonClass = 'note-btn note-btn-primary note-link-btn';
-    const footer = `<input type="button" href="#" class="${buttonClass}" value="${this.lang.link.insert}" disabled>`;
+    const footer = `<input type="button" href="#" class="note-btn note-btn-primary note-link-btn" value="` + this.lang.link.insert + `" disabled>`;
 
     this.$dialog = this.ui.dialog({
       className: 'note-link-dialog',

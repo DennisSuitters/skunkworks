@@ -1,6 +1,5 @@
 import $ from 'jquery';
 import renderer from '../base/renderer';
-import TooltipUI from './TooltipUI';
 import DropdownUI from './DropdownUI';
 import ModalUI from './ModalUI';
 
@@ -17,7 +16,6 @@ const statusbar = renderer.create([
       '<div class="note-icon-bar"></div>',
       '<div class="note-icon-bar"></div>',
       '<div class="note-icon-bar"></div>',
-      '<div class="note-powered"><a href="https://summernote.org/">Powered by Summernote</a></div>',
     '</div>',
   '</div>',
 ].join(''));
@@ -31,17 +29,15 @@ const airEditable = renderer.create([
 const buttonGroup = renderer.create('<div class="note-btn-group">');
 const button = renderer.create('<button type="button" class="note-btn" tabindex="-1">', function($node, options) {
   // set button type
-  if (options && options.tooltip) {
-    $node.attr({
-      'aria-label': options.tooltip,
-    });
-    $node.data('_lite_tooltip', new TooltipUI($node, {
-      title: options.tooltip,
-      container: options.container,
-    })).on('click', (e) => {
-      $(e.currentTarget).data('_lite_tooltip').hide();
-    });
-  }
+
+  $node.attr({
+    'aria-label': options.tooltip,
+  });
+
+  $node.attr({
+    'data-tooltip': options.placement,
+  });
+
   if (options.contents) {
     $node.html(options.contents);
   }
@@ -58,17 +54,15 @@ const button = renderer.create('<button type="button" class="note-btn" tabindex=
 });
 
 const text = renderer.create('<div class="note-txt">', function($node, options) {
-  if (options && options.tooltip) {
-    $node.attr({
-      'aria-label': options.tooltip,
-    });
-    $node.data('_lite_tooltip', new TooltipUI($node, {
-      title: options.tooltip,
-      container: options.container,
-    })).on('click', (e) => {
-      $(e.currentTarget).data('_lite_tooltip').hide();
-    });
-  }
+
+  $node.attr({
+    'aria-label': options.tooltip,
+  });
+
+  $node.attr({
+    'data-tooltip': options.placement,
+  });
+
   if (options.contents) {
     $node.html(options.contents);
   }
@@ -99,6 +93,7 @@ const dropdown = renderer.create('<div class="note-dropdown-menu" role="list">',
       options.itemClick(event, item, value);
     }
   });
+
   if (options && options.codeviewKeepButton) {
     $node.addClass('note-codeview-keep');
   }
@@ -128,6 +123,7 @@ const dropdownCheck = renderer.create('<div class="note-dropdown-menu note-check
       options.itemClick(event, item, value);
     }
   });
+
   if (options && options.codeviewKeepButton) {
     $node.addClass('note-codeview-keep');
   }
@@ -157,6 +153,7 @@ const palette = renderer.create('<div class="note-color-palette"></div>', functi
   const contents = [];
   for (let row = 0, rowSize = options.colors.length; row < rowSize; row++) {
     const eventName = options.eventName;
+    const tipPlacement = options.placement;
     const colors = options.colors[row];
     const colorsName = options.colorsName[row];
     const buttons = [];
@@ -168,7 +165,7 @@ const palette = renderer.create('<div class="note-color-palette"></div>', functi
         'style="background-color:', color, '" ',
         'data-event="', eventName, '" ',
         'data-value="', color, '" ',
-        'data-title="', colorName, '" ',
+        'data-tooltip="', tipPlacement, '"',
         'aria-label="', colorName, '" ',
         'data-toggle="button" tabindex="-1"></button>',
       ].join(''));
@@ -177,11 +174,6 @@ const palette = renderer.create('<div class="note-color-palette"></div>', functi
   }
   $node.html(contents.join(''));
 
-  $node.find('.note-color-btn').each(function() {
-    $(this).data('_lite_tooltip', new TooltipUI($(this), {
-      container: options.container,
-    }));
-  });
 });
 
 const colorDropdownButton = function() {
@@ -197,7 +189,10 @@ const dialog = renderer.create('<div class="note-modal" aria-hidden="false" tabi
   });
   $node.html([
     '<div class="note-modal-content">',
-      (options.title ? '<div class="note-modal-header"><button type="button" class="note-close" aria-label="Close" aria-hidden="true"><i class="note-icon-close"></i></button><h4 class="note-modal-title">' + options.title + '</h4></div>' : ''),
+      '<div class="note-modal-header">',
+        '<h4 class="note-modal-title">' + options.title + '</h4>',
+        '<button type="button" class="note-close" data-tooltip="' + options.placement + '" aria-label="Close" aria-hidden="true"><i class="note-icon-close"></i></button>',
+      '</div>',
       '<div class="note-modal-body">' + options.body + '</div>',
       (options.footer ? '<div class="note-modal-footer">' + options.footer + '</div>' : ''),
     '</div>',

@@ -85,7 +85,7 @@ $.summernote = $.extend($.summernote, {
       ['para', ['ul', 'ol', 'paragraph']],
       ['table', ['table']],
       ['insert', ['link', 'picture', 'video']],
-      ['view', ['fullscreen', 'zoomIn', 'zoomValue', 'zoomOut', 'codeview', 'help']],
+      ['view', ['fullscreen', 'zoomOut', 'zoomValue', 'zoomIn', 'codeview', 'help']],
     ],
 
     // popover
@@ -130,6 +130,7 @@ $.summernote = $.extend($.summernote, {
     shortcuts: true,
     textareaAutoSync: true,
     tooltip: 'auto',
+    placement: 'top', // none|top|right|bottom|left
     container: null,
     maxTextLength: 0,
     blockquoteBreakingLevel: 2,

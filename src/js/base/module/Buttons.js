@@ -34,17 +34,11 @@ export default class Buttons {
   }
 
   button(o) {
-    if (!this.options.tooltip && o.tooltip) {
-      delete o.tooltip;
-    }
     o.container = this.options.container;
     return this.ui.button(o);
   }
 
   text(o) {
-    if (!this.options.tooltip && o.tooltip) {
-      delete o.tooltip;
-    }
     o.container = this.options.container;
     return this.ui.text(o);
   }
@@ -82,6 +76,7 @@ export default class Buttons {
           className: 'note-current-color-button',
           contents: this.ui.icon(this.options.icons.font + ' note-recent-color'),
           tooltip: tooltip,
+          placement: this.options.placement,
           click: (e) => {
             const $button = $(e.currentTarget);
             if (backColor && foreColor) {
@@ -117,6 +112,7 @@ export default class Buttons {
           className: 'dropdown-toggle',
           contents: this.ui.dropdownButtonContents('', this.options),
           tooltip: this.lang.color.more,
+          placement: this.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -167,6 +163,7 @@ export default class Buttons {
                 eventName: $holder.data('event'),
                 container: this.options.container,
                 tooltip: this.options.tooltip,
+                placement: this.options.placement,
               }).render());
             });
             /* TODO: do we have to record recent custom colors within cookies? */
@@ -181,6 +178,7 @@ export default class Buttons {
                 eventName: $holder.data('event'),
                 container: this.options.container,
                 tooltip: this.options.tooltip,
+                placement: this.options.placement,
               }).render());
             });
             $dropdown.find('input[type=color]').each((idx, item) => {
@@ -244,6 +242,7 @@ export default class Buttons {
             this.ui.icon(this.options.icons.magic), this.options
           ),
           tooltip: this.lang.style.style,
+          placement: this.options.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -281,6 +280,7 @@ export default class Buttons {
           className: 'note-btn-style-' + item,
           contents: '<div data-value="' + item + '">' + item.toUpperCase() + '</div>',
           tooltip: this.lang.style[item],
+          placement: this.options.placement,
           click: this.context.createInvokeHandler('editor.formatBlock'),
         }).render();
       });
@@ -291,6 +291,7 @@ export default class Buttons {
         className: 'note-btn-bold',
         contents: this.ui.icon(this.options.icons.bold),
         tooltip: this.lang.font.bold + this.representShortcut('bold'),
+        placement: this.options.placement,
         click: this.context.createInvokeHandlerAndUpdateState('editor.bold'),
       }).render();
     });
@@ -300,6 +301,7 @@ export default class Buttons {
         className: 'note-btn-italic',
         contents: this.ui.icon(this.options.icons.italic),
         tooltip: this.lang.font.italic + this.representShortcut('italic'),
+        placement: this.options.placement,
         click: this.context.createInvokeHandlerAndUpdateState('editor.italic'),
       }).render();
     });
@@ -309,6 +311,7 @@ export default class Buttons {
         className: 'note-btn-underline',
         contents: this.ui.icon(this.options.icons.underline),
         tooltip: this.lang.font.underline + this.representShortcut('underline'),
+        placement: this.options.placement,
         click: this.context.createInvokeHandlerAndUpdateState('editor.underline'),
       }).render();
     });
@@ -317,6 +320,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.eraser),
         tooltip: this.lang.font.clear + this.representShortcut('removeFormat'),
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.removeFormat'),
       }).render();
     });
@@ -326,6 +330,7 @@ export default class Buttons {
         className: 'note-btn-strikethrough',
         contents: this.ui.icon(this.options.icons.strikethrough),
         tooltip: this.lang.font.strikethrough + this.representShortcut('strikethrough'),
+        placement: this.options.placement,
         click: this.context.createInvokeHandlerAndUpdateState('editor.strikethrough'),
       }).render();
     });
@@ -335,6 +340,7 @@ export default class Buttons {
         className: 'note-btn-superscript',
         contents: this.ui.icon(this.options.icons.superscript),
         tooltip: this.lang.font.superscript,
+        placement: this.options.placement,
         click: this.context.createInvokeHandlerAndUpdateState('editor.superscript'),
       }).render();
     });
@@ -344,6 +350,7 @@ export default class Buttons {
         className: 'note-btn-subscript',
         contents: this.ui.icon(this.options.icons.subscript),
         tooltip: this.lang.font.subscript,
+        placement: this.options.placement,
         click: this.context.createInvokeHandlerAndUpdateState('editor.subscript'),
       }).render();
     });
@@ -370,6 +377,7 @@ export default class Buttons {
             '<span class="note-current-fontname"></span>', this.options
           ),
           tooltip: this.lang.font.name,
+          placement: this.options.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -393,6 +401,7 @@ export default class Buttons {
           className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents('<span class="note-current-fontsize"></span>', this.options),
           tooltip: this.lang.font.size,
+          placement: this.options.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -413,6 +422,7 @@ export default class Buttons {
           className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents('<span class="note-current-fontsizeunit"></span>', this.options),
           tooltip: this.lang.font.sizeunit,
+          placement: this.options.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -443,6 +453,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.unorderedlist),
         tooltip: this.lang.lists.unordered + this.representShortcut('insertUnorderedList'),
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.insertUnorderedList'),
       }).render();
     });
@@ -451,6 +462,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.orderedlist),
         tooltip: this.lang.lists.ordered + this.representShortcut('insertOrderedList'),
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.insertOrderedList'),
       }).render();
     });
@@ -458,36 +470,42 @@ export default class Buttons {
     const justifyLeft = this.button({
       contents: this.ui.icon(this.options.icons.alignLeft),
       tooltip: this.lang.paragraph.left + this.representShortcut('justifyLeft'),
+      placement: this.options.placement,
       click: this.context.createInvokeHandler('editor.justifyLeft'),
     });
 
     const justifyCenter = this.button({
       contents: this.ui.icon(this.options.icons.alignCenter),
       tooltip: this.lang.paragraph.center + this.representShortcut('justifyCenter'),
+      placement: this.options.placement,
       click: this.context.createInvokeHandler('editor.justifyCenter'),
     });
 
     const justifyRight = this.button({
       contents: this.ui.icon(this.options.icons.alignRight),
       tooltip: this.lang.paragraph.right + this.representShortcut('justifyRight'),
+      placement: this.options.placement,
       click: this.context.createInvokeHandler('editor.justifyRight'),
     });
 
     const justifyFull = this.button({
       contents: this.ui.icon(this.options.icons.alignJustify),
       tooltip: this.lang.paragraph.justify + this.representShortcut('justifyFull'),
+      placement: this.options.placement,
       click: this.context.createInvokeHandler('editor.justifyFull'),
     });
 
     const outdent = this.button({
       contents: this.ui.icon(this.options.icons.outdent),
       tooltip: this.lang.paragraph.outdent + this.representShortcut('outdent'),
+      placement: this.options.placement,
       click: this.context.createInvokeHandler('editor.outdent'),
     });
 
     const indent = this.button({
       contents: this.ui.icon(this.options.icons.indent),
       tooltip: this.lang.paragraph.indent + this.representShortcut('indent'),
+      placement: this.options.placement,
       click: this.context.createInvokeHandler('editor.indent'),
     });
 
@@ -504,6 +522,7 @@ export default class Buttons {
           className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents(this.ui.icon(this.options.icons.alignLeft), this.options),
           tooltip: this.lang.paragraph.paragraph,
+          placement: this.options.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -527,6 +546,7 @@ export default class Buttons {
           className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents(this.ui.icon(this.options.icons.textHeight), this.options),
           tooltip: this.lang.font.height,
+          placement: this.options.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -536,6 +556,7 @@ export default class Buttons {
           checkClassName: this.options.icons.menuCheck,
           className: 'note-dropdown-line-height',
           title: this.lang.font.height,
+          placement: this.options.placement,
           click: this.context.createInvokeHandler('editor.lineHeight'),
         }),
       ]).render();
@@ -547,6 +568,7 @@ export default class Buttons {
           className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents(this.ui.icon(this.options.icons.table), this.options),
           tooltip: this.lang.table.table,
+          placement: this.options.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -579,6 +601,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.link),
         tooltip: this.lang.link.link + this.representShortcut('linkDialog.show'),
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('linkDialog.show'),
       }).render();
     });
@@ -587,6 +610,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.picture),
         tooltip: this.lang.image.image,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('imageDialog.show'),
       }).render();
     });
@@ -595,6 +619,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.video),
         tooltip: this.lang.video.video,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('videoDialog.show'),
       }).render();
     });
@@ -603,6 +628,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.minus),
         tooltip: this.lang.hr.insert + this.representShortcut('insertHorizontalRule'),
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.insertHorizontalRule'),
       }).render();
     });
@@ -612,6 +638,7 @@ export default class Buttons {
         className: 'note-btn-fullscreen note-codeview-keep',
         contents: this.ui.icon(this.options.icons.arrowsAlt),
         tooltip: this.lang.options.fullscreen,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('fullscreen.toggle'),
       }).render();
     });
@@ -621,6 +648,7 @@ export default class Buttons {
         className: 'note-btn-zoom-in',
         contents: this.ui.icon(this.options.icons.zoomIn),
         tooltip: this.lang.zoom.in,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('zoom.in'),
       }).render();
     });
@@ -630,6 +658,7 @@ export default class Buttons {
         className: 'note-txt-zoom-value',
         contents: '100%',
         tooltip: this.lang.zoom.value,
+        placement: this.options.placement,
       }).render();
     });
 
@@ -638,6 +667,7 @@ export default class Buttons {
         className: 'note-btn-zoom-out',
         contents: this.ui.icon(this.options.icons.zoomOut),
         tooltip: this.lang.zoom.out,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('zoom.out'),
       }).render();
     });
@@ -647,6 +677,7 @@ export default class Buttons {
         className: 'note-btn-codeview note-codeview-keep',
         contents: this.ui.icon(this.options.icons.code),
         tooltip: this.lang.options.codeview,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('codeview.toggle'),
       }).render();
     });
@@ -655,6 +686,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.redo),
         tooltip: this.lang.history.redo + this.representShortcut('redo'),
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.redo'),
       }).render();
     });
@@ -663,6 +695,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.undo),
         tooltip: this.lang.history.undo + this.representShortcut('undo'),
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.undo'),
       }).render();
     });
@@ -671,6 +704,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.question),
         tooltip: this.lang.options.help,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('helpDialog.show'),
       }).render();
     });
@@ -689,6 +723,7 @@ export default class Buttons {
       return this.button({
         contents: '<span class="note-fontsize-10">100%</span>',
         tooltip: this.lang.image.resizeFull,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.resize', '1'),
       }).render();
     });
@@ -696,6 +731,7 @@ export default class Buttons {
       return this.button({
         contents: '<span class="note-fontsize-10">50%</span>',
         tooltip: this.lang.image.resizeHalf,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.resize', '0.5'),
       }).render();
     });
@@ -703,6 +739,7 @@ export default class Buttons {
       return this.button({
         contents: '<span class="note-fontsize-10">25%</span>',
         tooltip: this.lang.image.resizeQuarter,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.resize', '0.25'),
       }).render();
     });
@@ -710,6 +747,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.rollback),
         tooltip: this.lang.image.resizeNone,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.resize', '0'),
       }).render();
     });
@@ -719,6 +757,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.floatLeft),
         tooltip: this.lang.image.floatLeft,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.floatMe', 'left'),
       }).render();
     });
@@ -727,6 +766,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.floatRight),
         tooltip: this.lang.image.floatRight,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.floatMe', 'right'),
       }).render();
     });
@@ -735,6 +775,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.rollback),
         tooltip: this.lang.image.floatNone,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.floatMe', 'none'),
       }).render();
     });
@@ -744,6 +785,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.trash),
         tooltip: this.lang.image.remove,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.removeMedia'),
       }).render();
     });
@@ -754,6 +796,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.link),
         tooltip: this.lang.link.edit,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('linkDialog.show'),
       }).render();
     });
@@ -762,6 +805,7 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.unlink),
         tooltip: this.lang.link.unlink,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.unlink'),
       }).render();
     });
@@ -779,6 +823,7 @@ export default class Buttons {
         className: 'note-btn',
         contents: this.ui.icon(this.options.icons.rowAbove),
         tooltip: this.lang.table.addRowAbove,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.addRow', 'top'),
       }).render();
     });
@@ -787,6 +832,7 @@ export default class Buttons {
         className: 'note-btn',
         contents: this.ui.icon(this.options.icons.rowBelow),
         tooltip: this.lang.table.addRowBelow,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.addRow', 'bottom'),
       }).render();
     });
@@ -795,6 +841,7 @@ export default class Buttons {
         className: 'note-btn',
         contents: this.ui.icon(this.options.icons.colBefore),
         tooltip: this.lang.table.addColLeft,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.addCol', 'left'),
       }).render();
     });
@@ -803,6 +850,7 @@ export default class Buttons {
         className: 'note-btn',
         contents: this.ui.icon(this.options.icons.colAfter),
         tooltip: this.lang.table.addColRight,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.addCol', 'right'),
       }).render();
     });
@@ -811,6 +859,7 @@ export default class Buttons {
         className: 'note-btn',
         contents: this.ui.icon(this.options.icons.rowRemove),
         tooltip: this.lang.table.delRow,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.deleteRow'),
       }).render();
     });
@@ -819,6 +868,7 @@ export default class Buttons {
         className: 'note-btn',
         contents: this.ui.icon(this.options.icons.colRemove),
         tooltip: this.lang.table.delCol,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.deleteCol'),
       }).render();
     });
@@ -827,6 +877,7 @@ export default class Buttons {
         className: 'note-btn',
         contents: this.ui.icon(this.options.icons.trash),
         tooltip: this.lang.table.delTable,
+        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.deleteTable'),
       }).render();
     });

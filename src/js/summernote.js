@@ -21,6 +21,7 @@ $.fn.extend({
     options.langInfo = $.extend(true, {}, $.summernote.lang['en-US'], $.summernote.lang[options.lang]);
     options.icons = $.extend(true, {}, $.summernote.options.icons, options.icons);
     options.tooltip = options.tooltip === 'auto' ? !env.isSupportTouch : options.tooltip;
+    options.placement = options.placement;
 
     this.each((idx, note) => {
       const $note = $(note);
