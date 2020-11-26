@@ -190,8 +190,8 @@ const dialog = renderer.create('<div class="note-modal" aria-hidden="false" tabi
   $node.html([
     '<div class="note-modal-content">',
       '<div class="note-modal-header">',
-        '<h4 class="note-modal-title">' + options.title + '</h4>',
         '<button type="button" class="note-close" data-tooltip="' + options.placement + '" aria-label="Close" aria-hidden="true"><i class="note-icon-close"></i></button>',
+        '<h4 class="note-modal-title">' + options.title + '</h4>',
       '</div>',
       '<div class="note-modal-body">' + options.body + '</div>',
       (options.footer ? '<div class="note-modal-footer">' + options.footer + '</div>' : ''),
