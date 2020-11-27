@@ -206,6 +206,7 @@ $.summernote = $.extend($.summernote, {
     dialogsInBody: false,
     dialogsFade: false,
 
+    disableUpload: false, // true|false Disables display of upload option in ImageDialog.
     maximumImageFileSize: null,
     acceptImageFileTypes: "image/*",
 
