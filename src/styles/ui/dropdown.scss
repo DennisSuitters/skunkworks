@@ -6,6 +6,7 @@
   display: none;
   position: absolute;
   top: 100%;
+  bottom: auto;
   left: 0;
   float: left;
   z-index : var(--note-zindex-dropdown);
@@ -22,6 +23,11 @@
     margin-right: 0;
   }
 
+}
+
+.note-dropdown-menu.up {
+  top: auto;
+  bottom: 100%;
 }
 
 .note-btn-group.note-open .note-dropdown-menu {

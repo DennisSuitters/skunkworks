@@ -118,6 +118,7 @@ export default class Buttons {
           },
         }),
         this.ui.dropdown({
+          dropUp: (this.options.toolbarPosition === 'bottom' ? (this.options.toolbarBottomDropUp ? true : this.options.dropUp ) : this.options.dropUp),
           items: (backColor ? [
             '<div class="note-palette">',
               '<div class="note-palette-title">' + this.lang.color.background + '</div>',
@@ -146,7 +147,7 @@ export default class Buttons {
               '<div>',
                 '<button type="button" class="note-color-select" data-event="openPalette" data-value="foreColorPicker-' + this.options.id + '">' + this.lang.color.cpSelect + '</button>',
                 '<input type="color" id="foreColorPicker-' + this.options.id + '" class="note-btn note-color-select-btn" value="' + this.options.colorButton.foreColor + '" data-event="foreColorPalette-' + this.options.id + '">',
-              '</div>', // Fix missing Div, Commented to find easily if it's wrong
+              '</div>',
               '<div class="note-holder-custom" id="foreColorPalette-' + this.options.id + '" data-event="foreColor"></div>',
             '</div>',
           ].join('') : ''),
@@ -247,6 +248,7 @@ export default class Buttons {
           className: 'note-dropdown-style',
           items: this.options.styleTags,
           title: this.lang.style.style,
+          dropUp: (this.options.toolbarPosition === 'bottom' ? (this.options.toolbarBottomDropUp ? true : this.options.dropUp ) : this.options.dropUp),
           template: (item) => {
             // TBD: need to be simplified
             if (typeof item === 'string') {
@@ -383,6 +385,7 @@ export default class Buttons {
           checkClassName: this.options.icons.menuCheck,
           items: this.options.fontNames.filter(this.isFontInstalled.bind(this)),
           title: this.lang.font.name,
+          dropUp: (this.options.toolbarPosition === 'bottom' ? (this.options.toolbarBottomDropUp ? true : this.options.dropUp ) : this.options.dropUp),
           template: (item) => {
             return '<span style="font-family: ' + env.validFontName(item) + '">' + item + '</span>';
           },
@@ -407,6 +410,7 @@ export default class Buttons {
           checkClassName: this.options.icons.menuCheck,
           items: this.options.fontSizes,
           title: this.lang.font.size,
+          dropUp: (this.options.toolbarPosition === 'bottom' ? (this.options.toolbarBottomDropUp ? true : this.options.dropUp ) : this.options.dropUp),
           click: this.context.createInvokeHandlerAndUpdateState('editor.fontSize'),
         }),
       ]).render();
@@ -428,6 +432,7 @@ export default class Buttons {
           checkClassName: this.options.icons.menuCheck,
           items: this.options.fontSizeUnits,
           title: this.lang.font.sizeunit,
+          dropUp: (this.options.toolbarPosition === 'bottom' ? (this.options.toolbarBottomDropUp ? true : this.options.dropUp ) : this.options.dropUp),
           click: this.context.createInvokeHandlerAndUpdateState('editor.fontSizeUnit'),
         }),
       ]).render();
@@ -524,6 +529,7 @@ export default class Buttons {
           },
         }),
         this.ui.dropdown([
+// For the life of me I can't work out where to add:- dropUp: (this.options.toolbarPosition === 'bottom' ? (this.options.toolbarBottomDropUp ? true : this.options.dropUp ) : this.options.dropUp),
           this.ui.buttonGroup({
             className: 'note-align',
             children: [justifyLeft, justifyCenter, justifyRight, justifyFull],
@@ -553,6 +559,7 @@ export default class Buttons {
           className: 'note-dropdown-line-height',
           title: this.lang.font.height,
           placement: this.options.placement,
+          dropUp: (this.options.toolbarPosition === 'bottom' ? (this.options.toolbarBottomDropUp ? true : this.options.dropUp ) : this.options.dropUp),
           click: this.context.createInvokeHandler('editor.lineHeight'),
         }),
       ]).render();
@@ -572,6 +579,7 @@ export default class Buttons {
         this.ui.dropdown({
           title: this.lang.table.table,
           className: 'note-table',
+          dropUp: (this.options.toolbarPosition === 'bottom' ? (this.options.toolbarBottomDropUp ? true : this.options.dropUp ) : this.options.dropUp),
           items: [
             '<div class="note-dimension-picker">',
               '<div class="note-dimension-picker-mousecatcher" data-event="insertTable" data-value="1x1"></div>',

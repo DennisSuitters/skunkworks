@@ -81,6 +81,10 @@ const dropdown = renderer.create('<div class="note-dropdown-menu" role="list">',
 
   $node.html(markup).attr({ 'aria-label': options.title });
 
+  if (options.dropUp) {
+    $node.addClass('up');
+  }
+
   $node.on('click', '> .note-dropdown-item', function(event) {
     const $a = $(this);
 
@@ -110,6 +114,10 @@ const dropdownCheck = renderer.create('<div class="note-dropdown-menu note-check
   }) : options.items;
 
   $node.html(markup).attr({ 'aria-label': options.title });
+
+  if (options.dropUp) {
+    $node.addClass('up');
+  }
 
   $node.on('click', '> .note-dropdown-item', function(event) {
     const $a = $(this);
