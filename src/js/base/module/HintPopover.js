@@ -1,7 +1,6 @@
 import $ from 'jquery';
 import func from '../core/func';
 import lists from '../core/lists';
-import dom from '../core/dom';
 import range from '../core/range';
 import key from '../core/key';
 
@@ -119,14 +118,21 @@ export default class HintPopover {
           this.lastWordRange.so += rangeCompute;
         }
       }
-      this.lastWordRange.insertNode(node);
+      // Insert text in existing span or tag to keep style
+      if (typeof node === 'string') {
+        this.lastWordRange.select();
+        document.execCommand( 'insertText', false, node);
+        // Classic Insert Node
 
-      if (this.options.hintSelect === 'next') {
-        var blank = document.createTextNode('');
-        $(node).after(blank);
-        range.createFromNodeBefore(blank).select();
       } else {
-        range.createFromNodeAfter(node).select();
+        this.lastWordRand.insertNode(node);
+        if (this.options.hintSelect === 'next') {
+          var blank = document.createTextNode('');
+          $(node).after(blank);
+          range.createFromNodeBefore(blank).select();
+        } else {
+          range.createFromNodeAfter(node).select();
+        }
       }
 
       this.lastWordRange = null;
@@ -140,9 +146,6 @@ export default class HintPopover {
     const hint = this.hints[$item.data('index')];
     const item = $item.data('item');
     let node = hint.content ? hint.content(item) : item;
-    if (typeof node === 'string') {
-      node = dom.createText(node);
-    }
     return node;
   }
 
