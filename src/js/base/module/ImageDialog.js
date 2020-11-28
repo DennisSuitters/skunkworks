@@ -26,10 +26,12 @@ export default class ImageDialog {
       (this.options.disableUpload !== true ?
         '<div class="note-form-group note-group-select-from-files">' +
           '<label for="note-dialog-image-file-' + this.options.id + '" class="note-form-label">' + this.lang.image.selectFromFiles + '</label>' +
-          '<input id="note-dialog-image-file-' + this.options.id + '" class="note-image-input note-form-control note-input" ' +
-          ' type="file" name="files" accept="' + this.options.acceptImageFileTypes + '" multiple="multiple">' +
-          imageLimitation +
-          '</div>'
+          (this.options.fileExplorer !== '' ?
+            '<button class="note-btn note-btn-primary" onclick="' + this.options.fileExplorer + '(`note-dialog-image-url-' + this.options.id + '`);">' + this.lang.image.fileBrowser + '</button>'
+          :
+            '<input id="note-dialog-image-file-' + this.options.id + '" class="note-image-input note-form-control note-input" type="file" name="files" accept="' + this.options.acceptImageFileTypes + '" multiple="multiple">' + imageLimitation
+          ) +
+        '</div>'
       : '' ),
       '<div class="note-group-image-url">',
         '<label for="note-dialog-image-url-' + this.options.id + '" class="note-form-label">' + this.lang.image.url + '</label>',

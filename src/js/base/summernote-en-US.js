@@ -41,6 +41,7 @@ $.extend($.summernote.lang, {
       url: 'Image URL',
       remove: 'Remove Image',
       original: 'Original',
+      fileBrowser: 'File Browser',
     },
     video: {
       video: 'Video',

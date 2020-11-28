@@ -139,7 +139,7 @@ $.summernote = $.extend($.summernote, {
     spellCheck: true,
     disableGrammar: false,
     placeholder: null,
-    inheritPlaceholder: false,
+    inheritPlaceholder: true,
     // TODO: need to be documented
     recordEveryKeystroke: false,
     historyLimit: 200,
@@ -209,6 +209,7 @@ $.summernote = $.extend($.summernote, {
     dialogsFade: false,
 
     disableUpload: false, // true|false Disables display of upload option in ImageDialog.
+    fileExplorer: '', // If set with the Javascript function name, and button in ImageDialog.js will be shown, which also parses in the ID of the #note-dialog-image-url so the function can return the URL of the selected file for insertion. Note, only the function name is required for eg 'elfinderDialog'.
     maximumImageFileSize: null,
     acceptImageFileTypes: "image/*",
 
