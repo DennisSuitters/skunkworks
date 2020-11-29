@@ -97,6 +97,8 @@
   --note-form-input-border-style: solid;
   --note-form-input-border-color: #ededef;
   --note-form-input-border-focus: #66afe9;
+  --note-form-help-font-size: 90%;
+  --note-form-help-color: #aaa;
 
   --note-dropdown-color: #000;
   --note-dropdown-background-color: #fff;
@@ -148,6 +150,7 @@
   --note-zindex-tooltip: 1070;
   --note-zindex-modal: 1050;
   --note-zindex-modal-backdrop: 1040;
+  --note-zindex-control-section : 1000;
 
   --note-color: #000;
   --note-background-color: #f5f5f5;

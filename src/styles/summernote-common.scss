@@ -119,7 +119,7 @@
     // editable
     .note-viewport-area {
       overflow: auto;
-      
+
       .note-editable {
         word-wrap: break-word;
         padding: 10px;
@@ -508,6 +508,7 @@
   // control selection
   .note-control-selection {
     display: none;
+    z-index: 1000;
     position: absolute;
     border: 1px solid #000;
 

@@ -735,6 +735,13 @@ export default class Editor {
         $image.css('width', Math.min(this.$editable.width(), $image.width()));
       }
 
+      const imageTitle = $('#note-dialog-image-title-' + this.options.id).val();
+      const imageAlt = $('#note-dialog-image-alt-' + this.options.id).val();
+      const imageClass = $('#note-dialog-image-class-' + this.options.id).val();
+      if (imageTitle) $image.attr('title', imageTitle);
+      if (imageAlt) $image.attr('alt', imageAlt);
+      if (imageClass) $image.attr('class', imageClass);
+
       $image.show();
       this.getLastRange().insertNode($image[0]);
       this.setLastRange(range.createFromNodeAfter($image[0]).select());
@@ -898,6 +905,29 @@ export default class Editor {
     }
 
     return linkInfo;
+  }
+
+  /**
+     * returns image info
+     *
+     * @return {Object}
+     * @return {WrappedRange} return.range
+     * @return {String} return.text
+     */
+  getImageInfo() {
+    const rng = this.getLastRange().expand(dom.isImg);
+    // Get the first anchor on range(for edit).
+    const $image = $(lists.head(rng.nodes(dom.isImg)));
+    const imageInfo = {
+      range: rng,
+      text: rng.toString(),
+      src: $image.length ? $image.attr('src') : '',
+      title: $image.length ? $image.attr('title') : '',
+      alt: $image.length ? $image.attr('alt') : '',
+      class: $image.length ? $image.attr('class') : '',
+    };
+
+    return imageInfo;
   }
 
   addRow(position) {
