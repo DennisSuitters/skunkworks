@@ -7,11 +7,12 @@
 }
 
 .note-form-label {
-  display: block;
-  margin-bottom: 10px;
+  display: inline-block;
+  margin: 0 0 2px 0;
   width: 100%;
   font-size: 16px;
   font-weight: 700;
+  padding: 2px 5px;
 }
 
 .note-form-help {

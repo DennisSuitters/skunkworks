@@ -21,6 +21,7 @@
   line-height: var(--note-line-height);
   text-align: center;
   white-space: nowrap;
+  width: auto;
 
   &.note-dropdown-toggle {
     padding: var(--note-padding-base-y) var(--note-padding-base-x) calc(var(--note-padding-base-y) - 1px) var(--note-padding-base-x);
@@ -118,7 +119,6 @@ button.note-close {
 
 .note-close {
   float: right;
-  opacity: .2;
   color: var(--note-close-color);
   font-size: 21px;
   line-height: 1;
@@ -126,5 +126,6 @@ button.note-close {
 }
 
 .note-close:hover {
+  color: var(--note-close-color-hover);
   opacity: 1;
 }

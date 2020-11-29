@@ -75,30 +75,6 @@ export default class ImageDialog {
     });
   }
 
-  show() {
-    const imageInfo = this.context.invoke('editor.getImageInfo');
-
-    this.context.invoke('editor.saveRange');
-    this.showImageDialog().then((imageInfo) => {
-      // [workaround] hide dialog before restore range for IE range focus
-      this.ui.hideDialog(this.$dialog);
-      this.context.invoke('editor.restoreRange');
-
-      if (typeof data === 'string') { // image url
-        // If onImageLinkInsert set,
-        if (this.options.callbacks.onImageLinkInsert) {
-          this.context.triggerEvent('image.link.insert', imageInfo);
-        } else {
-          this.context.invoke('editor.insertImage', imageInfo);
-        }
-      } else { // array of files
-        this.context.invoke('editor.insertImagesOrCallback', imageInfo);
-      }
-    }).fail(() => {
-      this.context.invoke('editor.restoreRange');
-    });
-  }
-
   /**
    * show image dialog
    *
@@ -151,4 +127,32 @@ export default class ImageDialog {
       this.ui.showDialog(this.$dialog);
     });
   }
+
+  /**
+   * @param {Object} layoutInfo
+   */
+   show() {
+     const imageInfo = this.context.invoke('editor.getImageInfo');
+
+
+     this.context.invoke('editor.saveRange');
+     this.showImageDialog(imageInfo).then((data) => {
+       // [workaround] hide dialog before restore range for IE range focus
+       this.ui.hideDialog(this.$dialog);
+       this.context.invoke('editor.restoreRange');
+
+       if (typeof data === 'string') { // image url
+         // If onImageLinkInsert set,
+         if (this.options.callbacks.onImageLinkInsert) {
+           this.context.triggerEvent('image.link.insert', data);
+         } else {
+           this.context.invoke('editor.insertImage', data);
+         }
+       } else { // array of files
+         this.context.invoke('editor.insertImagesOrCallback', data);
+       }
+     }).fail(() => {
+       this.context.invoke('editor.restoreRange');
+     });
+   }
 }

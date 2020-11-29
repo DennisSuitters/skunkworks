@@ -735,12 +735,9 @@ export default class Editor {
         $image.css('width', Math.min(this.$editable.width(), $image.width()));
       }
 
-      const imageTitle = $('#note-dialog-image-title-' + this.options.id).val();
-      const imageAlt = $('#note-dialog-image-alt-' + this.options.id).val();
-      const imageClass = $('#note-dialog-image-class-' + this.options.id).val();
-      if (imageTitle) $image.attr('title', imageTitle);
-      if (imageAlt) $image.attr('alt', imageAlt);
-      if (imageClass) $image.attr('class', imageClass);
+      if ($('.note-image-title').length > 0) $image.attr('title',$('.note-image-title').val());
+      if ($('.note-image-alt').length > 0) $image.attr('alt',$('.note-image-alt').val());
+      if ($('.note-image-class').length > 0) $image.attr('class',$('.note-image-class').val());
 
       $image.show();
       this.getLastRange().insertNode($image[0]);

@@ -45,12 +45,6 @@
   position: relative;
   padding: 20px 30px;
 
-  label {
-    display: inline-block;
-    margin-bottom: 2px;
-    padding: 2px 5px;
-  }
-
   kbd {
     -ms-box-sizing: border-box;
         box-sizing: border-box;
@@ -65,7 +59,6 @@
 
     label {
       display: inline-block;
-      margin-bottom: 5px;
     }
 
   }
@@ -77,8 +70,8 @@
 }
 
 .note-modal-footer {
-  padding: 10px;
-  height: 40px;
+  padding: 5px 30px;
+  min-height: 50px;
   text-align: center;
 }
 
