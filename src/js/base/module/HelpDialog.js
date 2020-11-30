@@ -46,10 +46,10 @@ export default class HelpDialog {
     return Object.keys(keyMap).map((key) => {
       const command = keyMap[key];
       const $row = $('<div><div class="note-help-list-item"></div></div>');
-      $row.append($('<label><kbd>' + key + '</kdb></label>').css({
-        'width': 180,
-        'margin-right': 10,
-      })).append($('<span/>').html(this.context.memo('help.' + command) || command));
+      $row.append($('<label class="note-help"><kbd class="note-help">' + key + '</kdb></label>').css({
+        'width': 150,
+        'margin-right': 5,
+      })).append($('<span class="note-help"/>').html(this.context.memo('help.' + command) || command));
       return $row.html();
     }).join('');
   }

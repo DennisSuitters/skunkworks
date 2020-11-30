@@ -43,24 +43,31 @@
 
 .note-modal-body {
   position: relative;
-  padding: 20px 30px;
+  padding: 20px 20px;
 
-  kbd {
+  kbd.note-help {
     -ms-box-sizing: border-box;
         box-sizing: border-box;
     border-radius: 2px;
     background-color: #000;
     padding: 3px 5px;
     color: #fff;
+    font-size: .75rem;
     font-weight: 700;
   }
 
   .note-help-list-item {
 
-    label {
-      display: inline-block;
-    }
+  }
 
+  label.note-help {
+    display: inline-block;
+    margin: .25rem 0 !important;
+    font-size: .75rem;
+  }
+
+  span.note-help {
+    font-size: .75rem;
   }
 
   .note-help-list-item:hover {
