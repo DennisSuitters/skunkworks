@@ -139,7 +139,7 @@ $.summernote = $.extend($.summernote, {
     spellCheck: true,
     disableGrammar: false,
     placeholder: null,
-    inheritPlaceholder: true,
+    inheritPlaceholder: false,
     // TODO: need to be documented
     recordEveryKeystroke: false,
     historyLimit: 200,

@@ -23,31 +23,34 @@ export default class ImageDialog {
 
     const $container = this.options.dialogsInBody ? this.$body : this.options.container;
     const body = [
-      (this.options.disableUpload !== true ?
-        '<div class="note-form-group">' +
-          '<label for="note-dialog-image-file-' + this.options.id + '" class="note-form-label">' + this.lang.image.selectFromFiles + '</label>' +
-          (this.options.fileExplorer !== '' ?
-            '<button class="note-btn note-btn-primary" onclick="' + this.options.fileExplorer + '(`note-dialog-image-url-' + this.options.id + '`);">' + this.lang.image.fileBrowser + '</button>'
-          :
+      (this.options.disableUpload === false ?
+        '<label for="note-dialog-image-file-' + this.options.id + '" class="note-form-label">' + this.lang.image.selectFromFiles + '</label>' +
+          '<div class="note-form-group">' +
             '<input id="note-dialog-image-file-' + this.options.id + '" class="note-image-input note-input" type="file" name="files" accept="' + this.options.acceptImageFileTypes + '" multiple="multiple">' + imageLimitation +
-            '<div class="note-form-help">' + this.lang.image.fileNote + '</div>'
-          ) +
+            '<div class="note-form-help">' + this.lang.image.fileNote + '</div>' +
         '</div>'
-      : '' ),
-      '<div class="note-form-group">',
-        '<label for="note-dialog-image-url-' + this.options.id + '" class="note-form-label">' + this.lang.image.url + '</label>',
+      :
+        ''
+      ),
+      '<label for="note-dialog-image-url-' + this.options.id + '" class="note-form-label">' + this.lang.image.url + '</label>',
+        '<div class="note-form-group">',
         '<input id="note-dialog-image-url-' + this.options.id + '" class="note-image-url note-input" type="text">',
+        (this.options.fileExplorer !== '' ?
+          '<button class="note-btn note-btn-primary" onclick="' + this.options.fileExplorer + '(`note-dialog-image-url-' + this.options.id + '`);">' + this.lang.image.fileBrowser + '</button>'
+        :
+          ''
+        ),
       '</div>',
+      `<label for="note-dialog-image-title-` + this.options.id + `" class="note-form-label">` + this.lang.image.title + `</label>`,
       '<div class="note-form-group">',
-        `<label for="note-dialog-image-title-` + this.options.id + `" class="note-form-label">` + this.lang.image.title + `</label>`,
         `<input id="note-dialog-image-title-` +  this.options.id + `" class="note-image-title note-input" type="text">`,
       '</div>',
+      `<label for="note-dialog-image-alt-` + this.options.id + `" class="note-form-label">` + this.lang.image.alt + `</label>`,
       '<div class="note-form-group">',
-        `<label for="note-dialog-image-alt-` + this.options.id + `" class="note-form-label">` + this.lang.image.alt + `</label>`,
         `<input id="note-dialog-image-alt-` + this.options.id + `" class="note-image-alt note-input" type="text">`,
       '</div>',
+      `<label for="note-dialog-image-class-` + this.options.id + `" class="note-form-label">` + this.lang.image.class + `</label>`,
       '<div class="note-form-group">',
-        `<label for="note-dialog-image-class-` + this.options.id + `" class="note-form-label">` + this.lang.image.class + `</label>`,
         `<input id="note-dialog-image-class-` + this.options.id + `" class="note-image-class note-input" type="text">`,
       '</div>',
     ].join('');
