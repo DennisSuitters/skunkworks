@@ -7,3 +7,15 @@
   color: var(--note-toolbar-color);
   overflow: none !important;
 }
+
+@media (max-width: 576px) {
+  .note-editor {
+    overflow: hidden !important;
+  }
+
+  .note-toolbar {
+    min-width: 100% !important;
+    overflow-x: scroll !important;
+    white-space: nowrap;
+  }
+}
