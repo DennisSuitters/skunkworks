@@ -248,6 +248,9 @@ const checkbox = renderer.create('<div class="note-checkbox"></div>', function($
 });
 
 const icon = function(iconClassName, tagName) {
+  if (iconClassName.match(/^</)) {
+    return iconClassName;
+  }
   tagName = tagName || 'i';
   return '<' + tagName + ' class="' + iconClassName + '"></' + tagName + '>';
 };
