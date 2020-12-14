@@ -12,7 +12,7 @@ class ModalUI {
     this.$modal.trigger('note.modal.show');
     this.$modal.off('click', '.note-close').on('click', '.note-close', this.hide.bind(this));
     this.$modal.on('keydown', (event) => {
-      if (event.which === 27) {
+      if (event.key === 'Escape' || event.key === 'Backspace') {
         event.preventDefault();
         this.hide();
       }
