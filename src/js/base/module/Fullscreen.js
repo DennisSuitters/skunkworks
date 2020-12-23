@@ -50,7 +50,7 @@ export default class Fullscreen {
   }
 
   isFullscreen() {
-    return this.$editor.hasClass('fullscreen');
+    return this.$editor.hasClass('note-fullscreen');
   }
 
   destroy() {
