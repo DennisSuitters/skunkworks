@@ -10,19 +10,24 @@
 }
 
 .note-form-label {
-  display: inline-block;
-  margin: 0;
-  width: 100%;
-  font-size: 1rem;
-  font-weight: 700;
-  padding: 0 2px;
+  display: contents !important;
+  margin: 0 0 0 .5rem !important;
+  width: 100% !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  padding: 0 2px !important;
 }
 
 .note-form-help {
-  display: block;
+  display: inline;
+  float: right;
   text-align: right;
   font-size: var(--note-form-help-font-size);
   color: var(--note-form-help-color);
+}
+
+.note-form-help::after {
+  clear: both;
 }
 
 .note-input {

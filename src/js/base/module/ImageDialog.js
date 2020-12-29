@@ -24,10 +24,9 @@ export default class ImageDialog {
     const $container = this.options.dialogsInBody ? this.$body : this.options.container;
     const body = [
       (this.options.disableUpload === false ?
-        '<label for="note-dialog-image-file-' + this.options.id + '" class="note-form-label">' + this.lang.image.selectFromFiles + '</label>' +
-          '<div class="note-form-group">' +
-            '<input id="note-dialog-image-file-' + this.options.id + '" class="note-image-input note-input" type="file" name="files" accept="' + this.options.acceptImageFileTypes + '" multiple="multiple">' + imageLimitation +
-            '<div class="note-form-help">' + this.lang.image.fileNote + '</div>' +
+        '<label for="note-dialog-image-file-' + this.options.id + '" class="note-form-label">' + this.lang.image.selectFromFiles + '<div class="note-form-help">' + this.lang.image.fileNote + '</div></label>' +
+        '<div class="note-form-group">' +
+          '<input id="note-dialog-image-file-' + this.options.id + '" class="note-image-input note-input" type="file" name="files" accept="' + this.options.acceptImageFileTypes + '" multiple="multiple">' + imageLimitation +
         '</div>'
       :
         ''

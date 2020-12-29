@@ -241,7 +241,7 @@ const checkbox = renderer.create('<div class="note-checkbox"></div>', function($
     '<input type="checkbox"' + (options.id ? ' id="' + options.id + '"' : ''),
     (options.checked ? ' checked' : ''),
     ' aria-checked="' + (options.checked ? 'true' : 'false') + '"/>',
-    '<label' + (options.id ? ' for="' + options.id + '"' : '') + '>',
+    '<label class="note-form-label" ' + (options.id ? ' for="' + options.id + '"' : '') + '>',
       (options.text ? options.text : ''),
     '</label>',
   ].join(''));
