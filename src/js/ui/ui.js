@@ -4,7 +4,7 @@ import DropdownUI from './DropdownUI';
 import ModalUI from './ModalUI';
 
 const editor = renderer.create('<div class="note-editor note-frame"></div>');
-const toolbar = renderer.create('<div class="note-toolbar" role="toolbar"></div>');
+const toolbar = renderer.create('<div class="note-toolbar" role="toolbar"></div><div class="note-toolbar-wrapper"></div>');
 const viewportArea = renderer.create('<div class="note-viewport-area"></div>');
 const editingArea = renderer.create('<div class="note-editing-area"></div>');
 const codable = renderer.create('<textarea class="note-codable" aria-multiline="true"></div>');
