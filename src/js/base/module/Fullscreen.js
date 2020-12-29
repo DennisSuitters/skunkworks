@@ -6,6 +6,7 @@ export default class Fullscreen {
 
     this.$editor = context.layoutInfo.editor;
     this.$toolbar = context.layoutInfo.toolbar;
+    this.$statusbar = context.layoutInfo.statusbar;
     this.$editable = context.layoutInfo.editable;
     this.$codable = context.layoutInfo.codable;
 
@@ -15,7 +16,7 @@ export default class Fullscreen {
 
     this.onResize = () => {
       this.resizeTo({
-        h: this.$window.height() - this.$toolbar.outerHeight(),
+        h: this.$window.height() - this.$toolbar.outerHeight() - 45,
       });
     };
   }

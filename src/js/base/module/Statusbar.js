@@ -5,6 +5,7 @@ export default class Statusbar {
   constructor(context) {
     this.$document = $(document);
     this.$statusbar = context.layoutInfo.statusbar;
+    this.$resizer = $(".note-resizebar");
     this.$editable = context.layoutInfo.editable;
     this.$codable = context.layoutInfo.codable;
     this.options = context.options;
@@ -16,7 +17,7 @@ export default class Statusbar {
       return;
     }
 
-    this.$statusbar.on('mousedown', (event) => {
+    this.$resizer.on('mousedown', (event) => {
       event.preventDefault();
       event.stopPropagation();
 

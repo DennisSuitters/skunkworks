@@ -125,6 +125,7 @@
         padding: 10px;
         transform-origin: left top;
         transform: scale(1);
+        background-color: var(--note-editable-background-color);
 
         &[contenteditable="false"] {
           background-color: var(--note-editable-background-color);
