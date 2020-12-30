@@ -34,7 +34,7 @@ export default class LinkDialog {
       `<label for="note-dialog-link-rel-` + this.options.id + `" class="note-form-label">` + this.lang.link.rel + `</label>`,
       '<div class="note-form-group">',
         `<select id="note-dialog-link-rel-`+ this.options.id + `" class="note-link-rel note-input">`,
-          `<option value="">Nothing</option>`,
+          `<option value="noreferrer noopener" selected>NoReferrer NoOpener (Suggested for external links that open in new tabs or windows)</option>`,
           `<option value="alternate">Alternate</option>`,
           `<option value="author">Author</option>`,
           `<option value="bookmark">Bookmark</option>`,
@@ -54,7 +54,7 @@ export default class LinkDialog {
         ? $('<div/>').append(this.ui.checkbox({
           for: 'note-dialog-new-window-' + this.options.id,
           id: 'note-checkbox-open-in-new-window-' + this.options.id,
-          className: 'note-checkbox-open-in-new-window note-form-label',
+          className: 'note-checkbox-open-in-new-window',
           text: this.lang.link.openInNewWindow,
           checked: true,
         }).render()).html()
@@ -62,7 +62,7 @@ export default class LinkDialog {
       $('<div/>').append(this.ui.checkbox({
         for: 'note-dialog-link-use-protocol-' + this.options.id,
         id: 'note-checkbox-use-protocol-' + this.options.id,
-        className: 'note-checkbox-use-protocol note-form-label',
+        className: 'note-checkbox-use-protocol',
         text: this.lang.link.useProtocol,
         checked: true,
       }).render()).html(),
@@ -142,8 +142,6 @@ export default class LinkDialog {
 
         $linkTitle.val(linkInfo.title);
 
-        $linkRel.val(linkInfo.rel);
-
         if (!env.isSupportTouch) {
           $linkUrl.trigger('focus');
         }
@@ -155,6 +153,12 @@ export default class LinkDialog {
         const isNewWindowChecked = linkInfo.isNewWindow !== undefined ? linkInfo.isNewWindow : this.context.options.linkTargetBlank;
 
         $openInNewWindow.prop('checked', isNewWindowChecked);
+
+        if ($openInNewWindow.prop('checked')) {
+          if (linkInfo.rel) {
+            $linkRel.val(linkInfo.rel);
+          }
+        }
 
         const useProtocolChecked = linkInfo.url ? false : this.context.options.useProtocol;
 

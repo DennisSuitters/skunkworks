@@ -132,7 +132,7 @@ $.summernote = $.extend($.summernote, {
     shortcuts: true,
     textareaAutoSync: true,
     tooltip: 'auto',
-    placement: 'top', // none|top|right|bottom|left
+    placement: 'top', // none|top|right|bottom|left | Needs Documenting
     container: null,
     maxTextLength: 0,
     blockquoteBreakingLevel: 2,
