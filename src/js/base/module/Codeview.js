@@ -61,7 +61,7 @@ export default class CodeView {
     } else {
       this.activate();
     }
-    this.context.triggerEvent('note-codeview.note-toggled');
+    this.context.triggerEvent('codeview.toggled');
   }
 
   /**
