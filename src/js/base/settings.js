@@ -253,6 +253,7 @@ $.summernote = $.extend($.summernote, {
       'player.vimeo.com',
       'www.dailymotion.com',
       'player.youku.com',
+      'jumpingbean.tv',
       'v.qq.com',
     ],
 

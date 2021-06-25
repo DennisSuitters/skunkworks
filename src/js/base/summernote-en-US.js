@@ -52,7 +52,7 @@ $.extend($.summernote.lang, {
       videoLink: 'Video Link',
       insert: 'Insert Video',
       url: 'Video URL',
-      providers: '(YouTube, Google Drive, Vimeo, Vine, Instagram, DailyMotion or Youku)',
+      providers: '(YouTube, Google Drive, Vimeo, Vine, Instagram, DailyMotion, Youku, Peertube)',
       note: 'Note: Not all options are available with all services...',
       suggested: 'Show Suggested videos when the video finishes',
       controls: 'Show player controls',
