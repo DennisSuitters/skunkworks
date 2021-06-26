@@ -21,16 +21,16 @@ export default class Dropzone {
    * attach Drag and Drop Events
    */
   initialize() {
-    if (this.options.disableDragAndDrop) {
+    if (this.options.disableDragAndDrop === true) {
       // prevent default drop event
       this.documentEventHandlers.onDrop = (event) => {
         event.preventDefault();
       };
+    } else {
+      this.attachDragAndDropEvent();
       // do not consider outside of dropzone
       this.$eventListener = this.$dropzone;
       this.$eventListener.on('drop', this.documentEventHandlers.onDrop);
-    } else {
-      this.attachDragAndDropEvent();
     }
   }
 
@@ -86,7 +86,8 @@ export default class Dropzone {
     // attach dropImage
     this.$dropzone.on('drop', (event) => {
       const dataTransfer = event.originalEvent.dataTransfer;
-
+      if (this.options.callbacks.onDrop && this.options.callbacks.onDrop(dataTransfer))
+        return;
       // stop the browser from opening the dropped content
       event.preventDefault();
 

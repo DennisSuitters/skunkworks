@@ -220,6 +220,7 @@ $.summernote = $.extend($.summernote, {
       onChange: null,
       onChangeCodeview: null,
       onDialogShown: null,
+      onDrop: null,
       onEnter: null,
       onFocus: null,
       onImageLinkInsert: null,
