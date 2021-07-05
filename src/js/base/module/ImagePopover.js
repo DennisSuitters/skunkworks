@@ -42,9 +42,7 @@ export default class ImagePopover {
     const $content = this.$popover.find('.note-popover-content');
     this.context.invoke('buttons.build', $content, this.options.popover.image);
 
-    this.$popover.on('mousedown', (event) => {
-      event.preventDefault();
-    });
+    this.$popover.on('mousedown', (event) => { event.preventDefault(); });
   }
 
   destroy() {
