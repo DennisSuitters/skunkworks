@@ -49,7 +49,7 @@ export default class HelpDialog {
       $row.append($('<label class="note-help"><kbd class="note-help">' + key + '</kdb></label>').css({
         'width': 150,
         'margin-right': 5,
-      })).append($('<span class="note-help"/>').html(this.context.memo('help.' + command) || command));
+      })).append($('<span class="note-help"></span>').html(this.context.memo('help.' + command) || command));
       return $row.html();
     }).join('');
   }

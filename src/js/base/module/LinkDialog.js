@@ -51,7 +51,7 @@ export default class LinkDialog {
         `</select>`,
       '</div>',
       !this.options.disableLinkTarget
-        ? $('<div/>').append(this.ui.checkbox({
+        ? $('<div></div>').append(this.ui.checkbox({
           for: 'note-dialog-new-window-' + this.options.id,
           id: 'note-checkbox-open-in-new-window-' + this.options.id,
           className: 'note-checkbox-open-in-new-window',
@@ -59,7 +59,7 @@ export default class LinkDialog {
           checked: true,
         }).render()).html()
         : '',
-      $('<div/>').append(this.ui.checkbox({
+      $('<div></div>').append(this.ui.checkbox({
         for: 'note-dialog-link-use-protocol-' + this.options.id,
         id: 'note-checkbox-use-protocol-' + this.options.id,
         className: 'note-checkbox-use-protocol',

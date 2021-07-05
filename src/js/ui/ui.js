@@ -26,8 +26,8 @@ const airEditable = renderer.create([
   '<output class="note-status-output" role="status" aria-live="polite"></output>',
 ].join(''));
 
-const buttonGroup = renderer.create('<div class="note-btn-group">');
-const button = renderer.create('<button type="button" class="note-btn" tabindex="0">', function($node, options) {
+const buttonGroup = renderer.create('<div class="note-btn-group"></div>');
+const button = renderer.create('<button type="button" class="note-btn" tabindex="-1"></button>', function($node, options) {
   // set button type
 
   $node.attr({
@@ -53,7 +53,7 @@ const button = renderer.create('<button type="button" class="note-btn" tabindex=
   }
 });
 
-const text = renderer.create('<div class="note-txt">', function($node, options) {
+const text = renderer.create('<div class="note-txt"></div>', function($node, options) {
 
   $node.attr({
     'aria-label': options.tooltip,
@@ -68,7 +68,7 @@ const text = renderer.create('<div class="note-txt">', function($node, options) 
   }
 });
 
-const dropdown = renderer.create('<div class="note-dropdown-menu" role="list">', function($node, options) {
+const dropdown = renderer.create('<div class="note-dropdown-menu" role="list"></div>', function($node, options) {
   const markup = Array.isArray(options.items) ? options.items.map(function(item) {
     const value = (typeof item === 'string') ? item : (item.value || '');
     const content = options.template ? options.template(item) : item;
@@ -103,7 +103,7 @@ const dropdown = renderer.create('<div class="note-dropdown-menu" role="list">',
   }
 });
 
-const dropdownCheck = renderer.create('<div class="note-dropdown-menu note-check" role="list">', function($node, options) {
+const dropdownCheck = renderer.create('<div class="note-dropdown-menu note-check" role="list"></div>', function($node, options) {
   const markup = Array.isArray(options.items) ? options.items.map(function(item) {
     const value = (typeof item === 'string') ? item : (item.value || '');
     const content = options.template ? options.template(item) : item;

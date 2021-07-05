@@ -41,7 +41,7 @@ export default class AutoLink {
       const link = match[1] ? keyword : defaultScheme + keyword;
       const urlText = this.options.showDomainOnlyForAutolink ?
         keyword.replace(/^(?:https?:\/\/)?(?:tel?:?)?(?:mailto?:?)?(?:www\.)?/i, '').split('/')[0] : keyword;
-      const node = $('<a />').html(urlText).attr('href', link)[0];
+      const node = $('<a></a>').html(urlText).attr('href', link)[0];
       if (this.context.options.linkTargetBlank) {
         $(node).attr('target', '_blank');
       }
