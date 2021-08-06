@@ -124,6 +124,9 @@ $.summernote = $.extend($.summernote, {
     linkTargetBlank: true,
     useProtocol: true,
     defaultProtocol: 'https://',
+    linkList: [
+       // [ 'title', 'url', 'select text' ],
+    ],
 
     focus: false,
     tabDisabled: false,

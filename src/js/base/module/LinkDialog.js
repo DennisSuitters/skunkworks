@@ -18,7 +18,23 @@ export default class LinkDialog {
 
   initialize() {
     const $container = this.options.dialogsInBody ? this.$body : this.options.container;
+
+    let linkChoices='';
+    for(let i = 0; i < this.options.linkList.length; i++) {
+      let linkOpts = this.options.linkList[i];
+      linkChoices += `<option value="` + linkOpts[0] + `|` + linkOpts[1] + `">` + linkOpts[2] + `</option>`;
+    }
+
     const body = [
+      (linkChoices != '' ?
+        `<label for="note-dialog-link-list-` + this.options.id + `" class="note-form-label">` + this.lang.link.linkList + `</label>` +
+        `<div class="note-form-group">` +
+          `<select id="note-dialog-link-list-` + this.options.id + `" class="note-link-list note-input">` +
+            `<option value="|">Select a Link</option>` +
+            linkChoices +
+          `</select>` +
+        `</div>`
+      : '' ),
       `<label for="note-dialog-link-url-` + this.options.id + `" class="note-form-label">` + this.lang.link.url + `</label>`,
       '<div class="note-form-group">',
         `<input id="note-dialog-link-url-` + this.options.id + `" class="note-link-url note-input" type="text" value="http://">`,
@@ -29,7 +45,7 @@ export default class LinkDialog {
       '</div>',
       '<label for="note-dialog-link-title-' + this.options.id + '" class="note-form-label">' + this.lang.link.title + '</label>',
       '<div class="note-form-group">',
-        '<input id="note-dialog-link-title' + this.options.id + '" class="note-linke-title note-input" type="text">',
+        '<input id="note-dialog-link-title' + this.options.id + '" class="note-link-title note-input" type="text">',
       '</div>',
       `<label for="note-dialog-link-rel-` + this.options.id + `" class="note-form-label">` + this.lang.link.rel + `</label>`,
       '<div class="note-form-group">',
@@ -108,6 +124,7 @@ export default class LinkDialog {
    */
   showLinkDialog(linkInfo) {
     return $.Deferred((deferred) => {
+      const $linkList = this.$dialog.find('.note-link-list');
       const $linkUrl = this.$dialog.find('.note-link-url');
       const $linkText = this.$dialog.find('.note-link-text');
       const $linkTitle = this.$dialog.find('.note-link-title');
@@ -123,6 +140,14 @@ export default class LinkDialog {
         if (!linkInfo.url && func.isValidUrl(linkInfo.text)) {
           linkInfo.url = linkInfo.text;
         }
+
+        $linkList.on('change', () => {
+          const linkSplit = $linkList.val().split('|');
+          $linkText.val(linkSplit[0]);
+          $linkTitle.val(linkSplit[0]);
+          $linkUrl.val(linkSplit[1]);
+          this.toggleLinkBtn($linkBtn, $linkText, $linkUrl);
+        });
 
         $linkText.on('input paste propertychange', () => {
           // If linktext was modified by input events,
