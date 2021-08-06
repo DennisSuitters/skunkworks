@@ -234,8 +234,8 @@ export default class Editor {
       $.each(anchors, (idx, anchor) => {
         $(anchor).attr('href', linkUrl);
         $(anchor).attr('title', linkTitle);
-        $(anchor).attr('rel', linkRel);
-        if (isNewWindow) {
+        if(linkRel != '') $(anchor).attr('rel', linkRel);
+        if (isNewWindow === true) {
           $(anchor).attr('target', '_blank');
         } else {
           $(anchor).removeAttr('target');

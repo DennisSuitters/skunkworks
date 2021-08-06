@@ -50,7 +50,8 @@ export default class LinkDialog {
       `<label for="note-dialog-link-rel-` + this.options.id + `" class="note-form-label">` + this.lang.link.rel + `</label>`,
       '<div class="note-form-group">',
         `<select id="note-dialog-link-rel-`+ this.options.id + `" class="note-link-rel note-input">`,
-          `<option value="noreferrer noopener" selected>NoReferrer NoOpener (Suggested for external links that open in new tabs or windows)</option>`,
+          `<option value="" selected>Do not use Rel attribute (For Same Site Links)</option>`,
+          `<option value="noreferrer noopener">NoReferrer NoOpener (Suggested for external links that open in new tabs or windows)</option>`,
           `<option value="alternate">Alternate</option>`,
           `<option value="author">Author</option>`,
           `<option value="bookmark">Bookmark</option>`,
@@ -72,7 +73,7 @@ export default class LinkDialog {
           id: 'note-checkbox-open-in-new-window-' + this.options.id,
           className: 'note-checkbox-open-in-new-window',
           text: this.lang.link.openInNewWindow,
-          checked: true,
+          checked: false,
         }).render()).html()
         : '',
       $('<div></div>').append(this.ui.checkbox({
@@ -176,8 +177,6 @@ export default class LinkDialog {
         this.bindEnterKey($linkText, $linkBtn);
 
         const isNewWindowChecked = linkInfo.isNewWindow !== undefined ? linkInfo.isNewWindow : this.context.options.linkTargetBlank;
-
-        $openInNewWindow.prop('checked', isNewWindowChecked);
 
         if ($openInNewWindow.prop('checked')) {
           if (linkInfo.rel) {

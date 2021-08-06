@@ -238,12 +238,8 @@ const popover = renderer.create([
 
 const checkbox = renderer.create('<div class="note-checkbox"></div>', function($node, options) {
   $node.html([
-    '<input type="checkbox"' + (options.id ? ' id="' + options.id + '"' : ''),
-    (options.checked ? ' checked' : ''),
-    ' aria-checked="' + (options.checked ? 'true' : 'false') + '"/>',
-    '<label class="note-form-label" ' + (options.id ? ' for="' + options.id + '"' : '') + '>',
-      (options.text ? options.text : ''),
-    '</label>',
+    '<input type="checkbox"' + (options.id ? ' id="' + options.id + '"' : '') + (options.checked === true ? ' checked' : '') + ' aria-checked="' + (options.checked === true ? 'true' : 'false') + '"/>',
+    '&nbsp;&nbsp;<label class="note-form-label" ' + (options.id ? ' for="' + options.id + '"' : '') + '>' + (options.text ? options.text : '') + '</label>',
   ].join(''));
 });
 
