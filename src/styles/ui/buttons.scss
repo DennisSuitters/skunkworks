@@ -23,10 +23,6 @@
   white-space: nowrap;
   width: auto;
 
-  &.note-dropdown-toggle {
-    padding: var(--note-padding-base-y) var(--note-padding-base-x) calc(var(--note-padding-base-y) - 1px) var(--note-padding-base-x) !important;
-  }
-
   &:hover,
   &:focus,
   &.note-focus,
