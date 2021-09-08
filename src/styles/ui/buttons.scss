@@ -23,6 +23,10 @@
   white-space: nowrap;
   width: auto;
 
+  &.note-dropdown-toggle {
+    padding: var(--note-padding-base-y) var(--note-padding-base-x) calc(var(--note-padding-base-y) - 1px) var(--note-padding-base-x) !important;
+  }
+
   &:hover,
   &:focus,
   &.note-focus,
@@ -64,12 +68,12 @@
     box-shadow: none;
   }
 
-  & > span.note-icon-caret:first-child {
+  & > .note-icon-caret:first-child {
     margin-left: -1px;
   }
 
-  & > span.note-icon-caret:nth-child(2) {
-    margin-right: -5px !important;
+  & > .note-icon-caret:nth-child(2) {
+    margin-right: -1px !important;
     padding-left: 3px;
   }
 
