@@ -30,7 +30,7 @@ module.exports = {
   },
   devServer: {
     port: 3000,
-    contentBase: ['./dist'],
+    static: ['./dist'],
   },
   module: {
     rules: [
@@ -81,16 +81,8 @@ module.exports = {
         ],
       },
       {
-        test: /\.(woff|woff2|ttf|otf|eot)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '[name].[ext]',
-              outputPath: 'font',
-            },
-          },
-        ],
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|otf|eot)$/,
+        type: 'asset/resource',
       },
     ],
   },

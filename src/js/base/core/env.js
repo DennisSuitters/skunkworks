@@ -66,8 +66,6 @@ export default {
   isChrome: !isEdge && /chrome/i.test(userAgent),
   isSafari: !isEdge && /safari/i.test(userAgent) && (!/chrome/i.test(userAgent)),
   browserVersion,
-  jqueryVersion: parseFloat($.fn.jquery),
-  isSupportAmd,
   isSupportTouch,
   isFontInstalled,
   isW3CRangeSupport: !!document.createRange,

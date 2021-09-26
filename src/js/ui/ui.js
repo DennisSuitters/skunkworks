@@ -153,8 +153,82 @@ const paragraphDropdownButton = function() {
   return buttonGroup().render();
 };
 
-const tableDropdownButton = function() {
-  return buttonGroup().render();
+const tableMoveHandler = function(event, col, row) {
+  const PX_PER_EM = 18;
+  const $picker = $(event.target.parentNode); // target is mousecatcher
+  const $dimensionDisplay = $picker.next();
+  const $catcher = $picker.find('.note-dimension-picker-mousecatcher');
+  const $highlighted = $picker.find('.note-dimension-picker-highlighted');
+  const $unhighlighted = $picker.find('.note-dimension-picker-unhighlighted');
+
+  let posOffset;
+  // HTML5 with jQuery - e.offsetX is undefined in Firefox
+  if (event.offsetX === undefined) {
+    const posCatcher = $(event.target).offset();
+    posOffset = {
+      x: event.pageX - posCatcher.left,
+      y: event.pageY - posCatcher.top,
+    };
+  } else {
+    posOffset = {
+      x: event.offsetX,
+      y: event.offsetY,
+    };
+  }
+
+  const dim = {
+    c: Math.ceil(posOffset.x / PX_PER_EM) || 1,
+    r: Math.ceil(posOffset.y / PX_PER_EM) || 1,
+  };
+
+  $highlighted.css({ width: dim.c + 'em', height: dim.r + 'em' });
+  $catcher.data('value', dim.c + 'x' + dim.r);
+
+  if (dim.c > 3 && dim.c < col) {
+    $unhighlighted.css({ width: dim.c + 1 + 'em' });
+  }
+
+  if (dim.r > 3 && dim.r < row) {
+    $unhighlighted.css({ height: dim.r + 1 + 'em' });
+  }
+
+  $dimensionDisplay.html(dim.c + ' x ' + dim.r);
+};
+
+const tableDropdownButton = function(opt) {
+  return buttonGroup([
+    button({
+      className: 'dropdown-toggle',
+      contents: opt.title + ' ' + icon('note-icon-caret'),
+      tooltip: opt.tooltip,
+      data: {
+        toggle: 'dropdown',
+      },
+    }),
+    dropdown({
+      className: 'note-table',
+      items: [
+        '<div class="note-dimension-picker">',
+          '<div class="note-dimension-picker-mousecatcher" data-event="insertTable" data-value="1x1"></div>',
+          '<div class="note-dimension-picker-highlighted"></div>',
+          '<div class="note-dimension-picker-unhighlighted"></div>',
+        '</div>',
+        '<div class="note-dimension-display">1 x 1</div>',
+      ].join(''),
+    }),
+  ], {
+    callback: function($node) {
+      const $catcher = $node.find('.note-dimension-picker-mousecatcher');
+      $catcher.css({
+        width: opt.col + 'em',
+        height: opt.row + 'em',
+      })
+        .mousedown(opt.itemClick)
+        .mousemove(function(e) {
+          tableMoveHandler(e, opt.col, opt.row);
+        });
+    },
+  }).render();
 };
 
 const palette = renderer.create('<div class="note-color-palette"></div>', function($node, options) {
