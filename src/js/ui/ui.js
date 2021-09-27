@@ -244,7 +244,7 @@ const palette = renderer.create('<div class="note-color-palette"></div>', functi
       const colorName = colorsName[col];
       buttons.push([
         '<button type="button" class="note-btn note-color-btn"',
-        'style="background-color:', color, '" ',
+        'style="background-color:', color, '!important" ',
         'data-event="', eventName, '" ',
         'data-value="', color, '" ',
         'data-tooltip="', tipPlacement, '"',
