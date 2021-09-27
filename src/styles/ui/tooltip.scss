@@ -4,6 +4,7 @@
 [data-tooltip]:before,
 [data-tooltip]:after {
   position: absolute;
+    z-index: var(--note-zindex-tooltip) !important;
   bottom: calc(100% + 5px);
   left: 50%;
   visibility: hidden;

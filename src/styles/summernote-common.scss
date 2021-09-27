@@ -305,7 +305,7 @@
   .note-color-all {
 
     .note-dropdown-menu {
-      min-width: 378px;
+      min-width: 350px;
     }
 
   }
@@ -321,7 +321,7 @@
 
       .note-palette {
         display: inline-block;
-        width: 180px;
+        width: 165px;
         margin: 0;
 
         &:first-child {
@@ -348,7 +348,7 @@
           cursor: pointer;
 
           &:hover {
-            border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-primary-border-color-hover);
+            border: 0;
             background-color: var(--note-btn-primary-background-color-hover);
             color: var(--note-btn-primary-color-hover);
           }
@@ -436,21 +436,17 @@
   // color palette for toolbar and popover
   .note-color-palette {
     line-height: 1;
+    margin-left: 5px;
 
     div {
 
       .note-color-btn {
         width: 20px;
         height: 20px;
-        margin: 0;
-        padding: 0;
-        border: 0;
-        border-radius: 0;
-      }
-
-      .note-color-btn:hover {
-        transform: scale(1.2);
-        transition: all .2s;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
       }
 
     }
