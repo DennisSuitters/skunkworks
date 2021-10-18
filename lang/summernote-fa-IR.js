@@ -1,5 +1,5 @@
 (function($) {
-  $.extend($.summernote.lang, {
+  $.extend(true, $.summernote.lang, {
     'fa-IR': {
       font: {
         bold: 'درشت',
@@ -149,7 +149,7 @@
       specialChar: {
         specialChar: 'کاراکتر خاص',
         select: 'انتخاب کاراکتر خاص',
-      },      
+      },
     },
   });
 })(jQuery);

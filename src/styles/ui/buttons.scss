@@ -16,6 +16,7 @@
   padding: var(--note-padding-base-y) var(--note-padding-base-x) !important;
   touch-action: manipulation;
   color: var(--note-btn-color) !important;
+  fill: currentColor !important;
   font-size: var(--note-font-size) !important;
   font-weight: 400;
   line-height: var(--note-line-height) !important;

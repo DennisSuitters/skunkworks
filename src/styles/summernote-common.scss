@@ -134,6 +134,7 @@
         transform-origin: left top;
         transform: scale(1);
         background-color: var(--note-editable-background-color);
+        color: var(--note-editable-color);
 
         &[contenteditable="false"] {
           background-color: var(--note-editable-background-color);

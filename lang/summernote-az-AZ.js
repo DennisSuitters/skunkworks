@@ -4,14 +4,14 @@
 //Baki Azerbaycan
 //Website: https://ramilaliyev.com
 
-//Azerbaijan language for Summernote WYSIWYG 
+//Azerbaijan language for Summernote WYSIWYG
 //Translated by: RAMIL ALIYEV
 //Date: 20.07.2019
 //Baku Azerbaijan
 //Website: https://ramilaliyev.com
 
 (function($) {
-  $.extend($.summernote.lang, {
+  $.extend(true, $.summernote.lang, {
     'az-AZ': {
       font: {
         bold: 'Qalın',
