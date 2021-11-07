@@ -456,8 +456,10 @@ export default class Editor {
       if (this.context.invoke(eventName) !== false) {
         event.preventDefault();
         // if keyMap action was invoked
-        this.context.invoke(eventName);
-//        return true;
+        if (keyName != 'ENTER') {  // <--- Without this check, we get double Empty Paragraph insertion.
+          this.context.invoke(eventName);
+        }
+        return true;
       }
     } else if (key.isEdit(event.keyCode)) {
       if (key.isRemove(event.keyCode)) {
