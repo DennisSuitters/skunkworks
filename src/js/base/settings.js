@@ -129,7 +129,7 @@ $.summernote = $.extend($.summernote, {
     ],
 
     focus: false,
-    tabDisabled: false,
+    tabDisable: false,
     tabSize: 4,
     styleWithCSS: false,
     shortcuts: true,
