@@ -16,6 +16,11 @@ export default class Zoom {
     this.setZoom();
   }
 
+  reset() {
+    this.zoom = 1;
+    this.setZoom();
+  }
+
   setZoom() {
     this.$editable.css('transform', `scale(${this.zoom})`);
     this.context.layoutInfo.toolbar.find('.note-txt-zoom-value').html(Math.trunc(this.zoom * 100) + '%');

@@ -30,7 +30,7 @@ export default class HelpDialog {
       callback: ($node) => {
         $node.find('.note-modal-body').css({
           'max-height': 300,
-          'overflow': 'scroll',
+          'overflow-y': 'scroll',
         });
       },
     }).render().appendTo($container);

@@ -663,6 +663,7 @@ export default class Buttons {
         contents: '100%',
         tooltip: this.lang.zoom.value,
         placement: this.options.placement,
+        click: this.context.createInvokeHandler('zoom.reset'),
       }).render();
     });
 
