@@ -146,6 +146,9 @@ export default class VideoDialog {
     const fbRegExp = /(?:www\.|\/\/)facebook\.com\/([^\/]+)\/videos\/([0-9]+)/;
     const fbMatch = url.match(fbRegExp);
 
+    const bilRegExp = /bilibili\.com\/video\/([a-zA-Z0-9]+)/;
+    const bilMatch = url.match(bilRegExp);
+
     let $video;
     let urlVars = '';
     const $videoAspect = this.$dialog.find('.note-video-aspect');
@@ -263,6 +266,14 @@ export default class VideoDialog {
         .attr('width', vWidth).attr('height', vHeight)
         .attr('scrolling', 'no')
         .attr('allowtransparency', 'true');
+      } else if (bilMatch && bilMatch[0].length) {
+        $video = $('<iframe>')
+          .attr('src', '//player.bilibili.com/player.html?bvid=' + encodeURIComponent(bilMatch[1]))
+          .attr('scrolling', 'no')
+          .attr('border', 0)
+          .attr('frameborder', "no")
+          .attr('framespacing', 0)
+          .attr('allowfullscreen', true);
     } else {
       // this is not a known video link. Now what, Cat? Now what?
       return false;
