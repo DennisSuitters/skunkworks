@@ -149,7 +149,7 @@ export default class VideoDialog {
     const bilRegExp = /bilibili\.com\/video\/([a-zA-Z0-9]+)/;
     const bilMatch = url.match(bilRegExp);
 
-    let $video;
+    let $video = '<figure class="note-video-wrapper">';
     let urlVars = '';
     const $videoAspect = this.$dialog.find('.note-video-aspect');
     const $videoQuality = this.$dialog.find('.note-video-quality');
@@ -195,43 +195,19 @@ export default class VideoDialog {
       if (selectVideoQuality == '720p') urlVars += (urlVars.length > 0 ? '&' : '') + 'vq=hd720';
       if (selectVideoQuality == '1080p')urlVars += (urlVars.length > 0 ? '&' : '') + 'vq=hd1080';
 
-      $video = $('<iframe allowfullscreen>')
-        .attr('frameborder', 0)
-        .attr('src', '//www.youtube.com/embed/' + youtubeId + '?' + (start > 0 ? '?start=' + start : '') + (urlVars > 0 ? urlVars : ''))
-        .attr('width', vWidth).attr('height', vHeight);
+      $video += '<iframe allowfullscreen class="note-video-clip" frameborder="0" src="//www.youtube.com/embed/' + youtubeId + '?' + (start > 0 ? 'start=' + start : '') + (urlVars > 0 ? urlVars : '') + '" width="' + vWidth + '" height="' + vHeight + '"></iframe>';
     } else if (gdMatch && gdMatch[0].length) {
-        $video = $('<iframe>')
-          .attr('frameborder', 0)
-          .attr('src', 'https://drive.google.com/file/d/' + gdMatch[1] + '/preview')
-          .attr('width', vWidth).attr('height', vHeight);
+        $video += '<iframe class="note-video-clip" frameborder="0" src="https://drive.google.com/file/d/' + gdMatch[1] + '/preview" width="' + vWidth + '" height="' + vHeight +'"></iframe>';
     } else if (igMatch && igMatch[0].length) { // Instagram
-      $video = $('<iframe>')
-        .attr('frameborder', 0)
-        .attr('src', 'https://instagram.com/p/' + igMatch[1] + '/embed/')
-        .attr('width', vWidth).attr('height', vHeight)
-        .attr('scrolling', 'no')
-        .attr('allowtransparency', 'true');
+      $video = '<iframe class="note-video-clip" frameborder="0" src="https://instagram.com/p/' + igMatch[1] + '/embed/" width="' + vWidth + '"height="' + vHeight + '" scrolling="no" allowtransparency="true"></iframe>';
     } else if (vMatch && vMatch[0].length) { // Vine
-      $video = $('<iframe>')
-        .attr('frameborder', 0)
-        .attr('src', vMatch[0] + '/embed/simple')
-        .attr('width', vWidth).attr('height', vHeight)
-        .attr('class', 'vine-embed');
+      $video = '<iframe class="note-video-clip vine-embed" frameborder="0" src="' + vMatch[0] + '/embed/simple" width="' + vWidth + '" height="' + vHeight + '"></iframe>"';
     } else if (vimMatch && vimMatch[3].length) { // Vimeo
-      $video = $('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>')
-        .attr('frameborder', 0)
-        .attr('src', '//player.vimeo.com/video/' + vimMatch[3])
-        .attr('width', vWidth).attr('height', vHeight);
+      $video = '<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen class="note-video-clip" frameborder="0" src="//player.vimeo.com/video/' + vimMatch[3] + '" width="' + vWidth + '" height="' + vHeight + '"></iframe>'
     } else if (dmMatch && dmMatch[2].length) { // Dailymotion
-      $video = $('<iframe>')
-        .attr('frameborder', 0)
-        .attr('src', '//www.dailymotion.com/embed/video/' + dmMatch[2])
-        .attr('width', vWidth).attr('height', vHeight);
+      $video = '<iframe class="note-video-clip" frameborder="0" src="//www.dailymotion.com/embed/video/' + dmMatch[2] + '" width="' + vWidth + '" height="' + vHeight +'"></iframe>';
     } else if (youkuMatch && youkuMatch[1].length) { // Youku
-      $video = $('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>')
-        .attr('frameborder', 0)
-        .attr('width', vWidth).attr('height', vHeight)
-        .attr('src', '//player.youku.com/embed/' + youkuMatch[1]);
+      $video = '<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen class="note-video-clip" frameborder="0" width="' + vWidth + '" height="' + vHeight + '" src="//player.youku.com/embed/' + youkuMatch[1] + '"></iframe>';
       } else if (peerTubeMatch && peerTubeMatch[0].length){
       var begin = 0;
       if (peerTubeMatch[2] !== 'undefined') begin = peerTubeMatch[2];
@@ -243,45 +219,24 @@ export default class VideoDialog {
       if (peerTubeMatch[5] !== 'undefined') autoplay = peerTubeMatch[5];
       var muted = 0;
       if (peerTubeMatch[6] !== 'undefined') muted = peerTubeMatch[6];
-      $video = $('<iframe allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups">')
-      .attr('frameborder', 0)
-      .attr('src', '//'+ peerTubeMatch[1] +'/videos/embed/' + peerTubeMatch[2]+"?loop="+loop
-      +"&autoplay="+autoplay+"&muted="+muted +(begin > 0 ? '&start=' + begin : '')+(end > 0 ? '&end=' + start : ''))
-      .attr('width', '560')
-      .attr('height', '315');
+      $video = '<iframe allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups" class="note-video-clip" frameborder="0" src="//'+ peerTubeMatch[1] +'/videos/embed/' + peerTubeMatch[2] + '?loop=' + loop + '&autoplay=' + autoplay + '&muted=' + muted + (begin > 0 ? '&start=' + begin : '') + (end > 0 ? '&end=' + start : '') + '" width="560" height="315"></iframe>';
     } else if ((qqMatch && qqMatch[1].length) || (qqMatch2 && qqMatch2[2].length)) {
       const vid = ((qqMatch && qqMatch[1].length) ? qqMatch[1] : qqMatch2[2]);
-      $video = $('<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen>')
-        .attr('frameborder', 0)
-        .attr('width', vWidth).attr('height', vHeight)
-        .attr('src', 'https://v.qq.com/txp/iframe/player.html?vid=' + vid + '&amp;auto=0');
+      $video = '<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen class="note-video-clip" frameborder="0" width="' + vWidth + '" height="' + vHeight + '" src="https://v.qq.com/txp/iframe/player.html?vid=' + vid + '&amp;auto=0"></iframe>';
     } else if (mp4Match || oggMatch || webmMatch) {
-      $video = $('<video controls>')
-        .attr('src', url)
-        .attr('width', vWidth).attr('height', vHeight);
+      $video = '<video controls class="note-video-clip" src="' + url + '" width="' + vWidth + '" height="' + vHeight + '">';
     } else if (fbMatch && fbMatch[0].length) {
-      $video = $('<iframe>')
-        .attr('frameborder', 0)
-        .attr('src', 'https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(fbMatch[0]) + '&show_text=0&width=' + vWidth)
-        .attr('width', vWidth).attr('height', vHeight)
-        .attr('scrolling', 'no')
-        .attr('allowtransparency', 'true');
-      } else if (bilMatch && bilMatch[0].length) {
-        $video = $('<iframe>')
-          .attr('src', '//player.bilibili.com/player.html?bvid=' + encodeURIComponent(bilMatch[1]))
-          .attr('scrolling', 'no')
-          .attr('border', 0)
-          .attr('frameborder', "no")
-          .attr('framespacing', 0)
-          .attr('allowfullscreen', true);
+      $video = '<iframe class="note-video-clip" frameborder="0" src="https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(fbMatch[0]) + '&show_text=0&width=' + vWidth + '" width="' + vWidth + '" height="' + vHeight + '" scrolling="no" allowtransparency="true"></iframe>';
+    } else if (bilMatch && bilMatch[0].length) {
+        $video = '<iframe class="note-video-clip" src="//player.bilibili.com/player.html?bvid=' + encodeURIComponent(bilMatch[1]) + '" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>';
     } else {
       // this is not a known video link. Now what, Cat? Now what?
       return false;
     }
 
-    $video.addClass('note-video-clip');
+    $video += '<div class="note-video-popover-overlay"></div></figure>';
 
-    return $video[0];
+    return $video;
   }
 
   show() {
@@ -293,11 +248,11 @@ export default class VideoDialog {
       this.context.invoke('editor.restoreRange');
 
       // build node
-      const $node = this.createVideoNode(url);
+      let $node = this.createVideoNode(url);
 
       if ($node) {
         // insert video node
-        this.context.invoke('editor.insertNode', $node);
+        this.context.invoke('editor.pasteHTML', $node);
       }
     }).fail(() => {
       this.context.invoke('editor.restoreRange');

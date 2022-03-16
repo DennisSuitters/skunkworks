@@ -40,7 +40,7 @@ $.extend(true, $.summernote.lang, {
       maximumFileSize: 'Maximum file size',
       maximumFileSizeError: 'Maximum file size exceeded.',
       url: 'Image URL',
-      remove: 'Remove Image',
+      remove: 'Remove',
       original: 'Original',
       fileBrowser: 'File Browser',
       title: 'Title',
@@ -61,6 +61,7 @@ $.extend(true, $.summernote.lang, {
       aspect: 'Aspect Ratio',
       captions: 'Show Captions',
       quality: 'Video Quality',
+      remove: 'Remove',
     },
     link: {
       link: 'Link',

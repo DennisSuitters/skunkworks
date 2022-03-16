@@ -23,6 +23,7 @@ import ImageDialog from './module/ImageDialog';
 import ImagePopover from './module/ImagePopover';
 import TablePopover from './module/TablePopover';
 import VideoDialog from './module/VideoDialog';
+import VideoPopover from './module/VideoPopover';
 import HelpDialog from './module/HelpDialog';
 import AirPopover from './module/AirPopover';
 import HintPopover from './module/HintPopover';
@@ -62,6 +63,7 @@ $.summernote = $.extend($.summernote, {
       'imagePopover': ImagePopover,
       'tablePopover': TablePopover,
       'videoDialog': VideoDialog,
+      'videoPopover': VideoPopover,
       'helpDialog': HelpDialog,
       'airPopover': AirPopover,
       'zoom': Zoom,
@@ -96,6 +98,9 @@ $.summernote = $.extend($.summernote, {
       image: [
         ['resize', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
         ['float', ['floatLeft', 'floatRight', 'floatNone']],
+        ['remove', ['removeMedia']],
+      ],
+      video: [
         ['remove', ['removeMedia']],
       ],
       link: [

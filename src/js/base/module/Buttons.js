@@ -796,6 +796,18 @@ export default class Buttons {
     });
   }
 
+  addVideoPopoverButtons() {
+    // Remove Buttons
+    this.context.memo('button.removeVideo', () => {
+      return this.button({
+        contents: this.ui.icon(this.options.icons.trash),
+        tooltip: this.lang.video.remove,
+        placement: this.options.placement,
+        click: this.context.createInvokeHandler('editor.removeVideo'),
+      }).render();
+    });
+  }
+
   addLinkPopoverButtons() {
     this.context.memo('button.linkDialogShow', () => {
       return this.button({

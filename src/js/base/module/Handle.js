@@ -97,6 +97,7 @@ export default class Handle {
     this.context.invoke('imagePopover.update', target, event);
 
     if (isImage) {
+      this.context.invoke('imagePopover.update', target, event);
       const $image = $(target);
       const position = $image.position();
       const pos = {
@@ -129,6 +130,7 @@ export default class Handle {
     }
 
     return isImage;
+
   }
 
   /**

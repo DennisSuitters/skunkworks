@@ -130,6 +130,10 @@ function isBodyContainer(node) {
 
 const isAnchor = makePredByNodeName('A');
 
+function isVideo(node) {
+  return $(node).hasClass('note-video-popover-overlay');
+}
+
 function isParaInline(node) {
   return isInline(node) && !!ancestor(node, isPara);
 }
@@ -1188,6 +1192,7 @@ export default {
   isS: makePredByNodeName('S'),
   isI: makePredByNodeName('I'),
   isImg: makePredByNodeName('IMG'),
+  isVideo,
   isTextarea,
   deepestChildIsEmpty,
   isEmpty,

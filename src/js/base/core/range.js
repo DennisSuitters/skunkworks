@@ -129,6 +129,8 @@ class WrappedRange {
     this.isOnList = this.makeIsOn(dom.isList);
     // isOnAnchor: judge whether range is on anchor node or not
     this.isOnAnchor = this.makeIsOn(dom.isAnchor);
+    // isOnVideo: judge whether range is on video node or not
+    this.isOnVideo = this.makeIsOn(dom.isVideo);
     // isOnCell: judge whether range is on cell node or not
     this.isOnCell = this.makeIsOn(dom.isCell);
     // isOnData: judge whether range is on data node or not
