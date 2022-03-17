@@ -60,7 +60,7 @@ export default class AutoLink {
   }
 
   handleKeyup(event) {
-    if (lists.contains([key.code.ENTER, key.code.SPACE], event.keyCode)) {
+    if (key.code.SPACE === event.keyCode || (key.code.ENTER === event.keyCode && !event.shiftKey)) {
       this.replace();
     }
   }
