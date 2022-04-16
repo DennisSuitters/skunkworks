@@ -116,7 +116,7 @@ export default class Dropzone {
 
   destroy() {
     Object.keys(this.documentEventHandlers).forEach((key) => {
-      this.$eventListener.off(key.substr(2).toLowerCase(), this.documentEventHandlers[key]);
+      this.$eventListener.off(key.slice(2).toLowerCase(), this.documentEventHandlers[key]);
     });
     this.documentEventHandlers = {};
   }
