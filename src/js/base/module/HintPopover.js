@@ -41,14 +41,14 @@ export default class HintPopover {
     this.matchingWord = null;
     this.$popover = this.ui.popover({
       className: 'note-hint-popover',
-      hideArrow: true,
+      hideArrow: false,
       direction: '',
     }).render().appendTo(this.options.container);
 
     this.$popover.hide();
     this.$content = this.$popover.find('.note-popover-content');
     this.$content.on('click', '.note-hint-item', (event) => {
-      this.$content.find('.active').removeClass('note-active');
+      this.$content.find('.note-active').removeClass('note-active');
       $(event.currentTarget).addClass('note-active');
       this.replace();
     });
@@ -158,7 +158,7 @@ export default class HintPopover {
       });
 
       if (hintIdx === 0 && idx === 0) {
-        $item.addClass('active');
+        $item.addClass('note-active');
       }
 
       return $item;
