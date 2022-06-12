@@ -442,7 +442,7 @@ const ui = function(options) {
         note: $note,
         editor: $editor,
         toolbar: $editor.find('.note-toolbar'),
-        viewportArea: $editor.find('note-viewport-area'),
+        viewportArea: $editor.find('.note-viewport-area'),
         editingArea: $editor.find('.note-editing-area'),
         editable: $editor.find('.note-editable'),
         codable: $editor.find('.note-codable'),

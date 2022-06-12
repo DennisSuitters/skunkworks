@@ -7,10 +7,10 @@
 import $ from 'jquery';
 import chai from 'chai';
 import chaidom from 'test/chaidom';
-import env from 'src/js/base/core/env';
-import range from 'src/js/base/core/range';
-import Context from 'src/js/base/Context';
-import 'src/js/lite/settings';
+import env from 'src/js/core/env';
+import range from 'src/js/core/range';
+import Context from 'src/js/Context';
+import 'src/styles/lite/summernote-lite';
 
 chai.use(chaidom);
 
@@ -182,7 +182,7 @@ describe('Buttons', () => {
   */
 
   describe('font family button', () => {
-    it('should change font family(Courier New)when it is clicked', (done) => {
+    it('should change font family (Courier New) when it is clicked', (done) => {
       var $li = $toolbar.find('.dropdown-fontname a[data-value="Courier New"]');
       var $span = $toolbar.find('span.note-current-fontname');
       assert.isTrue($li.length === 1);

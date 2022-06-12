@@ -6,9 +6,9 @@
 import $ from 'jquery';
 import chai from 'chai';
 import chaidom from 'test/chaidom';
-import Context from 'src/js/base/Context';
-import Codeview from 'src/js/base/module/Codeview';
-import 'src/js/lite/settings';
+import Context from 'src/js/Context';
+import Codeview from 'src/js/module/Codeview';
+import 'src/styles/lite/summernote-lite';
 
 chai.use(chaidom);
 

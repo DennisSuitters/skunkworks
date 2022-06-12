@@ -1,7 +1,7 @@
 import $ from 'jquery';
-import env from './base/core/env';
-import lists from './base/core/lists';
-import Context from './base/Context';
+import env from './core/env';
+import lists from './core/lists';
+import Context from './Context';
 
 $.fn.extend({
   /**
@@ -21,7 +21,6 @@ $.fn.extend({
     options.langInfo = $.extend(true, {}, $.summernote.lang['en-US'], $.summernote.lang[options.lang]);
     options.icons = $.extend(true, {}, $.summernote.options.icons, options.icons);
     options.tooltip = options.tooltip === 'auto' ? !env.isSupportTouch : options.tooltip;
-    options.placement = options.placement;
 
     this.each((idx, note) => {
       const $note = $(note);

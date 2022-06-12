@@ -6,8 +6,8 @@
 import chai from 'chai';
 import chaidom from 'test/chaidom';
 import $ from 'jquery';
-import dom from 'src/js/base/core/dom';
-import func from 'src/js/base/core/func';
+import dom from 'src/js/core/dom';
+import func from 'src/js/core/func';
 
 let expect = chai.expect;
 chai.use(chaidom);
@@ -338,6 +338,16 @@ describe('base:core.dom', () => {
 
       let result = dom.splitPoint({ node: $para[0], offset: 0 }, true);
       expect(result).to.deep.equal({ rightNode: $br[0], container: $para[0] });
+    });
+  });
+
+  describe('isVisiblePoint', () => {
+    it('should detect as visible when there is a table inside a div', () => {
+      let $editable = $('<div><table></table></div>');
+      let $point = $editable.clone().find('div');
+
+      let result = dom.isVisiblePoint($point);
+      expect(result).to.be.true;
     });
   });
 });

@@ -6,9 +6,9 @@
 
 import chai from 'chai';
 import $ from 'jquery';
-import Context from 'src/js/base/Context';
-import Fullscreen from 'src/js/base/module/Fullscreen';
-import 'src/js/lite/settings';
+import Context from 'src/js/Context';
+import Fullscreen from 'src/js/module/Fullscreen';
+import 'src/styles/lite/summernote-lite';
 
 describe('Fullscreen', () => {
   var expect = chai.expect;

@@ -5,8 +5,8 @@
  */
 import chai from 'chai';
 import $ from 'jquery';
-import Context from 'src/js/base/Context';
-import 'src/js/lite/settings';
+import Context from 'src/js/Context';
+import 'src/styles/lite/summernote-lite';
 
 describe('Placeholder', () => {
   var assert = chai.assert;

@@ -1,0 +1,49 @@
+.note-btn-group {
+  display: inline-block;
+  position: relative;
+  margin-right: 8px;
+
+  > .note-btn-group {
+    margin-right: 0;
+  }
+
+  > .note-btn:first-child {
+    margin-left: 0;
+  }
+
+  .note-btn + .note-btn,
+  .note-btn + .note-txt,
+  .note-txt + .note-btn,
+  .note.txt + .note-btn-group,
+  .note-btn + .note-btn-group,
+  .note-btn-group + .note-btn,
+  .note-btn-group + .note-txt,
+  .note-btn-group + .note-btn-group {
+    margin-left: -1px;
+  }
+
+  > .note-btn:not(:first-child),
+  > .note-txt:not(:first-child),
+  > .note-btn-group:not(:first-child) > .note-btn,
+  > .note-btn-group:not(:first-child) > .note-txt {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  > .note-btn:not(:last-child):not(.note-dropdown-toggle),
+  > .note-txt:not(:last-child):not(.note-dropdown-toggle),
+  > .note-btn-group:not(:last-child) > .note-btn,
+  > .note-btn-group:not(:last-child) > .note-txt {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  &.note-open {
+
+    > .note-dropdown {
+      display: block;
+    }
+
+  }
+
+}

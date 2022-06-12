@@ -8,9 +8,9 @@ import spies from 'chai-spies';
 import $ from 'jquery';// window.jQuery = $;
 import 'bootstrap';
 import chaidom from 'test/chaidom';
-import env from 'src/js/base/core/env';
-import Context from 'src/js/base/Context';
-import 'src/js/lite/settings';
+import env from 'src/js/core/env';
+import Context from 'src/js/Context';
+import 'src/styles/lite/summernote-lite';
 
 var expect = chai.expect;
 chai.use(spies);
