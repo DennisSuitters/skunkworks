@@ -14,7 +14,6 @@ const webfontConfig = {
   templateFontPath: './font/',
   fixedWidth: false,
   normalize: true,
-  ligatures: true,
 };
 
 // eslint-disable-next-line
