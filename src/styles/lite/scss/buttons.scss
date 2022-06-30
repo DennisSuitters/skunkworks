@@ -17,7 +17,7 @@
   touch-action: manipulation;
   color: var(--note-btn-color);
   fill: currentColor;
-  font-size: var(--note-font-size);
+  font-size: var(--note-font-size) !important;
   font-weight: 400;
   line-height: var(--note-line-height);
   text-align: center;
