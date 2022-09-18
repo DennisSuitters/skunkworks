@@ -9,6 +9,7 @@ import ModalUI from './js/ModalUI';
 
 const editor = renderer.create('<div class="note-editor note-frame"></div>');
 const toolbar = renderer.create('<div class="note-toolbar" role="toolbar"></div>');
+const viewportArea = renderer.create('<div class="note-viewport-area"></div>');
 const editingArea = renderer.create('<div class="note-editing-area"></div>');
 const codable = renderer.create('<textarea class="note-codable" aria-multiline="true"></textarea>');
 const editable = renderer.create('<div class="note-editable" contentEditable="true" role="textbox" aria-multiline="true"></div>');
@@ -58,6 +59,23 @@ const button = renderer.create('<button type="button" class="note-btn" tabindex=
   }
 });
 
+const text = renderer.create('<div class="note-txt"></div>', function($node, options) {
+  if (options && options.tooltip) {
+    $node.attr({
+      'aria-label': options.tooltip,
+    });
+    $node.data('_lite_tooltip', new TooltipUI($node, {
+      title: options.tooltip,
+      container: options.container,
+    })).on('click', (event) => {
+      $(event.currentTarget).data('_lite_tooltip').hide();
+    });
+  }
+  if (options.contents) {
+    $node.html(options.contents);
+  }
+});
+
 const dropdown = renderer.create('<div class="note-dropdown-menu" role="list"></div>', function($node, options) {
   const markup = Array.isArray(options.items) ? options.items.map(function(item) {
     const value = (typeof item === 'string') ? item : (item.value || '');
@@ -71,7 +89,7 @@ const dropdown = renderer.create('<div class="note-dropdown-menu" role="list"></
 
   $node.html(markup).attr({ 'aria-label': options.title });
 
-  $node.on('click', '> .note-dropdown-item', function(e) {
+  $node.on('click', '> .note-dropdown-item', function(event) {
     const $a = $(this);
 
     const item = $a.data('item');
@@ -80,7 +98,7 @@ const dropdown = renderer.create('<div class="note-dropdown-menu" role="list"></
     if (item.click) {
       item.click($a);
     } else if (options.itemClick) {
-      options.itemClick(e, item, value);
+      options.itemClick(event, item, value);
     }
   });
   if (options && options.codeviewKeepButton) {
@@ -508,6 +526,7 @@ const ui = function(editorOptions) {
     editor: editor,
     toolbar: toolbar,
     editingArea: editingArea,
+    viewportArea: viewportArea,
     codable: codable,
     editable: editable,
     statusbar: statusbar,
@@ -515,6 +534,7 @@ const ui = function(editorOptions) {
     airEditable: airEditable,
     buttonGroup: buttonGroup,
     button: button,
+    text: text,
     dropdown: dropdown,
     dropdownCheck: dropdownCheck,
     dropdownButton: dropdownButton,
@@ -593,7 +613,9 @@ const ui = function(editorOptions) {
         ? editor([
           editingArea([
             codable(),
-            editable(),
+            viewportArea([
+              editable(),
+            ]),
           ]),
           toolbar(),
           statusbar(),
@@ -602,7 +624,9 @@ const ui = function(editorOptions) {
           toolbar(),
           editingArea([
             codable(),
-            editable(),
+            viewportArea([
+              editable(),
+            ]),
           ]),
           statusbar(),
         ])
@@ -614,6 +638,7 @@ const ui = function(editorOptions) {
         note: $note,
         editor: $editor,
         toolbar: $editor.find('.note-toolbar'),
+        viewportArea: $editor.find('.note-viewport-area'),
         editingArea: $editor.find('.note-editing-area'),
         editable: $editor.find('.note-editable'),
         codable: $editor.find('.note-codable'),

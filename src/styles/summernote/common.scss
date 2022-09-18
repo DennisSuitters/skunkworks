@@ -162,7 +162,7 @@
     // editable
     .note-viewport-area {
       overflow: auto;
-      background-color: var(--note-background-color);
+      background-color: var(--note-editable-background-color);
 
       .note-editable {
         padding: 10px !important;

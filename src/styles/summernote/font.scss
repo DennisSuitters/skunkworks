@@ -76,227 +76,235 @@ $sni-css-prefix: note-icon !default;
 // Icons
 
 
-.note-icon-align::before {
+.note-icon-add::before {
   content: "\ea01";
 }
 
-.note-icon-align-center::before {
+.note-icon-align::before {
   content: "\ea02";
 }
 
-.note-icon-align-indent::before {
+.note-icon-align-center::before {
   content: "\ea03";
 }
 
-.note-icon-align-justify::before {
+.note-icon-align-indent::before {
   content: "\ea04";
 }
 
-.note-icon-align-left::before {
+.note-icon-align-justify::before {
   content: "\ea05";
 }
 
-.note-icon-align-outdent::before {
+.note-icon-align-left::before {
   content: "\ea06";
 }
 
-.note-icon-align-right::before {
+.note-icon-align-outdent::before {
   content: "\ea07";
 }
 
-.note-icon-arrow-circle-down::before {
+.note-icon-align-right::before {
   content: "\ea08";
 }
 
-.note-icon-arrow-circle-left::before {
+.note-icon-arrow-circle-down::before {
   content: "\ea09";
 }
 
-.note-icon-arrow-circle-right::before {
+.note-icon-arrow-circle-left::before {
   content: "\ea0a";
 }
 
-.note-icon-arrow-circle-up::before {
+.note-icon-arrow-circle-right::before {
   content: "\ea0b";
 }
 
-.note-icon-arrows-alt::before {
+.note-icon-arrow-circle-up::before {
   content: "\ea0c";
 }
 
-.note-icon-arrows-h::before {
+.note-icon-arrows-alt::before {
   content: "\ea0d";
 }
 
-.note-icon-arrows-v::before {
+.note-icon-arrows-h::before {
   content: "\ea0e";
 }
 
-.note-icon-bold::before {
+.note-icon-arrows-v::before {
   content: "\ea0f";
 }
 
-.note-icon-caret::before {
+.note-icon-bold::before {
   content: "\ea10";
 }
 
-.note-icon-chain-broken::before {
+.note-icon-caret::before {
   content: "\ea11";
 }
 
-.note-icon-circle::before {
+.note-icon-chain-broken::before {
   content: "\ea12";
 }
 
-.note-icon-close::before {
+.note-icon-circle::before {
   content: "\ea13";
 }
 
-.note-icon-code::before {
+.note-icon-close::before {
   content: "\ea14";
 }
 
-.note-icon-col-after::before {
+.note-icon-code::before {
   content: "\ea15";
 }
 
-.note-icon-col-before::before {
+.note-icon-col-after::before {
   content: "\ea16";
 }
 
-.note-icon-col-remove::before {
+.note-icon-col-before::before {
   content: "\ea17";
 }
 
-.note-icon-eraser::before {
+.note-icon-col-remove::before {
   content: "\ea18";
 }
 
-.note-icon-float-left::before {
+.note-icon-eraser::before {
   content: "\ea19";
 }
 
-.note-icon-float-none::before {
+.note-icon-float-left::before {
   content: "\ea1a";
 }
 
-.note-icon-float-right::before {
+.note-icon-float-none::before {
   content: "\ea1b";
 }
 
-.note-icon-font::before {
+.note-icon-float-right::before {
   content: "\ea1c";
 }
 
-.note-icon-frame::before {
+.note-icon-font::before {
   content: "\ea1d";
 }
 
-.note-icon-italic::before {
+.note-icon-frame::before {
   content: "\ea1e";
 }
 
-.note-icon-link::before {
+.note-icon-italic::before {
   content: "\ea1f";
 }
 
-.note-icon-magic::before {
+.note-icon-link::before {
   content: "\ea20";
 }
 
-.note-icon-menu-check::before {
+.note-icon-magic::before {
   content: "\ea21";
 }
 
-.note-icon-minus::before {
+.note-icon-menu-check::before {
   content: "\ea22";
 }
 
-.note-icon-orderedlist::before {
+.note-icon-minus::before {
   content: "\ea23";
 }
 
-.note-icon-pencil::before {
+.note-icon-orderedlist::before {
   content: "\ea24";
 }
 
-.note-icon-picture::before {
+.note-icon-pencil::before {
   content: "\ea25";
 }
 
-.note-icon-question::before {
+.note-icon-picture::before {
   content: "\ea26";
 }
 
-.note-icon-redo::before {
+.note-icon-question::before {
   content: "\ea27";
 }
 
-.note-icon-rollback::before {
+.note-icon-redo::before {
   content: "\ea28";
 }
 
-.note-icon-row-above::before {
+.note-icon-remove::before {
   content: "\ea29";
 }
 
-.note-icon-row-below::before {
+.note-icon-rollback::before {
   content: "\ea2a";
 }
 
-.note-icon-row-remove::before {
+.note-icon-row-above::before {
   content: "\ea2b";
 }
 
-.note-icon-special-character::before {
+.note-icon-row-below::before {
   content: "\ea2c";
 }
 
-.note-icon-square::before {
+.note-icon-row-remove::before {
   content: "\ea2d";
 }
 
-.note-icon-strikethrough::before {
+.note-icon-special-character::before {
   content: "\ea2e";
 }
 
-.note-icon-subscript::before {
+.note-icon-square::before {
   content: "\ea2f";
 }
 
-.note-icon-summernote::before {
+.note-icon-strikethrough::before {
   content: "\ea30";
 }
 
-.note-icon-superscript::before {
+.note-icon-subscript::before {
   content: "\ea31";
 }
 
-.note-icon-table::before {
+.note-icon-summernote::before {
   content: "\ea32";
 }
 
-.note-icon-text-height::before {
+.note-icon-superscript::before {
   content: "\ea33";
 }
 
-.note-icon-trash::before {
+.note-icon-table::before {
   content: "\ea34";
 }
 
-.note-icon-underline::before {
+.note-icon-text-height::before {
   content: "\ea35";
 }
 
-.note-icon-undo::before {
+.note-icon-trash::before {
   content: "\ea36";
 }
 
-.note-icon-unorderedlist::before {
+.note-icon-underline::before {
   content: "\ea37";
 }
 
-.note-icon-video::before {
+.note-icon-undo::before {
   content: "\ea38";
+}
+
+.note-icon-unorderedlist::before {
+  content: "\ea39";
+}
+
+.note-icon-video::before {
+  content: "\ea3a";
 }
 

@@ -1,7 +1,3 @@
-import $ from 'jquery';
-import env from '../core/env';
-import key from '../core/key';
-
 export default class Zoom {
 
   constructor(context) {
