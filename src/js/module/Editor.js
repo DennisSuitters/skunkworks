@@ -237,7 +237,7 @@ export default class Editor {
         if(linkRel != '') $(anchor).attr('rel', linkRel);
         if (isNewWindow === true) {
           $(anchor).attr('target', '_blank');
-        } else {
+        } else{
           $(anchor).removeAttr('target');
         }
       });
@@ -288,7 +288,7 @@ export default class Editor {
      */
     this.removeMedia = this.wrapCommand(() => {
       let $target = $(this.restoreTarget()).parent();
-      if ($target.closest('figure')) {
+      if ($target.closest('figure').length) {
         $target.closest('figure').remove();
       } else {
         $target = $(this.restoreTarget()).detach();
@@ -720,11 +720,9 @@ export default class Editor {
       this.afterCommand();
     };
   }
-
   /**
    * removed (function added by 1der1)
   */
-
   removed(rng, node, tagName) { // LB
 		rng = range.create();
 		if (rng.isCollapsed() && rng.isOnCell()) {
@@ -741,7 +739,6 @@ export default class Editor {
 			}
 		}
 	}
-
   /**
    * insert image
    *
@@ -838,7 +835,7 @@ export default class Editor {
       if ($target && $target.length) {
         const currentRange = this.createRange();
         const $parent = $([currentRange.sc, currentRange.ec]).closest(tagName);
-        // remove class added for current formatBlock
+        // remove class added for current block
         $parent.removeClass();
         const className = $target[0].className || '';
         if (className) {
@@ -875,7 +872,7 @@ export default class Editor {
       }
     } else {
       const noteStatusOutput = $.now();
-      this.$editor.find('.note-status-output').html('<div id="note-status-output-' + noteStatusOutput + '" class="note-alert note-alert-info">' + this.lang.output.noSelection + '</div>');
+      this.$editor.find('.note-status-output').html('<div id="note-status-output-' + noteStatusOutput + '" class="alert alert-info">' + this.lang.output.noSelection + '</div>');
       setTimeout(function() { $('#note-status-output-' + noteStatusOutput).remove(); }, 5000);
     }
   }

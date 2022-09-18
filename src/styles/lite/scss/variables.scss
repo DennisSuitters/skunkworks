@@ -1,8 +1,11 @@
 :root {
+  --note-color: #000;
   --note-font: sans-serif;
   --note-font-size: 14px;
   --note-font-size-large: calc(var(--note-font-size) * 1.25);
   --note-font-size-small: calc(var(--note-font-size) * .85);
+  --note-placeholder-color: #ddd;
+  --note-icon-prefix: 'note-icon';
   --note-line-height: 1.4;
   --note-line-height-computed: calc(var(--note-line-height) * var(--note-font-size));
   --note-box-shadow-x: 0;
@@ -22,6 +25,11 @@
   --note-editable-table-border-style: solid;
   --note-editable-table-border-color: #ececec;
 
+  --note-control-selection-color: #fff;
+  --note-control-selection-background-color: #000;
+  --note-control-selection-border-color: #000;
+  --note-control-selection-handle-color: #000;
+
   --note-codeable-font: Menlo, Manaco, monospace, sans-serif;
   --note-codeable-font-size: 14px;
   --note-codeable-color: #ccc;
@@ -30,6 +38,7 @@
   --note-dropzone-color: #fff;
   --note-dropzone-background-color: #0d6efd;
   --note-dropzone-background-color-active: #025ce2;
+  --note-dropzone-border-color: #ddd;
 
   --note-padding-base-x: 10px;
   --note-padding-base-y: 5px;
@@ -46,7 +55,8 @@
 
   --note-status-height: auto;
   --note-status-font-size: 14px;
-  --note-status-color: #333;
+  --note-status-color: #000;
+  --note-status-color-muted: #777;
   --note-status-background-color: #f5f5f5;
   --note-status-border-width: 1px;
   --note-status-border-style: solid;
@@ -57,6 +67,9 @@
   --note-status-padding-y: 10px;
 
   --note-btn-font-weight: 400;
+  --note-btn-font-size: 13px;
+  --note-btn-padding-x: .65rem;
+  --note-btn-padding-y: .28rem;
   --note-btn-background-color: #fff;
   --note-btn-background-color-hover: #dae0e5;
   --note-btn-background-color-active: #dae0e5;
@@ -90,6 +103,7 @@
   --note-txt-primary-color: #fff;
   --note-txt-primary-background-color: #0d6efd;
 
+  --note-form-label-color: #000;
   --note-form-input-color: #888;
   --note-form-input-placeholder-color: #999;
   --note-form-input-background-color: #fff;
@@ -102,6 +116,7 @@
   --note-form-help-color: #aaa;
 
   --note-dropdown-color: #000;
+  --note-dropdown-color-hover: #000;
   --note-dropdown-background-color: #fff;
   --note-dropdown-background-color-hover: #f5f5f5;
   --note-dropdown-border-color: #e2e2e2;
@@ -127,11 +142,12 @@
   --note-popover-border-radius: 3px;
   --note-popover-title-background-color: #e9e9e9;
   --note-popover-arrow-width: 10px;
-  --note-popover-arrow-color: #ffffff;
+  --note-popover-arrow-color: #fff;
   --note-popover-arrow-outer-width: calc(var(--note-popover-arrow-width + 1));
   --note-popover-arrow-outer-color: rgba(0, 0, 0, .2);
 
   --note-modal-backdrop-background-color: rgba(0, 0, 0, .5);
+  --note-modal-backdrop-opacity: .5;
   --note-modal-border-radius: 5px;
   --note-modal-background-color: #fff;
   --note-modal-color: #000;
@@ -143,6 +159,7 @@
   --note-modal-header-border-color: #e5e5e5;
   --note-modal-header-padding: 15px;
   --note-modal-header-line-height: var(--note-line-height);
+  --note-modal-close-color: #000;
   --note-modal-footer-border-color: #e5e5e5;
 
   --note-zindex-dropdown: 1000;
@@ -188,7 +205,6 @@
   --note-danger-background-color: #f8d7da;
   --note-danger-link-color: #491217;
   --note-danger-border-color: #f5c6cb;
-
 }
 
 @media (prefers-color-scheme: dark) {

@@ -42,7 +42,7 @@ $.extend(true, $.summernote.lang, {
       url: 'Image URL',
       remove: 'Remove',
       original: 'Original',
-      fileBrowser: 'File Browser',
+      fileBrowser: 'File&nbsp;Browser',
       title: 'Title',
       alt: 'Alt',
       class: 'Class',

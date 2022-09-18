@@ -206,7 +206,8 @@ export default class Bullet {
           isSkipPaddingBlankHTML: true,
         });
 
-        paras = isEscapseToBody ? dom.listDescendant(middleList, dom.isLi) : lists.from(middleList.childNodes).filter(dom.isLi);
+        paras = isEscapseToBody ? dom.listDescendant(middleList, dom.isLi)
+          : lists.from(middleList.childNodes).filter(dom.isLi);
 
         // LI to P
         if (isEscapseToBody || !dom.isList(headList.parentNode)) {
@@ -247,7 +248,9 @@ export default class Bullet {
    * @return {HTMLNode}
    */
   appendToPrevious(node) {
-    return node.previousSibling ? dom.appendChildNodes(node.previousSibling, [node]) : this.wrapList([node], 'LI');
+    return node.previousSibling
+      ? dom.appendChildNodes(node.previousSibling, [node])
+      : this.wrapList([node], 'LI');
   }
 
   /**
@@ -259,7 +262,9 @@ export default class Bullet {
    * @return {Array[]}
    */
   findList(node) {
-    return node ? lists.find(node.children, child => ['OL', 'UL'].indexOf(child.nodeName) > -1) : null;
+    return node
+      ? lists.find(node.children, child => ['OL', 'UL'].indexOf(child.nodeName) > -1)
+      : null;
   }
 
   /**

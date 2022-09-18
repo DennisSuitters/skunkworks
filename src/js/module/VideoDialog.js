@@ -16,7 +16,7 @@ export default class VideoDialog {
   initialize() {
     const $container = this.options.dialogsInBody ? this.$body : this.options.container;
     const body = [
-      `<label for="note-dialog-video-url-` + this.options.id + `" class="note-form-label">` + this.lang.video.url + ` <small class="text-muted">` + this.lang.video.providers + `</small></label>`,
+      '<label for="note-dialog-video-url-' + this.options.id + '" class="note-form-label">' + this.lang.video.url + ' <small class="note-text-muted">' + this.lang.video.providers + '</small></label>',
       '<div class="note-form-group">',
         `<input id="note-dialog-video-url-` + this.options.id + `" class="note-video-url note-input" type="text">`,
       '</div>',
@@ -76,8 +76,7 @@ export default class VideoDialog {
         checked: true,
       }).render()).html(),
     ].join('');
-
-    const footer = `<input type="button" href="#" class="note-btn note-btn-primary note-video-btn" value="` + this.lang.video.insert + `" disabled>`;
+    const footer = '<input type="button" href="#" class="btn btn-primary note-btn note-btn-primary note-video-btn" value="' + this.lang.video.insert + '" disabled>';
 
     this.$dialog = this.ui.dialog({
       title: this.lang.video.insert,
@@ -248,7 +247,7 @@ export default class VideoDialog {
       this.context.invoke('editor.restoreRange');
 
       // build node
-      let $node = this.createVideoNode(url);
+      const $node = this.createVideoNode(url);
 
       if ($node) {
         // insert video node

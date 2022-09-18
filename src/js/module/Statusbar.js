@@ -17,7 +17,7 @@ export default class Statusbar {
       return;
     }
 
-    this.$resizer.on('mousedown', (event) => {
+    this.$statusbar.on('mousedown', (event) => {
       event.preventDefault();
       event.stopPropagation();
 

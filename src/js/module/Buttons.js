@@ -74,9 +74,8 @@ export default class Buttons {
           className: 'note-current-color-button',
           contents: this.ui.icon(this.options.icons.font + ' note-recent-color'),
           tooltip: tooltip,
-          placement: this.options.placement,
-          click: (e) => {
-            const $button = $(e.currentTarget);
+          click: (event) => {
+            const $button = $(event.currentTarget);
             if (backColor && foreColor) {
               this.context.invoke('editor.color', {
                 backColor: $button.attr('data-backColor'),
@@ -110,7 +109,6 @@ export default class Buttons {
           className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents('', this.options),
           tooltip: this.lang.color.more,
-          placement: this.options.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -120,16 +118,16 @@ export default class Buttons {
             '<div class="note-palette">',
               '<div class="note-palette-title">' + this.lang.color.background + '</div>',
               '<div>',
-                '<button type="button" class="note-color-reset note-btn" data-event="backColor" data-value="transparent">',
+                '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="backColor" data-value="transparent">',
                   this.lang.color.transparent,
                 '</button>',
               '</div>',
               '<div class="note-holder" data-event="backColor"><!-- back colors --></div>',
               '<div>',
-                '<button type="button" class="note-color-select note-btn" data-event="openPalette" data-value="backColorPicker-'+this.options.id+'">',
+                '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="backColorPicker-' + this.options.id + '">',
                   this.lang.color.cpSelect,
                 '</button>',
-                '<input type="color" id="backColorPicker-' + this.options.id + '" class="note-btn note-color-select-btn" value="' + this.options.colorButton.backColor + '" data-event="backColorPalette-'+this.options.id+'">',
+                '<input type="color" id="backColorPicker-' + this.options.id + '" class="note-btn note-color-select-btn" value="' + this.options.colorButton.backColor + '" data-event="backColorPalette-' + this.options.id + '">',
               '</div>',
               '<div class="note-holder-custom" id="backColorPalette-' + this.options.id + '" data-event="backColor"></div>',
             '</div>',
@@ -138,16 +136,16 @@ export default class Buttons {
             '<div class="note-palette">',
               '<div class="note-palette-title">' + this.lang.color.foreground + '</div>',
               '<div>',
-                '<button type="button" class="note-color-reset note-btn" data-event="removeFormat" data-value="foreColor">',
+                '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="removeFormat" data-value="foreColor">',
                   this.lang.color.resetToDefault,
                 '</button>',
               '</div>',
               '<div class="note-holder" data-event="foreColor"><!-- fore colors --></div>',
               '<div>',
-                '<button type="button" class="note-color-select note-btn" data-event="openPalette" data-value="foreColorPicker-' + this.options.id + '">',
+                '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="foreColorPicker-' + this.options.id + '">',
                   this.lang.color.cpSelect,
                 '</button>',
-                '<input type="color" id="foreColorPicker-' + this.options.id + '" class="note-btn note-color-select-btn" value="' + this.options.colorButton.foreColor + '" data-event="foreColorPalette-' + this.options.id + '">',
+                '<input type="color" id="foreColorPicker-' + this.options.id + '" class="note-btn note-color-select-btn" value="' + this.options.colorButton.foreColor + '" data-event="foreColorPalette-'+this.options.id+'">',
               '</div>', // Fix missing Div, Commented to find easily if it's wrong
               '<div class="note-holder-custom" id="foreColorPalette-' + this.options.id + '" data-event="foreColor"></div>',
             '</div>',
@@ -238,7 +236,6 @@ export default class Buttons {
             this.ui.icon(this.options.icons.magic), this.options
           ),
           tooltip: this.lang.style.style,
-          placement: this.options.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -276,7 +273,6 @@ export default class Buttons {
           className: 'note-btn-style-' + item,
           contents: '<div data-value="' + item + '">' + item.toUpperCase() + '</div>',
           tooltip: this.lang.style[item],
-          placement: this.options.placement,
           click: this.context.createInvokeHandler('editor.formatBlock'),
         }).render();
       });
@@ -287,7 +283,6 @@ export default class Buttons {
         className: 'note-btn-bold',
         contents: this.ui.icon(this.options.icons.bold),
         tooltip: this.lang.font.bold + this.representShortcut('bold'),
-        placement: this.options.placement,
         click: this.context.createInvokeHandlerAndUpdateState('editor.bold'),
       }).render();
     });
@@ -297,7 +292,6 @@ export default class Buttons {
         className: 'note-btn-italic',
         contents: this.ui.icon(this.options.icons.italic),
         tooltip: this.lang.font.italic + this.representShortcut('italic'),
-        placement: this.options.placement,
         click: this.context.createInvokeHandlerAndUpdateState('editor.italic'),
       }).render();
     });
@@ -307,7 +301,6 @@ export default class Buttons {
         className: 'note-btn-underline',
         contents: this.ui.icon(this.options.icons.underline),
         tooltip: this.lang.font.underline + this.representShortcut('underline'),
-        placement: this.options.placement,
         click: this.context.createInvokeHandlerAndUpdateState('editor.underline'),
       }).render();
     });
@@ -316,7 +309,6 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.eraser),
         tooltip: this.lang.font.clear + this.representShortcut('removeFormat'),
-        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.removeFormat'),
       }).render();
     });
@@ -326,7 +318,6 @@ export default class Buttons {
         className: 'note-btn-strikethrough',
         contents: this.ui.icon(this.options.icons.strikethrough),
         tooltip: this.lang.font.strikethrough + this.representShortcut('strikethrough'),
-        placement: this.options.placement,
         click: this.context.createInvokeHandlerAndUpdateState('editor.strikethrough'),
       }).render();
     });
@@ -336,7 +327,6 @@ export default class Buttons {
         className: 'note-btn-superscript',
         contents: this.ui.icon(this.options.icons.superscript),
         tooltip: this.lang.font.superscript,
-        placement: this.options.placement,
         click: this.context.createInvokeHandlerAndUpdateState('editor.superscript'),
       }).render();
     });
@@ -346,7 +336,6 @@ export default class Buttons {
         className: 'note-btn-subscript',
         contents: this.ui.icon(this.options.icons.subscript),
         tooltip: this.lang.font.subscript,
-        placement: this.options.placement,
         click: this.context.createInvokeHandlerAndUpdateState('editor.subscript'),
       }).render();
     });
@@ -396,7 +385,6 @@ export default class Buttons {
           className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents('<span class="note-current-fontsize"></span>', this.options),
           tooltip: this.lang.font.size,
-          placement: this.options.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -417,7 +405,6 @@ export default class Buttons {
           className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents('<span class="note-current-fontsizeunit"></span>', this.options),
           tooltip: this.lang.font.sizeunit,
-          placement: this.options.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -448,7 +435,6 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.unorderedlist),
         tooltip: this.lang.lists.unordered + this.representShortcut('insertUnorderedList'),
-        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.insertUnorderedList'),
       }).render();
     });
@@ -457,7 +443,6 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.orderedlist),
         tooltip: this.lang.lists.ordered + this.representShortcut('insertOrderedList'),
-        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.insertOrderedList'),
       }).render();
     });
@@ -465,42 +450,36 @@ export default class Buttons {
     const justifyLeft = this.button({
       contents: this.ui.icon(this.options.icons.alignLeft),
       tooltip: this.lang.paragraph.left + this.representShortcut('justifyLeft'),
-      placement: this.options.placement,
       click: this.context.createInvokeHandler('editor.justifyLeft'),
     });
 
     const justifyCenter = this.button({
       contents: this.ui.icon(this.options.icons.alignCenter),
       tooltip: this.lang.paragraph.center + this.representShortcut('justifyCenter'),
-      placement: this.options.placement,
       click: this.context.createInvokeHandler('editor.justifyCenter'),
     });
 
     const justifyRight = this.button({
       contents: this.ui.icon(this.options.icons.alignRight),
       tooltip: this.lang.paragraph.right + this.representShortcut('justifyRight'),
-      placement: this.options.placement,
       click: this.context.createInvokeHandler('editor.justifyRight'),
     });
 
     const justifyFull = this.button({
       contents: this.ui.icon(this.options.icons.alignJustify),
       tooltip: this.lang.paragraph.justify + this.representShortcut('justifyFull'),
-      placement: this.options.placement,
       click: this.context.createInvokeHandler('editor.justifyFull'),
     });
 
     const outdent = this.button({
       contents: this.ui.icon(this.options.icons.outdent),
       tooltip: this.lang.paragraph.outdent + this.representShortcut('outdent'),
-      placement: this.options.placement,
       click: this.context.createInvokeHandler('editor.outdent'),
     });
 
     const indent = this.button({
       contents: this.ui.icon(this.options.icons.indent),
       tooltip: this.lang.paragraph.indent + this.representShortcut('indent'),
-      placement: this.options.placement,
       click: this.context.createInvokeHandler('editor.indent'),
     });
 
@@ -517,7 +496,6 @@ export default class Buttons {
           className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents(this.ui.icon(this.options.icons.alignLeft), this.options),
           tooltip: this.lang.paragraph.paragraph,
-          placement: this.options.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -541,7 +519,6 @@ export default class Buttons {
           className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents(this.ui.icon(this.options.icons.textHeight), this.options),
           tooltip: this.lang.font.height,
-          placement: this.options.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -562,7 +539,6 @@ export default class Buttons {
           className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents(this.ui.icon(this.options.icons.table), this.options),
           tooltip: this.lang.table.table,
-          placement: this.options.placement,
           data: {
             toggle: 'dropdown',
           },
@@ -595,7 +571,6 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.link),
         tooltip: this.lang.link.link + this.representShortcut('linkDialog.show'),
-        placement: this.options.placement,
         click: this.context.createInvokeHandler('linkDialog.show'),
       }).render();
     });
@@ -604,7 +579,6 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.picture),
         tooltip: this.lang.image.image,
-        placement: this.options.placement,
         click: this.context.createInvokeHandler('imageDialog.show'),
       }).render();
     });
@@ -613,7 +587,6 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.video),
         tooltip: this.lang.video.video,
-        placement: this.options.placement,
         click: this.context.createInvokeHandler('videoDialog.show'),
       }).render();
     });
@@ -622,7 +595,6 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.minus),
         tooltip: this.lang.hr.insert + this.representShortcut('insertHorizontalRule'),
-        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.insertHorizontalRule'),
       }).render();
     });
@@ -632,7 +604,6 @@ export default class Buttons {
         className: 'btn-fullscreen note-codeview-keep',
         contents: this.ui.icon(this.options.icons.arrowsAlt),
         tooltip: this.lang.options.fullscreen,
-        placement: this.options.placement,
         click: this.context.createInvokeHandler('fullscreen.toggle'),
       }).render();
     });
@@ -642,7 +613,6 @@ export default class Buttons {
         className: 'btn-codeview note-codeview-keep',
         contents: this.ui.icon(this.options.icons.code),
         tooltip: this.lang.options.codeview,
-        placement: this.options.placement,
         click: this.context.createInvokeHandler('codeview.toggle'),
       }).render();
     });
@@ -651,7 +621,6 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.redo),
         tooltip: this.lang.history.redo + this.representShortcut('redo'),
-        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.redo'),
       }).render();
     });
@@ -660,7 +629,6 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.undo),
         tooltip: this.lang.history.undo + this.representShortcut('undo'),
-        placement: this.options.placement,
         click: this.context.createInvokeHandler('editor.undo'),
       }).render();
     });
@@ -669,7 +637,6 @@ export default class Buttons {
       return this.button({
         contents: this.ui.icon(this.options.icons.question),
         tooltip: this.lang.options.help,
-        placement: this.options.placement,
         click: this.context.createInvokeHandler('helpDialog.show'),
       }).render();
     });

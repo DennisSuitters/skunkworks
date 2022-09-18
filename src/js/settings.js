@@ -74,22 +74,22 @@ $.summernote = $.extend($.summernote, {
     lang: 'en-US',
 
     followingToolbar: false,
-    toolbarPosition: 'top', // top|bottom
+    toolbarPosition: 'top',
     otherStaticBar: '',
-    dropUp: false, // false uses default dropdown.
-    toolbarBottomDropUp: true, // true|false If toolbarPosition = 'buttom' this will override dropUp.
+    dropUp: false, // false uses default dropdown,
+    toolbarButtonDropUp: true, // true|false If toolbarPosition = 'bottom' this will override dropUp.
 
     // toolbar
     codeviewKeepButton: false,
     toolbar: [
       ['style', ['style']],
       ['font', ['bold', 'underline', 'clear']],
-      ['fontname', ['fontname']],
+      ['fontname', ['fontname', 'fontsize', 'fontSizeunit']],
       ['color', ['color']],
       ['para', ['ul', 'ol', 'paragraph']],
       ['table', ['table']],
-      ['insert', ['link', 'picture', 'video']],
-      ['view', ['fullscreen', 'zoomOut', 'zoomValue', 'zoomIn', 'codeview', 'help']],
+      ['insert', ['hr', 'link', 'picture', 'video']],
+      ['view', ['zoomOut', 'zoomValue', 'zoomIn', 'fullscreen', 'codeview', 'help']],
     ],
 
     // popover
@@ -120,6 +120,10 @@ $.summernote = $.extend($.summernote, {
       ],
     },
 
+    // link options
+    linkAddNoReferrer: false,
+    addLinkNoOpener: false,
+
     // air mode: inline editor
     airMode: false,
     overrideContextMenu: false, // TBD
@@ -130,7 +134,7 @@ $.summernote = $.extend($.summernote, {
     useProtocol: true,
     defaultProtocol: 'https://',
     linkList: [
-       // [ 'title', 'url', 'select text' ],
+      // [ 'title', 'url', 'select text' ],
     ],
 
     focus: false,
@@ -172,7 +176,7 @@ $.summernote = $.extend($.summernote, {
 
     fontSizes: ['8', '9', '10', '11', '12', '14', '18', '24', '36'],
 
-    fontSizeUnits: ['px', 'pt'],
+    fontSizeUnits: ['em', 'px', 'pt', 'rem'],
 
     // pallete colors(n x n)
     colors: [
@@ -216,7 +220,7 @@ $.summernote = $.extend($.summernote, {
     dialogsInBody: false,
     dialogsFade: false,
 
-    disableUpload: false, // true|false Disables display of upload option in ImageDialog.
+    disableUpload: false, // true|false Disables display of upload option in ImageDialog,
     fileExplorer: '', // If set with the Javascript function name, and button in ImageDialog.js will be shown, which also parses in the ID of the #note-dialog-image-url so the function can return the URL of the selected file for insertion. Note, only the function name is required for eg 'elfinderDialog'.
     maximumImageFileSize: null,
     acceptImageFileTypes: "image/*",
@@ -249,7 +253,7 @@ $.summernote = $.extend($.summernote, {
       lineNumbers: true,
     },
 
-    codeviewFilter: false,
+    codeviewFilter: true,
     codeviewFilterRegex: /<\/*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|ilayer|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|t(?:itle|extarea)|xml)[^>]*?>/gi,
     codeviewIframeFilter: true,
     codeviewIframeWhitelistSrc: [],

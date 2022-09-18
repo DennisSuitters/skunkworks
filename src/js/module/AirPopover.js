@@ -1,5 +1,6 @@
 import $ from 'jquery';
 import lists from '../core/lists';
+import func from '../core/func';
 
 const AIRMODE_POPOVER_X_OFFSET = -5;
 const AIRMODE_POPOVER_Y_OFFSET = 5;
@@ -30,8 +31,16 @@ export default class AirPopover {
       },
       'summernote.keyup summernote.mouseup summernote.scroll': (we, event) => {
         if (this.options.editing && !this.onContextmenu) {
-          this.pageX = event.pageX;
-          this.pageY = event.pageY;
+          if (event.type == 'keyup') {
+            let range = this.context.invoke('editor.getLastRange');
+            let wordRange = range.getWordRange();
+            const bnd = func.rect2bnd(lists.last(wordRange.getClientRects()));
+            this.pageX = bnd.left;
+            this.pageY = bnd.top;
+          } else {
+            this.pageX = event.pageX;
+            this.pageY = event.pageY;
+          }
           this.update();
         }
         this.onContextmenu = false;
@@ -55,7 +64,7 @@ export default class AirPopover {
     this.$popover = this.ui.popover({
       className: 'note-air-popover',
     }).render().appendTo(this.options.container);
-    const $content = this.$popover.find('.popover-content');
+    const $content = this.$popover.find('.note-popover-content');
 
     this.context.invoke('buttons.build', $content, this.options.popover.air);
 

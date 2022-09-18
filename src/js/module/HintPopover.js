@@ -48,9 +48,9 @@ export default class HintPopover {
 
     this.$popover.hide();
     this.$content = this.$popover.find('.note-popover-content');
-    this.$content.on('click', '.note-hint-item', (e) => {
+    this.$content.on('click', '.note-hint-item', (event) => {
       this.$content.find('.note-active').removeClass('note-active');
-      $(e.currentTarget).addClass('note-active');
+      $(event.currentTarget).addClass('note-active');
       this.replace();
     });
 
@@ -155,26 +155,26 @@ export default class HintPopover {
       });
 
       if (hintIdx === 0 && idx === 0) {
-        $item.addClass('active');
+        $item.addClass('note-active');
       }
 
       return $item;
     });
   }
 
-  handleKeydown(e) {
+  handleKeydown(event) {
     if (!this.$popover.is(':visible')) {
       return;
     }
 
-    if (e.keyCode === key.code.ENTER) {
-      e.preventDefault();
+    if (event.keyCode === key.code.ENTER) {
+      event.preventDefault();
       this.replace();
-    } else if (e.keyCode === key.code.UP) {
-      e.preventDefault();
+    } else if (event.keyCode === key.code.UP) {
+      event.preventDefault();
       this.moveUp();
-    } else if (e.keyCode === key.code.DOWN) {
-      e.preventDefault();
+    } else if (event.keyCode === key.code.DOWN) {
+      event.preventDefault();
       this.moveDown();
     }
   }
@@ -203,8 +203,8 @@ export default class HintPopover {
     return $group;
   }
 
-  handleKeyup(e) {
-    if (!lists.contains([key.code.ENTER, key.code.UP, key.code.DOWN], e.keyCode)) {
+  handleKeyup(event) {
+    if (!lists.contains([key.code.ENTER, key.code.UP, key.code.DOWN], event.keyCode)) {
       let range = this.context.invoke('editor.getLastRange');
       let wordRange, keyword;
       if (this.options.hintMode === 'words') {

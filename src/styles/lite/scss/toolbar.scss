@@ -1,21 +1,8 @@
 .note-toolbar {
+  padding: 10px 5px;
   border-bottom: var(--note-toolbar-border-width) var(--note-toolbar-border-style) var(--note-toolbar-border-color);
-  border-top-left-radius: var(--note-toolbar-border-radius);
-  border-top-right-radius: var(--note-toolbar-border-radius);
-  background-color: var(--note-toolbar-background-color) !important;
-  padding: var(--note-toolbar-padding-y) var(--note-toolbar-padding-x);
   color: var(--note-toolbar-color);
-  overflow: none !important;
-}
-
-@media (max-width: 576px) {
-  .note-editor {
-    overflow: hidden !important;
-  }
-
-  .note-toolbar {
-    min-width: 100% !important;
-    overflow-x: scroll !important;
-    white-space: nowrap;
-  }
-}
+  background-color: var(--note-toolbar-background-color);
+  border-color: var(--note-toolbar-border-color);
+  border-top-left-radius: var(--note-toolbar-border-radius);
+  border-top-right-radius: var(--note-toolbar-border-radius); }

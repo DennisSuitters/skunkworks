@@ -35,7 +35,7 @@ export default class LinkPopover {
     this.$popover = this.ui.popover({
       className: 'note-link-popover',
       callback: ($node) => {
-        const $content = $node.find('.note-popover-content');
+        const $content = $node.find('.popover-content,.note-popover-content');
         $content.prepend('<span><a target="_blank"></a>&nbsp;</span>');
       },
     }).render().appendTo(this.options.container);

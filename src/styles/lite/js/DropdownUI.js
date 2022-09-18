@@ -10,9 +10,9 @@ class DropdownUI {
   }
 
   setEvent() {
-    this.$button.on('click', (e) => {
+    this.$button.on('click', (event) => {
       this.toggle();
-      e.stopImmediatePropagation();
+      event.stopImmediatePropagation();
     });
   }
 
@@ -57,16 +57,16 @@ class DropdownUI {
   }
 }
 
-$(document).on('click.note-dropdown-menu', function(e) {
-  if (!$(e.target).closest('.note-btn-group').length) {
+$(document).on('click.note-dropdown-menu', function(event) {
+  if (!$(event.target).closest('.note-btn-group').length) {
     $('.note-btn-group.note-open .note-btn.note-active').removeClass('note-active');
     $('.note-btn-group.note-open').removeClass('note-open');
   }
 });
 
-$(document).on('click.note-dropdown-menu', function(e) {
-  $(e.target).closest('.note-dropdown-menu').parent().removeClass('note-open');
-  $(e.target).closest('.note-dropdown-menu').parent().find('.note-btn.note-active').removeClass('note-active');
+$(document).on('click.note-dropdown-menu', function(event) {
+  $(event.target).closest('.note-dropdown-menu').parent().removeClass('note-open');
+  $(event.target).closest('.note-dropdown-menu').parent().find('.note-btn.note-active').removeClass('note-active');
 });
 
 export default DropdownUI;

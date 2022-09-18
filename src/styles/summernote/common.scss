@@ -1,134 +1,220 @@
-@import "elements.scss";
-
-/* Theme Variables
- ------------------------------------------ */
-$border-color: #00000032;
-$background-color: #8080801d;
-
-$img-margin-left: 10px;
-$img-margin-right: 10px;
-
-/* Layout
- ------------------------------------------ */
+/* Layout */
 .note-editor {
   position: relative;
 
   // dropzone
-  $dropzone-color: lightskyblue;
-  $dropzone-active-color: darken($dropzone-color, 30);
   .note-dropzone {
     position: absolute;
     display: none;
     z-index: 100;
-    color: $dropzone-color;
-    background-color: #fff;
-    opacity: 0.95;
+    background-color: var(--note-dropzone-background-color);
+    color: var(--note-dropzone-color);
+    opacity: .95;
 
     .note-dropzone-message {
       display: table-cell;
       vertical-align: middle;
       text-align: center;
       font-size: 28px;
-      font-weight: 700;
-    }
+      font-weight: 700; }
 
-    &.hover {
-      color: $dropzone-active-color;
-    }
+    &.note-hover {
+      color: var(--note-dropzone-background-color-active); }
+
   }
 
-  &.dragover .note-dropzone {
-    display: table;
-  }
+  &.note-dragover .note-dropzone {
+    display: table; }
 
   .note-editing-area {
     position: relative;
 
     .note-editable {
       outline: none;
+      padding: 10px;
 
       sup {
-        vertical-align: super;
-      }
+        vertical-align: super; }
 
       sub {
-        vertical-align: sub;
-      }
+        vertical-align: sub; }
 
       img.note-float-left {
-        margin-right: $img-margin-right;
-      }
+        margin-right: 10px; }
 
       img.note-float-right {
-        margin-left: $img-margin-left;
+        margin-left: 10px; }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+
+        td,
+        th {
+          padding: 5px 3px;
+          border: var(--note-editable-table-border-width) var(--note-editable-table-border-style) var(--note-editable-table-border-color); }
+
       }
+
     }
+
   }
+
 }
 
-/* Frame mode layout
- ------------------------------------------ */
+/* Frame mode layout */
 .note-editor.note-frame,
 .note-editor.note-airframe {
-  border: 1px solid $border-color;
+  border: var(--note-editable-border-width) var(--note-editable-border-style) var(--note-editable-border-color);
 
   // codeview mode
-  &.codeview {
+  &.note-codeview {
+
     .note-editing-area {
+
       .note-editable {
-        display: none;
+        display: none; }
+
+      .note-video-wrapper {
+        position: relative;
+        padding-bottom: 56.25%;
+        padding-top: 30px;
+        height: 0;
+        overflow: hidden;
+
+        iframe,
+        object,
+        embed,
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%; }
+
+        .note-video-clip,
+        .youtube:hover {
+          cursor: pointer; }
+
+        .youtube:hover .play {
+          background: #f00;
+          opacity: .9; }
+
+        .play {
+          font-size: 1.1em;
+          transform: translateY(130px);
+          position: absolute;
+          left: 0;
+          right: 0;
+          margin: auto;
+          background: #3b3636;
+          opacity: .85;
+          border-radius: 50%/10%;
+          color: #fff;
+          height: 3em;
+          padding: 0;
+          text-align: center;
+          text-indent: .1em;
+          transition: all 150ms ease-out;
+          width: 4em; }
+
+        .play::before {
+          content: "";
+          background: inherit;
+          border-radius: 5% / 50%;
+          bottom: 9%;
+          left: -5%;
+          position: absolute;
+          right: -5%;
+          top: 9%; }
+
+        .play::after {
+          content: ' ';
+          position: absolute;
+          top: 50%;
+          width: 0;
+          height: 0;
+          margin: -1em 0 0 -.75em;
+          border-style: solid;
+          border-width: 1em 0 1em 1.732em;
+          border-color: transparent transparent transparent rgba(255, 255, 255, .75);
+          font-size: .75em; }
+
       }
+
+      .note-video-popover-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0; }
+
       .note-codable {
-        display: block;
-      }
+        display: block; }
+
     }
+
   }
 
   .note-editing-area {
     overflow: hidden;
 
     // editable
-    .note-editable {
-      padding: 10px;
+    .note-viewport-area {
       overflow: auto;
-      word-wrap: break-word;
+      background-color: var(--note-background-color);
 
-      &[contenteditable="false"] {
-        background-color: $background-color;
+      .note-editable {
+        padding: 10px !important;
+        overflow: auto;
+        word-wrap: break-word;
+        transform-origin: left top;
+        transform: scale(1);
+        background-color: var(--note-editbale-background-color);
+        color: var(--note-editable-color);
+
+        &[contenteditable="false"] {
+          background-color: var(--note-editable-background-color); }
+
       }
+
     }
 
     // codeable
     .note-codable {
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
       display: none;
       width: 100%;
+      margin-bottom: 0;
       padding: 10px;
       border: none;
-      box-shadow: none;
-      font-family: Menlo, Monaco, monospace, sans-serif;
-      font-size: 14px;
-      color: #ccc;
-      background-color: #222;
-      resize: none;
+      border-radius: 0;
       outline: none;
+      background-color: var(--note-codeable-background-color);
+      box-shadow: none;
+      color: var(--note-codeable-color);
+      font-family: var(--note-codeable-font);
+      font-size: var(--note-codeable-font-size);
+      resize: none; }
 
-      // override BS2 default style
-      @include box-sizing(border-box);
-      @include rounded(0);
-      margin-bottom: 0;
-    }
   }
 
   // fullscreen mode
-  &.fullscreen {
+  &.note-fullscreen {
+    z-index: 1050; // bs3 modal-backdrop: 1030, bs2: 1040
     position: fixed;
     top: 0;
     left: 0;
     width: 100% !important;
-    z-index: 1050; // bs3 modal-backdrop: 1030, bs2: 1040
+    height: 100vh !important;
+
+    .note-editing-area {
+      height: calc(100% - 100px) !important; }
+
     .note-resizebar {
-      display: none;
-    }
+      display: none; }
+
   }
 
   // Notifications
@@ -139,266 +225,287 @@ $img-margin-right: 10px;
     line-height: 1.42857143;
     height: 20px;
     margin-bottom: 0;
-    color: #000;
+    color: var(--note-status-color);
     border: 0;
-    border-top: 1px solid #e2e2e2;
-  }
+    border-top: var(--note-status-border-width) var(--note-status-border-style) var(--note-status-border-color); }
 
   .note-status-output:empty {
     height: 0;
-    border-top: 0 solid transparent;
-  }
+    border-top: 0 solid transparent; }
 
   .note-status-output .pull-right {
-    float: right !important;
-  }
+    float: right !important; }
 
   .note-status-output .text-muted {
-    color: #777;
-  }
+    color: var(--note-status-color-muted); }
 
   .note-status-output .text-primary {
-    color: #286090;
-  }
+    color: var(--note-primary-color); }
 
   .note-status-output .text-success {
-    color: #3c763d;
-  }
+    color: var(--note-success-color); }
 
   .note-status-output .text-info {
-    color: #31708f;
-  }
+    color: var(--note-info-color); }
 
   .note-status-output .text-warning {
-    color: #8a6d3b;
-  }
+    color: var(--note-warning-color); }
 
   .note-status-output .text-danger {
-    color: #a94442;
-  }
+    color: var(--note-danger-color); }
 
   .note-status-output .alert {
     margin: -7px 0 0 0;
     padding: 7px 10px 2px 10px;
     border-radius: 0;
-    color: #000;
-    background-color: #f5f5f5;
-  }
+    color: var(--note-status-color);
+    background-color: var(--note-status-background-color); }
 
   .note-status-output .alert .note-icon {
-    margin-right: 5px;
-  }
+    margin-right: 5px; }
 
   .note-status-output .alert-success {
-    color: #3c763d !important;
-    background-color: #dff0d8 !important;
-  }
+    color: var(--note-success-color) !important;
+    background-color: var(--note-success-background-color) !important; }
 
   .note-status-output .alert-info {
-    color: #31708f !important;
-    background-color: #d9edf7 !important;
-  }
+    color: var(--note-info-color) !important;
+    background-color: var(--note-info-background-color) !important; }
 
   .note-status-output .alert-warning {
-    color: #8a6d3b !important;
-    background-color: #fcf8e3 !important;
-  }
+    color: var(--note-warning-color) !important;
+    background-color: var(--note-warning-background-color) !important; }
 
   .note-status-output .alert-danger {
-    color: #a94442 !important;
-    background-color: #f2dede !important;
-  }
+    color: var(--note-danger-color) !important;
+    background-color: var(--note-danger-background-color) !important; }
 
   // statusbar
   .note-statusbar {
-    background-color: $background-color;
+    background-color: var(--note-status-background-color);
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    border-top: 1px solid $border-color;
+    border-top: 1px solid var(--note-status-border-color);
+
     .note-resizebar {
       padding-top: 1px;
       height: 9px;
       width: 100%;
       cursor: ns-resize;
+
       .note-icon-bar {
         width: 20px;
         margin: 1px auto;
-        border-top: 1px solid $border-color;
-      }
+        border-top: 1px solid var(--note-status-resize-icon-color); }
+
     }
 
-    &.locked {
+    &.note-locked {
+
       .note-resizebar {
         cursor: default;
+
         .note-icon-bar {
-          display: none;
-        }
+          display: none; }
+
       }
+
     }
+
   }
+
   .note-placeholder {
-    padding: 10px;
-  }
+    padding: 10px; }
+
 }
+
+.note-fullscreen .note-status-output {
+    position: absolute !important;
+    bottom: 0 !important; }
+
+.note-fullscreen .note-statusbar {
+  display: none; }
 
 .note-editor.note-airframe {
   border: 0;
 
   .note-editing-area {
+
     .note-editable {
-      padding: 0;
-    }
+      padding: 0; }
+
   }
+
 }
 
-
-/* Popover
- ------------------------------------------ */
+/* Popover */
 .note-popover.popover {
   display: none;
   max-width: none;
 
-  .popover-content {
+  .note-popover-content {
+
     a {
       display: inline-block;
       max-width: 200px;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap; // for FF
-      vertical-align: middle; // for FF
-    }
+      white-space: nowrap;
+      vertical-align: middle; }
+
   }
-  .arrow {
-    left: 20px !important;
-  }
+
+  .note-arrow {
+    left: 20px !important; }
+
 }
 
-/* Popover and Toolbar (Button container)
- ------------------------------------------ */
+/* Popover and Toolbar (Button container) */
 .note-toolbar {
   position: relative;
-}
+  background-color: var(--note-toolbar-background-color); }
 
-.note-popover .popover-content, .note-editor .note-toolbar {
+.note-popover .popover-content,
+.note-editor .note-toolbar {
   margin: 0;
   padding: 0 0 5px 5px;
 
   & > .note-btn-group {
     margin-top: 5px;
     margin-left: 0;
-    margin-right: 5px;
-  }
+    margin-right: 5px; }
 
   .note-btn-group {
+
     .note-table {
       min-width: 0;
       padding: 5px;
+
       .note-dimension-picker {
         font-size: 18px;
+
         .note-dimension-picker-mousecatcher {
           position: absolute !important;
           z-index: 3;
           width: 10em;
           height: 10em;
-          cursor: pointer;
-        }
+          cursor: pointer; }
+
         .note-dimension-picker-unhighlighted {
           position: relative !important;
           z-index: 1;
           width: 5em;
           height: 5em;
-          background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIj4+Pjp6ekKlAqjAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKhmnaJzPAAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC") repeat;
-        }
+          background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIj4+Pjp6ekKlAqjAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKhmnaJzPAAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC") repeat; }
+
         .note-dimension-picker-highlighted {
           position: absolute !important;
           z-index: 2;
           width: 1em;
           height: 1em;
-          background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIjd6vvD2f9LKLW+AAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKwNDEVT0AAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC") repeat;
-        }
+          background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIjd6vvD2f9LKLW+AAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKwNDEVT0AAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC") repeat; }
+
       }
+
     }
+
   }
 
   .note-style {
-    .dropdown-style {
-      blockquote, pre {
+
+    .note-dropdown-style {
+
+      blockquote,
+      pre {
         margin: 0;
-        padding: 5px 10px;
-      }
-      h1, h2, h3, h4, h5, h6, p {
+        padding: 5px 10px; }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      p {
         margin: 0;
-        padding: 0;
-      }
+        padding: 0; }
+
     }
+
   }
 
   .note-color-all {
+
     .note-dropdown-menu {
-      min-width: 337px;
-    }
+      min-width: 337px; }
+
   }
 
   .note-color {
-    .dropdown-toggle {
+
+    .note-dropdown-toggle {
       width: 20px;
-      padding-left: 5px;
-    }
+      padding-left: 5px; }
+
     .note-dropdown-menu {
+
       .note-palette {
         display: inline-block;
         margin: 0;
         width: 160px;
+
         &:first-child {
-          margin: 0 5px;
-        }
+          margin: 0 5px; }
 
         .note-palette-title {
           font-size: 12px;
           margin: 2px 7px;
           text-align: center;
-          border-bottom: 1px solid #eee;
-        }
+          border-bottom: 1px solid var(--note-border-color); }
 
         .note-color-reset,
         .note-color-select {
-          font-size: 11px;
+          width: 100%;
           margin: 3px;
           padding: 0 3px;
+          border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-primary-border-color);
+          border-radius: var(--note-btn-border-radius);
+          background-color: var(--note-btn-primary-background-color);
+          color: var(--note-btn-primary-color);
+          font-size: 11px;
           cursor: pointer;
-          width: 100%;
-          @include rounded(5px);
 
           &:hover {
-            background: #eee;
+            background-color: var(--note-btn-primary-background-color-hover);
+            color: var(--note-btn-primary-color-hover); }
+
           }
+
         }
 
         .note-color-row {
-          height: 20px;
-        }
+          height: 20px; }
 
         .note-color-select-btn {
-          display: none;
-        }
+          display: none; }
 
-        .note-holder-custom {
-          .note-color-btn {
-            border: 1px solid #eee;
-          }
-        }
       }
+
     }
+
   }
 
   .note-para {
+
     .note-dropdown-menu {
       min-width: 228px;
       padding: 5px;
+
       & > div + div {
-        margin-left: 5px;
-      }
+        margin-left: 5px; }
+
     }
+
   }
 
   // dropdown-menu for toolbar and popover
@@ -407,213 +514,283 @@ $img-margin-right: 10px;
 
     // dropdown-menu right position
     // http://forrst.com/posts/Bootstrap_right_positioned_dropdown-2KB
-    &.right {
+    &.note-right {
       right: 0;
       left: auto;
+
       &::before {
         right: 9px;
-        left: auto !important;
-      }
+        left: auto !important; }
+
       &::after {
         right: 10px;
-        left: auto !important;
-      }
+        left: auto !important; }
+
     }
+
     // dropdown-menu for selectbox
     &.note-check {
+
       a i {
-        color: deepskyblue;
         visibility: hidden;
-      }
-      a.checked i {
-        visibility: visible;
-      }
+        color: var(--note-dropdown-checked); }
+
+      a.note-checked i {
+        visibility: visible; }
+
     }
+
   }
 
   .note-fontsize-10 {
-    font-size: 10px;
-  }
+    font-size: 10px; }
 
   // color palette for toolbar and popover
   .note-color-palette {
     line-height: 1;
+
     div {
+
       .note-color-btn {
         width: 20px;
         height: 20px;
-        padding: 0;
-        margin: 0;
-        border: 0;
-        border-radius: 0;
-      }
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important; }
+
       .note-color-btn:hover {
         transform: scale(1.2);
-        transition: all 0.2s;
-      }
-    }
-  }
-}
+        transition: all .2s; }
 
-/* Dialog
- ------------------------------------------ */
+    }
+
+  }
+
+/* Dialog */
+.note-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--note-zindex-modal-backdrop);
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--note-modal-backdrop-background-color);
+  opacity: var(--note-modal-backdrop-opacity); }
+
 .note-modal {
+
   .modal-dialog {
     outline: 0;
     border-radius: 5px;
-    @include box-shadow(0 3px 9px rgba(0,0,0,.5));
-  }
-  .form-group { // overwrite BS's form-horizontal minus margins
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5); }
+
+  .note-form-group { // overwrite BS's form-horizontal minus margins
+    display: flex;
+    flex: 1 0 100%;
+    flex-wrap: nowrap;
     margin-left: 0;
     margin-right: 0;
-  }
+    padding-bottom: 1rem; }
+
+  .note-form-group:last-child {
+    padding-bottom: 0; }
+
   .note-modal-form {
-    margin: 0; // overwrite BS2's form margin bottom
+    margin: 0; }
+
+  .note-form-help {
+    display: inline;
+    float: right;
+    text-align: right;
+    font-size: var(--note-form-help-font-size);
+    color: var(--note-form-help-color); }
+
+  .note-form-help::after {
+    clear: both; }
+
+  .note-input {
+    -ms-box-sizing: border-box;
+        box-sizing: border-box;
+    display: block;
+    outline: 0;
+    border: var(--note-form-input-border-width) var(--note-form-input-border-style) var(--note-form-input-border-color);
+    background-color: var(--note-form-input-background-color);
+    padding: 6px 4px;
+    width: 100%;
+    font-size: 14px;
+    border-radius: var(--note-border-radius);
+
+    &:focus {
+      border: var(--note-form-input-border-width) var(--note-form-input-border-style) var(--note-form-input-border-focus); }
+
   }
+
+  .note-input::-webkit-input-placeholder {
+    color: var(--note-form-input-placeholder-color); }
+
+  /* Firefox 18- */
+ .note-input:-moz-placeholder {
+   color: var(--note-form-input-placeholder-color); }
+
+ /* Firefox 19+ */
+ .note-input::-moz-placeholder {
+   color: var(--note-form-input-placeholder-color); }
+
+ .note-input:-ms-input-placeholder {
+   color: var(--note-form-input-placeholder-color); }
+
   .note-image-dialog {
+
     .note-dropzone {
       min-height: 100px;
       font-size: 30px;
       line-height: 4; // vertical-align
-      color: lightgray;
+      color: var(--note-dropzone-color);
       text-align: center;
-      border: 4px dashed lightgray;
-      margin-bottom: 10px;
-    }
+      border: 4px dashed var(--note-dropzone-border-color);
+      margin-bottom: 10px; }
+
   }
 
   // [workaround] firefox fileinput
   @-moz-document url-prefix() {
+
     .note-image-input {
-      height: auto;
-    }
+      height: auto; }
+
   }
+
 }
 
-/* Placeholder
- ------------------------------------------ */
+/* Placeholder */
 .note-placeholder {
   position: absolute;
   display: none;
-  color: gray;
-}
+  color: var(--note-placeholder-color); }
 
-/* Handle
- ------------------------------------------ */
+/* Handle */
 .note-handle {
+
   // control selection
   .note-control-selection {
     position: absolute;
     display: none;
-    border: 1px solid #000;
+    border: 1px solid var(--note-control-selection-border-color);
+
     & > div {
-      position: absolute;
-    }
+      position: absolute; }
 
     .note-control-selection-bg {
       width: 100%;
       height: 100%;
-      background-color: #000;
-      @include opacity(0.3);
-    }
+      background-color: var(--note-control-selection-background-color);
+      opacity: .3; }
 
     .note-control-handle {
       width: 7px;
       height: 7px;
-      border: 1px solid #000;
-    }
+      border: 1px solid var(--note-control-selection-border-color); }
 
     .note-control-holder {
-      @extend .note-control-handle;
-    }
+
+      @extend .note-control-handle; }
 
     .note-control-sizing {
+
       @extend .note-control-handle;
-      background-color: #000;
-    }
+      background-color: var(--note-control-selection-handle-color); }
 
     .note-control-nw {
       top: -5px;
       left: -5px;
       border-right: none;
-      border-bottom: none;
-    }
+      border-bottom: none; }
 
     .note-control-ne {
       top: -5px;
       right: -5px;
       border-bottom: none;
-      border-left: none;
-    }
+      border-left: none; }
 
     .note-control-sw {
       bottom: -5px;
       left: -5px;
       border-top: none;
-      border-right: none;
-    }
+      border-right: none; }
 
     .note-control-se {
       right: -5px;
       bottom: -5px;
-      cursor: se-resize;
-    }
+      cursor: se-resize; }
 
     .note-control-se.note-control-holder {
       cursor: default;
       border-top: none;
-      border-left: none;
-    }
+      border-left: none; }
 
     .note-control-selection-info {
       right: 0;
       bottom: 0;
-      padding: 5px;
       margin: 5px;
-      color: #fff;
-      background-color: #000;
+      padding: 5px;
+      border-radius: 5px;
+      background-color: var(--note-control-selection-background-color);
+      color: var(--note-control-selection-color);
       font-size: 12px;
-      @include rounded(5px);
-      @include opacity(0.7);
-    }
+      opacity: .7; }
+
   }
+
 }
 
 .note-hint-popover {
   min-width: 100px;
   padding: 2px;
 
-  .popover-content {
+  .note-popover-content {
     padding: 3px;
     max-height: 150px;
     overflow: auto;
 
     .note-hint-group {
+
       .note-hint-item {
         display: block !important;
         padding: 3px;
+        clear: both;
+        outline: 0;
+        font-weight: 400;
+        line-height: 1.4;
+        text-decoration: none;
+        white-space: nowrap;
+        background-color: var(--note-popover-background-color);
+        color: var(--note-popover-color);
 
-        &.active, &:hover {
+        &.note-active,
+        &:hover {
           display: block;
-          clear: both;
-          font-weight: 400;
-          line-height: 1.4;
-          color: white;
-          white-space: nowrap;
-          text-decoration: none;
-          background-color: #428bca;
-          outline: 0;
-          cursor: pointer;
-        }
+          background-color: var(--note-popover-background-color-hover);
+          color: var(--note-popover-color-hover);
+          cursor: pointer; }
+
       }
+
     }
+
   }
+
 }
 
-/* Handle
- ------------------------------------------ */
+/* Handle */
 html, body {
+
   .note-fullscreen-body {
-    overflow: hidden !important;
-  }
+    overflow: hidden !important; }
+
 }
+
+//Alignment does not work with or without sequences
+.note-editable ul li,
+.note-editable ol li{
+  list-style-position: inside; }

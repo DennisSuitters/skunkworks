@@ -21,16 +21,16 @@ export default class Dropzone {
    * attach Drag and Drop Events
    */
   initialize() {
-    if (this.options.disableDragAndDrop === true) {
+    if (this.options.disableDragAndDrop) {
       // prevent default drop event
       this.documentEventHandlers.onDrop = (event) => {
         event.preventDefault();
       };
-    } else {
-      this.attachDragAndDropEvent();
       // do not consider outside of dropzone
       this.$eventListener = this.$dropzone;
       this.$eventListener.on('drop', this.documentEventHandlers.onDrop);
+    } else {
+      this.attachDragAndDropEvent();
     }
   }
 
@@ -45,7 +45,7 @@ export default class Dropzone {
       const isCodeview = this.context.invoke('codeview.isActivated');
       const hasEditorSize = this.$editor.width() > 0 && this.$editor.height() > 0;
       if (!isCodeview && !collection.length && hasEditorSize) {
-        this.$editor.addClass('note-dragover');
+        this.$editor.addClass('dragover');
         this.$dropzone.width(this.$editor.width());
         this.$dropzone.height(this.$editor.height());
         $dropzoneMessage.text(this.lang.image.dragImageHere);
@@ -59,13 +59,13 @@ export default class Dropzone {
       // If nodeName is BODY, then just make it over (fix for IE)
       if (!collection.length || event.target.nodeName === 'BODY') {
         collection = $();
-        this.$editor.removeClass('note-dragover');
+        this.$editor.removeClass('dragover');
       }
     };
 
     this.documentEventHandlers.onDrop = () => {
       collection = $();
-      this.$editor.removeClass('note-dragover');
+      this.$editor.removeClass('dragover');
     };
 
     // show dropzone on dragenter when dragging a object to document
@@ -76,18 +76,17 @@ export default class Dropzone {
 
     // change dropzone's message on hover.
     this.$dropzone.on('dragenter', () => {
-      this.$dropzone.addClass('note-note-hover');
+      this.$dropzone.addClass('hover');
       $dropzoneMessage.text(this.lang.image.dropImage);
     }).on('dragleave', () => {
-      this.$dropzone.removeClass('note-hover');
+      this.$dropzone.removeClass('hover');
       $dropzoneMessage.text(this.lang.image.dragImageHere);
     });
 
     // attach dropImage
     this.$dropzone.on('drop', (event) => {
       const dataTransfer = event.originalEvent.dataTransfer;
-      if (this.options.callbacks.onDrop && this.options.callbacks.onDrop(dataTransfer))
-        return;
+
       // stop the browser from opening the dropped content
       event.preventDefault();
 

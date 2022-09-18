@@ -618,7 +618,7 @@ function nextPointWithEmptyNode(point, isSkipInnerOffset) {
 
   // if node is empty string node, return current node's sibling.
   if (isEmpty(point.node)) {
-    if(point.node === null) {
+    if(point.node === null){
       return null;
     }
 

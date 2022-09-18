@@ -12,16 +12,18 @@ const { styles, languages } = require('./common');
 
 const date = (new Date()).toISOString().replace(/:\d+\.\d+Z$/, 'Z');
 const banner = `
-Super simple WYSIWYG editor v${pkg.version}
+Summernote ${pkg.version}
+
+The Super simple WYSIWYG editor.
+
 https://summernote.org
 
-
-Copyright 2013- Alan Hong and contributors
+Copyright 2013- Alan Hong and Contributors
 Summernote may be freely distributed under the MIT license.
 
 Date: ${date}
 `;
-const minBanner = `Summernote v${pkg.version} | (c) 2013- Alan Hong and contributors | MIT license`;
+const minBanner = `Summernote ${pkg.version} | (c) 2013- Alan Hong and Contributors | MIT license`;
 
 module.exports = {
   mode: 'production',
@@ -40,19 +42,19 @@ module.exports = {
 
   entry: Object.fromEntries([
     // entries for each style
-    ...styles.map(style => 
+    ...styles.map(style =>
       [`${style.target}`, `./src/styles/${style.id}/summernote-${style.id}.js`]
     ),
     // ... and for minimized
-    ...styles.map(style => 
+    ...styles.map(style =>
       [`${style.target}.min`, `./src/styles/${style.id}/summernote-${style.id}.js`]
     ),
     // entries for each language
-    ...languages.map(lang => 
+    ...languages.map(lang =>
       [`lang/${lang}`, `./src/lang/${lang}.js`]
     ),
     // ... and for minimized
-    ...languages.map(lang => 
+    ...languages.map(lang =>
       [`lang/${lang}.min`, `./src/lang/${lang}.js`]
     ),
   ]),

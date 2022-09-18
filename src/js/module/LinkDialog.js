@@ -26,46 +26,47 @@ export default class LinkDialog {
     }
 
     const body = [
-      (linkChoices != '' ?
-        `<label for="note-dialog-link-list-` + this.options.id + `" class="note-form-label">` + this.lang.link.linkList + `</label>` +
-        `<div class="note-form-group">` +
-          `<select id="note-dialog-link-list-` + this.options.id + `" class="note-link-list note-input">` +
-            `<option value="|">Select a Link</option>` +
+      (linkChoices !== '' ?
+        '<label for="note-dialog-link-list-' + this.options.id + '" class="note-form-label">' + this.lang.link.linkList + '</label>' +
+        '<div class="note-form-group">' +
+          '<select id="note-dialog-link-list-' + this.options.id + '" class="note-link-list note-input">' +
+            '<option value="|">Select a Link</option>' +
             linkChoices +
-          `</select>` +
-        `</div>`
-      : '' ),
-      `<label for="note-dialog-link-url-` + this.options.id + `" class="note-form-label">` + this.lang.link.url + `</label>`,
+          '</select>' +
+        '</div>'
+      : ''
+      ),
+      '<label for="note-dialog-link-url-' + this.options.id + '" class="note-form-label">' + this.lang.link.url + '</label>',
       '<div class="note-form-group">',
-        `<input id="note-dialog-link-url-` + this.options.id + `" class="note-link-url note-input" type="text" value="http://">`,
+        '<input id="note-dialog-link-url-' + this.options.id + '" class="note-link-url note-input" type="text" value="https://"/>',
       '</div>',
-      `<label for="note-dialog-link-txt-` + this.options.id + `" class="note-form-label">` + this.lang.link.textToDisplay + `</label>`,
+      '<label for="note-dialog-link-txt-' + this.options.id + '" class="note-form-label">' + this.lang.link.textToDisplay + '</label>',
       '<div class="note-form-group">',
-        `<input id="note-dialog-link-txt-` + this.options.id + `" class="note-link-text note-input" type="text">`,
+        '<input id="note-dialog-link-txt-' + this.options.id + '" class="note-link-text note-input" type="text">',
       '</div>',
       '<label for="note-dialog-link-title-' + this.options.id + '" class="note-form-label">' + this.lang.link.title + '</label>',
       '<div class="note-form-group">',
         '<input id="note-dialog-link-title' + this.options.id + '" class="note-link-title note-input" type="text">',
       '</div>',
-      `<label for="note-dialog-link-rel-` + this.options.id + `" class="note-form-label">` + this.lang.link.rel + `</label>`,
+      '<label for="note-dialog-link-rel-' + this.options.id + '" class="note-form-label">' + this.lang.link.rel + '</label>',
       '<div class="note-form-group">',
-        `<select id="note-dialog-link-rel-`+ this.options.id + `" class="note-link-rel note-input">`,
-          `<option value="" selected>Do not use Rel attribute (For Same Site Links)</option>`,
-          `<option value="noreferrer noopener">NoReferrer NoOpener (Suggested for external links that open in new tabs or windows)</option>`,
-          `<option value="alternate">Alternate</option>`,
-          `<option value="author">Author</option>`,
-          `<option value="bookmark">Bookmark</option>`,
-          `<option value="external">External</option>`,
-          `<option value="Help">Help</option>`,
-          `<option value="license">License</option>`,
-          `<option value="next">Next</option>`,
-          `<option value="nofollow">NoFollow</option>`,
-          `<option value="noreferrer">NoReferrer</option>`,
-          `<option value="noopener">NoOperner</option>`,
-          `<option value="prev">Prev</option>`,
-          `<option value="search">Search</option>`,
-          `<option value="tag">Tag</option>`,
-        `</select>`,
+        '<select id="note-dialog-link-rel-' + this.options.id + '" class="note-link-rel note-input">',
+          '<option value="" selected>Do not use Rel attribute (For Same Site Links)</option>',
+          '<option value="noreferrer noopener">NoReferrer NoOpener (Suggested for external links that open in new tabs or windows)</option>',
+          '<option value="alternate">Alternate</option>',
+          '<option value="author">Author</option>',
+          '<option value="bookmark">Bookmark</option>',
+          '<option value="external">External</option>',
+          '<option value="Help">Help</option>',
+          '<option value="license">License</option>',
+          '<option value="next">Next</option>',
+          '<option value="nofollow">NoFollow</option>',
+          '<option value="noreferrer">NoReferrer</option>',
+          '<option value="noopener">NoOperner</option>',
+          '<option value="prev">Prev</option>',
+          '<option value="search">Search</option>',
+          '<option value="tag">Tag</option>',
+        '</select>',
       '</div>',
       !this.options.disableLinkTarget
         ? $('<div></div>').append(this.ui.checkbox({
@@ -84,11 +85,10 @@ export default class LinkDialog {
         checked: true,
       }).render()).html(),
     ].join('');
-
-    const footer = `<input type="button" href="#" class="note-btn note-btn-primary note-link-btn" value="` + this.lang.link.insert + `" disabled>`;
+    const footer = '<input type="button" href="#" class="btn btn-primary note-btn note-btn-primary note-link-btn" value="' + this.lang.link.insert + '" disabled>';
 
     this.$dialog = this.ui.dialog({
-      className: 'note-link-dialog',
+      className: 'link-dialog',
       title: this.lang.link.insert,
       fade: this.options.dialogsFade,
       body: body,

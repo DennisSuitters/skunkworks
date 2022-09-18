@@ -1,67 +1,43 @@
 .note-form-group {
-  display: flex;
-  flex: 1 0 100%;
-  flex-wrap: nowrap;
-  padding-bottom: 1rem;
-}
+  padding-bottom: 20px; }
 
 .note-form-group:last-child {
-  padding-bottom: 0;
-}
+  padding-bottom: 0; }
 
 .note-form-label {
-  display: contents !important;
-  margin: 0 0 0 .5rem !important;
-  width: 100% !important;
-  font-size: 1rem !important;
-  font-weight: 700 !important;
-  padding: 0 2px !important;
-}
-
-.note-form-help {
-  display: inline;
-  float: right;
-  text-align: right;
-  font-size: var(--note-form-help-font-size);
-  color: var(--note-form-help-color);
-}
-
-.note-form-help::after {
-  clear: both;
-}
+  display: contents;
+  width: 100%;
+  font-size: 16px;
+  color: var(--note-form-label-color);
+  margin: 0 0 0 .5rem;
+  padding: 0 2px;
+  font-size: 1em;
+  font-weight: 700; }
 
 .note-input {
-  -ms-box-sizing: border-box;
-      box-sizing: border-box;
+  width: 100%;
   display: block;
-  outline: 0;
   border: var(--note-form-input-border-width) var(--note-form-input-border-style) var(--note-form-input-border-color);
   background-color: var(--note-form-input-background-color);
+  outline: 0;
   padding: 6px 4px;
-  width: 100%;
   font-size: 14px;
-  border-radius: var(--note-border-radius);
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
 
-  &:focus {
-    border: var(--note-form-input-border-width) var(--note-form-input-border-style) var(--note-form-input-border-focus);
-  }
-
-}
+.note-input:focus{
+  border-color: var(--note-form-input-border-focus); }
 
 .note-input::-webkit-input-placeholder {
-  color: var(--note-form-input-placeholder-color);
-}
+  color: var(--note-form-input-placeholder-color); }
 
- /* Firefox 18- */
-.note-input:-moz-placeholder {
-  color: var(--note-form-input-placeholder-color);
-}
+.note-input:-moz-placeholder { /* Firefox 18- */
+  color: var(--note-form-input-placeholder-color); }
 
-/* Firefox 19+ */
-.note-input::-moz-placeholder {
-  color: var(--note-form-input-placeholder-color);
-}
+.note-input::-moz-placeholder {  /* Firefox 19+ */
+  color: var(--note-form-input-placeholder-color); }
 
 .note-input:-ms-input-placeholder {
-  color: var(--note-form-input-placeholder-color);
-}
+  color: var(--note-form-input-placeholder-color); }
