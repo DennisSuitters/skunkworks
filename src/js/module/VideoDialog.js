@@ -76,7 +76,7 @@ export default class VideoDialog {
         checked: true,
       }).render()).html(),
     ].join('');
-    const footer = '<input type="button" href="#" class="btn btn-primary note-btn note-btn-primary note-video-btn" value="' + this.lang.video.insert + '" disabled>';
+    const footer = '<input type="button" href="#" class="note-btn note-btn-primary note-video-btn" value="' + this.lang.video.insert + '" disabled>';
 
     this.$dialog = this.ui.dialog({
       title: this.lang.video.insert,

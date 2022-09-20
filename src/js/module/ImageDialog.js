@@ -54,7 +54,7 @@ export default class ImageDialog {
         '<input id="note-dialog-image-class-' + this.options.id + '" class="note-image-class note-input" type="text"/>',
       '</div>',
     ].join('');
-    const footer = '<input type="button" href="#" class="btn btn-primary note-btn note-btn-primary note-image-btn" value="' + this.lang.image.insert + '" disabled>';
+    const footer = '<input type="button" href="#" class="note-btn note-btn-primary note-image-btn" value="' + this.lang.image.insert + '" disabled>';
 
     this.$dialog = this.ui.dialog({
       title: this.lang.image.insert,

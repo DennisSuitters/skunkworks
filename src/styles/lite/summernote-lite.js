@@ -504,7 +504,7 @@ const popover = renderer.create([
 
 const checkbox = renderer.create('<div class="note-checkbox"></div>', function($node, options) {
   $node.html([
-    '<label' + (options.id ? ' for="note-' + options.id + '"' : '') + '>',
+    '<label' + (options.id ? ' for="note-' + options.id + '"' : '') + ' class="note-form-label">',
       '<input role="checkbox" type="checkbox"' + (options.id ? ' id="note-' + options.id + '"' : ''),
       (options.checked ? ' checked' : ''),
       ' aria-checked="' + (options.checked ? 'true' : 'false') + '"/>',

@@ -15,10 +15,10 @@ export default class HelpDialog {
   initialize() {
     const $container = this.options.dialogsInBody ? this.$body : this.options.container;
     const body = [
-      '<p class="text-center">',
+      '<p style="text-align:center;margin:0;padding:0;">',
         '<a href="http://summernote.org/" target="_blank" rel="noopener noreferrer">Summernote @@VERSION@@</a> · ',
-        '<a href="https://github.com/summernote/summernote" target="_blank" rel="noopener noreferrer">Project</a> · ',
-        '<a href="https://github.com/summernote/summernote/issues" target="_blank" rel="noopener noreferrer">Issues</a>',
+        '<a href="https://github.com/summernote/summernote/skunkworks" target="_blank" rel="noopener noreferrer">Project</a> · ',
+        '<a href="https://github.com/summernote/summernote/skunkworks/issues" target="_blank" rel="noopener noreferrer">Issues</a>',
       '</p>',
     ].join('');
 
@@ -46,10 +46,12 @@ export default class HelpDialog {
     return Object.keys(keyMap).map((key) => {
       const command = keyMap[key];
       const $row = $('<div><div class="help-list-item"></div></div>');
-      $row.append($('<label><kbd>' + key + '</kdb></label>').css({
-        'width': 180,
-        'margin-right': 10,
-      })).append($('<span></span>').html(this.context.memo('help.' + command) || command));
+      $row.append(
+            $('<label class="note-help-label"><kbd>' + key + '</kdb></label>')
+          )
+          .append(
+            $('<span class="note-help-text"></span>').html(this.context.memo('help.' + command) || command)
+          );
       return $row.html();
     }).join('');
   }

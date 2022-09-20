@@ -5,14 +5,19 @@
   padding-bottom: 0; }
 
 .note-form-label {
-  display: contents;
-  width: 100%;
-  font-size: 16px;
-  color: var(--note-form-label-color);
-  margin: 0 0 0 .5rem;
-  padding: 0 2px;
-  font-size: 1em;
-  font-weight: 700; }
+  display: contents !important;
+  width: 100% !important;
+  font-size: 16px !important;
+  line-height: 1;
+  color: var(--note-form-label-color) !important;
+  margin: 0 0 0 .5rem !important;
+  padding: 0 2px !important;
+  font-size: 1em !important;
+  font-weight: 700 !important; }
+
+.note-form-label input[type=checkbox],
+.note-form-label input[type=radio] {
+  margin-right: .5em; }
 
 .note-input {
   width: 100%;
