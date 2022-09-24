@@ -12,11 +12,11 @@ const toolbar = renderer.create('<div class="note-toolbar" role="toolbar"></div>
 const viewportArea = renderer.create('<div class="note-viewport-area"></div>');
 const editingArea = renderer.create('<div class="note-editing-area"></div>');
 const codable = renderer.create('<textarea class="note-codable" aria-multiline="true"></textarea>');
-const editable = renderer.create('<div class="note-editable" contentEditable="true" role="textbox" aria-multiline="true"></div>');
+const editable = renderer.create('<div class="note-editable" contentEditable="true" role="textbox" aria-multiline="true" aria-label="Summernote Editing Area"></div>');
 const statusbar = renderer.create([
   '<output class="note-status-output" role="status" aria-live="polite"></output>',
   '<div class="note-statusbar" role="status">',
-    '<div class="note-resizebar" aria-label="resize">',
+    '<div class="note-resizebar" role="separator" aria-orientation="horizontal" tabindex="0">',
       '<div class="note-icon-bar"></div>',
       '<div class="note-icon-bar"></div>',
       '<div class="note-icon-bar"></div>',
