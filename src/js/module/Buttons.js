@@ -125,36 +125,28 @@ export default class Buttons {
           items: (backColor ? [
             '<div class="note-palette">',
               '<div class="note-palette-title">' + this.lang.color.background + '</div>',
-              '<div>',
-                '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="backColor" data-value="transparent">',
-                  this.lang.color.transparent,
-                '</button>',
-              '</div>',
+              '<button type="button" class="note-color-reset note-btn note-btn-block" data-event="backColor" data-value="transparent">',
+                this.lang.color.transparent,
+              '</button>',
               '<div class="note-holder" data-event="backColor"><!-- back colors --></div>',
-              '<div>',
-                '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="backColorPicker-' + this.options.id + '">',
-                  this.lang.color.cpSelect,
-                '</button>',
-                '<input type="color" id="backColorPicker-' + this.options.id + '" class="note-btn note-color-select-btn" value="' + this.options.colorButton.backColor + '" data-event="backColorPalette-' + this.options.id + '">',
-              '</div>',
+              '<button type="button" class="note-color-select note-btn note-btn-block" data-event="openPalette" data-value="backColorPicker-' + this.options.id + '">',
+                this.lang.color.cpSelect,
+              '</button>',
+              '<input type="color" id="backColorPicker-' + this.options.id + '" class="note-btn note-color-select-btn" value="' + this.options.colorButton.backColor + '" data-event="backColorPalette-' + this.options.id + '">',
               '<div class="note-holder-custom" id="backColorPalette-' + this.options.id + '" data-event="backColor"></div>',
             '</div>',
           ].join('') : '') +
           (foreColor ? [
             '<div class="note-palette">',
               '<div class="note-palette-title">' + this.lang.color.foreground + '</div>',
-              '<div>',
-                '<button type="button" class="note-color-reset btn btn-light btn-default" data-event="removeFormat" data-value="foreColor">',
-                  this.lang.color.resetToDefault,
-                '</button>',
-              '</div>',
+              '<button type="button" class="note-color-reset note-btn note-btn-block" data-event="removeFormat" data-value="foreColor">',
+                this.lang.color.resetToDefault,
+              '</button>',
               '<div class="note-holder" data-event="foreColor"><!-- fore colors --></div>',
-              '<div>',
-                '<button type="button" class="note-color-select btn btn-light btn-default" data-event="openPalette" data-value="foreColorPicker-' + this.options.id + '">',
-                  this.lang.color.cpSelect,
-                '</button>',
-                '<input type="color" id="foreColorPicker-' + this.options.id + '" class="note-btn note-color-select-btn" value="' + this.options.colorButton.foreColor + '" data-event="foreColorPalette-'+this.options.id+'">',
-              '</div>', // Fix missing Div, Commented to find easily if it's wrong
+              '<button type="button" class="note-color-select note-btn note-btn-block" data-event="openPalette" data-value="foreColorPicker-' + this.options.id + '">',
+                this.lang.color.cpSelect,
+              '</button>',
+              '<input type="color" id="foreColorPicker-' + this.options.id + '" class="note-btn note-color-select-btn" value="' + this.options.colorButton.foreColor + '" data-event="foreColorPalette-'+this.options.id+'">',
               '<div class="note-holder-custom" id="foreColorPalette-' + this.options.id + '" data-event="foreColor"></div>',
             '</div>',
           ].join('') : ''),
@@ -897,7 +889,7 @@ export default class Buttons {
         const $item = $(item);
         // always compare string to avoid creating another func.
         const isChecked = ($item.data('value') + '') === (fontName + '');
-        $item.toggleClass('checked', isChecked);
+        $item.toggleClass('note-checked', isChecked);
       });
       $cont.find('.note-current-fontname').text(fontName).css('font-family', fontName);
     }
@@ -908,7 +900,7 @@ export default class Buttons {
         const $item = $(item);
         // always compare with string to avoid creating another func.
         const isChecked = ($item.data('value') + '') === (fontSize + '');
-        $item.toggleClass('checked', isChecked);
+        $item.toggleClass('note-checked', isChecked);
       });
       $cont.find('.note-current-fontsize').text(fontSize);
 
@@ -916,7 +908,7 @@ export default class Buttons {
       $cont.find('.note-dropdown-fontsizeunit a').each((idx, item) => {
         const $item = $(item);
         const isChecked = ($item.data('value') + '') === (fontSizeUnit + '');
-        $item.toggleClass('checked', isChecked);
+        $item.toggleClass('note-checked', isChecked);
       });
       $cont.find('.note-current-fontsizeunit').text(fontSizeUnit);
     }
@@ -927,7 +919,7 @@ export default class Buttons {
         const $item = $(item);
         // always compare with string to avoid creating another func.
         const isChecked = ($(item).data('value') + '') === (lineHeight + '');
-        $item.toggleClass('checked', isChecked);
+        $item.toggleClass('note-checked', isChecked);
       });
       $cont.find('.note-current-line-height').text(lineHeight);
     }
