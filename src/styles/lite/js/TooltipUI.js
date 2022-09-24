@@ -48,7 +48,7 @@ class TooltipUI {
     const title = this.options.title || $node.attr('title') || $node.data('title');
     const placement = this.options.placement || $node.data('placement');
 
-    $tooltip.addClass(placement);
+    $tooltip.addClass('note-' + placement);
     $tooltip.find('.note-tooltip-content').text(title);
     $tooltip.appendTo(this.options.target);
 

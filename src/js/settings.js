@@ -89,7 +89,8 @@ $.summernote = $.extend($.summernote, {
       ['para', ['ul', 'ol', 'paragraph']],
       ['table', ['table']],
       ['insert', ['hr', 'link', 'picture', 'video']],
-      ['view', ['fullscreen', 'zoomIn', 'zoomValue', 'zoomOut', 'codeview', 'help']],
+      ['zoom', ['zoomOut', 'zoomValue', 'zoomIn']],
+      ['view', ['fullscreen', 'codeview', 'help']],
     ],
 
     // popover

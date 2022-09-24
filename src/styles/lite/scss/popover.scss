@@ -1,7 +1,6 @@
 .note-popover {
   position: absolute;
   z-index: var(--note-zindex-popover);
-  display: block;
   // Our parent element can be arbitrary since popovers are by default inserted as a sibling of their target element.
   // So reset our font and text properties to avoid inheriting weird values.
   font-size: 13px;
@@ -26,7 +25,7 @@
     left: 20px;
     margin-left: -var(--note-tooltip-arrow-width);
     border-top-width: 0;
-    border-bottom-color: var(--note-popover-arrow-outer-color);
+    border-bottom-color: var(--note-popover-arrow-color);
 
     &::after {
       top: 1px;

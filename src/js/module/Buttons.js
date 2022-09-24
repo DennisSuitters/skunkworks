@@ -618,10 +618,10 @@ export default class Buttons {
 
     this.context.memo('text.zoomValue', () => {
       return this.text({
-        className: 'note-txt-zoom-value',
-        contents: '100%',
+        className: 'note-text',
+        contents: '<input type="text" class="note-txt-zoom-value" value="100">',
         tooltip: this.lang.zoom.value,
-        click: this.context.createInvokeHandler('zoom.reset'),
+        click: this.context.createInvokeHandler('zoom.value'),
       }).render();
     });
 

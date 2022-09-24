@@ -15,14 +15,30 @@
   border-radius: var(--note-txt-border-radius);
   background-color: var(--note-txt-background-color);
   background-image: none;
-  padding: var(--note-padding-base-y) var(--note-padding-base-x);
+  padding: 4px 10px;
   touch-action: none;
   color: var(--note-txt-color);
-  font-size: var(--note-font-size-small);
+  font-size: 16px;;
   font-weight: 400;
   line-height: var(--note-txt-line-height);
   text-align: center;
   white-space: nowrap;
+
+  .note-txt-zoom-value {
+    border: 0;
+    border-radius: 0;
+    text-align: center;
+    width: auto !important;
+    min-width: 20px !important;
+    max-width: 25px !important;
+
+      &:focus,
+      &:hover {
+        outline: none;
+        border: 0;
+      }
+
+   }
 
   &.note-dropdown-toggle {
     padding: var(--note-padding-base-y) var(--note-padding-base-x) calc(var(--note-padding-base-y) - 1px) var(--note-padding-base-x);

@@ -22,30 +22,30 @@
   &.note-bottom .note-tooltip-arrow {
     top: 0;
     left: 50%;
-    margin-left: -var(--note-tooltip-arrow-width);
+    margin-left: var(--note-tooltip-arrow-neg-width);
     border-width: 0 var(--note-tooltip-arrow-width) var(--note-tooltip-arrow-width);
-    border-bottom-color: var(--note-tooltip-background-color); }
+    border-bottom-color: var(--note-tooltip-arrow-color); }
 
   &.note-top .note-tooltip-arrow {
     bottom: 0;
     left: 50%;
-    margin-left: -var(--note-tooltip-arrow-width);
+    margin-left: var(--note-tooltip-arrow-neg-width);
     border-width: var(--note-tooltip-arrow-width) var(--note-tooltip-arrow-width) 0;
-    border-top-color: var(--note-tooltip-background-color); }
+    border-top-color: var(--note-tooltip-arrow-color); }
 
   &.note-right .note-tooltip-arrow {
     top: 50%;
     left: 0;
-    margin-top: -var(--note-tooltip-arrow-width);
+    margin-top: var(--note-tooltip-arrow-neg-width);
     border-width: var(--note-tooltip-arrow-width) var(--note-tooltip-arrow-width) var(--note-tooltip-arrow-width) 0;
-    border-right-color: var(--note-tooltip-background-color); }
+    border-right-color: var(--note-tooltip-arrow-color); }
 
   &.note-left .note-tooltip-arrow {
     top: 50%;
     right: 0;
-    margin-top: -var(--note-tooltip-arrow-width);
+    margin-top: var(--note-tooltip-arrow-neg-width);
     border-width: var(--note-tooltip-arrow-width) 0 var(--note-tooltip-arrow-width) var(--note-tooltip-arrow-width);
-    border-left-color: var(--note-tooltip-background-color); }
+    border-left-color: var(--note-tooltip-arrow-color); }
 
 }
 
