@@ -1,12 +1,60 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1024 1024" style="enable-background:new 0 0 1024 1024;" xml:space="preserve">
-<style type="text/css">
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 14 14"
+   xml:space="preserve"
+   sodipodi:docname="float-right.svg"
+   width="14"
+   height="14"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"><metadata
+   id="metadata13"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs11" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1366"
+   inkscape:window-height="708"
+   id="namedview9"
+   showgrid="false"
+   inkscape:zoom="0.23046875"
+   inkscape:cx="512"
+   inkscape:cy="512"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<style
+   type="text/css"
+   id="style2">
 	.st0{fill-rule:evenodd;clip-rule:evenodd;}
 </style>
-<g>
-	<path class="st0" d="M1010.7,128L1010.7,128H555.6v456.7h455.1V128 M9,737.8v153.8h1002V737.8H9z M8.7,586.3h455.7V434.1H8.7V586.3
-		L8.7,586.3z M8.7,280.2h455.7V128H8.7V280.2L8.7,280.2z"/>
+<g
+   id="g6"
+   transform="matrix(0.01396787,0,0,0.01396787,-0.12151852,-0.12082013)">
+	<path
+   class="st0"
+   d="m 1010.7,128 v 0 H 555.6 v 456.7 h 455.1 V 128 M 9,737.8 V 891.6 H 1011 V 737.8 Z M 8.7,586.3 H 464.4 V 434.1 H 8.7 Z m 0,-306.1 H 464.4 V 128 H 8.7 Z"
+   id="path4"
+   inkscape:connector-curvature="0"
+   style="clip-rule:evenodd;fill-rule:evenodd" />
 </g>
 </svg>

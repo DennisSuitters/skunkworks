@@ -4,6 +4,7 @@ export default class Clipboard {
   constructor(context) {
     this.context = context;
     this.$editable = context.layoutInfo.editable;
+    this.options = context.options;
   }
 
   initialize() {
@@ -20,7 +21,7 @@ export default class Clipboard {
     if (this.context.isDisabled()) {
       return;
     }
-    const clipboardData = event.originalEvent.clipboardData;
+    let clipboardData = event.originalEvent.clipboardData;
 
     if (clipboardData && clipboardData.items && clipboardData.items.length) {
       const item = clipboardData.items.length > 1 ? clipboardData.items[1] : lists.head(clipboardData.items);
@@ -41,9 +42,11 @@ export default class Clipboard {
         event.preventDefault();
       }
     }
+
     // Call editor.afterCommand after proceeding default event handler
     setTimeout(() => {
       this.context.invoke('editor.afterCommand');
     }, 10);
   }
+
 }

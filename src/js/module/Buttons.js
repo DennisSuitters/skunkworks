@@ -228,55 +228,108 @@ export default class Buttons {
   }
 
   addToolbarButtons() {
-    this.context.memo('button.style', () => {
+    this.context.memo('button.block', () => {
       return this.ui.buttonGroup([
         this.button({
           className: 'note-dropdown-toggle',
           contents: this.ui.dropdownButtonContents(
-            this.ui.icon(this.options.icons.magic), this.options
+            this.ui.icon(this.options.icons.block), this.options
           ),
-          tooltip: this.lang.style.style,
+          tooltip: this.lang.block.style,
           data: {
             toggle: 'dropdown',
           },
         }),
         this.ui.dropdown({
-          className: 'note-dropdown-style',
-          items: this.options.styleTags,
-          title: this.lang.style.style,
+          className: 'note-dropdown-block',
+          items: this.options.blockTags,
+          title: this.lang.block,
           template: (item) => {
             // TBD: need to be simplified
             if (typeof item === 'string') {
               item = {
                 tag: item,
-                title: (Object.prototype.hasOwnProperty.call(this.lang.style, item) ? this.lang.style[item] : item),
+                title: (Object.prototype.hasOwnProperty.call(this.lang.block, item) ? this.lang.block[item] : item),
               };
             }
 
             const tag = item.tag;
             const title = item.title;
-            const style = item.style ? ' style="' + item.style + '" ' : '';
+            const block = item.block ? ' style="' + item.block + '" ' : '';
             const className = item.className ? ' class="' + item.className + '"' : '';
 
-            return '<' + tag + style + className + '>' + title + '</' + tag + '>';
+            return '<' + tag + block + className + '>' + title + '</' + tag + '>';
           },
           click: this.context.createInvokeHandler('editor.formatBlock'),
         }),
       ]).render();
     });
 
-    for (let styleIdx = 0, styleLen = this.options.styleTags.length; styleIdx < styleLen; styleIdx++) {
-      const item = this.options.styleTags[styleIdx];
+    for (let blockIdx = 0, blockLen = this.options.blockTags.length; blockIdx < blockLen; blockIdx++) {
+      const item = this.options.blockTags[blockIdx];
 
-      this.context.memo('button.style.' + item, () => {
+      this.context.memo('button.block.' + item, () => {
         return this.button({
           className: 'note-btn-style-' + item,
           contents: '<div data-value="' + item + '">' + item.toUpperCase() + '</div>',
-          tooltip: this.lang.style[item],
+          tooltip: this.lang.block[item],
           click: this.context.createInvokeHandler('editor.formatBlock'),
         }).render();
       });
     }
+
+    this.context.memo('button.inline', () => {
+      return this.ui.buttonGroup([
+        this.button({
+          className: 'note-dropdown-toggle',
+          contents: this.ui.dropdownButtonContents(
+            this.ui.icon(this.options.icons.inline), this.options
+          ),
+          tooltip: this.lang.inline.style,
+          data: {
+            toggle: 'dropdown',
+          },
+        }),
+        this.ui.dropdown({
+          className: 'note-dropdown-style',
+          items: this.options.inlineTags,
+          title: this.lang.inline,
+          template: (item) => {
+            // TBD: need to be simplified
+            if (typeof item === 'string') {
+              item = {
+                tag: item,
+                title: (Object.prototype.hasOwnProperty.call(this.lang.inline, item) ? this.lang.inline[item] : item),
+              };
+            }
+
+            const tag = item.tag;
+            const title = item.title;
+            const inline = item.inline ? ' style="' + item.inline + '" ' : '';
+            const className = item.className ? ' class="' + item.className + '"' : '';
+
+            return '<' + tag + inline + className + '>' + title + '</' + tag + '>';
+          },
+          click: this.context.createInvokeHandler('editor.formatInline'),
+        }),
+      ]).render();
+    });
+
+    for (let inlineIdx = 0, inlineLen = this.options.inlineTags.length; inlineIdx < inlineLen; inlineIdx++) {
+      const item = this.options.inlineTags[inlineIdx];
+
+      this.context.memo('button.inline.' + item, () => {
+        return this.button({
+          className: 'note-btn-style-' + item,
+          contents: '<div data-value="' + item + '">' + item.toUpperCase() + '</div>',
+          tooltip: this.lang.inline[item],
+          click: this.context.createInvokeHandler('editor.formatInline'),
+        }).render();
+      });
+    }
+
+
+
 
     this.context.memo('button.bold', () => {
       return this.button({
@@ -662,7 +715,7 @@ export default class Buttons {
 
     this.context.memo('button.help', () => {
       return this.button({
-        contents: this.ui.icon(this.options.icons.question),
+        contents: this.ui.icon(this.options.icons.help),
         tooltip: this.lang.options.help,
         click: this.context.createInvokeHandler('helpDialog.show'),
       }).render();

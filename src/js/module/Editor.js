@@ -167,6 +167,21 @@ export default class Editor {
     });
 
     /**
+     * formatInline
+     *
+     * @param {String} tagName
+     */
+    this.formatInline = this.wrapCommand((tagName, $target) => {
+      const onApplyCustomStyle = this.options.callbacks.onApplyCustomStyle;
+      if (onApplyCustomStyle) {
+        onApplyCustomStyle.call(this, $target, this.context, this.onFormatInline);
+      } else {
+        this.onFormatInline(tagName, $target);
+      }
+    });
+
+
+    /**
      * insert horizontal rule
      */
     this.insertHorizontalRule = this.wrapCommand(() => {
@@ -841,6 +856,29 @@ export default class Editor {
         if (className) {
           $parent.addClass(className);
         }
+      }
+    }
+  }
+
+  onFormatInline(tag, $target) {
+    if (window.getSelection) {
+      var selection = window.getSelection(),
+          selected = (selection.rangeCount > 0) && selection.getRangeAt(0);
+      if (selected.startOffset !== selected.endOffset) {
+        var range = selected.cloneRange();
+        var startParentElement = range.startContainer.parentElement;
+        var endParentElement = range.endContainer.parentElement;
+        if( ! startParentElement.isSameNode(endParentElement)) {
+          if ( ! self.isSelectionParsable(startParentElement, endParentElement)) {
+            return;
+          }
+        }
+        var newNode = document.createElement(tag);
+        newNode.appendChild(range.extractContents());
+        range.insertNode(newNode)
+        range.selectNodeContents(newNode);
+        selection.removeAllRanges();
+        selection.addRange(range);
       }
     }
   }

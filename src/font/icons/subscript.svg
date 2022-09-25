@@ -1,11 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="1024" height="1024" viewBox="0 0 1024 1024">
-  <defs>
-    <style>
-      .cls-1 {
-        fill: #000;
-        fill-rule: evenodd;
-      }
-    </style>
-  </defs>
-  <path d="M1224.354,1117.078 L1006.601,1117.078 L1006.601,1067.562 C1091.466,990.519 1138.701,951.568 1139.220,911.578 C1139.220,887.702 1124.350,874.518 1097.335,874.518 C1072.236,874.518 1052.062,887.167 1032.530,901.592 L1009.016,842.278 C1039.234,818.882 1075.104,808.372 1110.771,808.372 C1176.237,808.372 1218.537,846.614 1218.537,905.801 C1218.537,965.501 1168.603,1011.339 1122.925,1049.581 L1224.354,1049.581 L1224.354,1117.078 ZM486.761,678.568 L296.843,975.803 L46.215,975.803 L46.215,879.988 L100.910,879.988 C134.010,879.988 164.672,863.823 181.618,837.434 L377.259,532.875 L188.346,256.449 C171.116,231.230 141.182,215.947 109.001,215.947 L57.840,215.947 L57.840,120.132 L291.295,120.132 L486.761,404.237 L682.228,120.132 L915.687,120.132 L915.687,215.947 L864.527,215.947 C832.355,215.947 802.411,231.230 785.177,256.449 L596.263,532.875 L791.904,837.434 C808.860,863.823 839.522,879.988 872.622,879.988 L927.312,879.988 L927.312,975.803 L676.684,975.803 L486.761,678.568 Z" class="cls-1"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   role="img"
+   focusable="false"
+   aria-hidden="true"
+   viewBox="0 0 14 14"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="subscript.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)">
+  <metadata
+     id="metadata10">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs8" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     id="namedview6"
+     showgrid="false"
+     inkscape:zoom="16.857143"
+     inkscape:cx="7"
+     inkscape:cy="7"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <path
+     d="m 9.821242,7.1654334 c 0.484657,-0.4415837 1.023156,-0.6462172 1.486264,-0.6462172 0.764668,0 1.163156,0.3339003 1.163156,1.0446342 0,0.5708506 -0.409255,1.1847511 -1.184704,1.9817018 L 9.379669,11.484203 v 1.109268 h 4.534173 v -1.206218 h -2.832506 l 1.2924,-1.217067 C 13.39688,9.2116518 14,8.3609178 14,7.3700669 14,6.2715327 13.256867,5.3129986 11.576749,5.3129986 c -0.689279,0 -1.27085,0.1830502 -1.820129,0.5707338 l 0.06463,1.281701 M 4.8508524,5.8256324 7.644543,1.4065287 H 5.7016565 L 3.8603633,4.581148 2.2095519,1.4065287 H 0.2031751 L 2.7809857,5.7114155 0,10.143236 H 1.9174883 L 3.7333832,6.9812166 5.4984812,10.143236 H 7.5302563 L 4.8508524,5.8256324"
+     id="path2"
+     inkscape:connector-curvature="0"
+     style="stroke-width:1.1666677" />
 </svg>

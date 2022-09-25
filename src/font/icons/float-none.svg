@@ -1,14 +1,68 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 1024 1024" style="enable-background:new 0 0 1024 1024;" xml:space="preserve">
-<style type="text/css">
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 14 14"
+   xml:space="preserve"
+   sodipodi:docname="float-none.svg"
+   width="14"
+   height="14"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"><metadata
+   id="metadata17"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs15" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1366"
+   inkscape:window-height="708"
+   id="namedview13"
+   showgrid="false"
+   inkscape:zoom="0.23046875"
+   inkscape:cx="512"
+   inkscape:cy="512"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<style
+   type="text/css"
+   id="style2">
 	.st0{fill:#010202;}
 </style>
-<g>
-	<g>
-		<path class="st0" d="M1006.3,135.7H17.7v151.9h988.6V135.7z M17.7,738.5v150.3h988.6V738.5H17.7z"/>
+<g
+   id="g10"
+   transform="matrix(0.01416144,0,0,0.01416144,-0.25065728,-0.25419764)">
+	<g
+   id="g6">
+		<path
+   class="st0"
+   d="M 1006.3,135.7 H 17.7 v 151.9 h 988.6 V 135.7 Z M 17.7,738.5 v 150.3 h 988.6 V 738.5 Z"
+   id="path4"
+   inkscape:connector-curvature="0"
+   style="fill:#010202" />
 	</g>
-	<polyline class="st0" points="759.1,372.2 759.1,372.2 264.9,372.2 264.9,651.8 759.1,651.8 759.1,372.2 	"/>
+	<polyline
+   class="st0"
+   points="759.1,372.2 759.1,372.2 264.9,372.2 264.9,651.8 759.1,651.8 759.1,372.2  "
+   id="polyline8"
+   style="fill:#010202" />
 </g>
 </svg>

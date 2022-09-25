@@ -11,12 +11,12 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="3.9521849mm"
-   height="3.9511111mm"
-   viewBox="0 0 14.003805 14"
+   width="14"
+   height="14"
+   viewBox="0 0 13.125 13.125"
    id="svg3446"
    version="1.1"
-   inkscape:version="0.91 r13725"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="col-after.svg">
   <defs
      id="defs3448">
@@ -46,9 +46,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="15.839192"
-     inkscape:cx="-14.589889"
-     inkscape:cy="25.694683"
+     inkscape:zoom="5.6"
+     inkscape:cx="-48.248142"
+     inkscape:cy="18.333386"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -56,11 +56,12 @@
      fit-margin-left="0"
      fit-margin-right="0"
      fit-margin-bottom="0"
-     inkscape:window-width="1854"
-     inkscape:window-height="1057"
-     inkscape:window-x="1424"
-     inkscape:window-y="-8"
-     inkscape:window-maximized="1" />
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     units="px" />
   <metadata
      id="metadata3451">
     <rdf:RDF>
@@ -77,18 +78,18 @@
      inkscape:label="Camada 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(728.278,112.5011)">
+     transform="translate(728.278,111.6261)">
     <g
-       transform="matrix(0,1,-1,0,-531.8777,-2872.4914)"
+       transform="matrix(0,0.93724556,-0.93724556,0,-544.20269,-2698.413)"
        id="g3610-6">
       <path
          style="stroke:url(#linearGradient3671);stroke-width:0;stroke-miterlimit:4;stroke-dasharray:none"
          inkscape:connector-curvature="0"
-         d="m 2771.022,186.4283 q 0,0.264 -0.1915,0.4658 l -0.3882,0.3882 q -0.1966,0.1965 -0.4709,0.1965 -0.2795,0 -0.4658,-0.1965 l -1.5217,-1.5164 0,3.6436 q 0,0.2691 -0.194,0.4372 -0.1941,0.1683 -0.4684,0.1683 l -0.6625,0 q -0.2743,0 -0.4684,-0.1683 -0.1941,-0.1681 -0.1941,-0.4372 l 0,-3.6436 -1.5216,1.5164 q -0.1863,0.1965 -0.4658,0.1965 -0.2795,0 -0.4658,-0.1965 l -0.3882,-0.3882 q -0.1966,-0.1967 -0.1966,-0.4658 0,-0.2742 0.1966,-0.471 l 3.3693,-3.3692 q 0.1812,-0.1916 0.4658,-0.1916 0.2795,0 0.471,0.1916 l 3.3693,3.3692 q 0.1915,0.2019 0.1915,0.471 z"
+         d="m 2771.022,186.4283 q 0,0.264 -0.1915,0.4658 l -0.3882,0.3882 q -0.1966,0.1965 -0.4709,0.1965 -0.2795,0 -0.4658,-0.1965 l -1.5217,-1.5164 v 3.6436 q 0,0.2691 -0.194,0.4372 -0.1941,0.1683 -0.4684,0.1683 h -0.6625 q -0.2743,0 -0.4684,-0.1683 -0.1941,-0.1681 -0.1941,-0.4372 v -3.6436 l -1.5216,1.5164 q -0.1863,0.1965 -0.4658,0.1965 -0.2795,0 -0.4658,-0.1965 l -0.3882,-0.3882 q -0.1966,-0.1967 -0.1966,-0.4658 0,-0.2742 0.1966,-0.471 l 3.3693,-3.3692 q 0.1812,-0.1916 0.4658,-0.1916 0.2795,0 0.471,0.1916 l 3.3693,3.3692 q 0.1915,0.2019 0.1915,0.471 z"
          id="path3400-4-4-5-3" />
       <path
          id="polygon3366-49-8-3-2"
-         d="m 2773.9903,191.0823 c 0,-0.2901 -0.1688,-0.5229 -0.3789,-0.5229 l -13.2422,0 c -0.21,0 -0.3789,0.2328 -0.3789,0.5229 l 0,4.7928 c 0,0.29 0.1689,0.5252 0.3789,0.5252 l 13.2422,0 c 0.2101,0 0.3789,-0.2352 0.3789,-0.5252 l 0,-4.7928 z m -1.1582,0.687 0,3.4211 -3.2168,0 0,-3.4211 3.2168,0 z m -4.2852,0 0,3.4211 -3.2148,0 0,-3.4211 3.2148,0 z m -4.2832,0 0,3.4211 -3.2148,0 0,-3.4211 3.2148,0 z"
+         d="m 2773.9903,191.0823 c 0,-0.2901 -0.1688,-0.5229 -0.3789,-0.5229 h -13.2422 c -0.21,0 -0.3789,0.2328 -0.3789,0.5229 v 4.7928 c 0,0.29 0.1689,0.5252 0.3789,0.5252 h 13.2422 c 0.2101,0 0.3789,-0.2352 0.3789,-0.5252 z m -1.1582,0.687 v 3.4211 h -3.2168 v -3.4211 z m -4.2852,0 v 3.4211 h -3.2148 v -3.4211 z m -4.2832,0 v 3.4211 h -3.2148 v -3.4211 z"
          style="clip-rule:evenodd;fill:#000000;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
          inkscape:connector-curvature="0" />
     </g>
