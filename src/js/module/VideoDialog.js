@@ -101,52 +101,71 @@ export default class VideoDialog {
   }
 
   createVideoNode(url) {
-    // video url patterns(youtube, instagram, vimeo, dailymotion, youku, peertube, mp4, ogg, webm)
+// Bilibi
+    const bilRegExp = /bilibili\.com\/video\/([a-zA-Z0-9]+)/;
+    const bilMatch = url.match(bilRegExp);
+
+// Dailymotion
+    const dmRegExp = /.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/;
+    const dmMatch = url.match(dmRegExp);
+
+// Facebook
+    const fbRegExp = /(?:www\.|\/\/)facebook\.com\/([^\/]+)\/videos\/([0-9]+)/;
+    const fbMatch = url.match(fbRegExp);
+
+// Google
+    const gdRegExp = /(?:\.|\/\/)drive\.google\.com\/file\/d\/(.[a-zA-Z0-9_-]*)\/view/;
+    const gdMatch = url.match(gdRegExp);
+
+// Instagram
+    const igRegExp = /(?:www\.|\/\/)instagram\.com\/p\/(.[a-zA-Z0-9_-]*)/;
+    const igMatch = url.match(igRegExp);
+
+// PeerTube
+    const peerTubeRegExp = /\/\/(.*)\/videos\/watch\/([^?]*)(?:\?(?:start=(\w*))?(?:&stop=(\w*))?(?:&loop=([10]))?(?:&autoplay=([10]))?(?:&muted=([10]))?)?/;
+    const peerTubeMatch = url.match(peerTubeRegExp);
+
+// QQ
+    const qqRegExp = /\/\/v\.qq\.com.*?vid=(.+)/;
+    const qqMatch = url.match(qqRegExp);
+    const qqRegExp2 = /\/\/v\.qq\.com\/x?\/?(page|cover).*?\/([^\/]+)\.html\??.*/;
+    const qqMatch2 = url.match(qqRegExp2);
+
+// tiktok
+    const tiktokRegExp = /(?:www\.|\/\/)tiktok\.com\/.*?\/video\/(.[a-zA-Z0-9_-]*)/;
+    const tiktokMatch = url.match(tiktokRegExp);
+//    https://www.tiktok.com/@ozzymanreviews/video/7147225284805217537
+
+// Vimeo
+    const vimRegExp = /\/\/(player\.)?vimeo\.com\/([a-z]*\/)*(\d+)[?]?.*/;
+    const vimMatch = url.match(vimRegExp);
+
+// WISTIA
+
+// Vine
+    const vRegExp = /\/\/vine\.co\/v\/([a-zA-Z0-9]+)/;
+    const vMatch = url.match(vRegExp);
+
+// Youku
+    const youkuRegExp = /\/\/v\.youku\.com\/v_show\/id_(\w+)=*\.html/;
+    const youkuMatch = url.match(youkuRegExp);
+
+// YouTube
     const ytRegExp = /\/\/(?:(?:www|m)\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([\w|-]{11})(?:(?:[\?&]t=)(\S+))?$/;
     const ytRegExpForStart = /^(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?$/;
     const ytMatch = url.match(ytRegExp);
 
-    const gdRegExp = /(?:\.|\/\/)drive\.google\.com\/file\/d\/(.[a-zA-Z0-9_-]*)\/view/;
-    const gdMatch = url.match(gdRegExp);
-
-    const igRegExp = /(?:www\.|\/\/)instagram\.com\/p\/(.[a-zA-Z0-9_-]*)/;
-    const igMatch = url.match(igRegExp);
-
-    const vRegExp = /\/\/vine\.co\/v\/([a-zA-Z0-9]+)/;
-    const vMatch = url.match(vRegExp);
-
-    const vimRegExp = /\/\/(player\.)?vimeo\.com\/([a-z]*\/)*(\d+)[?]?.*/;
-    const vimMatch = url.match(vimRegExp);
-
-    const dmRegExp = /.+dailymotion.com\/(video|hub)\/([^_]+)[^#]*(#video=([^_&]+))?/;
-    const dmMatch = url.match(dmRegExp);
-
-    const youkuRegExp = /\/\/v\.youku\.com\/v_show\/id_(\w+)=*\.html/;
-    const youkuMatch = url.match(youkuRegExp);
-
-    const peerTubeRegExp =/\/\/(.*)\/videos\/watch\/([^?]*)(?:\?(?:start=(\w*))?(?:&stop=(\w*))?(?:&loop=([10]))?(?:&autoplay=([10]))?(?:&muted=([10]))?)?/;
-    const peerTubeMatch = url.match(peerTubeRegExp);
-
-    const qqRegExp = /\/\/v\.qq\.com.*?vid=(.+)/;
-    const qqMatch = url.match(qqRegExp);
-
-    const qqRegExp2 = /\/\/v\.qq\.com\/x?\/?(page|cover).*?\/([^\/]+)\.html\??.*/;
-    const qqMatch2 = url.match(qqRegExp2);
-
+// MP4
     const mp4RegExp = /^.+.(mp4|m4v)$/;
     const mp4Match = url.match(mp4RegExp);
 
+// OGG
     const oggRegExp = /^.+.(ogg|ogv)$/;
     const oggMatch = url.match(oggRegExp);
 
+// WebM
     const webmRegExp = /^.+.(webm)$/;
     const webmMatch = url.match(webmRegExp);
-
-    const fbRegExp = /(?:www\.|\/\/)facebook\.com\/([^\/]+)\/videos\/([0-9]+)/;
-    const fbMatch = url.match(fbRegExp);
-
-    const bilRegExp = /bilibili\.com\/video\/([a-zA-Z0-9]+)/;
-    const bilMatch = url.match(bilRegExp);
 
     let $video = '<figure class="note-video-wrapper">';
     let urlVars = '';
@@ -171,7 +190,7 @@ export default class VideoDialog {
     if (selectVideoAspect == '4-3') vWidth = 589.19;
     if (selectVideoAspect == '1-1') vWidth = 443;
 
-    if (ytMatch && ytMatch[1].length === 11) {
+    if (ytMatch && ytMatch[1].length) {
       const youtubeId = ytMatch[1];
       var start = 0;
       if (typeof ytMatch[2] !== 'undefined') {
@@ -194,20 +213,21 @@ export default class VideoDialog {
       if (selectVideoQuality == '720p') urlVars += (urlVars.length > 0 ? '&' : '') + 'vq=hd720';
       if (selectVideoQuality == '1080p')urlVars += (urlVars.length > 0 ? '&' : '') + 'vq=hd1080';
 
+      $video = '<figure class="note-video-wrapper" style="width:' + vWidth + 'px;">';
       $video += '<iframe allowfullscreen class="note-video-clip" frameborder="0" src="//www.youtube.com/embed/' + youtubeId + '?' + (start > 0 ? 'start=' + start : '') + (urlVars > 0 ? urlVars : '') + '" width="' + vWidth + '" height="' + vHeight + '"></iframe>';
     } else if (gdMatch && gdMatch[0].length) {
-        $video += '<iframe class="note-video-clip" frameborder="0" src="https://drive.google.com/file/d/' + gdMatch[1] + '/preview" width="' + vWidth + '" height="' + vHeight +'"></iframe>';
+      $video += '<iframe class="note-video-clip" frameborder="0" src="https://drive.google.com/file/d/' + gdMatch[1] + '/preview" width="' + vWidth + '" height="' + vHeight +'"></iframe>';
     } else if (igMatch && igMatch[0].length) { // Instagram
-      $video = '<iframe class="note-video-clip" frameborder="0" src="https://instagram.com/p/' + igMatch[1] + '/embed/" width="' + vWidth + '"height="' + vHeight + '" scrolling="no" allowtransparency="true"></iframe>';
+      $video += '<iframe class="note-video-clip" frameborder="0" src="https://instagram.com/p/' + igMatch[1] + '/embed/" width="' + vWidth + '"height="' + vHeight + '" scrolling="no" allowtransparency="true"></iframe>';
     } else if (vMatch && vMatch[0].length) { // Vine
-      $video = '<iframe class="note-video-clip vine-embed" frameborder="0" src="' + vMatch[0] + '/embed/simple" width="' + vWidth + '" height="' + vHeight + '"></iframe>"';
+      $video += '<iframe class="note-video-clip vine-embed" frameborder="0" src="' + vMatch[0] + '/embed/simple" width="' + vWidth + '" height="' + vHeight + '"></iframe>"';
     } else if (vimMatch && vimMatch[3].length) { // Vimeo
-      $video = '<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen class="note-video-clip" frameborder="0" src="//player.vimeo.com/video/' + vimMatch[3] + '" width="' + vWidth + '" height="' + vHeight + '"></iframe>'
+      $video += '<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen class="note-video-clip" frameborder="0" src="//player.vimeo.com/video/' + vimMatch[3] + '" width="' + vWidth + '" height="' + vHeight + '"></iframe>'
     } else if (dmMatch && dmMatch[2].length) { // Dailymotion
-      $video = '<iframe class="note-video-clip" frameborder="0" src="//www.dailymotion.com/embed/video/' + dmMatch[2] + '" width="' + vWidth + '" height="' + vHeight +'"></iframe>';
+      $video += '<iframe class="note-video-clip" frameborder="0" src="//www.dailymotion.com/embed/video/' + dmMatch[2] + '" width="' + vWidth + '" height="' + vHeight +'"></iframe>';
     } else if (youkuMatch && youkuMatch[1].length) { // Youku
-      $video = '<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen class="note-video-clip" frameborder="0" width="' + vWidth + '" height="' + vHeight + '" src="//player.youku.com/embed/' + youkuMatch[1] + '"></iframe>';
-      } else if (peerTubeMatch && peerTubeMatch[0].length){
+      $video += '<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen class="note-video-clip" frameborder="0" width="' + vWidth + '" height="' + vHeight + '" src="//player.youku.com/embed/' + youkuMatch[1] + '"></iframe>';
+    } else if (peerTubeMatch && peerTubeMatch[0].length){
       var begin = 0;
       if (peerTubeMatch[2] !== 'undefined') begin = peerTubeMatch[2];
       var end =0;
@@ -218,16 +238,18 @@ export default class VideoDialog {
       if (peerTubeMatch[5] !== 'undefined') autoplay = peerTubeMatch[5];
       var muted = 0;
       if (peerTubeMatch[6] !== 'undefined') muted = peerTubeMatch[6];
-      $video = '<iframe allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups" class="note-video-clip" frameborder="0" src="//'+ peerTubeMatch[1] +'/videos/embed/' + peerTubeMatch[2] + '?loop=' + loop + '&autoplay=' + autoplay + '&muted=' + muted + (begin > 0 ? '&start=' + begin : '') + (end > 0 ? '&end=' + start : '') + '" width="560" height="315"></iframe>';
+      $video += '<iframe allowfullscreen sandbox="allow-same-origin allow-scripts allow-popups" class="note-video-clip" frameborder="0" src="//'+ peerTubeMatch[1] +'/videos/embed/' + peerTubeMatch[2] + '?loop=' + loop + '&autoplay=' + autoplay + '&muted=' + muted + (begin > 0 ? '&start=' + begin : '') + (end > 0 ? '&end=' + start : '') + '" width="560" height="315"></iframe>';
     } else if ((qqMatch && qqMatch[1].length) || (qqMatch2 && qqMatch2[2].length)) {
       const vid = ((qqMatch && qqMatch[1].length) ? qqMatch[1] : qqMatch2[2]);
-      $video = '<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen class="note-video-clip" frameborder="0" width="' + vWidth + '" height="' + vHeight + '" src="https://v.qq.com/txp/iframe/player.html?vid=' + vid + '&amp;auto=0"></iframe>';
+      $video += '<iframe webkitallowfullscreen mozallowfullscreen allowfullscreen class="note-video-clip" frameborder="0" width="' + vWidth + '" height="' + vHeight + '" src="https://v.qq.com/txp/iframe/player.html?vid=' + vid + '&amp;auto=0"></iframe>';
     } else if (mp4Match || oggMatch || webmMatch) {
-      $video = '<video controls class="note-video-clip" src="' + url + '" width="' + vWidth + '" height="' + vHeight + '">';
+      $video += '<video controls class="note-video-clip" src="' + url + '" width="' + vWidth + '" height="' + vHeight + '">';
+    } else if (tiktokMatch && tiktokMatch[0].length) {
+      $video += '<iframe class="note-video-clip" style="height:648px;" width="420" height="648" name="__tt_embed__v78890194078918110" title="Watch" src="h'+ tiktokMatch[0] + '" allowfullscreen allowtransparency></iframe>';
     } else if (fbMatch && fbMatch[0].length) {
-      $video = '<iframe class="note-video-clip" frameborder="0" src="https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(fbMatch[0]) + '&show_text=0&width=' + vWidth + '" width="' + vWidth + '" height="' + vHeight + '" scrolling="no" allowtransparency="true"></iframe>';
+      $video += '<iframe class="note-video-clip" frameborder="0" src="https://www.facebook.com/plugins/video.php?href=' + encodeURIComponent(fbMatch[0]) + '&show_text=0&width=' + vWidth + '" width="' + vWidth + '" height="' + vHeight + '" scrolling="no" allowtransparency="true"></iframe>';
     } else if (bilMatch && bilMatch[0].length) {
-        $video = '<iframe class="note-video-clip" src="//player.bilibili.com/player.html?bvid=' + encodeURIComponent(bilMatch[1]) + '" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>';
+      $video += '<iframe class="note-video-clip" src="//player.bilibili.com/player.html?bvid=' + encodeURIComponent(bilMatch[1]) + '" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>';
     } else {
       // this is not a known video link. Now what, Cat? Now what?
       return false;
