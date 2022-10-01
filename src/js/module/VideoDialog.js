@@ -202,7 +202,8 @@ export default class VideoDialog {
         }
       }
 
-      if (checkVideoSuggested) urlVars += (start > 0 ? '&' : '') + 'rel=1';
+      if (start > 0) urlVars += 'start=' + start;
+      if (checkVideoSuggested) urlVars += (urlVars.length > 0 ? '&' : '') + 'rel=1';
       if (checkVideoControls) urlVars += (urlVars.length > 0 ? '&' : '') + 'controls=1';
       if (checkVideoCaptions) urlVars += (urlVars.length > 0 ? '&' : '') + 'cc_load_policy=1';
       if (checkVideoAutoplay) urlVars += (urlVars.length > 0 ? '&' : '') + 'autoplay=1';
@@ -214,7 +215,7 @@ export default class VideoDialog {
       if (selectVideoQuality == '1080p')urlVars += (urlVars.length > 0 ? '&' : '') + 'vq=hd1080';
 
       $video = '<figure class="note-video-wrapper" style="width:' + vWidth + 'px;">';
-      $video += '<iframe allowfullscreen class="note-video-clip" frameborder="0" src="//www.youtube.com/embed/' + youtubeId + '?' + (start > 0 ? 'start=' + start : '') + (urlVars > 0 ? urlVars : '') + '" width="' + vWidth + '" height="' + vHeight + '"></iframe>';
+      $video += '<iframe allowfullscreen class="note-video-clip" frameborder="0" src="//www.youtube.com/embed/' + youtubeId + (urlVars > 0 ? '?' + urlVars : '') + '" width="' + vWidth + '" height="' + vHeight + '"></iframe>';
     } else if (gdMatch && gdMatch[0].length) {
       $video += '<iframe class="note-video-clip" frameborder="0" src="https://drive.google.com/file/d/' + gdMatch[1] + '/preview" width="' + vWidth + '" height="' + vHeight +'"></iframe>';
     } else if (igMatch && igMatch[0].length) { // Instagram

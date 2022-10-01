@@ -6,3 +6,8 @@
   border-color: var(--note-toolbar-border-color);
   border-top-left-radius: var(--note-toolbar-border-radius);
   border-top-right-radius: var(--note-toolbar-border-radius); }
+
+.note-toolbar.sticky-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 9999; }

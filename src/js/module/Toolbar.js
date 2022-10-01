@@ -25,6 +25,10 @@ export default class Toolbar {
   initialize() {
     this.options.toolbar = this.options.toolbar || [];
 
+    if (this.options.stickyToolbar) {
+      this.$toolbar.addClass('sticky-toolbar');
+    }
+
     if (!this.options.toolbar.length) {
       this.$toolbar.hide();
     } else {

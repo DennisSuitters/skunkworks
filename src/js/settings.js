@@ -75,6 +75,7 @@ $.summernote = $.extend($.summernote, {
 
     followingToolbar: false,
     toolbarPosition: 'top',
+    stickyToolbar: false,
     otherStaticBar: '',
     dropUp: false, // false uses default dropdown,
     toolbarButtonDropUp: true, // true|false If toolbarPosition = 'bottom' this will override dropUp.

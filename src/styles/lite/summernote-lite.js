@@ -8,6 +8,7 @@ import DropdownUI from './js/DropdownUI';
 import ModalUI from './js/ModalUI';
 
 const editor = renderer.create('<div class="note-editor note-frame"></div>');
+
 const toolbar = renderer.create('<div class="note-toolbar" role="toolbar"></div>');
 const viewportArea = renderer.create('<div class="note-viewport-area"></div>');
 const editingArea = renderer.create('<div class="note-editing-area"></div>');
@@ -44,7 +45,7 @@ const button = renderer.create('<button type="button" class="note-btn" tabindex=
       $(event.currentTarget).data('_lite_tooltip').hide();
     });
   }
-  if (options.contents) {
+  if (options && options.contents) {
     $node.html(options.contents);
   }
 

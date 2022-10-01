@@ -57,10 +57,6 @@ export default class VideoPopover {
     if (rng.isCollapsed() && rng.isOnVideo()) {
       const video = dom.ancestor(rng.sc, dom.isVideo);
 
-//      const src = $(video).attr('src');
-//      this.$popover.find('iframe').attr('src', src).text(src);
-//      https://www.youtube.com/embed/FsXG1YSqcjU
-
       const pos = dom.posFromPlaceholder(video);
       const containerOffset = $(this.options.container).offset();
       pos.top -= containerOffset.top;
