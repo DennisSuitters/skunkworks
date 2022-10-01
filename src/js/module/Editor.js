@@ -299,13 +299,30 @@ export default class Editor {
     });
 
     /**
-     * remove media object and Figure Elements if media object is img with Figure.
+     * remove video object and Figure Elements if media object is iframe with Figure.
      * This for some reason refuses to remove Parent if it contains an iFrame.
+     */
+    this.removeVideo = this.wrapCommand(() => {
+      let $target = $(this.restoreTarget());
+
+//    The below removes first found iFrame, but I can't find the target to actually remove the iframe and parent.
+//      const iframeEl = document.querySelector(this);
+//      iframeEl.parentElement().remove();
+
+      if ($target.parent('figure').length) {
+        $target = $(this.restoreTarget()).parent('figure').detach();
+      } else {
+        $target = $(this.restoreTarget()).detach();
+      }
+      this.context.triggerEvent('media.delete', $target, this.$editable);
+    });
+
+    /**
+     * remove media object and Figure Elements if media object is img with Figure.
      */
     this.removeMedia = this.wrapCommand(() => {
       let $target = $(this.restoreTarget());
       if ($target.parent('figure').length) {
-        console.log("Found Figure");
         $target = $(this.restoreTarget()).parent('figure').detach();
       } else {
         $target = $(this.restoreTarget()).detach();

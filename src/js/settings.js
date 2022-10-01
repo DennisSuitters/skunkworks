@@ -102,7 +102,7 @@ $.summernote = $.extend($.summernote, {
         ['remove', ['removeMedia']],
       ],
       video: [
-        ['remove', ['removeMedia']],
+        ['remove', ['removeVideo']],
       ],
       link: [
         ['link', ['linkDialogShow', 'unlink']],

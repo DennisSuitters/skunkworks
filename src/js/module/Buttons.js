@@ -52,6 +52,7 @@ export default class Buttons {
   initialize() {
     this.addToolbarButtons();
     this.addImagePopoverButtons();
+    this.addVideoPopoverButtons();
     this.addLinkPopoverButtons();
     this.addTablePopoverButtons();
     this.fontInstalledMap = {};
@@ -718,6 +719,16 @@ export default class Buttons {
         contents: this.ui.icon(this.options.icons.help),
         tooltip: this.lang.options.help,
         click: this.context.createInvokeHandler('helpDialog.show'),
+      }).render();
+    });
+  }
+
+  addVideoPopoverButtons() {
+    this.context.memo('button.removeVideo', () => {
+      return this.button({
+        contents: this.ui.icon(this.options.icons.trash),
+        tooltip: this.lang.video.remove,
+        click: this.context.createInvokeHandler('editor.removeVideo'),
       }).render();
     });
   }
