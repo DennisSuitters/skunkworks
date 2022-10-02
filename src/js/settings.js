@@ -39,6 +39,8 @@ $.summernote = $.extend($.summernote, {
 
   options: {
     langInfo: $.summernote.lang['en-US'],
+    lang: 'en-US',
+
     editing: true,
     modules: {
       'editor': Editor,
@@ -71,14 +73,13 @@ $.summernote = $.extend($.summernote, {
 
     buttons: {},
 
-    lang: 'en-US',
-
     followingToolbar: false,
     toolbarPosition: 'top',
     stickyToolbar: false,
     otherStaticBar: '',
     dropUp: false, // false uses default dropdown,
     toolbarButtonDropUp: true, // true|false If toolbarPosition = 'bottom' this will override dropUp.
+    statusOutputTime: 5000, // default 5 seconds.
 
     // toolbar
     codeviewKeepButton: false,
@@ -166,9 +167,9 @@ $.summernote = $.extend($.summernote, {
     hintSelect: 'after',
     hintDirection: 'bottom',
 
-    blockTags: ['div', 'p', 'blockquote', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
+    blockTags: ['address', 'blockquote', 'details', 'div', 'p', 'pre', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
 
-    inlineTags: ['abbr', 'b', 'cite', 'code', 'data', 'del', 'em', 'figure', 'figcaption', 'i', 'ins', 'kbd', 'mark', 'q', 'samp', 'small', 'span', 'strong', 'sub', 'sup', 'time', 'var'],
+    inlineTags: ['abbr', 'b', 'cite', 'code', 'del', 'em', 'figure', 'figcaption', 'i', 'ins', 'kbd', 'mark', 'picture', 'q', 's', 'samp', 'small', 'span', 'strong', 'sub', 'sup', 'time', 'u', 'var'],
 
     fontNames: [
       'Arial', 'Arial Black', 'Bookman Old Style', 'Brush Script MT', 'Calibri',
@@ -180,10 +181,7 @@ $.summernote = $.extend($.summernote, {
     fontNamesIgnoreCheck: [],
     addDefaultFonts: true,
 
-    fontSizes: [
-      '8', '9', '10', '11', '12', '14', '15', '16', '17', '18', '19', '20',
-      '24', '36'
-    ],
+    fontSizes: ['8', '9', '10', '11', '12', '14', '15', '16', '17', '18', '19', '20', '24', '36'],
 
     fontSizeUnits: ['em', 'px', 'pt', 'rem'],
 
@@ -343,6 +341,7 @@ $.summernote = $.extend($.summernote, {
         'CMD+K': 'linkDialog.show',
       },
     },
+
     icons: {
       'align': 'note-icon-align',
       'alignCenter': 'note-icon-align-center',

@@ -898,6 +898,8 @@ export default class Editor {
         range.selectNodeContents(newNode);
         selection.removeAllRanges();
         selection.addRange(range);
+      } else {
+        this.statusOutput('info', this.lang.output.noSelection);
       }
     }
   }
@@ -911,7 +913,6 @@ export default class Editor {
 
     if (rng !== '') {
       const spans = this.style.styleNodes(rng);
-      this.$editor.find('.note-status-output').html('');
       $(spans).css(target, value);
 
       // [workaround] added styled bogus span for style
@@ -928,9 +929,7 @@ export default class Editor {
         rng.select();
       }
     } else {
-      const noteStatusOutput = $.now();
-      this.$editor.find('.note-status-output').html('<div id="note-status-output-' + noteStatusOutput + '" class="alert alert-info">' + this.lang.output.noSelection + '</div>');
-      setTimeout(function() { $('#note-status-output-' + noteStatusOutput).remove(); }, 5000);
+      this.statusOutput('info', options.lang.output.noSelection);
     }
   }
 
@@ -1114,4 +1113,16 @@ export default class Editor {
   normalizeContent() {
     this.$editable[0].normalize();
   }
+
+  /**
+   * Output message to Status Output Element, then remove message after time set in options.
+   */
+
+  statusOutput(alert, msg) {
+    this.$editor.find('.note-status-output').html('<div class="note-alert note-alert-' + alert + '">' + msg + '</div>');
+    setTimeout(function(){
+      $('.note-status-output').html('');
+    }, this.options.statusOutputTime)
+  }
+
 }

@@ -180,29 +180,29 @@
   .note-status-output .text-danger {
     color: var(--note-danger-color); }
 
-  .note-status-output .alert {
+  .note-status-output .note-alert {
     margin: -7px 0 0 0;
     padding: 7px 10px 2px 10px;
     border-radius: 0;
     color: var(--note-status-color);
     background-color: var(--note-status-background-color); }
 
-  .note-status-output .alert .note-icon {
+  .note-status-output .note-alert .note-icon {
     margin-right: 5px; }
 
-  .note-status-output .alert-success {
+  .note-status-output .note-alert-success {
     color: var(--note-success-color) !important;
     background-color: var(--note-success-background-color) !important; }
 
-  .note-status-output .alert-info {
+  .note-status-output .note-alert-info {
     color: var(--note-info-color) !important;
     background-color: var(--note-info-background-color) !important; }
 
-  .note-status-output .alert-warning {
+  .note-status-output .note-alert-warning {
     color: var(--note-warning-color) !important;
     background-color: var(--note-warning-background-color) !important; }
 
-  .note-status-output .alert-danger {
+  .note-status-output .note-alert-danger {
     color: var(--note-danger-color) !important;
     background-color: var(--note-danger-background-color) !important; }
 

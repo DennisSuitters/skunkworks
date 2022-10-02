@@ -69,6 +69,203 @@ var html = $('#summernote').summernote('code');
 
 For more detail about API, please refer to [document](http://summernote.org/getting-started/#basic-api).
 
+#### Options for Summernote Skunkworks
+Note: Some of the options below are NOT available in the main repository.
+
+````javascript
+  lang: 'en-US', // Default Language, other language files have been removed as there has been additions.
+
+  editing: true,
+
+  followingToolbar: false,
+  toolbarPosition: 'top',
+  stickyToolbar: false,
+  otherStaticBar: '',
+  dropUp: false, // false uses default dropdown,
+  toolbarButtonDropUp: true, // true|false If toolbarPosition = 'bottom' this will override dropUp.
+  statusOutputTime: 5000, // default 5 seconds.
+
+  // toolbar
+  codeviewKeepButton: false,
+  toolbar: [
+    ['style', ['block', 'inline']],
+    ['font', ['bold', 'underline', 'clear']],
+    ['fontname', ['fontname', 'fontsize', 'fontSizeunit']],
+    ['color', ['color']],
+    ['para', ['ul', 'ol', 'paragraph']],
+    ['table', ['table']],
+    ['insert', ['hr', 'link', 'picture', 'video']],
+    ['zoom', ['zoomOut', 'zoomValue', 'zoomIn']],
+    ['view', ['fullscreen', 'codeview', 'help']],
+  ],
+
+  // popover
+  popatmouse: true,
+  popover: {
+    image: [
+      ['resize', ['resizeFull', 'resizeHalf', 'resizeQuarter', 'resizeNone']],
+      ['float', ['floatLeft', 'floatRight', 'floatNone']],
+      ['remove', ['removeMedia']],
+    ],
+    video: [
+      ['remove', ['removeVideo']],
+    ],
+    link: [
+      ['link', ['linkDialogShow', 'unlink']],
+    ],
+    table: [
+      ['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']],
+      ['delete', ['deleteRow', 'deleteCol', 'deleteTable']],
+    ],
+    air: [
+      ['color', ['color']],
+      ['font', ['bold', 'underline', 'clear']],
+      ['para', ['ul', 'paragraph']],
+      ['table', ['table']],
+      ['insert', ['link', 'picture']],
+      ['view', ['fullscreen', 'codeview']],
+    ],
+  },
+
+  // link options
+  linkAddNoReferrer: false,
+  addLinkNoOpener: false,
+
+  // air mode: inline editor
+  airMode: false,
+  overrideContextMenu: false, // TBD
+
+  width: null,
+  height: null,
+  linkTargetBlank: true,
+  useProtocol: true,
+  defaultProtocol: 'https://',
+
+  // Thie linkList options adds a quick dropdown to the Link Dialog that can be used to add
+  // other page links, or links to anywhere that an editor might need quick access to.
+  linkList: [
+    // [ 'title', 'url', 'select text' ],
+  ],
+
+  focus: false,
+  tabDisable: false,
+  tabSize: 4,
+  styleWithCSS: false,
+  shortcuts: true,
+  textareaAutoSync: true,
+  tooltip: 'auto',
+  placement: 'bottom', // none|top|right|bottom|left | Needs Documenting
+  container: null,
+  maxTextLength: 0,
+  blockquoteBreakingLevel: 2,
+  spellCheck: true,
+  disableGrammar: false,
+  placeholder: null,
+  inheritPlaceholder: false,
+  // TODO: need to be documented
+  recordEveryKeystroke: false,
+  historyLimit: 200,
+
+  // TODO: need to be documented
+  showDomainOnlyForAutolink: false,
+
+  // TODO: need to be documented
+  hintMode: 'word',
+  hintSelect: 'after',
+  hintDirection: 'bottom',
+
+  blockTags: ['address', 'blockquote', 'details', 'div', 'p', 'pre', 'h1', 'h2',
+              'h3', 'h4', 'h5', 'h6'],
+
+  inlineTags: ['abbr', 'b', 'cite', 'code', 'del', 'em', 'figure', 'figcaption',
+                'i', 'ins', 'kbd', 'mark', 'picture', 'q', 's', 'samp', 'small',
+                'span', 'strong', 'sub', 'sup', 'time', 'u', 'var'],
+
+  fontNames: [
+    'Arial', 'Arial Black', 'Bookman Old Style', 'Brush Script MT', 'Calibri',
+    'Charcoal', 'Comic Sans MS', 'Courier New', 'Garamond', 'Georgia',
+    'Helvetica', 'Helvetica Neue', 'Impact', 'Lucida', 'Monaco Monospace',
+    'Palatino Linotype', 'Roboto', 'Sans-Serif', 'Tahoma', 'Times New Roman',
+    'Trebuchet MS', 'Verdana',
+  ],
+  fontNamesIgnoreCheck: [],
+  addDefaultFonts: true,
+
+  fontSizes: ['8', '9', '10', '11', '12', '14', '15', '16', '17', '18', '19',
+              '20', '24', '36'],
+
+  fontSizeUnits: ['em', 'px', 'pt', 'rem'],
+
+  colorButton: {
+    foreColor: '#000000', // Default colour shown in the button.
+    backColor: '#FFFF00', // Default colour shown in the button.
+  },
+
+  lineHeights: ['1.0', '1.2', '1.4', '1.5', '1.6', '1.8', '2.0', '3.0'],
+
+  tableClassName: 'table table-bordered',
+
+  insertTableMaxSize: {
+    col: 10,
+    row: 10,
+  },
+
+  // By default, dialogs are attached in container.
+  dialogsInBody: false,
+  dialogsFade: false,
+
+  disableUpload: false, // true|false Disables display of upload option in ImageDialog,
+  fileExplorer: '', // If set with the Javascript function name, and button in ImageDialog.js will be shown, which also parses in the ID of the #note-dialog-image-url so the function can return the URL of the selected file for insertion. Note, only the function name is required for eg 'elfinderDialog'.
+  maximumImageFileSize: null,
+  acceptImageFileTypes: "image/*",
+
+  callbacks: {
+    onBeforeCommand: null,
+    onBlur: null,
+    onBlurCodeview: null,
+    onChange: null,
+    onChangeCodeview: null,
+    onDialogShown: null,
+    onDrop: null,
+    onEnter: null,
+    onFocus: null,
+    onImageLinkInsert: null,
+    onImageUpload: null,
+    onImageUploadError: null,
+    onInit: null,
+    onKeydown: null,
+    onKeyup: null,
+    onMousedown: null,
+    onMouseup: null,
+    onPaste: null,
+    onScroll: null,
+  },
+
+  codemirror: {
+    mode: 'text/html',
+    htmlMode: true,
+    lineNumbers: true,
+  },
+
+  codeviewFilter: true,
+  codeviewFilterRegex: /<\/*(?:applet|b(?:ase|gsound|link)|embed|frame(?:set)?|ilayer|l(?:ayer|ink)|meta|object|s(?:cript|tyle)|t(?:itle|extarea)|xml)[^>]*?>/gi,
+  codeviewIframeFilter: true,
+  codeviewIframeWhitelistSrc: [],
+  codeviewIframeWhitelistSrcBase: [
+    'www.youtube.com',
+    'www.youtube-nocookie.com',
+    'www.facebook.com',
+    'vine.co',
+    'instagram.com',
+    'player.vimeo.com',
+    'www.dailymotion.com',
+    'player.youku.com',
+    'jumpingbean.tv',
+    'v.qq.com',
+    'www.tiktok.com',
+  ],
+````
+
 #### Warning - code injection
 The code view allows the user to enter script contents. Make sure to filter/[sanitize the HTML on the server](https://github.com/search?l=JavaScript&q=sanitize+html). Otherwise, an attacker can inject arbitrary JavaScript code into clients.
 
