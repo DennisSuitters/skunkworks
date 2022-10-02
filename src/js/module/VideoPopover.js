@@ -57,8 +57,16 @@ export default class VideoPopover {
     if (rng.isCollapsed() && rng.isOnVideo()) {
       const video = dom.ancestor(rng.sc, dom.isVideo);
 
-      const pos = dom.posFromPlaceholder(video);
+      const position = dom.posFromPlaceholder(video);
       const containerOffset = $(this.options.container).offset();
+      let pos = {};
+      if (this.options.popatmouse) {
+        pos.left = event.pageX -20;
+        pos.top = event.pageY;
+      } else {
+        pos = position;
+      }
+
       pos.top -= containerOffset.top;
       pos.left -= containerOffset.left;
 
