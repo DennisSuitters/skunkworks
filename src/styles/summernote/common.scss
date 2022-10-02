@@ -149,8 +149,9 @@
     width: 100%;
     font-size: 14px;
     line-height: 1.42857143;
-    height: 20px;
+    height: auto;
     margin-bottom: 0;
+    background-color: var(--note-status-background-color);
     color: var(--note-status-color);
     border: 0;
     border-top: var(--note-status-border-width) var(--note-status-border-style) var(--note-status-border-color); }
