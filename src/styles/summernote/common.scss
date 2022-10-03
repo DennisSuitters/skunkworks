@@ -398,7 +398,7 @@
 
     .note-dropdown-toggle {
       width: 20px;
-      padding-left: 5px; }
+      padding-left: 5px !important; }
 
     .note-dropdown-menu {
 
@@ -414,23 +414,23 @@
           font-size: 12px;
           margin: 2px 7px;
           text-align: center;
-          border-bottom: 1px solid var(--note-border-color); }
+          border-bottom: 1px solid var(--note-border-color) !important; }
 
         .note-color-reset,
         .note-color-select {
           width: 100%;
           margin: 3px;
-          padding: 0 3px;
-          border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-primary-border-color);
-          border-radius: var(--note-btn-border-radius);
-          background-color: var(--note-btn-primary-background-color);
-          color: var(--note-btn-primary-color);
+          padding: 0 3px !important;
+          border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-primary-border-color) !important;
+          border-radius: var(--note-btn-border-radius) !important;
+          background-color: var(--note-btn-primary-background-color) !important;
+          color: var(--note-btn-primary-color) !important;
           font-size: 11px;
           cursor: pointer;
 
           &:hover {
-            background-color: var(--note-btn-primary-background-color-hover);
-            color: var(--note-btn-primary-color-hover); }
+            background-color: var(--note-btn-primary-background-color-hover) !important;
+            color: var(--note-btn-primary-color-hover) !important; }
 
           }
 

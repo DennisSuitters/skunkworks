@@ -8,19 +8,19 @@
   cursor: pointer;
   margin-bottom: 0;
   box-sizing: content-box;
-  height: var(--note-txt-line-height);
+  height: var(--note-txt-line-height) !important;
   outline: 0;
-  border: var(--note-txt-border-width) var(--note-txt-border-style) var(--note-txt-border-color);
-  border-color: var(--note-txt-border-color);
-  border-radius: var(--note-txt-border-radius);
-  background-color: var(--note-txt-background-color);
+  border: var(--note-txt-border-width) var(--note-txt-border-style) var(--note-txt-border-color) !important;
+  border-color: var(--note-txt-border-color) !important;
+  border-radius: var(--note-txt-border-radius) !important;
+  background-color: var(--note-txt-background-color) !important;
   background-image: none;
-  padding: 4px 10px;
+  padding: .421rem .65rem !important;
   touch-action: none;
-  color: var(--note-txt-color);
-  font-size: 16px;;
+  color: var(--note-txt-color) !important;
+  font-size: 14px;;
   font-weight: 400;
-  line-height: var(--note-txt-line-height);
+  line-height: var(--note-txt-line-height) !important;
   text-align: center;
   white-space: nowrap;
 
@@ -49,11 +49,11 @@
   &.active {
     outline: 0;
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-    border: var(--note-txt-border-width) var(--note-txt-border-style) var(--note-txt-border-color-active);
-    border-radius: var(--note-txt-border-radius);
-    background-color: var(--note-txt-background-color-active);
+    border: var(--note-txt-border-width) var(--note-txt-border-style) var(--note-txt-border-color-active) !important;
+    border-radius: var(--note-txt-border-radius) !important;
+    background-color: var(--note-txt-background-color-active) !important;
     background-image: none;
-    color: var(--note-txt-color-active);
+    color: var(--note-txt-color-active) !important;
     text-decoration: none;
   }
 
@@ -69,8 +69,8 @@
 }
 
 .note-txt-primary {
-  background: var(--note-txt-primary-background-color);
-  color: var(--note-txt-primary-color);
+  background: var(--note-txt-primary-background-color) !important;
+  color: var(--note-txt-primary-color) !important;
 }
 
 .note-txt-block {
