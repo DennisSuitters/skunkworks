@@ -1,100 +1,100 @@
 .note-btn {
-  display: inline-block;
-  font-weight: 400;
-  margin-bottom: 0;
-  padding: .375rem .75rem;
-  text-align: center;
-  vertical-align: middle;
-  touch-action: manipulation;
-  cursor: pointer;
-  background-image: none;
-  border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color);
-  white-space: nowrap;
-  outline: 0;
-  color: var(--note-btn-color);
-  background-color: var(--note-btn-background-color);
-  border-color: var(--note-btn-border-color);
-  border-radius: var(--note-btn-border-radius);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  display: inline-block !important;
+  font-weight: 400 !important;
+  margin-bottom: 0 !important;
+  padding: .375rem .75rem !important;
+  text-align: center !important;
+  vertical-align: middle !important;
+  touch-action: manipulation !important;
+  cursor: pointer !important;
+  background-image: none !important;
+  border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color) !important;
+  white-space: nowrap !important;
+  outline: 0 !important;
+  color: var(--note-btn-color) !important;
+  background-color: var(--note-btn-background-color) !important;
+  border-color: var(--note-btn-border-color) !important;
+  border-radius: var(--note-btn-border-radius) !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
 
   &:hover,
   &:focus,
   &.note-focus {
-    color: var(--note-btn-color-hover);
-    text-decoration: none;
-    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color-hover);
-    background-color: var(--note-btn-background-color-hover);
-    outline: 0;
-    border-radius: var(--note-btn-border-radius); }
+    color: var(--note-btn-color-hover) !important;
+    text-decoration: none !important;
+    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color-hover) !important;
+    background-color: var(--note-btn-background-color-hover) !important;
+    outline: 0 !important;
+    border-radius: var(--note-btn-border-radius) !important; }
 
   &:active,
   &.note-active {
-    outline: 0;
-    background-image: none;
-    color: var(--note-btn-color-active);
-    text-decoration: none;
-    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color-active);
-    background-color: var(--note-btn-background-color-active);
-    outline: 0;
-    border-radius: var(--note-btn-border-radius);
-    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
-    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125); }
+    outline: 0 !important;
+    background-image: none !important;
+    color: var(--note-btn-color-active) !important;
+    text-decoration: none !important;
+    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color-active) !important;
+    background-color: var(--note-btn-background-color-active) !important;
+    outline: 0 !important;
+    border-radius: var(--note-btn-border-radius) !important;
+    -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125) !important;
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125) !important; }
 
   &.note-disabled,
   &[disabled],
   fieldset[disabled] & {
-    cursor: not-allowed;
-    opacity: .64;
-    box-shadow: none; }
+    cursor: not-allowed !important;
+    opacity: .64 !important;
+    box-shadow: none !important; }
 
   & > span.note-icon-caret:first-child {
-    margin-left: -1px; }
+    margin-left: -1px !important; }
 
   & > span.note-icon-caret:nth-child(2) {
-    padding-left: 3px;
-    margin-right: -5px; }
+    padding-left: 3px !important;
+    margin-right: -5px !important; }
 }
 
 .note-btn-primary {
-  background-color: var(--note-btn-primary-background-color);
-  color: var(--note-btn-primary-color);
+  background-color: var(--note-btn-primary-background-color) !important;
+  color: var(--note-btn-primary-color) !important;
 
   &:hover,
   &:focus,
   &.note-focus {
-    color: var(--note-btn-primary-color-hover);
-    text-decoration: none;
-    border-color: var(--note-btn-primary-border-color-hover);
-    background-color: var(--note-btn-primary-background-color-hover); }
+    color: var(--note-btn-primary-color-hover) !important;
+    text-decoration: none !important;
+    border-color: var(--note-btn-primary-border-color-hover) !important;
+    background-color: var(--note-btn-primary-background-color-hover) !important; }
 
 }
 
 .note-btn-block {
-  display: block;
-  width: 100%; }
+  display: block !important;
+  width: 100% !important; }
 
 .note-btn-block + .note-btn-block {
-  margin-top:5px; }
+  margin-top:5px !important; }
 
 // Specificity overrides
 .note-modal input[type="submit"],
 .note-modal input[type="reset"],
 .note-modal input[type="button"] {
-  width: auto;
+  width: auto !important;
 
   &.note-btn-block {
-    width: 100%; }
+    width: 100% !important; }
 }
 
 .note-modal .note-btn:disabled,
 .note-modal input[type="submit"]:disabled,
 .note-modal input[type="button"]:disabled {
-  background-color: var(--note-btn-background-color-disabled);
-  color: var(--note-btn-color-disabled);
-  border-color: var(--note-btn-border-color-disabled); }
+  background-color: var(--note-btn-background-color-disabled) !important;
+  color: var(--note-btn-color-disabled) !important;
+  border-color: var(--note-btn-border-color-disabled) !important; }
 
 .note-close {
   float: right !important;
@@ -104,24 +104,24 @@
   background: transparent !important;
   color: var(--note-modal-close-color) !important;
   border: 0 !important;
-  -webkit-opacity: .2;
-   -khtml-opacity: .2;
-     -moz-opacity: .2;
-       -ms-filter: alpha(opacity=20);
-           filter: alpha(opacity=20);
+  -webkit-opacity: .2 !important;
+   -khtml-opacity: .2 !important;
+     -moz-opacity: .2 !important;
+       -ms-filter: alpha(opacity=20) !important;
+           filter: alpha(opacity=20) !important;
   opacity: .2 !important;
   border-radius: 0 !important;
   cursor: pointer !important;
-  -webkit-appearance: none; }
+  -webkit-appearance: none !important; }
 
 .note-close:focus,
 .note-close:hover {
   background: transparent !important;
   color: var(--note-modal-close-color) !important;
   border: 0 !important;
-  -webkit-opacity: 1;
-   -khtml-opacity: 1;
-     -moz-opacity: 1;
-       -ms-filter: alpha(opacity=100);
-           filter: alpha(opacity=100);
+  -webkit-opacity: 1 !important;
+   -khtml-opacity: 1 !important;
+     -moz-opacity: 1 !important;
+       -ms-filter: alpha(opacity=100) !important;
+           filter: alpha(opacity=100) !important;
           opacity: 1 !important; }
