@@ -15,7 +15,7 @@
   border-radius: var(--note-txt-border-radius) !important;
   background-color: var(--note-txt-background-color) !important;
   background-image: none;
-  padding: .421rem .65rem !important;
+  padding: .3rem .65rem !important;
   touch-action: none;
   color: var(--note-txt-color) !important;
   font-size: 14px;;
@@ -29,8 +29,8 @@
     border-radius: 0;
     text-align: center;
     width: auto !important;
-    min-width: 20px !important;
-    max-width: 25px !important;
+    min-width: 25px !important;
+    max-width: 30px !important;
 
       &:focus,
       &:hover {

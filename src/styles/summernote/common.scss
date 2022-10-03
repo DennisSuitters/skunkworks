@@ -366,22 +366,47 @@
 
   .note-style {
 
-    .note-dropdown-style {
+    .note-dropdown-block,
+    .note-dropdown-inline {
 
+      address,
       blockquote,
-      pre {
-        margin: 0;
-        padding: 5px 10px; }
-
+      details,
+      div,
+      p,
+      pre
       h1,
       h2,
       h3,
       h4,
       h5,
       h6,
-      p {
-        margin: 0;
-        padding: 0; }
+      abbr,
+      b,
+      cite,
+      code,
+      del,
+      em,
+      figure,
+      figcaption,
+      i,
+      ins,
+      kbd,
+      mark,
+      picture,
+      q,
+      s,
+      samp,
+      small,
+      span,
+      strong,
+      sub,
+      sup,
+      time,
+      u,
+      var {
+        margin: 5px 10px !important;
+        padding: 0 !important; }
 
     }
 

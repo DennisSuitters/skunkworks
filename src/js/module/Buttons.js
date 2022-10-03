@@ -292,7 +292,7 @@ export default class Buttons {
           },
         }),
         this.ui.dropdown({
-          className: 'note-dropdown-style',
+          className: 'note-dropdown-inline',
           items: this.options.inlineTags,
           title: this.lang.inline,
           template: (item) => {

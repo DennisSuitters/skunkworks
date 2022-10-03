@@ -20,7 +20,7 @@
   text-align:left;
   background-color: var(--note-dropdown-background-color);
   border: 1px solid var(--note-dropdown-border-color);
-  padding: 5px;
+  padding: 0;
   background-clip: padding-box;
   box-shadow: 0 1px 1px rgba(0,0,0,.06);
 
@@ -42,7 +42,8 @@
 
 a.note-dropdown-item,
 a.note-dropdown-item:hover {
-  margin: 5px 0;
+  margin: 0 !important;
+  padding: 2px 5px !important;
   color: var(--note-dropdown-color);
   text-decoration: none; }
 
