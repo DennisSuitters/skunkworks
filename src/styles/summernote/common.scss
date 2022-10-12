@@ -420,6 +420,38 @@
 
   }
 
+  .note-current-color-button {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1;
+    margin-bottom: 0;
+    padding: var(--note-btn-padding-y) var(--note-btn-padding-x) !important;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color) !important;
+    white-space: nowrap;
+    outline: 0;
+    color: inherit;
+    background-color: inherit;
+    border-color: var(--note-btn-border-color) !important;
+    border-radius: var(--note-btn-border-radius) !important;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none; }
+
+  .note-current-color-button:hover,
+  .note-current-color-button:focus{
+    color: inherit;
+    text-decoration: none;
+    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color-hover) !important;
+    background-color: inherit;
+    outline: 0;
+    border-radius: var(--note-btn-border-radius) !important; }
+
   .note-color {
 
     .note-dropdown-toggle {

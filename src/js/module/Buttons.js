@@ -80,8 +80,8 @@ export default class Buttons {
       className: 'note-color ' + className,
       children: [
         this.button({
-          className: 'note-current-color-button',
-          contents: this.ui.icon(this.options.icons.font + ' note-recent-color'),
+          className: 'note-current-color-button note-recent-color',
+          contents: this.ui.icon(this.options.icons.font),
           tooltip: tooltip,
           click: (event) => {
             const $button = $(event.currentTarget);
@@ -214,9 +214,10 @@ export default class Buttons {
             } else {
               if (lists.contains(['backColor', 'foreColor'], eventName)) {
                 const key = eventName === 'backColor' ? 'background-color' : 'color';
-                const $color = $button.closest('.note-color').find('.note-recent-color');
+                const $color = $button.closest('.note-color').find('.note-current-color-button');
                 const $currentButton = $button.closest('.note-color').find('.note-current-color-button');
 
+                $color.removeClass('note-btn');
                 $color.css(key, value);
                 $currentButton.attr('data-' + eventName, value);
               }
