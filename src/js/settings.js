@@ -86,7 +86,7 @@ $.summernote = $.extend($.summernote, {
     toolbar: [
       ['style', ['block', 'inline']],
       ['font', ['bold', 'underline', 'clear']],
-      ['fontname', ['fontname', 'fontsize', 'fontSizeunit']],
+      ['fontname', ['fontname', 'fontsize', 'fontsizeunit']],
       ['color', ['color']],
       ['para', ['ul', 'ol', 'paragraph']],
       ['table', ['table']],
