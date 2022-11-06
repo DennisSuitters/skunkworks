@@ -2,6 +2,11 @@
 .note-editor {
   position: relative;
 
+  .note-pull-left {
+    float: left; }
+
+  .note-pull-right {
+    float: right; }
   // dropzone
   .note-dropzone {
     position: absolute;
@@ -160,25 +165,28 @@
     height: 0;
     border-top: 0 solid transparent; }
 
-  .note-status-output .pull-right {
+  .note-status-output .note-pull-left {
+    float: left !important; }
+
+  .note-status-output .note-pull-right {
     float: right !important; }
 
-  .note-status-output .text-muted {
+  .note-status-output .note-text-muted {
     color: var(--note-status-color-muted); }
 
-  .note-status-output .text-primary {
+  .note-status-output .note-text-primary {
     color: var(--note-primary-color); }
 
-  .note-status-output .text-success {
+  .note-status-output .note-text-success {
     color: var(--note-success-color); }
 
-  .note-status-output .text-info {
+  .note-status-output .note-text-info {
     color: var(--note-info-color); }
 
-  .note-status-output .text-warning {
+  .note-status-output .note-text-warning {
     color: var(--note-warning-color); }
 
-  .note-status-output .text-danger {
+  .note-status-output .note-text-danger {
     color: var(--note-danger-color); }
 
   .note-status-output .note-alert {
