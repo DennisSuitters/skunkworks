@@ -67,7 +67,7 @@ module.exports = {
 
   externals: {
     jquery: {
-      root: 'jquery',
+      root: 'jQuery',
       commonjs: 'jquery',
       commonjs2: 'jquery',
       amd: 'jquery',
