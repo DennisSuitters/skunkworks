@@ -25,6 +25,8 @@
   box-shadow: 0 3px 9px rgba(0,0,0,.5); }
 
 .note-modal-header {
+  background-color: var(--note-modal-header-background-color);
+  color: var(--note-modal-header-color) !important;
   padding: var(--note-modal-header-padding);
   border-bottom: 1px solid var(--note-modal-header-border-color); }
 
@@ -58,6 +60,8 @@
 }
 
 .note-modal-footer {
+  background-color: var(--note-modal-footer-background-color);
+  color: var(--note-modal-footer-color) !important;
   padding: var(--note-modal-footer-padding);
   border-top: 1px solid var(--note-modal-footer-border-color); }
 

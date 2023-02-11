@@ -156,15 +156,19 @@
   --note-modal-border-radius: 5px;
   --note-modal-background-color: #fff;
   --note-modal-color: #000;
-  --note-modal-color-link: #007bff;
-  --note-modal-color-link-hover: #0056b3;
+  --note-modal-color-link: #0000ee;
+  --note-modal-color-link-hover: #ee0000;
   --note-modal-color-link-disabled: #868e96;
   --note-modal-padding: 15px;
   --note-modal-border-color: rgba(0, 0, 0, .2);
+  --note-modal-header-background-color: #fff;
+  --note-modal-header-color: #000;
   --note-modal-header-border-color: #e5e5e5;
   --note-modal-header-padding: 15px;
   --note-modal-header-line-height: var(--note-line-height);
   --note-modal-close-color: #000;
+  --note-modal-footer-background-color: #fff;
+  --note-modal-footer-color: #000;
   --note-modal-footer-border-color: #e5e5e5;
   --note-modal-footer-padding: 20px 15px 45px 15px;
 
