@@ -586,17 +586,23 @@ describe('Editor', () => {
       expectContentsAwait(context, '<p><a href="http://wow.summernote.org">summernote wow</a></p>', done);
     });
 
-    it('should be limited when creating a link', (done) => {
-      var options = $.extend({}, $.summernote.options);
-      options.maxTextLength = 5;
-      context = new Context($('<div><p>hello</p></div>'), options);
-      editor = context.modules.editor;
+    it('should insert safe html', (done) => {
+      var text = 'hello';
+      var pNode = $editable.find('p')[0];
+      var textNode = pNode.childNodes[0];
+      var startIndex = textNode.wholeText.indexOf(text);
+      var endIndex = startIndex + text.length;
+
+      var rng = range.create(textNode, startIndex, textNode, endIndex);
 
       editor.createLink({
-        url: 'http://summernote.org',
-        text: 'summernote',
+        url: '/relative/url',
+        text: '<iframe src="hackme.com"></iframe>',
+        range: rng,
+        isNewWindow: true,
       });
-      expectContentsAwait(context, '<p>hello</p>', done);
+
+      expectContentsAwait(context, '<p><a href="/relative/url" target="_blank">&lt;iframe src="hackme.com"&gt;&lt;/iframe&gt;</a></p>', done);
     });
 
     it('should be limited when modifying a link', (done) => {
