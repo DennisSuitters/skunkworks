@@ -326,6 +326,7 @@ export default class Editor {
       } else {
         $target = $(this.restoreTarget()).detach();
       }
+      this.setLastRange(range.createFromSelection($target).select());
       this.context.triggerEvent('media.delete', $target, this.$editable);
     });
 
