@@ -607,6 +607,7 @@ function nextPoint(point, isSkipInnerOffset) {
 }
 
 /**
+ * Find next boundaryPoint for preorder / depth first traversal of the DOM
  * returns next boundaryPoint with empty node
  *
  * @param {BoundaryPoint} point
@@ -616,21 +617,6 @@ function nextPoint(point, isSkipInnerOffset) {
 function nextPointWithEmptyNode(point, isSkipInnerOffset) {
   let node, offset = 0;
 
-  // if node is empty string node, return current node's sibling.
-  if (isEmpty(point.node)) {
-    if(point.node === null){
-      return null;
-    }
-
-    node = point.node.nextSibling;
-    offset = 0;
-
-    return {
-      node: node,
-      offset: offset,
-    };
-  }
-
   if (nodeLength(point.node) === point.offset) {
     if (isEditable(point.node)) {
       return null;
@@ -639,7 +625,7 @@ function nextPointWithEmptyNode(point, isSkipInnerOffset) {
     node = point.node.parentNode;
     offset = position(point.node) + 1;
 
-    // if next node is editable ,  return current node's sibling node.
+      // if parent node is editable ,  return current node's sibling node.
     if (isEditable(node)) {
       node = point.node.nextSibling;
       offset = 0;
@@ -648,22 +634,10 @@ function nextPointWithEmptyNode(point, isSkipInnerOffset) {
   } else if (hasChildren(point.node)) {
     node = point.node.childNodes[point.offset];
     offset = 0;
-    if (isEmpty(node)) {
-      if (!isEmpty(point.node.nextSibling)) {
-        return {
-          node: point.node.nextSibling,
-          offset: offset,
-        };
-      }
-      return null;
-    }
   } else {
     node = point.node;
     offset = isSkipInnerOffset ? nodeLength(point.node) : point.offset + 1;
 
-    if (isEmpty(node)) {
-      return null;
-    }
   }
 
   return {
