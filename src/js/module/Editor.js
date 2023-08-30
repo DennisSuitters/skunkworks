@@ -374,7 +374,7 @@ export default class Editor {
       if (!event.isDefaultPrevented()) {
         if (this.options.shortcuts) {
           this.hasKeyShortCut = this.handleKeyMap(event);
-        } else {
+      } else {
           this.preventDefaultEditableShortCuts(event);
         }
       }
@@ -490,9 +490,11 @@ export default class Editor {
       if (this.context.invoke(eventName) !== false) {
         event.preventDefault();
         // if keyMap action was invoked
-        if (keyName != 'ENTER') {  // <--- Without this check, we get double Empty Paragraph insertion.
-          this.context.invoke(eventName);
-        }
+        // Temporarily commented out, to test if double paragraph happens again.
+        // The below, causes some keymap functions to stop working.
+//        if (keyName != 'ENTER') {  // <--- Without this check, we get double Empty Paragraph insertion.
+//          this.context.invoke(eventName);
+//        }
         return true;
       }
     } else if (key.isEdit(event.keyCode)) {

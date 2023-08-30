@@ -311,7 +311,9 @@ $.summernote = $.extend($.summernote, {
         'CTRL+NUM5': 'formatH5',
         'CTRL+NUM6': 'formatH6',
         'CTRL+ENTER': 'insertHorizontalRule',
-        'CTRL+K': 'linkDialog.show',
+        'CTRL+SHIFT+L': 'linkDialog.show',
+        'CTRL+SHIFT+I': 'imageDialog.show',
+        'CTRL+SHIFT+V': 'videoDialog.show',
       },
 
       mac: {
@@ -342,7 +344,9 @@ $.summernote = $.extend($.summernote, {
         'CMD+NUM5': 'formatH5',
         'CMD+NUM6': 'formatH6',
         'CMD+ENTER': 'insertHorizontalRule',
-        'CMD+K': 'linkDialog.show',
+        'CMD+SHIFT+L': 'linkDialog.show',
+        'CMD+SHIFT+I': 'imageDialog.show',
+        'CMD+SHIFT+V': 'videoDialog.show',
       },
     },
 

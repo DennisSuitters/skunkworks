@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import env from '../core/env';
 import key from '../core/key';
+import func from '../core/func';
 
 export default class ImageDialog {
   constructor(context) {
@@ -10,6 +11,8 @@ export default class ImageDialog {
     this.$editor = context.layoutInfo.editor;
     this.options = context.options;
     this.lang = this.options.langInfo;
+
+    context.memo('help.imageDialog.show', this.options.langInfo.help['imageDialog.show']);
   }
 
   initialize() {

@@ -1,16 +1,18 @@
 import $ from 'jquery';
 import env from '../core/env';
 import key from '../core/key';
+import func from '../core/func';
 
 export default class VideoDialog {
   constructor(context) {
     this.context = context;
-
     this.ui = $.summernote.ui;
     this.$body = $(document.body);
     this.$editor = context.layoutInfo.editor;
     this.options = context.options;
     this.lang = this.options.langInfo;
+
+    context.memo('help.videoDialog.show', this.options.langInfo.help['videoDialog.show']);
   }
 
   initialize() {

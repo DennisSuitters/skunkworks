@@ -6,7 +6,6 @@ import func from '../core/func';
 export default class LinkDialog {
   constructor(context) {
     this.context = context;
-
     this.ui = $.summernote.ui;
     this.$body = $(document.body);
     this.$editor = context.layoutInfo.editor;
