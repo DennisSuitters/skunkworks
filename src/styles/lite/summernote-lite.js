@@ -421,9 +421,6 @@ const colorDropdownButton = function(opt, type) {
 };
 
 const dialog = renderer.create('<div class="note-modal" aria-hidden="false" tabindex="-1" role="dialog"></div>', function($node, options) {
-  if (options.fade) {
-    $node.addClass('fade');
-  }
   $node.attr({
     'aria-label': options.title,
   });
@@ -447,8 +444,8 @@ const videoDialog = function(opt) {
   ].join('');
 
   return dialog({
+    className: 'note-video-dialog',
     title: opt.lang.video.insert,
-    fade: opt.fade,
     body: body,
     footer: footer,
   }).render();
@@ -463,8 +460,8 @@ const imageDialog = function(opt) {
   ].join('');
 
   return dialog({
+    className: 'note-image-dialog',
     title: opt.lang.image.insert,
-    fade: opt.fade,
     body: body,
     footer: footer,
   }).render();
@@ -481,7 +478,6 @@ const linkDialog = function(opt) {
   return dialog({
     className: 'note-link-dialog',
     title: opt.lang.link.insert,
-    fade: opt.fade,
     body: body,
     footer: footer,
   }).render();

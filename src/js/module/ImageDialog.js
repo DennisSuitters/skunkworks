@@ -60,8 +60,8 @@ export default class ImageDialog {
     const footer = '<input type="button" href="#" class="note-btn note-btn-primary note-image-btn" value="' + this.lang.image.insert + '" disabled>';
 
     this.$dialog = this.ui.dialog({
+      className: 'note-image-modal' + (this.options.dialogsAnim != '' ? ' note-' + this.options.dialogsAnim : ''),
       title: this.lang.image.insert,
-      fade: this.options.dialogsFade,
       body: body,
       footer: footer,
     }).render().appendTo($container);

@@ -81,8 +81,8 @@ export default class VideoDialog {
     const footer = '<input type="button" href="#" class="note-btn note-btn-primary note-video-btn" value="' + this.lang.video.insert + '" disabled>';
 
     this.$dialog = this.ui.dialog({
+      className: 'note-video-modal' + (this.options.dialogsAnim != '' ? ' note-' + this.options.dialogsAnim : ''),
       title: this.lang.video.insert,
-      fade: this.options.dialogsFade,
       body: body,
       footer: footer,
     }).render().appendTo($container);

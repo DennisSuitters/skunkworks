@@ -229,7 +229,7 @@ $.summernote = $.extend($.summernote, {
 
     // By default, dialogs are attached in container.
     dialogsInBody: false,
-    dialogsFade: false,
+    dialogsAnim: '', // [empty]|bounce|elastic|fade|slide|slit|tilt
 
     disableUpload: false, // true|false Disables display of upload option in ImageDialog,
     fileExplorer: '', // If set with the Javascript function name, and button in ImageDialog.js will be shown, which also parses in the ID of the #note-dialog-image-url so the function can return the URL of the selected file for insertion. Note, only the function name is required for eg 'elfinderDialog'.
@@ -311,9 +311,10 @@ $.summernote = $.extend($.summernote, {
         'CTRL+NUM5': 'formatH5',
         'CTRL+NUM6': 'formatH6',
         'CTRL+ENTER': 'insertHorizontalRule',
-        'CTRL+SHIFT+L': 'linkDialog.show',
+        'CTRL+SHIFT+K': 'linkDialog.show',
         'CTRL+SHIFT+I': 'imageDialog.show',
         'CTRL+SHIFT+V': 'videoDialog.show',
+        'F1': 'helpDialog.show',
       },
 
       mac: {
@@ -344,9 +345,10 @@ $.summernote = $.extend($.summernote, {
         'CMD+NUM5': 'formatH5',
         'CMD+NUM6': 'formatH6',
         'CMD+ENTER': 'insertHorizontalRule',
-        'CMD+SHIFT+L': 'linkDialog.show',
+        'CMD+SHIFT+K': 'linkDialog.show',
         'CMD+SHIFT+I': 'imageDialog.show',
         'CMD+SHIFT+V': 'videoDialog.show',
+        'H1': 'helpDialog.show',
       },
     },
 

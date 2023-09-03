@@ -13,6 +13,11 @@
 
 }
 
+.note-help-modal .note-modal-body {
+  max-height: 60vh;
+  overflow: none;
+  overflow-y: scroll; }
+
 .note-modal-content {
   position: relative;
   width: auto;
@@ -56,7 +61,7 @@
   }
 
   .note-help-text {
-    display: inline; }
+    display: inline-block; }
 }
 
 .note-modal-footer {

@@ -3,12 +3,12 @@ import $ from 'jquery';
 class ModalUI {
   constructor($node /*, options */) {
     this.$modal = $node;
-    this.$backdrop = $('<div class="note-modal-backdrop"></div>');
+    this.$backdrop = $('<div class="note-modal-backdrop note-fade"></div>');
   }
 
   show() {
-    this.$backdrop.appendTo(document.body).show();
-    this.$modal.addClass('note-open').show();
+    this.$backdrop.appendTo(document.body).addClass('note-open');
+    this.$modal.addClass('note-open');
     this.$modal.trigger('note.modal.show');
     this.$modal.off('click', '.note-close').on('click', '.note-close', this.hide.bind(this));
     this.$modal.on('keydown', (event) => {
@@ -18,15 +18,16 @@ class ModalUI {
       }
     });
     this.$modal.on('click', (event) => {
-      if(event.target.classList.contains('note-open')){
+      if (event.target.classList.contains('note-open')){
+        event.preventDefault();
         this.hide();
       }
     });
   }
 
   hide() {
-    this.$modal.removeClass('note-open').hide();
-    this.$backdrop.hide();
+    this.$modal.removeClass('note-open');
+    this.$backdrop.removeClass('note-open');
     this.$modal.trigger('note.modal.hide');
     this.$modal.off('keydown');
   }
