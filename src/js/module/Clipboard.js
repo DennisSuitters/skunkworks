@@ -3,8 +3,8 @@ import lists from '../core/lists';
 export default class Clipboard {
   constructor(context) {
     this.context = context;
-    this.$editable = context.layoutInfo.editable;
     this.options = context.options;
+    this.$editable = context.layoutInfo.editable;
   }
 
   initialize() {
@@ -28,7 +28,7 @@ export default class Clipboard {
       const clipboardText = clipboardData.getData('Text');
 
       // paste img file
-      if (clipboardFiles.length > 0) {
+      if (clipboardFiles.length > 0 && this.options.allowClipboardImagePasting) {
         this.context.invoke('editor.insertImagesOrCallback', clipboardFiles);
         event.preventDefault();
       }

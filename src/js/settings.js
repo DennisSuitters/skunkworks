@@ -236,6 +236,8 @@ $.summernote = $.extend($.summernote, {
     maximumImageFileSize: null,
     acceptImageFileTypes: "image/*",
 
+    allowClipboardImagePasting: true,
+
     callbacks: {
       onBeforeCommand: null,
       onBlur: null,
