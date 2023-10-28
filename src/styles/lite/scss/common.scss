@@ -3,3 +3,9 @@
   color: var(--note-color);
   font-family: var(--note-font);
   border-radius: var(--note-frame-border-radius); }
+
+.note-hide {
+  display: none !important; }
+
+.note-show {
+  display: block !important; }

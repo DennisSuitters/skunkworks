@@ -9,13 +9,13 @@
   touch-action: manipulation;
   cursor: pointer;
   background-image: none;
-  border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color) !important;
+  border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color);
   white-space: nowrap;
   outline: 0;
-  color: var(--note-btn-color) !important;
-  background-color: var(--note-btn-background-color) !important;
-  border-color: var(--note-btn-border-color) !important;
-  border-radius: var(--note-btn-border-radius) !important;
+  color: var(--note-btn-color);
+  background-color: var(--note-btn-background-color);
+  border-color: var(--note-btn-border-color);
+  border-radius: var(--note-btn-border-radius);
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -24,23 +24,23 @@
   &:hover,
   &:focus,
   &.note-focus {
-    color: var(--note-btn-color-hover) !important;
+    color: var(--note-btn-color-hover);
     text-decoration: none;
-    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color-hover) !important;
-    background-color: var(--note-btn-background-color-hover) !important;
+    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color-hover);
+    background-color: var(--note-btn-background-color-hover);
     outline: 0;
-    border-radius: var(--note-btn-border-radius) !important; }
+    border-radius: var(--note-btn-border-radius); }
 
   &:active,
   &.note-active {
     outline: 0;
     background-image: none;
-    color: var(--note-btn-color-active) !important;
+    color: var(--note-btn-color-active);
     text-decoration: none;
-    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color-active) !important;
-    background-color: var(--note-btn-background-color-active) !important;
+    border: var(--note-btn-border-width) var(--note-btn-border-style) var(--note-btn-border-color-active);
+    background-color: var(--note-btn-background-color-active);
     outline: 0;
-    border-radius: var(--note-btn-border-radius) !important;
+    border-radius: var(--note-btn-border-radius);
     -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125);
     box-shadow: inset 0 3px 5px rgba(0, 0, 0, .125); }
 
@@ -93,16 +93,16 @@
 
 
 .note-btn-primary {
-  background-color: var(--note-btn-primary-background-color) !important;
-  color: var(--note-btn-primary-color) !important;
+  background-color: var(--note-btn-primary-background-color);
+  color: var(--note-btn-primary-color);
 
   &:hover,
   &:focus,
   &.note-focus {
-    color: var(--note-btn-primary-color-hover) !important;
+    color: var(--note-btn-primary-color-hover);
     text-decoration: none;
-    border-color: var(--note-btn-primary-border-color-hover) !important;
-    background-color: var(--note-btn-primary-background-color-hover) !important; }
+    border-color: var(--note-btn-primary-border-color-hover);
+    background-color: var(--note-btn-primary-background-color-hover); }
 
 }
 
@@ -126,9 +126,9 @@
 .note-modal .note-btn:disabled,
 .note-modal input[type="submit"]:disabled,
 .note-modal input[type="button"]:disabled {
-  background-color: var(--note-btn-background-color-disabled) !important;
-  color: var(--note-btn-color-disabled) !important;
-  border-color: var(--note-btn-border-color-disabled) !important; }
+  background-color: var(--note-btn-background-color-disabled);
+  color: var(--note-btn-color-disabled);
+  border-color: var(--note-btn-border-color-disabled); }
 
 .note-close {
   float: right !important;

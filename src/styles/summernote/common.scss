@@ -658,15 +658,17 @@
 
 /* Handle */
 .note-handle {
+  position: absolute;
+  z-index: var(--note-zindex-control-section);
 
   // control selection
   .note-control-selection {
-    position: absolute;
+    position: absolute !important;
     display: none;
     border: 1px solid var(--note-control-selection-border-color);
 
     & > div {
-      position: absolute; }
+      position: absolute !important; }
 
     .note-control-selection-bg {
       width: 100%;

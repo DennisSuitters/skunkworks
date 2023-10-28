@@ -19,8 +19,7 @@ export default class ImageDialog {
     let imageLimitation = '';
     if (this.options.maximumImageFileSize) {
       const unit = Math.floor(Math.log(this.options.maximumImageFileSize) / Math.log(1024));
-      const readableSize = (this.options.maximumImageFileSize / Math.pow(1024, unit)).toFixed(2) * 1 +
-                         ' ' + ' KMGTP'[unit] + 'B';
+      const readableSize = (this.options.maximumImageFileSize / Math.pow(1024, unit)).toFixed(2) * 1 + ' ' + ' KMGTP'[unit] + 'B';
       imageLimitation = `<small>${this.lang.image.maximumFileSize + ' : ' + readableSize}</small>`;
     }
 
