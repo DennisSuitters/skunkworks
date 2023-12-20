@@ -16,8 +16,8 @@
     "email": "<susukang98@gmail.com>"
   },
   "main": "dist/summernote.js",
-  "engines" : {
-    "node" : ">=17.0.0"
+  "engines": {
+    "node": ">=17.0.0"
   },
   "scripts": {
     "dev": "eslint config && webpack serve --config=./config/webpack.development.js --progress",
@@ -52,7 +52,7 @@
     "bootstrap": "^5.0.1",
     "chai": "^4.2.0",
     "chai-spies": "^1.0.0",
-    "chromedriver": "^93.0.1",
+    "chromedriver": "^119.0.1",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "concurrently": "^6.2.0",
     "copy-webpack-plugin": "^9.0.1",
@@ -106,5 +106,6 @@
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^4.3.0",
     "zip-webpack-plugin": "^4.0.1"
-  }
+  },
+  "dependencies": {}
 }
