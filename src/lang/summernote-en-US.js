@@ -73,7 +73,6 @@ $.extend(true, $.summernote.lang, {
       title: 'Title',
       rel: 'Choose a Rel option to use',
       openInNewWindow: 'Open in new window',
-      useProtocol: 'Use default protocol',
       linkList: 'Curated Links',
     },
     table: {
