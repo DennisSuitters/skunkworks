@@ -138,8 +138,6 @@ Note: Some of the options below are NOT available in the main repository.
   width: null,
   height: null,
   linkTargetBlank: true,
-  useProtocol: true,
-  defaultProtocol: 'https://',
 
   // Thie linkList options adds a quick dropdown to the Link Dialog that can be used to add
   // other page links, or links to anywhere that an editor might need quick access to.
