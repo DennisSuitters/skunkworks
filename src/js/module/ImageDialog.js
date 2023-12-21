@@ -37,6 +37,11 @@ export default class ImageDialog {
       '<label for="note-dialog-image-url-' + this.options.id + '" class="note-form-label">' + this.lang.image.url + '</label>',
       '<div class="note-form-group">',
         '<input id="note-dialog-image-url-' + this.options.id + '" class="note-image-url note-input" type="text"/>',
+        (this.options.imageService !== '' ?
+          this.options.imageService
+        :
+          ''
+        ),
         (this.options.fileExplorer !== '' ?
           '<button class="note-btn" onclick="' + this.options.fileExplorer + '(`note-dialog-image-url-' + this.options.id + '`);">' + this.lang.image.fileBrowser + '</button>'
         :

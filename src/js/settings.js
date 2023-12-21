@@ -230,6 +230,10 @@ $.summernote = $.extend($.summernote, {
     dialogsAnim: '', // [empty]|bounce|elastic|fade|slide|slit|tilt
 
     disableUpload: false, // true|false Disables display of upload option in ImageDialog,
+    imageService: '',
+      // Set by adding a button with the trigger code such as: '<button data-fancybox data-type="ajax" data-src="[file that processes the request]?t=note-image-url" data-tooltip="tooltip" aria-label="Browse Unsplash for Image">Browse Unsplash</button>'
+      // Fancybox is triggered to open a dialog, and call the file in the data-src
+      // The ?t=note-image-url is the field in the image dialog to populate with the image url
     fileExplorer: '', // If set with the Javascript function name, and button in ImageDialog.js will be shown, which also parses in the ID of the #note-dialog-image-url so the function can return the URL of the selected file for insertion. Note, only the function name is required for eg 'elfinderDialog'.
     maximumImageFileSize: null,
     acceptImageFileTypes: "image/*",
