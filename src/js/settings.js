@@ -130,6 +130,10 @@ $.summernote = $.extend($.summernote, {
     // link options
     linkAddNoReferrer: false,
     addLinkNoOpener: false,
+    linkTargetBlank: true,
+    linkList: [
+      // [ 'title', 'url', 'select text' ],
+    ],
 
     // air mode: inline editor
     airMode: false,
@@ -137,10 +141,6 @@ $.summernote = $.extend($.summernote, {
 
     width: null,
     height: null,
-    linkTargetBlank: true,
-    linkList: [
-      // [ 'title', 'url', 'select text' ],
-    ],
 
     focus: false,
     tabDisable: false,

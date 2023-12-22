@@ -22,7 +22,7 @@ export default class LinkDialog {
   initialize() {
     const $container = this.options.dialogsInBody ? this.$body : this.options.container;
 
-    let linkChoices='';
+    let linkChoices = '';
     for(let i = 0; i < this.options.linkList.length; i++) {
       let linkOpts = this.options.linkList[i];
       linkChoices += `<option value="` + linkOpts[0] + `|` + linkOpts[1] + `">` + linkOpts[2] + `</option>`;
@@ -33,19 +33,20 @@ export default class LinkDialog {
         '<label for="note-dialog-link-list-' + this.options.id + '" class="note-form-label">' + this.lang.link.linkList + '</label>' +
         '<div class="note-form-group">' +
           '<select id="note-dialog-link-list-' + this.options.id + '" class="note-link-list note-input">' +
-            '<option value="|">Select a Link</option>' +
+            '<option value="|" selected>Select a Link</option>' +
             linkChoices +
           '</select>' +
         '</div>'
-      : ''
+      :
+        ''
       ),
       '<label for="note-dialog-link-url-' + this.options.id + '" class="note-form-label">' + this.lang.link.url + '</label>',
       '<div class="note-form-group">',
-        '<input id="note-dialog-link-url-' + this.options.id + '" class="note-link-url note-input" type="text" value="https://"/>',
+        '<input id="note-dialog-link-url-' + this.options.id + '" class="note-link-url note-input" type="text" value="https://">',
       '</div>',
-      '<label for="note-dialog-link-txt-' + this.options.id + '" class="note-form-label">' + this.lang.link.textToDisplay + '</label>',
+      '<label for="note-dialog-link-text-' + this.options.id + '" class="note-form-label">' + this.lang.link.textToDisplay + '</label>',
       '<div class="note-form-group">',
-        '<input id="note-dialog-link-txt-' + this.options.id + '" class="note-link-text note-input" type="text">',
+        '<input id="note-dialog-link-text-' + this.options.id + '" class="note-link-text note-input" type="text">',
       '</div>',
       '<label for="note-dialog-link-title-' + this.options.id + '" class="note-form-label">' + this.lang.link.title + '</label>',
       '<div class="note-form-group">',
@@ -118,8 +119,7 @@ export default class LinkDialog {
 
   onCheckLinkUrl($input) {
     $input.on('blur', (event) => {
-      event.target.value =
-      event.target.value == '' ? '' : this.checkLinkUrl(event.target.value);
+      event.target.value = event.target.value == '' ? '' : this.checkLinkUrl(event.target.value);
     });
   }
 
@@ -157,9 +157,9 @@ export default class LinkDialog {
 
         $linkList.on('change', () => {
           const linkSplit = $linkList.val().split('|');
+          $linkUrl.val(linkSplit[1]);
           $linkText.val(linkSplit[0]);
           $linkTitle.val(linkSplit[0]);
-          $linkUrl.val(linkSplit[1]);
           this.toggleLinkBtn($linkBtn, $linkText, $linkUrl);
         });
 

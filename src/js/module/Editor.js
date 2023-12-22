@@ -237,24 +237,48 @@ export default class Editor {
       if (isTextChanged) {
         rng = rng.deleteContents();
         const anchor = rng.insertNode($('<A></A>').text(linkText)[0]);
+        $(anchor).attr('href', linkUrl);
+        if (linkTitle !== '') {
+          $(anchor).attr('title', linkTitle);
+        } else {
+          $(anchor).removeAtrr('title');
+        }
+        if (linkRel !== '') {
+          $(anchor).attr('rel', linkRel);
+        } else {
+          $(anchor).removeAttr('rel');
+        }
+        if (isNewWindow === true) {
+          $(anchor).attr('target', '_blank');
+        } else {
+          $(anchor).removeAttr('target');
+        }
       } else {
         anchors = this.style.styleNodes(rng, {
           nodeName: 'A',
           expandClosestSibling: true,
           onlyPartialContains: true,
         });
+        $.each(anchors, (idx, anchor) => {
+          $(anchor).attr('href', linkUrl);
+          if (linkTitle !== '') {
+            $(anchor).attr('title', linkTitle);
+          } else {
+            $(anchor).removeAtrr('title');
+          }
+          if (linkRel !== '') {
+            $(anchor).attr('rel', linkRel);
+          } else {
+            $(anchor).removeAttr('rel');
+          }
+          if (isNewWindow === true) {
+            $(anchor).attr('target', '_blank');
+          } else {
+            $(anchor).removeAttr('target');
+          }
+        });
       }
 
-      $.each(anchors, (idx, anchor) => {
-        $(anchor).attr('href', linkUrl);
-        $(anchor).attr('title', linkTitle);
-        if(linkRel != '') $(anchor).attr('rel', linkRel);
-        if (isNewWindow === true) {
-          $(anchor).attr('target', '_blank');
-        } else{
-          $(anchor).removeAttr('target');
-        }
-      });
 
       this.setLastRange(
         this.createRangeFromList(anchors).select()
