@@ -158,7 +158,9 @@ export default class LinkDialog {
         $linkList.on('change', () => {
           const linkSplit = $linkList.val().split('|');
           $linkUrl.val(linkSplit[1]);
-          $linkText.val(linkSplit[0]);
+          if ($linkText.val() === '') {
+            $linkText.val(linkSplit[0]);
+          }
           $linkTitle.val(linkSplit[0]);
           this.toggleLinkBtn($linkBtn, $linkText, $linkUrl);
         });
