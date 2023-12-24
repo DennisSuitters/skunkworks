@@ -149,91 +149,94 @@
   }
 
   // Notifications
-  .note-status-output {
+  .note-statusbar {
     display: block;
     width: 100%;
     font-size: 14px;
     line-height: 1.42857143;
     height: auto;
     margin-bottom: 0;
+    padding:2px 3px;
     background-color: var(--note-status-background-color);
     color: var(--note-status-color);
     border: 0;
     border-top: var(--note-status-border-width) var(--note-status-border-style) var(--note-status-border-color); }
 
-  .note-status-output:empty {
+  .note-statusbar.sticky-statusbar {
+    position: sticky;
+    bottom: 0;
+    z-index: 1000; }
+
+
+  .note-statusbar:empty {
     height: 0;
     border-top: 0 solid transparent; }
 
-  .note-status-output .note-pull-left {
+  .note-statusbar .note-pull-left {
     float: left !important; }
 
-  .note-status-output .note-pull-right {
+  .note-statusbar .note-pull-right {
     float: right !important; }
 
-  .note-status-output .note-text-muted {
+  .note-statusbar .note-text-muted {
     color: var(--note-status-color-muted); }
 
-  .note-status-output .note-text-primary {
+  .note-statusbar .note-text-primary {
     color: var(--note-primary-color); }
 
-  .note-status-output .note-text-success {
+  .note-statusbar .note-text-success {
     color: var(--note-success-color); }
 
-  .note-status-output .note-text-info {
+  .note-statusbar .note-text-info {
     color: var(--note-info-color); }
 
-  .note-status-output .note-text-warning {
+  .note-statusbar .note-text-warning {
     color: var(--note-warning-color); }
 
-  .note-status-output .note-text-danger {
+  .note-statusbar .note-text-danger {
     color: var(--note-danger-color); }
 
-  .note-status-output .note-alert {
+  .note-statusbar .note-alert {
     margin: -7px 0 0 0;
     padding: 7px 10px 2px 10px;
     border-radius: 0;
     color: var(--note-status-color);
     background-color: var(--note-status-background-color); }
 
-  .note-status-output .note-alert .note-icon {
+  .note-statusbar .note-alert .note-icon {
     margin-right: 5px; }
 
-  .note-status-output .note-alert-success {
+  .note-statusbar .note-alert-success {
     color: var(--note-success-color) !important;
     background-color: var(--note-success-background-color) !important; }
 
-  .note-status-output .note-alert-info {
+  .note-statusbar .note-alert-info {
     color: var(--note-info-color) !important;
     background-color: var(--note-info-background-color) !important; }
 
-  .note-status-output .note-alert-warning {
+  .note-statusbar .note-alert-warning {
     color: var(--note-warning-color) !important;
     background-color: var(--note-warning-background-color) !important; }
 
-  .note-status-output .note-alert-danger {
+  .note-statusbar .note-alert-danger {
     color: var(--note-danger-color) !important;
     background-color: var(--note-danger-background-color) !important; }
 
-  // statusbar
-  .note-statusbar {
+  // resizebar
+  .note-resizebar {
     background-color: var(--note-status-background-color);
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     border-top: 1px solid var(--note-status-border-color);
+    padding-top: 1px;
+    height: 9px;
+    width: 100%;
+    cursor: ns-resize;
 
-    .note-resizebar {
-      padding-top: 1px;
-      height: 9px;
-      width: 100%;
-      cursor: ns-resize;
-
-      .note-icon-bar {
-        width: 20px;
-        margin: 1px auto;
-        border-top: 1px solid var(--note-status-resize-icon-color); }
-
-    }
+    .note-icon-bar {
+      width: 20px;
+      margin: 1px auto;
+      border-top: 1px solid var(--note-status-resize-icon-color); }
 
     &.note-locked {
 
@@ -280,7 +283,7 @@
   left: 0;
   background-color: rgba(0,0,0,.5); }
 
-.note-fullscreen .note-status-output {
+.note-fullscreen .note-statusbar {
     position: absolute !important;
     bottom: 0 !important; }
 

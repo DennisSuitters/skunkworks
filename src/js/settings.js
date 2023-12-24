@@ -8,7 +8,8 @@ import Editor from './module/Editor';
 import Clipboard from './module/Clipboard';
 import Dropzone from './module/Dropzone';
 import Codeview from './module/Codeview';
-import Statusbar from './module/Statusbar';
+import Statusbar from './module/Resizebar';
+import Resizebar from './module/Statusbar';
 import Fullscreen from './module/Fullscreen';
 import Handle from './module/Handle';
 import AutoLink from './module/AutoLink';
@@ -48,6 +49,7 @@ $.summernote = $.extend($.summernote, {
       'dropzone': Dropzone,
       'codeview': Codeview,
       'statusbar': Statusbar,
+      'resizebar': Resizebar,
       'fullscreen': Fullscreen,
       'handle': Handle,
       // FIXME: HintPopover must be front of autolink
@@ -76,6 +78,7 @@ $.summernote = $.extend($.summernote, {
     followingToolbar: false,
     toolbarPosition: 'top',
     stickyToolbar: false,
+    stickyStatus: false,
     otherStaticBar: '',
     dropUp: false, // false uses default dropdown,
     toolbarButtonDropUp: true, // true|false If toolbarPosition = 'bottom' this will override dropUp.

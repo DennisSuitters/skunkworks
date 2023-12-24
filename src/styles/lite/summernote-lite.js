@@ -14,21 +14,19 @@ const viewportArea = renderer.create('<div class="note-viewport-area"></div>');
 const editingArea = renderer.create('<div class="note-editing-area"></div>');
 const codable = renderer.create('<textarea class="note-codable" aria-multiline="true"></textarea>');
 const editable = renderer.create('<div class="note-editable" contentEditable="true" role="textbox" aria-multiline="true" aria-label="Summernote Editing Area"></div>');
-const statusbar = renderer.create([
-  '<output class="note-status-output" role="status" aria-live="polite"></output>',
-  '<div class="note-statusbar" role="status">',
-    '<div class="note-resizebar" role="separator" aria-orientation="horizontal" tabindex="0">',
-      '<div class="note-icon-bar"></div>',
-      '<div class="note-icon-bar"></div>',
-      '<div class="note-icon-bar"></div>',
-    '</div>',
+const statusbar = renderer.create('<output class="note-statusbar" role="status" aria-live="polite"></output>');
+const resizebar = renderer.create([
+  '<div class="note-resizebar" role="separator" aria-orientation="horizontal" tabindex="0">',
+    '<div class="note-icon-bar"></div>',
+    '<div class="note-icon-bar"></div>',
+    '<div class="note-icon-bar"></div>',
   '</div>',
 ].join(''));
 
 const airEditor = renderer.create('<div class="note-editor note-airframe"></div>');
 const airEditable = renderer.create([
   '<div class="note-editable" contentEditable="true" role="textbox" aria-multiline="true"></div>',
-  '<output class="note-status-output" role="status" aria-live="polite"></output>',
+  '<output class="note-statusbar" role="status" aria-live="polite"></output>',
 ].join(''));
 
 const buttonGroup = renderer.create('<div class="note-btn-group"></div>');
@@ -522,6 +520,7 @@ const ui = function(editorOptions) {
     codable: codable,
     editable: editable,
     statusbar: statusbar,
+    resizebar: resizebar,
     airEditor: airEditor,
     airEditable: airEditable,
     buttonGroup: buttonGroup,
@@ -611,6 +610,7 @@ const ui = function(editorOptions) {
           ]),
           toolbar(),
           statusbar(),
+          resizebar(),
         ])
         : editor([
           toolbar(),
@@ -621,6 +621,7 @@ const ui = function(editorOptions) {
             ]),
           ]),
           statusbar(),
+          resizebar()
         ])
       )).render();
 
@@ -635,6 +636,7 @@ const ui = function(editorOptions) {
         editable: $editor.find('.note-editable'),
         codable: $editor.find('.note-codable'),
         statusbar: $editor.find('.note-statusbar'),
+        resizebar: $editor.find('.note-resizebar'),
       };
     },
 

@@ -12,6 +12,7 @@ export default class Toolbar {
     this.$toolbar = context.layoutInfo.toolbar;
     this.$editable = context.layoutInfo.editable;
     this.$statusbar = context.layoutInfo.statusbar;
+    this.$resizebar = context.layoutInfo.resizebar;
     this.options = context.options;
 
     this.isFollowing = false;
@@ -68,6 +69,7 @@ export default class Toolbar {
     const editorWidth = this.$editor.width();
     const toolbarHeight = this.$toolbar.height();
     const statusbarHeight = this.$statusbar.height();
+    const resizebarHeight = this.$resizebar.height();
 
     // check if the web app is currently using another static bar
     let otherBarHeight = 0;
@@ -79,7 +81,7 @@ export default class Toolbar {
     const editorOffsetTop = this.$editor.offset().top;
     const editorOffsetBottom = editorOffsetTop + editorHeight;
     const activateOffset = editorOffsetTop - otherBarHeight;
-    const deactivateOffsetBottom = editorOffsetBottom - otherBarHeight - toolbarHeight - statusbarHeight;
+    const deactivateOffsetBottom = editorOffsetBottom - otherBarHeight - toolbarHeight - statusbarHeight - resizebarHeight;
 
     if (!this.isFollowing &&
       (currentOffset > activateOffset) && (currentOffset < deactivateOffsetBottom - toolbarHeight)) {
