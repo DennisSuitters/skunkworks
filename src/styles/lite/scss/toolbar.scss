@@ -10,4 +10,4 @@
 .note-toolbar.sticky-toolbar {
   position: sticky;
   top: 0;
-  z-index: 1000; }
+  z-index: var(--note-zindex-sticky-toolbar); }

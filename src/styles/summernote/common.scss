@@ -165,7 +165,7 @@
   .note-statusbar.sticky-statusbar {
     position: sticky;
     bottom: 0;
-    z-index: 1000; }
+    z-index: var(--note-zindex-sticky-toolbar); }
 
 
   .note-statusbar:empty {
