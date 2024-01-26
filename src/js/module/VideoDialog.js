@@ -153,7 +153,7 @@ export default class VideoDialog {
     const youkuMatch = url.match(youkuRegExp);
 
 // YouTube
-    const ytRegExp = /(?:youtu\.be\/|youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=))([^&\n?]+)(?:.*[?&]t=(\d+))?.*/;
+    const ytRegExp = /(?:youtu\.be\/|youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=))([^&\n?]+)(?:.*[?&]t=([^&\n]+))?.*/;
     const ytRegExpForStart = /^(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s)?$/;
     const ytMatch = url.match(ytRegExp);
 
@@ -196,7 +196,14 @@ export default class VideoDialog {
       const youtubeId = ytMatch[1];
       var start = 0;
       if (typeof ytMatch[2] !== 'undefined') {
-        start = parseInt(ytMatch[2], 10);
+        const ytMatchForStart = ytMatch[2].match(ytRegExpForStart);
+        if (ytMatchForStart) {
+          for (var n = [3600, 60, 1], i = 0, r = n.length; i < r; i++) {
+            start += (typeof ytMatchForStart[i + 1] !== 'undefined' ? n[i] * parseInt(ytMatchForStart[i + 1], 10) : 0);
+          }
+        }else{
+          start = parseInt(ytMatch[2], 10);
+        }
       }
 
       if (start > 0) urlVars += 'start=' + start;
