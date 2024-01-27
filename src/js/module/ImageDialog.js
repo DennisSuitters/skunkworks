@@ -144,7 +144,7 @@ export default class ImageDialog {
            $imageUrl.trigger('focus');
          }
 
-         $imageBtn.click((event) => {
+         $imageBtn.on('click', (event) => {
            event.preventDefault();
            deferred.resolve($imageUrl.val());
          });

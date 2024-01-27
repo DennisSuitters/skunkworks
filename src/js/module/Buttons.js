@@ -184,7 +184,7 @@ export default class Buttons {
                   .attr('aria-label', color)
                   .attr('data-value', color)
                   .attr('data-original-title', color);
-                $chip.click();
+                $chip.trigger('click');
               });
             });
           },
@@ -210,7 +210,7 @@ export default class Buttons {
                 .attr('data-value', color)
                 .attr('data-original-title', color);
               $palette.prepend($chip);
-              $picker.click();
+              $picker.trigger('click');
             } else {
               if (lists.contains(['backColor', 'foreColor'], eventName)) {
                 const key = eventName === 'backColor' ? 'background-color' : 'color';
@@ -616,7 +616,7 @@ export default class Buttons {
           $catcher.css({
             width: this.options.insertTableMaxSize.col + 'em',
             height: this.options.insertTableMaxSize.row + 'em',
-          }).mousedown(this.context.createInvokeHandler('editor.insertTable'))
+          }).on('mousedown', this.context.createInvokeHandler('editor.insertTable'))
             .on('mousemove', this.tableMoveHandler.bind(this));
         },
       }).render();
