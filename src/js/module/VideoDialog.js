@@ -120,7 +120,7 @@ export default class VideoDialog {
     const gdMatch = url.match(gdRegExp);
 
 // Instagram
-    const igRegExp = /(?:www\.|\/\/)instagram\.com\/p\/(.[a-zA-Z0-9_-]*)/;
+    const igRegExp = /(?:www\.|\/\/)instagram\.com\/reel\/(.[a-zA-Z0-9_-]*)/;
     const igMatch = url.match(igRegExp);
 
 // PeerTube
