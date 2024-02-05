@@ -9,7 +9,7 @@ export default class AutoLink {
   constructor(context) {
     this.context = context;
     this.options = context.options;
-    this.$editbale = context.layoutInfo.editable;
+    this.$editable = context.layoutInfo.editable;
     this.events = {
       'summernote.keyup': (we, event) => {
         if (!event.isDefaultPrevented()) {
