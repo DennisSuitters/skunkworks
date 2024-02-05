@@ -515,12 +515,6 @@ export default class Editor {
     } else if (eventName) {
       if (this.context.invoke(eventName) !== false) {
         event.preventDefault();
-        // if keyMap action was invoked
-        // Temporarily commented out, to test if double paragraph happens again.
-        // The below, causes some keymap functions to stop working.
-//        if (keyName != 'ENTER') {  // <--- Without this check, we get double Empty Paragraph insertion.
-//          this.context.invoke(eventName);
-//        }
         return true;
       }
     } else if (key.isEdit(event.keyCode)) {
